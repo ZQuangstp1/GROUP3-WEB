@@ -15,7 +15,7 @@ body {
 }
 
 /* Áp dụng hiệu ứng cho các phần tử có class animate-on-scroll */
-.animate-on-scroll {
+#animate-on-scroll {
   animation: fadeInUp 1s ease-out;
   /* Thêm hiệu ứng fade-in-up */
 }
