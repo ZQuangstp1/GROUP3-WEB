@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function ConfirmDel() {
+                var confirmed = confirm("Bạn chắc chắn muốn xóa không?");
+                if (confirmed) {
+                    // Thực hiện hành động xóa nếu người dùng chọn OK
+                    // Ví dụ: gọi hàm xóa hoặc gửi yêu cầu xóa tới server
+                    console.log("Đã xóa");
+                }
+            }
+        </script>
+
+        <style>
+            #container{
+                width: 100%; margin: auto 0px; 
+                background-color: azure;
+            }
+
+            body {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        #sidebar {
+            width: 13%;
+            height: 100vh;
+            background: #F9F2E6;
+            color: #fff;
+            position: fixed;
+            float: left;
+            border-right: 2px solid #DF8A8A; 
+        }
+        #sidebar h2 {
+            text-align: center;
+            margin-top: -25px;
+        }
+
+        #sidebar h2 img {
+            width: 150px;
+            height: auto;
+
+        }
+        #sidebar ul {
+            color: #10090d81;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: -50px; 
+        }
+
+        #sidebar ul li {
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 2px solid #DF8A8A; 
+        }
+        #sidebar ul li:hover {
+            background-color: #DF8A8A; 
+            color: #fff; 
+        }
+
+        #header {
+            font-size:13px;
+            font-weight: bold;
+            background: #F9F2E6;
+            color: #935a5ac9;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 13%;
+            width: 100%;
+            border-bottom: 2px solid #DF8A8A; 
+        }
+
+        #content{
+            background-color: white;
+            width: 87%;
+            height: auto;
+            float: left;
+            margin-left: 13.2%;
+            margin-top: 85px;
+        }
+
+        #Data_tb{
+            width: 100%;
+            height: 500px;
+            margin-top: 5%;
+            display: flex;
+        }
+        #Data_tb table thead tr th {
+            width: 12.5%;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+
+        #Data_tb table tbody tr td {
+            height: 20%;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding-left: 10px;
+        }
+        #pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        padding: 10px 0; /* Thêm padding trên và dưới */
+        }
+
+        #pagination button {
+        padding: 10px 20px;
+        margin: 0 10px; /* Khoảng cách giữa các nút */
+        border: none;
+        border-radius: 5px; /* Làm tròn góc */
+        background-color: #DF8A8A; /* Màu nền */
+        color: white; /* Màu chữ */
+        cursor: pointer; /* Hiệu ứng con trỏ */
+        transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu */
+        }
+
+        #pagination button:hover {
+        background-color: #935a5a; /* Màu khi hover */
+        }
+
+        #pagination span {
+        margin: 0 10px; /* Khoảng cách giữa văn bản và nút */
+        }
+
+        #footer {
+            font-size: x-small;
+            background: #FFE5EC;
+            color: #10090d81;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 2px solid #DF8A8A; 
+        }
+
+        #hover_img:hover{
+            transform: scale(1.1); /* Phóng to ảnh 10% khi hover */
+            transition: transform 0.3s ease-in-out; /* Hiệu ứng chuyển đổi mượt mà trong 0.3 giây */
+        }
+        a {
+            text-decoration: none;
+            color: inherit; 
+        }
+
+        a:hover {
+            color: inherit; 
+        }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="sidebar">
+                <h2><img src="Picture/Logo.png" alt="Logo"></h2>
+                <ul>
+                    <li><a href="Overview.html">Overview</a></li>
+                    <li><a href="QLSP.html">Quản lý sản phẩm</a></li>
+                    <a href="QLNV.html"><li>Quản lý nhân viên</li></a>
+                    <a href="QuanLyDonHang.html"><li>Quản lý đơn hàng</li></a>
+                </ul>
+            </div>
+        
+            <div id="header">
+                <h2>ADMIN/XEM THÔNG TIN NHÂN VIÊN</h2> 
+            </div>
+
+            <div id="content">
+                <div style="height: 15% ;display:flex; margin-top: 2%;">  <!-- Khối chứa tra cứu và thêm nhân viên -->
+                    <p style="margin-left: 20px;">Tra cứu</p>
+                    <input style="border-radius: 5px; margin:10px ;" type="text" placeholder="Nhập thông tin" />
+
+                    <div style="width: 60%;margin-left: 20%;">
+                        <a href="QLNV_ThemNV.html" style="text-decoration: none; color: inherit;">
+                            <div style=" width: 20%;background-color:#DF8A8A; display: flex; border-radius: 5px; float: right; margin: 5px; margin-left: 50%; align-items: center;">
+                                <img src="Picture/Vector.png" alt="ThemNV" style="height: 55%; margin-left: 5%; margin-right: 5%;">
+                                <p>Thêm nhân viên</p>
+                            </div>
+                        </a>
+                    </div>
+                 
+                </div>
+
+                <div id="Data_tb"> 
+                    <table style="width: 100%;">
+                        <thead>
+                          <tr>
+                            <th>Mã nhân viên</th>
+                            <th>Tên nhân viên</th>
+                            <th>Ngày sinh</th>
+                            <th>Giới tính</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Chức vụ</th>
+                            <th>Thao tác</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                                <td>Dữ liệu 1</td>
+                                <td>Dữ liệu 2</td>
+                                <td>Dữ liệu 3</td>
+                                <td>Dữ liệu 4</td>
+                                <td>Dữ liệu 5</td>
+                                <td>Dữ liệu 6</td>
+                                <td>Dữ liệu 7</td>
+                                <td>
+                                    <img src="Picture/Group 16.png" alt="Xem" id="hover_img">
+                                    <a href="SuaNV.html" style="text-decoration: none;">
+                                        <img src="Picture/Group 17.png" alt="Sua" id="hover_img">
+                                    </a>
+                                    <img src="Picture/Group 18.png" alt="Xoa" id="hover_img" onclick="ConfirmDel()">
+                                </td>
+                          </tr>
+                          <tr>
+                                <td>Dữ liệu 9</td>
+                                <td>Dữ liệu 10</td>
+                                <td>Dữ liệu 11</td>
+                                <td>Dữ liệu 12</td>
+                                <td>Dữ liệu 13</td>
+                                <td>Dữ liệu 14</td>
+                                <td>Dữ liệu 15</td>
+                                <td>
+                                    <img src="Picture/Group 16.png" alt="Xem" id="hover_img">
+                                    <a href="SuaNV.html" style="text-decoration: none;">
+                                        <img src="Picture/Group 17.png" alt="Sua" id="hover_img">
+                                    </a>
+                                    <img src="Picture/Group 18.png" alt="Xoa" id="hover_img" onclick="ConfirmDel()">
+                                </td>
+                          </tr>
+                          <tr>
+                                <td>Dữ liệu 17</td>
+                                <td>Dữ liệu 18</td>
+                                <td>Dữ liệu 19</td>
+                                <td>Dữ liệu 20</td>
+                                <td>Dữ liệu 21</td>
+                                <td>Dữ liệu 22</td>
+                                <td>Dữ liệu 23</td>
+                                <td>
+                                    <img src="Picture/Group 16.png" alt="Xem" id="hover_img">
+                                    <a href="SuaNV.html" style="text-decoration: none;">
+                                        <img src="Picture/Group 17.png" alt="Sua" id="hover_img">
+                                    </a>
+                                    <img src="Picture/Group 18.png" alt="Xoa" id="hover_img" onclick="ConfirmDel()">
+                            </td>
+                          </tr>
+                          <tr>
+                                <td>Dữ liệu 25</td>
+                                <td>Dữ liệu 26</td>
+                                <td>Dữ liệu 27</td>
+                                <td>Dữ liệu 28</td>
+                                <td>Dữ liệu 29</td>
+                                <td>Dữ liệu 30</td>
+                                <td>Dữ liệu 31</td>
+                                <td>
+                                    <img src="Picture/Group 16.png" alt="Xem" id="hover_img">
+                                    <a href="SuaNV.html" style="text-decoration: none;">
+                                        <img src="Picture/Group 17.png" alt="Sua" id="hover_img">
+                                    </a>
+                                    <img src="Picture/Group 18.png" alt="Xoa" id="hover_img" onclick="ConfirmDel()">
+                                </td>
+                          </tr>
+                          <tr>
+                                <td>Dữ liệu 33</td>
+                                <td>Dữ liệu 34</td>
+                                <td>Dữ liệu 35</td>
+                                <td>Dữ liệu 36</td>
+                                <td>Dữ liệu 37</td>
+                                <td>Dữ liệu 38</td>
+                                <td>Dữ liệu 39</td>
+                                <td>
+                                    <img src="Picture/Group 16.png" alt="Xem" id="hover_img" >
+                                    <a href="SuaNV.html" style="text-decoration: none;">
+                                        <img src="Picture/Group 17.png" alt="Sua" id="hover_img">
+                                    </a>
+                                    <img src="Picture/Group 18.png" alt="Xoa" id="hover_img" onclick="ConfirmDel()">
+                                </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="pagination" style="">
+                    <button onclick="goToPreviousPage()">Trang Trước</button>
+                    <span>Trang 1 trong tổng số 5</span>
+                    <button onclick="goToNextPage()">Trang Sau</button>
+                </div>
+
+            </div>
+            <div id="footer">
+                <p>© 2024 Jewelry Store. All rights reserved.</p>
+            </div>
+
+        </div>
+    </body>
+</html>

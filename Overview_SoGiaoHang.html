@@ -1,0 +1,239 @@
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        a {
+            text-decoration: none; 
+            color: inherit;
+        }
+
+        a:hover {
+            color: inherit; 
+        }
+
+        #sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #F9F2E6;
+            color: #fff;
+            float: left;
+            border-right: 2px solid #DF8A8A; 
+        }
+
+        #sidebar ul {
+            color: #10090d81;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: -50px; 
+        }
+
+        #sidebar ul li {
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 2px solid #DF8A8A; 
+        }
+        #sidebar ul li:hover {
+            background-color: #DF8A8A; 
+            color: #fff; 
+        }
+
+        #content {
+            margin-left: 250px;
+            padding: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #header {
+            font-size:13px;
+            font-weight: bold;
+            background: #F9F2E6;
+            color: #935a5ac9;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 250px;
+            width: calc(100% - 250px);
+            border-bottom: 2px solid #DF8A8A; 
+        }
+
+        #footer {
+            font-size: x-small;
+            background: #FFE5EC;
+            color: #10090d81;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 2px solid #DF8A8A; 
+        }
+
+        #sidebar h2 {
+            text-align: center;
+            margin-top: -25px;
+        }
+
+        #sidebar h2 img {
+            width: 150px;
+            height: auto;
+        }
+
+        table {
+            margin-top: 70px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 15px 1px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div id="sidebar">
+        <h2><img src="Picture/Logo.png" alt="Logo"></h2>
+        <ul>
+            <li><a href="Overview.html">Overview</a></li>
+            <li><a href="QLSP.html">Quản lý sản phẩm</a></li>
+            <a href="QLNV.html"><li>Quản lý nhân viên</li></a>
+            <a href="QuanLyDonHang.html"><li>Quản lý đơn hàng</li></a>
+        </ul>
+    </div>
+
+    <div id="content">
+        <div id="header">
+            <p>ADMIN / OVERVIEW / SỔ GIAO HÀNG</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr style = "background-color: pink">
+                    <th>Ngày</th>
+                    <th>Giờ</th>
+                    <th>Số HD</th>
+                    <th>Trạng thái HD</th>
+                    <th>Khách hàng</th>
+                    <th>Người nhận</th>
+                    <th>Đối tác giao hàng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dòng 2 -->
+                <tr>
+                    <td>
+                        <input type="date" name="ngay">
+                    </td>
+                    <td>
+                        <input type="time" name="gio">
+                    </td>
+                    <td>
+                        <input type="text" name="so_hd">
+                    </td>
+                    <td>
+                        <select name="trang_thai_hd">
+                            <option value="dang_chuan_bi">Đang chuẩn bị</option>
+                            <option value="dang_giao_hang">Đang giao hàng</option>
+                            <option value="da_hoan_thanh">Đã hoàn thành</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="khach_hang">
+                    </td>
+                    <td>
+                        <input type="text" name="nguoi_nhan">
+                    </td>
+                    <td>
+                        <input type="text" name="doi_tac_giao_hang">
+                    </td>
+                </tr>
+                <!-- Dòng 3 -->
+                <tbody>
+                    <tr>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                    </tr>
+                <!-- Dòng 4 -->
+                    <tr>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                    </tr>
+                <!-- Dòng 5 -->
+                    <tr>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                    </tr>
+                <!-- Dòng 6 -->
+                    <tr>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                    </tr>
+                <!-- Dòng 7 -->
+                    <tr>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                          <td>Dữ liệu</td>
+                    </tr>
+                <!-- Dòng 8 -->
+                <tr>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+              </tr>
+                <!-- Dòng 9 -->
+                <tr>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+                    <td>Dữ liệu</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="footer">
+        <p>© 2024 Jewelry Store. All rights reserved.</p>
+    </div>
+
+</body>
+</html>

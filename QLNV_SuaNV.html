@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #container{
+                width: 100%; margin: auto 0px; 
+                background-color: azure;
+            }
+
+            body {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+
+            #sidebar {
+            width: 13%;
+            height: 100vh;
+            background: #F9F2E6;
+            color: #fff;
+            position: fixed;
+            float: left;
+            border-right: 2px solid #DF8A8A; 
+            }
+            #sidebar h2 {
+            text-align: center;
+            margin-top: -25px;
+            }
+
+            #sidebar h2 img {
+            width: 150px;
+            height: auto;
+
+            }
+            #sidebar ul {
+            color: #10090d81;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: -50px; 
+            }
+
+            #sidebar ul li {
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 2px solid #DF8A8A; 
+            }
+            #sidebar ul li:hover {
+            background-color: #DF8A8A; 
+            color: #fff; 
+            }
+
+            #header {
+            font-size:13px;
+            font-weight: bold;
+            background: #F9F2E6;
+            color: #935a5ac9;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 13%;
+            width: 100%;
+            border-bottom: 2px solid #DF8A8A; 
+            display: flex;
+            
+            }
+
+            #content{
+            background-color: white;
+            width: 87%;
+            height: auto;
+            float: left;
+            margin-left: 13.2%;
+            margin-top: 98px;
+            }
+            #SuaNV {
+            display: flex;
+            width: 100%;
+            }
+
+            #SuaNV p {
+            margin: 10px 2% 0 5%; /* Tạo khoảng cách trên và hai bên */
+            }
+
+            #SuaNV input[type="text"] {
+            width: 80%; 
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin: 2%; /* Tạo khoảng cách dưới và hai bên */
+            margin-left: 5%;
+            box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước tổng thể */
+        }
+
+            #footer {
+            font-size: x-small;
+            background: #FFE5EC;
+            color: #10090d81;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 2px solid #DF8A8A; 
+            }
+
+            a {
+            text-decoration: none;
+            color: inherit; 
+            }
+
+            a:hover {
+            color: inherit; 
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="sidebar">
+                <h2><img src="Picture/Logo.png" alt="Logo"></h2>
+                <ul>
+                    <li><a href="Overview.html">Overview</a></li>
+                    <li><a href="QLSP.html">Quản lý sản phẩm</a></li>
+                    <a href="QLNV.html"><li>Quản lý nhân viên</li></a>
+                    <a href="QuanLyDonHang.html"><li>Quản lý đơn hàng</li></a>
+                </ul>
+            </div>
+        
+            <div id="header">
+                <h2>ADMIN/QUẢN LÝ NHÂN VIÊN/SỬA NHÂN VIÊN</h2>
+                <div style="width: 6%;height: 20px;margin-left: 1000px;float: right;">
+                    <img src="Picture/IconThongbao.png" alt="thongbao" style="width: 100%;"> 
+                </div>
+            </div>
+
+            <div id="content">
+                <div style="display: flex; width: 30%;">
+                    <img src="Picture/avata.png" alt="avata">
+                    <p style="font-size: 40px;margin-top: 40%; color: rgb(58, 29, 29);">Lê Thị Bê</p>
+                </div>
+
+                <div id="SuaNV">
+
+                    <div style="width: 50%;">
+                        <p>Chức vụ</p>
+                        <input type="text" style="width: 30%;">
+                        <p>Họ</p>
+                        <input type="text">
+                        
+                        <p>Tên</p>
+                        <input type="text">
+    
+                        <p>Mã nhân viên</p>
+                        <input type="text">
+                    </div>
+    
+                    <div style="width: 50%;">
+
+                        <p>Email</p>
+                        <input type="text">
+
+                        <p>Địa chỉ </p>
+                        <input type="text">
+    
+                        <p>Số điện thoại </p>
+                        <input type="text">
+    
+                        <p>Giới tính</p>
+                        <input type="text">
+                    </div>
+                </div>
+                
+                <div style="align-items: center; display: flex; justify-content: center; margin-top: 10px;border-top: 1px solid rgb(165, 125, 132);">
+                    <button style="margin-top: 15px;padding: 10px 20px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; font-size: 16px; cursor: pointer; transition: all 0.3s ease;">
+                        Chỉnh sửa
+                    </button>
+                </div>
+            </div>
+                
+
+            <div id="footer">
+                <p>© 2024 Jewelry Store. All rights reserved.</p>
+            </div>
+
+        </div>        
+    </body>
+</html>
