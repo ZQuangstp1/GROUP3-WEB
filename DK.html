@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng Ký</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+        }
+        .registration-container {
+            background-color: #f9f2e6;
+            padding: 28px 33px 50px;
+            max-width: 584px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .registration-container img {
+            display: block;
+            margin-left: auto;
+            margin-right: 0%;
+            width: 35px;
+        }
+        .registration-title {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom : 20px;
+            font: 600 30px Barlow, sans-serif;
+            color: #333;
+        }
+        .input-field {
+            font-family: Barlow, sans-serif;
+    width: 100%; /* Hoặc một giá trị cụ thể khác để giảm chiều rộng và cho phép căn giữa */
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    border: 1px solid rgba(212, 213, 217, 1);
+    box-sizing: border-box; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+       
+          
+        }
+        .name-fields {
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+        }
+        #ho {
+            width: 20%;
+            padding: 15px;
+            margin-right: 3px; /* Điều chỉnh theo nhu cầu để tạo khoảng cách giữa hai trường */
+            border: 1px solid rgba(212, 213, 217, 1);
+            box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước tổng thể */
+        }
+        #ten {
+            width: 80%; /* Điều chỉnh để tổng chiều rộng không vượt quá 100% khi tính cả margin */
+            padding: 15px;
+            border: 1px solid rgba(212, 213, 217, 1);
+            box-sizing: border-box;
+        }
+        .registration-button {
+            background-color: #fb6f92;
+            color: #f9f2e6;
+            padding: 15px;
+            border: none;
+          
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            width: 100%;
+            font-family: Oswald, sans-serif;
+            letter-spacing: 1.35px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/bff76e7a0f61b29d67db96d5f3e28b42ecb980fbac692db94fd8d0a0645b269b?apiKey=eb23b2963eda46448725d8ef1c3cf67d&"
+            alt="Logo"
+        />
+        <div class="registration-title">Đăng Ký</div>
+        <form action="#" method="post">
+            <div class="name-fields">
+                <input type="text" id="ho" placeholder="Họ">
+                <input type="text" id="ten" placeholder="Tên">
+            </div>
+            <input type="email" class="input-field" placeholder="Email" name="email">
+            <input type="tel" class="input-field" placeholder="Số điện thoại" name="phone">
+            <input type="password" class="input-field" placeholder="Mật khẩu" name="password">
+            <button type="submit" class="registration-button">Đăng Ký</button>
+        </form>
+      
+    </div>
+</body>
+</html>
