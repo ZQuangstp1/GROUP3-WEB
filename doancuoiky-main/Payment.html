@@ -1,0 +1,103 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="Payment.css">
+    <script type="text/javascript" src="Payment.js" language="javascript"></script>
+</head>
+<header></header>
+<body>
+    <div id="container">
+        <div class="content">
+            <p><a href="">Trang chủ</a> / <a href="">Tạo đơn hàng</a></p>
+            <div class="navigation-bar">
+                <section class="step-wizard">
+                    <ul class="step-wizard-list">
+                        <li class="step-wizard-item">
+                            <!--Nếu chưa đăng nhập mà mua hàng thì bắt buộc người dùng phải đăng nhập-->
+                            <span class="progress-count">1</span>
+                            <span class="progress-label">Đăng nhập</span>
+                        </li>
+                        <!--Nếu đăng nhập hoàn tất thì nhảy xuống bước này-->
+                        <li class="step-wizard-item">
+                            <span class="progress-count">2</span>
+                            <span class="progress-label">Vận chuyển</span>
+                        </li>
+                        <li class="step-wizard-item current-item">
+                            <span class="progress-count">3</span>
+                            <span class="progress-label">Thanh toán</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            <div class="infor">
+                <!--Thông tin đăng nhập, nhấn đăng nhập sẽ điều hướng qua trang đăng nhập, ngược lại đã đăng nhập sẵn sẽ điều hướng qua bước hai-->
+                <div class="personal-infor">
+                    <h3>Phương thức thanh toán: </h3>
+                    <p style="float: left; padding: 0;"><a href="">Kiểm tra</a> / <a href="">Tiền thanh toán</a></p>
+                    <br>
+                    <form action="" style="margin-bottom: 0;">
+                        <input type="checkbox" id="confirm" name="confirm" value="1">
+                        <label for="confirm" style="color: gray;">Hoá đơn và địa chỉ vận chuyển cùng một nơi</label>
+                    </form>
+                    <div class="row">
+                        <div class="col-trai" style="width: 30%;">
+                            <span style="color: gray; font-size: 12px; height: auto; width: 100%;" id="tonghop"> </span>
+                        </div>
+                    </div>
+                    <br>
+                    <form action="">
+                        <div class="row">
+                            <div class="col-trai">
+                                <input type="submit" value="Đặt hàng">
+                            </div>
+                            <div class="col-phai" style="display: table-cell; vertical-align: middle;">
+                                <button type="button" onclick="goback()" style="float: right; border: none; background-color: white; cursor: pointer; padding-top: 2%;">Quay lại</button>                      
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="img-order">
+                    <div class="order-items">
+                        <h3 style="padding-left: 15px;">ĐƠN HÀNG</h3>
+                        <select id="country" name="country" style="border: none;">
+                            <option value="australia">Loại hàng hoá có trong giỏ hàng</option>
+                            <option value="canada">Canada</option>
+                            <option value="usa">USA</option>
+                            <option value="vietnam">Việt Nam</option>
+                        </select>
+                        <hr width="95%">
+
+                        <div class="row">
+                            <div class="col-trais" style="margin-top: 3%;">
+                                <img src="" alt="" width="70%" height="10%" style="border: 1px solid black; margin-left: 10px;">
+                            </div>
+                            <div class="col-giua">
+                                <p style="float: left; font-size: 10px;">Tên của sản phẩm</p>
+                                <br>
+                                <P style="float: left; font-size: 10px;">Số lượng: ...</P>
+                                <br>
+                                <p style="float: left; font-size: 10px;">Xem chi tiết</p>
+                            </div>
+                            <div class="col-phais">
+                                <p style="float: right; font-size: 10px;">số tiền</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer>
+
+</footer>
+</html>
