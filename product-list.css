@@ -1,0 +1,134 @@
+body {
+  background: #f9f2e6;
+}
+
+.container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  max-width: 1920px !important;
+  padding: 0 67px;
+}
+
+.head-content {
+  margin-bottom: 50px;
+  display: flex;
+}
+
+.head-content__sidebar {
+  padding-top: 10px;
+  width: 343px;
+}
+
+.head-content__sidebar div {
+  padding-top: 10px;
+}
+
+.head-content__sidebar .form-check {
+  padding-top: 20px;
+  margin-left: 30px;
+}
+
+.sidebar-title {
+  text-transform: capitalize;
+  font-size: 20px;
+  height: 20px;
+}
+
+.form-check-input:checked {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.form-check-input[type="checkbox"] {
+  border-radius: 0;
+}
+
+.form-check-label {
+  color: #3f3f3f;
+}
+
+.form-check-price-last {
+  margin-left: 5px !important;
+}
+
+.price-range-input {
+  width: 60px;
+  background: #f9f2e6;
+}
+
+.form-check-price-last div {
+  align-items: center;
+}
+
+#flexCheckDefault {
+  background: #f9f2e6;
+}
+
+.sidebar-color-radio {
+  align-items: space-around;
+  margin-top: 10px;
+}
+
+.sidebar-color-radio .form-check-input {
+  margin-right: 15px;
+}
+
+.head-content__product-list {
+  padding-left: 30px;
+  padding-top: 10px;
+  width: 1423px;
+}
+
+.head-content__product-list .form-select {
+  background-color: #f9f2e6;
+}
+
+/* product */
+.product-info {
+  border: 2px solid #000000;
+  width: 311px;
+  padding: 20px 0 0 0;
+  position: relative;
+  margin-right: 20px;
+}
+
+.product-info img {
+  width: 306px;
+  height: 315px;
+  padding-bottom: 20px;
+}
+
+.product-content {
+  padding-top: 10px;
+  border-top: 2px solid #000000;
+}
+
+.product-content .product-title {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.product-content .product-desc {
+  font-size: 12px;
+  color: #212121;
+  margin-bottom: 0;
+}
+
+.product-content .product-price {
+  padding-top: 5px;
+  color: #fb6f92;
+  font-weight: 500;
+}
+
+.product-discount {
+  width: 44px;
+  height: 23px;
+  background: #fb6f92;
+  color: #fff;
+  position: absolute;
+  top: 10px;
+  left: -2px;
+}
