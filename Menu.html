@@ -8,6 +8,34 @@
     <title>Trang sức Flamingo</title>
 </head>
 <body>
+  <div id="external-html-content"></div>
+
+  <script>
+      // Tạo một đối tượng XMLHttpRequest
+      var xhr = new XMLHttpRequest();
+
+      // Mở một kết nối tới file HTML khác
+      xhr.open('GET', 'main.html', true);
+
+      // Xử lý sự kiện khi kết nối thành công
+      xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+              // Nếu kết nối thành công, thêm nội dung của file HTML vào phần tử có id là "external-html-content"
+              document.getElementById('external-html-content').innerHTML = xhr.responseText;
+          } else {
+              // Nếu có lỗi, thông báo lỗi ra console
+              console.error('Đã có lỗi khi tải file HTML khác: ' + xhr.statusText);
+          }
+      };
+
+      // Xử lý sự kiện khi có lỗi xảy ra
+      xhr.onerror = function () {
+          console.error('Có lỗi kết nối tới file HTML khác.');
+      };
+
+      // Gửi yêu cầu
+      xhr.send();
+  </script>
     <div class="main-container2">
         <div class="content-container2">
           <div class="feature-section">
