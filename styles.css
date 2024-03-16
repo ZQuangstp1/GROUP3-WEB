@@ -22,7 +22,7 @@ body {
 
 
 
-.main-container {
+.main-container2 {
   justify-content: center;
   align-items: center;
   background-color: rgba(251, 111, 146, 0.96);
@@ -40,14 +40,14 @@ body {
 }
 
 @media (max-width: 991px) {
-  .main-container {
+  .main-container2 {
     max-width: 100%;
     margin-top: 40px;
     padding: 0 20px;
   }
 }
 
-.content-container {
+.content-container2 {
   justify-content: center;
   align-items: center;
   display: flex;
@@ -118,14 +118,14 @@ body {
   }
 }
 /*----------------------------------------------------*/
-#main-container2 {
+#main-container3 {
   margin-top: 67px;
   width: 100%;
   max-width: 1520px;
 }
 
 @media (max-width: 991px) {
-  #main-container {
+  #main-container3 {
     max-width: 100%;
     margin-top: 40px;
   }
@@ -253,7 +253,7 @@ body {
   }
 }
 /*----------------------------------------------------*/
-#menu-container {
+#menu-container2 {
   max-width: 100%;
   margin: 20px auto;
   padding: 20px;
