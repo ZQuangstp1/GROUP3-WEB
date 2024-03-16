@@ -83,8 +83,17 @@ body {
   padding-left: 30px;
   padding-top: 10px;
   width: calc(100% - 20%); 
+  margin-left: 30px;
 }
 
+.head-content__product-list .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.head-content__product-list .product-info {
+  flex: 1 1 auto;
+}
 
 .head-content__product-list .form-select {
   background-color: #f9f2e6;
@@ -93,11 +102,13 @@ body {
 /* product */
 .product-info {
   border: 2px solid #000000;
-  width: calc((100% - 30px - 20px) / 4); /* Adjust based on margins and number of items in a row */
+  max-width: calc((100% - 30px - 20px) / 4); 
+  width: 100%;
   padding: 20px 0 0 0;
   position: relative;
   margin-right: 20px;
 }
+
 
 .product-info img {
   width: 100%;
@@ -138,3 +149,32 @@ body {
   left: -2px;
 }
 
+@media only screen and (max-width: 768px) {
+  /* Khi màn hình có kích thước nhỏ hơn hoặc bằng 768px */
+  .head-content {
+    flex-direction: column; /* Chuyển sang bố cục dọc */
+  }
+  .head-content__sidebar {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    max-width: 100%; /* Đảm bảo không bị tràn bố cục */
+  }
+
+  .head-content__product-list {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    max-width: 100%; /* Đảm bảo không bị tràn bố cục */
+    margin-left: 0; /* Xóa khoảng cách trái */
+    padding-left: 0; /* Xóa padding trái */
+  }
+
+  .product-info {
+    max-width: calc(50% - 20px); /* Hiển thị 2 sản phẩm trên mỗi dòng */
+  }
+}
+
+/* Thêm các phương tiện truyền thông khác cho các kích thước màn hình khác */
+@media only screen and (max-width: 576px) {
+  /* Khi màn hình có kích thước nhỏ hơn hoặc bằng 576px */
+  .product-info {
+    max-width: calc(100% - 20px); /* Hiển thị 1 sản phẩm trên mỗi dòng */
+  }
+}
