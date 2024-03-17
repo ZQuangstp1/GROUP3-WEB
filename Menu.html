@@ -8,34 +8,39 @@
     <title>Trang sức Flamingo</title>
 </head>
 <body>
-  <div id="external-html-content"></div>
+  <div id="top-half"></div>
+<script>
+    // Tạo một đối tượng XMLHttpRequest cho main.html
+    var xhrMain = new XMLHttpRequest();
+    xhrMain.open('GET', 'main.html', true);
+    xhrMain.onload = function () {
+        if (xhrMain.status >= 200 && xhrMain.status < 300) {
+            document.getElementById('top-half').innerHTML = xhrMain.responseText;
+            
+            // Khi main.html đã được tải xong, tải footer.html
+            var xhrFooter = new XMLHttpRequest();
+            xhrFooter.open('GET', 'footer.html', true);
+            xhrFooter.onload = function () {
+                if (xhrFooter.status >= 200 && xhrFooter.status < 300) {
+                    document.getElementById('footer').innerHTML = xhrFooter.responseText;
+                } else {
+                    console.error('Đã có lỗi khi tải file footer.html: ' + xhrFooter.statusText);
+                }
+            };
+            xhrFooter.onerror = function () {
+                console.error('Có lỗi kết nối tới file footer.html.');
+            };
+            xhrFooter.send();
+        } else {
+            console.error('Đã có lỗi khi tải file main.html: ' + xhrMain.statusText);
+        }
+    };
+    xhrMain.onerror = function () {
+        console.error('Có lỗi kết nối tới file main.html.');
+    };
+    xhrMain.send();
+</script>
 
-  <script>
-      // Tạo một đối tượng XMLHttpRequest
-      var xhr = new XMLHttpRequest();
-
-      // Mở một kết nối tới file HTML khác
-      xhr.open('GET', 'main.html', true);
-
-      // Xử lý sự kiện khi kết nối thành công
-      xhr.onload = function () {
-          if (xhr.status >= 200 && xhr.status < 300) {
-              // Nếu kết nối thành công, thêm nội dung của file HTML vào phần tử có id là "external-html-content"
-              document.getElementById('external-html-content').innerHTML = xhr.responseText;
-          } else {
-              // Nếu có lỗi, thông báo lỗi ra console
-              console.error('Đã có lỗi khi tải file HTML khác: ' + xhr.statusText);
-          }
-      };
-
-      // Xử lý sự kiện khi có lỗi xảy ra
-      xhr.onerror = function () {
-          console.error('Có lỗi kết nối tới file HTML khác.');
-      };
-
-      // Gửi yêu cầu
-      xhr.send();
-  </script>
     <div class="main-container2">
         <div class="content-container2">
           <div class="feature-section">
@@ -60,7 +65,7 @@
                 <img
                   loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets/TEMP/5e5f38c738d97e2b2c91d4e8c5bf5a88c3eaf16d122be8794fc0fb19c86a21e2?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-                  class="service-img"
+                  class="feature-img"
                 />
                 <div class="service-text">Dịch vụ BẢO HÀNH <br>TRỌN ĐỜI</div>
               </div>
@@ -177,7 +182,7 @@
         <div class="product-price">Rs. 2,499.00</div>
       </div>
     </div>
-    <div class="SeeAll">Xem tất cả</div>
+    <button class="SeeAll">Xem tất cả</button>
     </div>
   </div>
     <div class="Insta">
@@ -212,9 +217,7 @@
                   <div class="card">
                       <img class="avatar" src="https://i.pravatar.cc/200?img=31" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
-                <path
-                  d="M 16.482422 8.9921875 A 1.50015 1.50015 0 0 0 15.943359 9.1074219 C 15.943359 9.1074219 13.068414 10.279429 10.357422 13.464844 C 7.6464301 16.650259 5 21.927419 5 30 A 1.50015 1.50015 0 0 0 5.015625 30.21875 A 8.5 8.5 0 0 0 13.5 39 A 8.5 8.5 0 0 0 13.5 22 A 8.5 8.5 0 0 0 8.7089844 23.480469 C 9.5777265 19.777157 11.122152 17.196657 12.642578 15.410156 C 14.931586 12.720571 17.056641 11.892578 17.056641 11.892578 A 1.50015 1.50015 0 0 0 16.482422 8.9921875 z M 37.482422 8.9921875 A 1.50015 1.50015 0 0 0 36.943359 9.1074219 C 36.943359 9.1074219 34.068414 10.279429 31.357422 13.464844 C 28.64643 16.650259 26 21.927419 26 30 A 1.50015 1.50015 0 0 0 26.015625 30.21875 A 8.5 8.5 0 0 0 34.5 39 A 8.5 8.5 0 0 0 34.5 22 A 8.5 8.5 0 0 0 29.708984 23.480469 C 30.577727 19.777157 32.122152 17.196657 33.642578 15.410156 C 35.931586 12.720571 38.056641 11.892578 38.056641 11.892578 A 1.50015 1.50015 0 0 0 37.482422 8.9921875 z"
-                />
+               
               </svg>
                       <div class="header">
                           <h1 class="name">Amy Liu</h1>
@@ -222,7 +225,7 @@
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                              I must admit, as a software developer, I was skeptical about the MindSync Neural Interface. But once I saw how it could transform not just the way I work but also how I engage with the world, I was sold. Its integration capability and responsiveness are unlike anything I've seen before. We're not just talking about a step forward in technology, but a quantum leap into the future.
+                              Sản phẩm tốt
                           </p>
                       </div>
                   </div>
@@ -231,9 +234,7 @@
                   <div class="card">
                       <img class="avatar" src="https://i.pravatar.cc/200?img=26" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
-                <path
-                  d="M 16.482422 8.9921875 A 1.50015 1.50015 0 0 0 15.943359 9.1074219 C 15.943359 9.1074219 13.068414 10.279429 10.357422 13.464844 C 7.6464301 16.650259 5 21.927419 5 30 A 1.50015 1.50015 0 0 0 5.015625 30.21875 A 8.5 8.5 0 0 0 13.5 39 A 8.5 8.5 0 0 0 13.5 22 A 8.5 8.5 0 0 0 8.7089844 23.480469 C 9.5777265 19.777157 11.122152 17.196657 12.642578 15.410156 C 14.931586 12.720571 17.056641 11.892578 17.056641 11.892578 A 1.50015 1.50015 0 0 0 16.482422 8.9921875 z M 37.482422 8.9921875 A 1.50015 1.50015 0 0 0 36.943359 9.1074219 C 36.943359 9.1074219 34.068414 10.279429 31.357422 13.464844 C 28.64643 16.650259 26 21.927419 26 30 A 1.50015 1.50015 0 0 0 26.015625 30.21875 A 8.5 8.5 0 0 0 34.5 39 A 8.5 8.5 0 0 0 34.5 22 A 8.5 8.5 0 0 0 29.708984 23.480469 C 30.577727 19.777157 32.122152 17.196657 33.642578 15.410156 C 35.931586 12.720571 38.056641 11.892578 38.056641 11.892578 A 1.50015 1.50015 0 0 0 37.482422 8.9921875 z"
-                />
+                
               </svg>
                       <div class="header">
                           <h1 class="name">Sarah Price</h1>
@@ -241,7 +242,7 @@
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                              The MindSync Neural Interface is a game-changer in technology that's redefining the way we interact with digital devices. With the seamless and intuitive connection, it has reduced the cognitive load of my everyday tasks. As a busy professional, I no longer have to divide my attention across multiple devices. This revolutionary product has managed to marry convenience and functionality in a way I had never thought possible.
+                            Sản phẩm tốt
                           </p>
                       </div>
                   </div>
@@ -250,9 +251,7 @@
                   <div class="card">
                       <img class="avatar" src="https://i.pravatar.cc/200?img=69" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
-                <path
-                  d="M 16.482422 8.9921875 A 1.50015 1.50015 0 0 0 15.943359 9.1074219 C 15.943359 9.1074219 13.068414 10.279429 10.357422 13.464844 C 7.6464301 16.650259 5 21.927419 5 30 A 1.50015 1.50015 0 0 0 5.015625 30.21875 A 8.5 8.5 0 0 0 13.5 39 A 8.5 8.5 0 0 0 13.5 22 A 8.5 8.5 0 0 0 8.7089844 23.480469 C 9.5777265 19.777157 11.122152 17.196657 12.642578 15.410156 C 14.931586 12.720571 17.056641 11.892578 17.056641 11.892578 A 1.50015 1.50015 0 0 0 16.482422 8.9921875 z M 37.482422 8.9921875 A 1.50015 1.50015 0 0 0 36.943359 9.1074219 C 36.943359 9.1074219 34.068414 10.279429 31.357422 13.464844 C 28.64643 16.650259 26 21.927419 26 30 A 1.50015 1.50015 0 0 0 26.015625 30.21875 A 8.5 8.5 0 0 0 34.5 39 A 8.5 8.5 0 0 0 34.5 22 A 8.5 8.5 0 0 0 29.708984 23.480469 C 30.577727 19.777157 32.122152 17.196657 33.642578 15.410156 C 35.931586 12.720571 38.056641 11.892578 38.056641 11.892578 A 1.50015 1.50015 0 0 0 37.482422 8.9921875 z"
-                />
+            
               </svg>
                       <div class="header">
                           <h1 class="name">Dr. Miguel Torres</h1>
@@ -260,7 +259,7 @@
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                              The day I started using the MindSync Neural Interface, I understood it wasn't just an ordinary gadget, but an extraordinary leap in technological innovation. Its user-friendly nature, mixed with the uncanny ability to understand and process my thoughts, is genuinely awe-inspiring. It's as if it took the immense complexity of the human brain and made it accessible, all without compromising my privacy or security.
+                            Sản phẩm tốt
                           </p>
                       </div>
                   </div>
@@ -269,9 +268,7 @@
                   <div class="card">
                       <img class="avatar" src="https://i.pravatar.cc/200?img=59" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
-                <path
-                  d="M 16.482422 8.9921875 A 1.50015 1.50015 0 0 0 15.943359 9.1074219 C 15.943359 9.1074219 13.068414 10.279429 10.357422 13.464844 C 7.6464301 16.650259 5 21.927419 5 30 A 1.50015 1.50015 0 0 0 5.015625 30.21875 A 8.5 8.5 0 0 0 13.5 39 A 8.5 8.5 0 0 0 13.5 22 A 8.5 8.5 0 0 0 8.7089844 23.480469 C 9.5777265 19.777157 11.122152 17.196657 12.642578 15.410156 C 14.931586 12.720571 17.056641 11.892578 17.056641 11.892578 A 1.50015 1.50015 0 0 0 16.482422 8.9921875 z M 37.482422 8.9921875 A 1.50015 1.50015 0 0 0 36.943359 9.1074219 C 36.943359 9.1074219 34.068414 10.279429 31.357422 13.464844 C 28.64643 16.650259 26 21.927419 26 30 A 1.50015 1.50015 0 0 0 26.015625 30.21875 A 8.5 8.5 0 0 0 34.5 39 A 8.5 8.5 0 0 0 34.5 22 A 8.5 8.5 0 0 0 29.708984 23.480469 C 30.577727 19.777157 32.122152 17.196657 33.642578 15.410156 C 35.931586 12.720571 38.056641 11.892578 38.056641 11.892578 A 1.50015 1.50015 0 0 0 37.482422 8.9921875 z"
-                />
+              
               </svg>
                       <div class="header">
                           <h1 class="name">Benjamin Moore</h1>
@@ -281,7 +278,7 @@
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                              The MindSync Neural Interface isn't just an upgrade, it's an evolution. The way it syncs effortlessly with my thought processes makes it feel like a natural extension of my mind. It's empowering and liberating to interact with my digital world in such a direct, fluid manner. This is a tool that makes technology feel less like a barrier and more like an ally.
+                            Sản phẩm tốt
                           </p>
                       </div>
                   </div>
@@ -290,9 +287,7 @@
                   <div class="card">
                       <img class="avatar" src="https://i.pravatar.cc/200?img=49" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
-                <path
-                  d="M 16.482422 8.9921875 A 1.50015 1.50015 0 0 0 15.943359 9.1074219 C 15.943359 9.1074219 13.068414 10.279429 10.357422 13.464844 C 7.6464301 16.650259 5 21.927419 5 30 A 1.50015 1.50015 0 0 0 5.015625 30.21875 A 8.5 8.5 0 0 0 13.5 39 A 8.5 8.5 0 0 0 13.5 22 A 8.5 8.5 0 0 0 8.7089844 23.480469 C 9.5777265 19.777157 11.122152 17.196657 12.642578 15.410156 C 14.931586 12.720571 17.056641 11.892578 17.056641 11.892578 A 1.50015 1.50015 0 0 0 16.482422 8.9921875 z M 37.482422 8.9921875 A 1.50015 1.50015 0 0 0 36.943359 9.1074219 C 36.943359 9.1074219 34.068414 10.279429 31.357422 13.464844 C 28.64643 16.650259 26 21.927419 26 30 A 1.50015 1.50015 0 0 0 26.015625 30.21875 A 8.5 8.5 0 0 0 34.5 39 A 8.5 8.5 0 0 0 34.5 22 A 8.5 8.5 0 0 0 29.708984 23.480469 C 30.577727 19.777157 32.122152 17.196657 33.642578 15.410156 C 35.931586 12.720571 38.056641 11.892578 38.056641 11.892578 A 1.50015 1.50015 0 0 0 37.482422 8.9921875 z"
-                />
+              
               </svg>
                       <div class="header">
                           <h1 class="name">Dr. Simone Laurent</h1>
@@ -300,7 +295,7 @@
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                              As a neurologist, I can attest that the MindSync Neural Interface is an absolute marvel. The accuracy with which it translates neural signals into digital actions is astounding. But what impresses me more is how it manages to do so with such finesse, ensuring an unintrusive and seamless user experience. This is truly a leap in making technology more intuitively human.
+                            Sản phẩm tốt
                           </p>
                       </div>
                   </div>
@@ -319,7 +314,7 @@
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                              As a technology journalist, I've seen numerous gadgets come and go. However, the MindSync Neural Interface isn't just a flash in the pan - it's here to revolutionize the way we perceive and interact with technology. The convenience it brings, coupled with its stellar performance, makes it more than just a device - it's an experience. One that is utterly transformative in the truest sense of the word.
+                            Sản phẩm tốt
                           </p>
                       </div>
                   </div>
@@ -374,104 +369,7 @@
   addEventListener("resize", (event) => {
     resizeTextToFit();
   });
-</script>
-<div class="footer">
-  <div class="shopping-section">
-    <div class="product-categories">
-      <div class="category-header">
-        <div class="category-title">ONLINE SHOPPING</div>
-        <div class="category-list">
-          <ul>
-              <li>Lắc</li>
-              <li>Mặt dây chuyền</li>
-              <li>Bông tai</li>
-              <li>Vòng cổ</li>
-              <li>Dây chuyền</li>
-              <li>Nhẫn</li>
-              <li>Sản phẩm nam giới</li>
-              <li>Quà tặng</li>
-          </ul>
-      </div>      
-      </div>
-    </div>
-  </div>
-    <div class="policy-section">
-      <div class="policy-header">
-        <div class="policy-title">CHÍNH SÁCH</div>
-        <div class="policy-details">
-          <ul>
-            <li>Liên hệ</li>
-            <li>FAQ</li>
-            <li>Điều khoản sử dụng</li>
-            <li>Theo dõi đơn hàng</li>
-            <li>Phí vận chuyển</li>
-            <li>Đổi trả</li>
-            <li>Chính sách bảo mật</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  <div class="footer-section">
-    <div class="quality-guarantee">
-      <div class="guarantee-content">
-        <img style="margin-right: 10px;" loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ca7dc1658f2f49e5494a2a360c02134ba92fc12ec2b2d63dcd5c2558b5b530e8?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="guarantee-icon" />
-        <div class="guarantee-text">
-          <span class="guarantee-title">100% Hàng thật nguyên gốc</span>
-          <br />
-          <span class="guarantee-description">Toàn bộ sản phẩm</span>
-        </div>
-      </div>
-    </div>
-    <div class="return-policy">
-      <div class="return-policy-content">
-        <div class="return-policy-column">
-          <img style="margin-right: 10px"
-          loading="lazy"
-          srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-          class="img"/>
-          </div>
-        <div class="return-policy-column">
-          <div class="return-policy-details">
-            <span class="return-policy-title">Đổi trả</span>
-            <br />
-            <span class="return-policy-description">Đổi trả miễn phí trong vòng 30 ngày</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="mobile-app-section">
-      <div class="app-title">Tải App flamingo</div>
-      <div class="app-icons">
-        <img
-        loading="lazy"
-        srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-        class="img"/>
-        <img
-        loading="lazy"
-        srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-        class="img"/>
-      </div>
-        <div class="app-title">Kết nối với chúng tôi</div>
-        <div class="social-icons">
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a83812e396b6a258d8509dc01d6ec77f5825380962dace1d1788cb0cd3dc3b15?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/37bd4d23db3b53ce0a5edea0fa9eb6feb87c680064b4f8c4cedb233b56d833f1?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ace2ff80b4eafe06c81e5c420166ee391066b0b067faa6db13e4e18940315db1?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f21335ae84e5b9cfb992f641bb654ab406167cad8733128d7c7035762c289e73?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
-      </div>
-    </div>
-
-  <div class="Noti" style="text-align: left;">
-    <h1 class="title">JOIN US</h1>
-    <p>NHẬN THÔNG TIN KHUYẾN MÃI HẤP DẪN</p>
-    <input type="email" class="email" placeholder="Email">
-    <button class="button">ĐĂNG KÝ!</button>
-  </div>
-  </div>
-  <div class="copyright-section">
-    © 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo
-  </div>
-</div>
-
+  </script>
+<div id="footer"></div>
 </body>
 </html>
