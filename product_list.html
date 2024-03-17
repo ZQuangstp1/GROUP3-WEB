@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,35 +12,7 @@
     />
 
     <link href="product-list.css" rel="stylesheet" />
-    <script>window.addEventListener('resize', adjustProductLayout);
-
-      function adjustProductLayout() {
-        // Lấy kích thước cửa sổ hiện tại
-        const windowWidth = window.innerWidth;
-      
-        // Lấy kích thước của sidebar
-        const sidebarWidth = document.querySelector('.head-content__sidebar').offsetWidth;
-      
-        // Lấy kích thước của mỗi sản phẩm
-        const productWidth = document.querySelector('.product-info').offsetWidth;
-      
-        // Tính toán số lượng sản phẩm hiển thị trên mỗi dòng
-        let productsPerRow = Math.floor((windowWidth - sidebarWidth) / productWidth);
-      
-        // Nếu số lượng sản phẩm trên mỗi dòng lớn hơn số lượng sản phẩm có thể hiển thị, giảm số lượng sản phẩm trên mỗi dòng xuống 1
-        if (productsPerRow > 4) {
-          productsPerRow = 4;
-        }
-      
-        // Cập nhật CSS cho sản phẩm
-        document.querySelectorAll('.product-info').forEach(product => {
-          product.style.maxWidth = `${100 / productsPerRow}%`;
-        });
-      }
-      
-      // Gọi hàm adjustProductLayout khi trang được tải
-      adjustProductLayout();
-      </script>
+    <script src="script.js"></script>
     <title>Product List</title>
   </head>
 
@@ -51,8 +21,10 @@
       <div class="head-content">
         <div class="head-content__sidebar">
           <p>Home</p>
-          <div>
-            <p class="sidebar-title">- Danh mục</p>
+          <div class="sidebar-section">
+            <button class="sidebar-title" onclick="toggleFilter('category')">- Danh mục</button>
+            
+            <div class="filter-content collapsed" id="category">
             <div class="form-check">
               <input
                 class="form-check-input"
@@ -115,12 +87,13 @@
                 DÂY CHUYỀN (46)
               </label>
             </div>
+            </div>
 
             <hr />
           </div>
-
-          <div>
-            <p class="sidebar-title">- Giá</p>
+          <div class="sidebar-section">
+            <button  class="sidebar-title" onclick="toggleFilter('price')">- Giá</button >
+            <div class="filter-content collapsed" id="price">
             <div class="form-check">
               <input
                 class="form-check-input"
@@ -197,11 +170,13 @@
                 </button>
               </div>
             </div>
-            <hr />
           </div>
+          </div>
+          <hr />
 
-          <div>
-            <p class="sidebar-title">- Brand</p>
+          <div class="sidebar-section">
+          <button  class="sidebar-title" onclick="toggleFilter('brand')">- Thương hiệu</button >
+          <div class="filter-content collapsed" id="brand">
             <div class="form-check">
               <input
                 class="form-check-input"
@@ -271,11 +246,13 @@
                 MORE
               </label>
             </div>
-            <hr />
           </div>
+          </div>
+          <hr />
 
-          <div>
-            <p class="sidebar-title d-block">- Color</p>
+         <div class="sidebar-section">
+          <button  class="sidebar-title" onclick="toggleFilter('color')">- Màu</button >
+          <div class="filter-content collapsed" id="color">
             <div class="d-inline-flex sidebar-color-radio">
               <input
                 class="form-check-input"
@@ -367,12 +344,13 @@
                 style="background-color: #2b9fa7; border-color: #2b9fa7"
               />
             </div>
-
+          </div>
             <hr />
           </div>
 
-          <div>
-            <p class="sidebar-title">- Size & Fit</p>
+          <div class="sidebar-section">
+            <button  class="sidebar-title" onclick="toggleFilter('size')">- Kích cỡ</button >
+            <div class="filter-content collapsed" id="size">
             <div class="form-check">
               <input
                 class="form-check-input"
@@ -419,7 +397,7 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                value=""
+                value=""  
               />
               <label class="form-check-label" for="flexCheckDefault">
                 M(25.673)
@@ -432,6 +410,7 @@
               </label>
             </div>
           </div>
+        </div>
         </div>
 
         <div class="head-content__product-list">
@@ -466,7 +445,7 @@
 
           <div
             class="row d-flex flex-nowrap mt-3"
-            style="padding-right: 60px"
+           
           >
             <div class="product-info d-block">
               <div class="product-discount">-30%</div>
@@ -519,7 +498,7 @@
 
           <div
             class="row d-flex flex-nowrap mt-3"
-            style="padding-right: 60px"
+        
           >
             <div class="product-info d-block">
               <div class="product-discount">-30%</div>
@@ -572,7 +551,6 @@
 
           <div
             class="row d-flex flex-nowrap mt-3"
-            style="padding-right: 60px"
           >
             <div class="product-info d-block">
               <div class="product-discount">-30%</div>
@@ -621,11 +599,11 @@
                 <p class="text-center product-price">Rs. 4,554.00</p>
               </div>
             </div>
+            
           </div>
 
           <div
             class="row d-flex flex-nowrap mt-3"
-            style="padding-right: 60px"
           >
             <div class="product-info d-block">
               <div class="product-discount">-30%</div>
@@ -678,5 +656,7 @@
         </div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -2,16 +2,14 @@ body {
   background: #f9f2e6;
 }
 
-.container,
-.container-lg,
-.container-md,
-.container-sm,
-.container-xl,
-.container-xxl {
-  max-width: 1200px !important; 
-  margin: 0 auto;
+button {
+  background-color: transparent;
+  border: none;
 }
 
+.collapsed {
+  display: none;
+}
 
 .head-content {
   margin-bottom: 50px;
@@ -31,7 +29,6 @@ body {
 
 .head-content__sidebar .form-check {
   padding-top: 10px;
-  margin-left: 15px; 
 }
 
 .sidebar-title {
@@ -102,8 +99,6 @@ body {
 /* product */
 .product-info {
   border: 2px solid #000000;
-  max-width: calc((100% - 30px - 20px) / 4); 
-  width: 100%;
   padding: 20px 0 0 0;
   position: relative;
   margin-right: 20px;
@@ -124,7 +119,9 @@ body {
 
 .product-content .product-title {
   font-weight: 500;
-  margin-bottom: 0;
+  margin-bottom: 0;            
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 .product-content .product-desc {
@@ -160,10 +157,9 @@ body {
   }
 
   .head-content__product-list {
-    width: 100%; /* Chiếm toàn bộ chiều rộng */
-    max-width: 100%; /* Đảm bảo không bị tràn bố cục */
-    margin-left: 0; /* Xóa khoảng cách trái */
-    padding-left: 0; /* Xóa padding trái */
+    width: 100%;
+    max-width: 100%; 
+    margin-left: 30px;
   }
 
   .product-info {
