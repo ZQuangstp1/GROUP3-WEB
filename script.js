@@ -32,6 +32,5 @@ function adjustProductLayout() {
 function toggleFilter(filterId) {
   const filterContent = document.getElementById(filterId);
   filterContent.classList.toggle('collapsed');
-  const toggleIcon = document.querySelector(`#${filterId} .sidebar-title i`);
-  toggleIcon.textContent = filterContent.classList.contains('collapsed') ? '+' : '-';
+
 }
