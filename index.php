@@ -8,39 +8,6 @@
     <title>Trang sức Flamingo</title>
 </head>
 <body>
-  <div id="top-half"></div>
-<script>
-    // Tạo một đối tượng XMLHttpRequest cho main.html
-    var xhrMain = new XMLHttpRequest();
-    xhrMain.open('GET', 'main.html', true);
-    xhrMain.onload = function () {
-        if (xhrMain.status >= 200 && xhrMain.status < 300) {
-            document.getElementById('top-half').innerHTML = xhrMain.responseText;
-            
-            // Khi main.html đã được tải xong, tải footer.html
-            var xhrFooter = new XMLHttpRequest();
-            xhrFooter.open('GET', 'footer.html', true);
-            xhrFooter.onload = function () {
-                if (xhrFooter.status >= 200 && xhrFooter.status < 300) {
-                    document.getElementById('footer').innerHTML = xhrFooter.responseText;
-                } else {
-                    console.error('Đã có lỗi khi tải file footer.html: ' + xhrFooter.statusText);
-                }
-            };
-            xhrFooter.onerror = function () {
-                console.error('Có lỗi kết nối tới file footer.html.');
-            };
-            xhrFooter.send();
-        } else {
-            console.error('Đã có lỗi khi tải file main.html: ' + xhrMain.statusText);
-        }
-    };
-    xhrMain.onerror = function () {
-        console.error('Có lỗi kết nối tới file main.html.');
-    };
-    xhrMain.send();
-</script>
-
     <div class="main-container2">
         <div class="content-container2">
           <div class="feature-section">
@@ -370,6 +337,6 @@
     resizeTextToFit();
   });
   </script>
-<div id="footer"></div>
+  <?php include "footer.php"; ?>
 </body>
 </html>
