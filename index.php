@@ -17,7 +17,6 @@
   </head>
 
   <body>
-  <?php require "main.php"; ?>
     <div class="container">
       <div class="head-content">
         <div class="head-content__sidebar">
