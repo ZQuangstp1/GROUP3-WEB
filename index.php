@@ -8,6 +8,8 @@
     <title>Trang sức Flamingo</title>
 </head>
 <body>
+<?php require "main.php"; ?>
+
     <div class="main-container2">
         <div class="content-container2">
           <div class="feature-section">
@@ -337,6 +339,6 @@
     resizeTextToFit();
   });
   </script>
-  <?php include "footer.php"; ?>
+  <?php require "footer.php"; ?>
 </body>
 </html>

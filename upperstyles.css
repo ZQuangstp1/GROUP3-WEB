@@ -12,6 +12,11 @@ body{
     display: flex;
     width: 100%;
     padding: 0;
+    align-self: stretch;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    font-family: Barlow, sans-serif;
   }
   @media (max-width: 991px) {
     .main-container {
