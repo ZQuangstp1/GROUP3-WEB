@@ -349,9 +349,15 @@ body {
   font: 18px/135% Barlow, sans-serif;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 34px; 
+}
+
 .SeeAll {
   background-color: #fb6f92;
-  margin-top: 34px;
   color: #fff;
   white-space: nowrap;
   text-align: center;
@@ -359,9 +365,10 @@ body {
   letter-spacing: 2px;
   padding: 0 36px;
   font: 500 12px/52px Barlow, sans-serif;
-  margin: 0 auto; 
   border: none;
+  cursor: pointer; 
 }
+
 /* Hiển thị chỉ 1 sản phẩm trên mỗi hàng khi kích thước màn hình nhỏ hơn 769px */
 @media (max-width: 769px) {
   .top-products {

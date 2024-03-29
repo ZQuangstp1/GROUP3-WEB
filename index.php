@@ -1,18 +1,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="upperstyles.css">
     <link rel="stylesheet" href="styles.css">
     <script type="text/javascript" src="script.js" language="JavaScript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'> 
     <title>Trang sức Flamingo</title>
 </head>
 <body>
-<?php require "main.php"; ?>
-
     <div class="main-container2">
         <div class="content-container2">
-          <div class="feature-section">
+          <div class="feature-section"> 
             <div class="feature-item">
               <img
                 loading="lazy"
@@ -51,108 +49,104 @@
         </div>
       </div>      
 
+  <?php   
+   require_once "dbmodule.php";
 
-<div id="main-container3" class="animate-on-scroll">
-  <div id="custom-div" class="animate-on-scroll">
-    <div id="custom-column" class="animate-on-scroll">
-      <img
-        loading="lazy"
-        srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-        class="custom-img animate-on-scroll"
-      />
+   $link = null;
+   taoKetNoi($link);
+    //Tạo kết nối vào CSDL
+      $sql = "SELECT 
+            p.productName,
+            p.description,
+            p.image,
+            sc.subcategoryName
+        FROM 
+            product p
+        JOIN
+            subcategory sc ON p.subcategoryID = sc.subcategoryID        
+            LIMIT 1";
+
+
+$result = chayTruyVanTraVeDL($link,$sql);
+
+
+if ($result->num_rows > 0) {
+    // Hiển thị dữ liệu
+    while($row = $result->fetch_assoc()) {
+        echo '<div id="main-container3" data-aos="fade-up"">';
+        echo '<div id="custom-div" data-aos="fade-up"">';
+        echo '<div id="custom-column" data-aos="fade-up"">';
+        echo '<img loading="lazy" src="' . $row["image"] . '" class="custom-img animate-on-scroll" />';
+        echo '</div>';
+        echo '<div id="custom-column-2" data-aos="fade-up"">';
+        echo '<div id="custom-div-3" data-aos="fade-up"">';
+        echo '<div id="custom-div-4" data-aos="fade-up"">' . $row["subcategoryName"] . '</div>';
+        echo '<div id="custom-div-5" data-aos="fade-up"">' . $row["productName"] . '</div>';
+        echo '<div id="custom-div-6" data-aos="fade-up"">' . $row["description"] . '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
+} else {
+    echo "0 kết quả";
+}
+giaiPhongBoNho($link, $result);
+?>
+
+<div id="trend" class="animate-on-scroll">SẢN PHẨM GIẢM GIÁ</div>
+<div id="menu-container2" class="animate-on-scroll">
+    <div class="top-products">
+        <?php
+        require_once "dbmodule.php";
+        $link = null;
+        taoKetNoi($link);
+
+        $sql = "SELECT 
+            p.productName,
+            CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+            p.image,
+            CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+            c.categoryName,
+            sc.subcategoryName
+        FROM 
+            product p
+        JOIN
+            subcategory sc ON p.subcategoryID = sc.subcategoryID
+        JOIN
+            category c ON sc.categoryID = c.categoryID
+        JOIN
+            discount d ON p.discountID = d.discountID
+        WHERE 
+            d.discountID IS NOT NULL
+        LIMIT 5";
+
+        $result = chayTruyVanTraVeDL($link, $sql);
+
+        if ($result->num_rows > 0) {
+            // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <div class="product-item">
+                    <img src="<?php echo $row['image']; ?>" class="img">
+                    <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
+                    <div class="product-info">
+                        <div class="product-name"><?php echo $row['productName']; ?></div>
+                        <div class="product-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
+                        <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
+                    </div>
+                </div>
+            <?php
+            }
+        } else {
+            echo "0 results";
+        }
+        giaiPhongBoNho($link, $result);
+        ?>
     </div>
-    <div id="custom-column-2" class="animate-on-scroll">
-      <div id="custom-div-3" class="animate-on-scroll">
-        <div id="custom-div-4" class="animate-on-scroll">Lorem Ipsum</div>
-        <div id="custom-div-5" class="animate-on-scroll">
-          Lorem Ipsum is simply dummy
-          <br />
-          text of the printing.
-        </div>
-        <div id="custom-div-6" class="animate-on-scroll">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="button-container"><button class="SeeAll">Xem tất cả</button></div>
 </div>
 
-<div id="trend" class = "animate-on-scroll">SẢN PHẨM GIẢM GIÁ</div>
-
-<div id ="menu-container2" class ="animate-on-scroll">
-  <div class="top-products">
-    <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img"
-    />      <div class="discount-tag">-20%</div>
-      <div class="product-info">
-        <div class="product-name">Product 1 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 1,999.00</div>
-      </div>
-    </div>
-    <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img"
-    />      <div class="discount-tag">-15%</div>
-      <div class="product-info">
-        <div class="product-name">Product 2 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 2,499.00</div>
-      </div>
-    </div>
-    <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img"
-    />      <div class="discount-tag">-15%</div>
-      <div class="product-info">
-        <div class="product-name">Product 3 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 2,499.00</div>
-      </div>
-    </div>
-
-    <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img">
-      <div class="discount-tag">-15%</div>
-      <div class="product-info">
-        <div class="product-name">Product 4 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 2,499.00</div>
-      </div>
-    </div>
-
-    <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img"
-    />      <div class="discount-tag">-15%</div>
-      <div class="product-info">
-        <div class="product-name">Product 5 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 2,499.00</div>
-      </div>
-    </div>
-    <button class="SeeAll">Xem tất cả</button>
-    </div>
   </div>
     <div class="Insta">
       <header class="header">Follow Flamingo trên Instagram</header>
@@ -338,6 +332,9 @@
   addEventListener("resize", (event) => {
     resizeTextToFit();
   });
+
+  AOS.init();
+
   </script>
   <?php require "footer.php"; ?>
 </body>
