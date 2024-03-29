@@ -1,4 +1,4 @@
-<body>
+<head>
     <style>
   .header-container {
     justify-content: space-between;
