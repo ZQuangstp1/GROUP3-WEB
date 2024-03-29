@@ -178,106 +178,106 @@ giaiPhongBoNho($link, $result);
           <div class="swiper-wrapper">
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=31" />
+                      <img class="avatar" src="https://lavenderstudio.com.vn/wp-content/uploads/2019/10/1.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
                
               </svg>
                       <div class="header">
-                          <h1 class="name">Amy Liu</h1>
-                          <h2 class="title">CTO, Cybertech Solutions</h2>
+                          <h1 class="name">Lê Thị Ngọc</h1>
+                          <h2 class="title">Nhà Thiết Kế Thời Trang</h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                              Sản phẩm tốt
+                          Thời gian vận chuyển rất hợp lí. Tôi đã đặt hàng với tâm thế hào hứng chờ đợi để được trải nghiệm sản phẩm và tôi không hề bị chờ mỏi cổ. Có thể thấy bên vận chuyển không quản ngại thời tiết và đường xá xa xôi để đưa sản phẩm cho tôi trong thời gian ngắn nhất
                           </p>
                       </div>
                   </div>
               </div>
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=26" />
+                      <img class="avatar" src="https://images2.thanhnien.vn/zoom/686_429/Uploaded/dieutrang.qc/2020_03_09/kingcoffe/ceolehoangdiepthao-avatar_EZOB.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
                 
               </svg>
                       <div class="header">
-                          <h1 class="name">Sarah Price</h1>
-                          <h2 class="title">Sr. Technology Analyst</h2>
+                          <h1 class="name">Nguyễn Thị Hạnh</h1>
+                          <h2 class="title">CTO, Kafla</h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                            Sản phẩm tốt
+                          Mẫu nhìn đơn giản, tưởng không đẹp mà đẹp không tưởng ạ, đính đá rất chắc chắn mình mang được vài hôm rồi mới lên đánh giá, thấy sản phẩm chất lượng nên mọi người tham khảo thử xem
                           </p>
                       </div>
                   </div>
               </div>
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=69" />
+                      <img class="avatar" src="https://i.pinimg.com/originals/68/7f/f5/687ff58b82cf34da0cd1369598f22104.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
             
               </svg>
                       <div class="header">
-                          <h1 class="name">Dr. Miguel Torres</h1>
-                          <h2 class="title">Head of Neurobiology, Central University</h2>
+                          <h1 class="name">Lưu Bích Loan</h1>
+                          <h2 class="title">Sinh viên UEH</h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                            Sản phẩm tốt
+                          Đẹp hơn cả mô tả Giao hàng nhanh đóng gói hàng cẩn thận có cả giấy Hướng dẫn sử dụng và hộp nhẫn gói kèm theo. Giao hàng nhanh đóng gói đủ số lượng. Nhẫn rất đẹp mọi người nên mua và trải nghiệm sản phẩm nha
                           </p>
                       </div>
                   </div>
               </div>
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=59" />
+                      <img class="avatar" src="https://upanh123.com/wp-content/uploads/2021/04/Anh-gai-xinh-lam-anh-dai-dien-facebook1.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
               
               </svg>
                       <div class="header">
-                          <h1 class="name">Benjamin Moore</h1>
+                          <h1 class="name">Đặng Minh Ngọc</h1>
                           <h2 class="title">
-                              Director of HCI, FutureTech
+                              Influencer
                           </h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                            Sản phẩm tốt
+                          Đầu tiên là thấy shop phục vụ rất nhiệt tình. Đóng gói cẩn thận. Sản phẩm thì ok. Còn chất lượng thì đợi 1 thời gian mới biết đc
                           </p>
                       </div>
                   </div>
               </div>
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=49" />
+                      <img class="avatar" src="https://scr.vn/wp-content/uploads/2020/08/H%C3%ACnh-g%C3%A1i-%C4%91%E1%BA%B9p-t%C3%B3c-d%C3%A0i-ng%E1%BA%A7u.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
               
               </svg>
                       <div class="header">
-                          <h1 class="name">Dr. Simone Laurent</h1>
-                          <h2 class="title">Chief Neurologist, NeuroTech Hospital</h2>
+                          <h1 class="name">Thảo Ngọc</h1>
+                          <h2 class="title">Sinh viên UEH</h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                            Sản phẩm tốt
+                          Đẹp nè. Xinh lắm á. Trông chắc chắn. Xịn nữa. Mấy chị bên cty cứ nhờ mua hộ nhưng em báo tự vào shop đặt r Giao hàng nhanh. Hqua đặt mà trưa nay có hàng luôn r
                           </p>
                       </div>
                   </div>
               </div>
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=68" />
+                      <img class="avatar" src="https://nguyenthihongdung.com/wp-content/uploads/2021/05/Cau-chuyen-cua-Nguyen-Thi-Hong-Dung.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
                 <path
                   d="M 16.482422 8.9921875 A 1.50015 1.50015 0 0 0 15.943359 9.1074219 C 15.943359 9.1074219 13.068414 10.279429 10.357422 13.464844 C 7.6464301 16.650259 5 21.927419 5 30 A 1.50015 1.50015 0 0 0 5.015625 30.21875 A 8.5 8.5 0 0 0 13.5 39 A 8.5 8.5 0 0 0 13.5 22 A 8.5 8.5 0 0 0 8.7089844 23.480469 C 9.5777265 19.777157 11.122152 17.196657 12.642578 15.410156 C 14.931586 12.720571 17.056641 11.892578 17.056641 11.892578 A 1.50015 1.50015 0 0 0 16.482422 8.9921875 z M 37.482422 8.9921875 A 1.50015 1.50015 0 0 0 36.943359 9.1074219 C 36.943359 9.1074219 34.068414 10.279429 31.357422 13.464844 C 28.64643 16.650259 26 21.927419 26 30 A 1.50015 1.50015 0 0 0 26.015625 30.21875 A 8.5 8.5 0 0 0 34.5 39 A 8.5 8.5 0 0 0 34.5 22 A 8.5 8.5 0 0 0 29.708984 23.480469 C 30.577727 19.777157 32.122152 17.196657 33.642578 15.410156 C 35.931586 12.720571 38.056641 11.892578 38.056641 11.892578 A 1.50015 1.50015 0 0 0 37.482422 8.9921875 z"
                 />
               </svg>
                       <div class="header">
-                          <h1 class="name">Jared Foster</h1>
-                          <h2 class="title">Sr. Tech Journalist, Digital Frontier</h2>
+                          <h1 class="name">Nguyễn Thị Hồng Dung</h1>
+                          <h2 class="title">Chuyên Gia Phát Triển Kinh Doanh</h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                            Sản phẩm tốt
+                          Đẹp tuyệt vời, từ khi mua hàng của shop thì không muốn mua shop khác nữa 
                           </p>
                       </div>
                   </div>

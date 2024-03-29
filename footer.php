@@ -20,7 +20,7 @@
 }
 
 .shopping-section,
-.policy-section,
+.information-section,
 .footer-section {
   flex: 0 1 calc(30% - 20px);
   margin: 10px;
@@ -33,7 +33,7 @@
   margin-left: 40px;
 }
 .product-categories,
-.policy-section,
+.information-section,
 .mobile-app-section,
 .quality-guarantee,
 .return-policy,
@@ -46,11 +46,11 @@
 }
 
 .category-list ul,
-.policy-details ul {
+.information-details ul {
   padding: 10px;
 }
 .category-list li,
-.policy-details li {
+.information-details li {
   margin-bottom: 8px;
   list-style: none;
 }
@@ -80,7 +80,7 @@
 }
 
 .category-title,
-.policy-title,
+.information-title,
 .app-title,
 .return-policy-title,
 .guarantee-title {
@@ -98,7 +98,7 @@
 }
 
 .category-list,
-.policy-details,
+.information-details,
 .guarantee-content,
 .return-policy-details,
 .newsletter-section,
@@ -158,29 +158,28 @@
                 <li>Lắc</li>
                 <li>Mặt dây chuyền</li>
                 <li>Bông tai</li>
-                <li>Vòng cổ</li>
                 <li>Dây chuyền</li>
                 <li>Nhẫn</li>
-                <li>Sản phẩm nam giới</li>
-                <li>Quà tặng</li>
+                <li>Phụ kiện rời</li>
             </ul>
         </div>      
         </div>
       </div>
     </div>
-      <div class="policy-section">
-        <div class="policy-header">
-          <div class="policy-title">CHÍNH SÁCH</div>
-          <div class="policy-details">
+      <div class="information-section">
+        <div class="information-header">
+          <div class="information-title">THÔNG TIN</div>
+          <div class="information-details">
             <ul>
-              <li>Liên hệ</li>
-              <li>FAQ</li>
-              <li>Điều khoản sử dụng</li>
-              <li>Theo dõi đơn hàng</li>
-              <li>Phí vận chuyển</li>
-              <li>Đổi trả</li>
-              <li>Chính sách bảo mật</li>
+              <li>Về Flamingo</li>
             </ul>
+            <div class="app-title">Kết nối với chúng tôi</div>
+          <div class="social-icons">
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a83812e396b6a258d8509dc01d6ec77f5825380962dace1d1788cb0cd3dc3b15?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/37bd4d23db3b53ce0a5edea0fa9eb6feb87c680064b4f8c4cedb233b56d833f1?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ace2ff80b4eafe06c81e5c420166ee391066b0b067faa6db13e4e18940315db1?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f21335ae84e5b9cfb992f641bb654ab406167cad8733128d7c7035762c289e73?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
+        </div>
           </div>
         </div>
       </div>
@@ -225,13 +224,7 @@
           srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
           class="img"/>
         </div>
-          <div class="app-title">Kết nối với chúng tôi</div>
-          <div class="social-icons">
-          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a83812e396b6a258d8509dc01d6ec77f5825380962dace1d1788cb0cd3dc3b15?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
-          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/37bd4d23db3b53ce0a5edea0fa9eb6feb87c680064b4f8c4cedb233b56d833f1?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
-          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ace2ff80b4eafe06c81e5c420166ee391066b0b067faa6db13e4e18940315db1?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
-          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f21335ae84e5b9cfb992f641bb654ab406167cad8733128d7c7035762c289e73?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
-        </div>
+        
       </div>
   
     <div class="Noti" style="text-align: left;">

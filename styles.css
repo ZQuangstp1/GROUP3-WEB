@@ -231,17 +231,17 @@ body {
   letter-spacing: -0.8px;
   margin-top: 23px;
   font: 32px/36px Lora, sans-serif;
-}
+} 
 
 @media (max-width: 991px) {
   #custom-div-5 {
     max-width: 100%;
   }
 }
-
+ 
 #custom-div-6 {
   margin-top: 23px;
-  font: 14px/24px Barlow, sans-serif;
+  font: 40px Barlow, sans-serif;
 }
 
 @media (max-width: 991px) {
