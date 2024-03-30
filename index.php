@@ -17,6 +17,11 @@
   </head>
 
   <body>
+  <?php
+          require_once "db_module.php";
+          $link = null;
+          taoKetNoi($link);
+?>
     <div class="container">
       <div class="head-content">
         <div class="head-content__sidebar">
@@ -25,70 +30,71 @@
             <button class="sidebar-title" onclick="toggleFilter('category')">- Danh mục</button>
             
             <div class="filter-content collapsed" id="category">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                LẮC (50)
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                MẶT DÂY CHUYỀN (102)
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckChecked"
-                checked
-              />
-              <label class="form-check-label" for="flexCheckChecked">
-                BÔNG TAI (54)
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                VÒNG CỔ (68)
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                NHẪN (40)
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                DÂY CHUYỀN (46)
-              </label>
-            </div>
-            </div>
+            <?php
+            $sql = "SELECT * FROM Category"; // Truy vấn để lấy danh sách các danh mục
+            $result = chayTruyVanTraVeDL($link, $sql);
 
+            // Kiểm tra nếu có kết quả trả về từ truy vấn
+            if ($result && mysqli_num_rows($result) > 0) {
+                // Duyệt qua từng hàng kết quả
+                while ($row = mysqli_fetch_assoc($result)) {
+                    // Hiển thị checkbox cho từng danh mục
+                    echo '<div class="form-check">';
+                    echo '<input class="form-check-input" type="checkbox" value="' . $row['categoryID'] . '" id="category' . $row['categoryID'] . '">';
+                    echo '<label class="form-check-label" for="category' . $row['categoryID'] . '">' . $row['categoryName'] . '</label>';
+                    echo '</div>';
+             }
+            }
+          ?>
+            </div>
+            <hr />
+            <button class="sidebar-title" onclick="toggleFilter('subcategory')">- Danh mục phụ</button>
+            
+            <div class="filter-content collapsed" id="subcategory">
+            <?php
+            $sql = "SELECT * FROM Subcategory"; // Truy vấn để lấy danh sách các subcategory
+            $result = chayTruyVanTraVeDL($link, $sql);
+            
+            // Kiểm tra nếu có kết quả trả về từ truy vấn
+            if ($result && mysqli_num_rows($result) > 0) {
+                // Duyệt qua từng hàng kết quả
+                while ($row = mysqli_fetch_assoc($result)) {
+                    // Hiển thị checkbox cho từng subcategory
+                    echo '<div class="form-check">';
+                    echo '<input class="form-check-input" type="checkbox" value="' . $row['subcategoryID'] . '" id="subcategory' . $row['subcategoryID'] . '">';
+                    echo '<label class="form-check-label" for="subcategory' . $row['subcategoryID'] . '">' . $row['subcategoryName'] . '</label>';
+                    echo '</div>';
+                }
+            }
+            ?>
+            </div>
+            <hr/>
+            <button class="sidebar-title" onclick="toggleFilter('sale')">- Giảm giá</button>
+            
+            <div class="filter-content collapsed" id="sale">
+            <?php
+              $sql = "SELECT distinct
+                          p.discountID,
+                          CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage
+                      FROM 
+                          product p
+                      JOIN
+                          discount d ON p.discountID = d.discountID
+                      WHERE 
+                      d.discountID IS NOT NULL AND d.discountAmount IS NOT NULL";
+
+              $result = chayTruyVanTraVeDL($link, $sql);
+
+              if ($result && mysqli_num_rows($result) > 0) {
+                  while ($row = mysqli_fetch_assoc($result)) {
+                      echo '<div class="form-check">';
+                      echo '<input class="form-check-input" type="checkbox" value="' . $row['discountID'] . '" id="discount' . $row['discountID'] . '">';
+                      echo '<label class="form-check-label" for="discount' . $row['discountID'] . '">' . $row['discountPercentage'] . '</label>';
+                      echo '</div>';
+                  }
+              }
+              ?>
+            </div>
             <hr />
           </div>
           <div class="sidebar-section">
@@ -178,95 +184,37 @@
           <button  class="sidebar-title" onclick="toggleFilter('color')">- Màu</button >
           <div class="filter-content collapsed" id="color">
             <div class="d-inline-flex sidebar-color-radio">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="background-color: #000000; border-color: #000000"
-              />
+            <?php
 
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="
-                  background-color: #f3ece2;
-                  border-color: #f3ece2;
-                  border: 1px solid #9e9e9e;
-                "
-              />
+            $sql = "SELECT distinct color FROM Product"; 
+              $result = chayTruyVanTraVeDL($link, $sql);
 
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="background-color: #24426a; border-color: #24426a"
-              />
+              // Mảng chứa mã màu tương ứng với các giá trị của cột color
+              $colorCodes = array(
+                  "Vàng" => "#ffd700",    // Mã màu vàng
+                  "Bạc" => "#c0c0c0",     // Mã màu bạc
+                  "Không" => "#ffffff" // Mã màu trắng (không màu)
+              );
 
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="background-color: #18574A; border-color: #18574A"
-              />
-
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="background-color: #666689; border-color: #666689"
-              />
-
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="background-color: #c2beb6; border-color: #c2beb6"
-              />
-
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="background-color: #aaaba7; border-color: #aaaba7"
-              />
-            </div>
-
-            <div class="d-inline-flex sidebar-color-radio">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="background-color: #971e34; border-color: #971e34"
-              />
-
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="background-color: #cba13e; border-color: #cba13e"
-              />
-
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="background-color: #73513c; border-color: #73513c"
-              />
-
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="background-color: #dab1b1; border-color: #dab1b1"
-              />
-
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                style="background-color: #2b9fa7; border-color: #2b9fa7"
-              />
+              if ($result && mysqli_num_rows($result) > 0) {
+                // Duyệt qua từng hàng kết quả
+                echo '<form method="POST">';
+                while ($row = mysqli_fetch_assoc($result)) {
+                    // Lấy mã màu tương ứng từ mảng $colorCodes
+                    $colorCode = isset($colorCodes[$row['color']]) ? $colorCodes[$row['color']] : "#000000"; // Mặc định là màu đen nếu không tìm thấy mã màu
+            
+                    // Hiển thị checkbox cho mỗi màu trên một dòng
+                    echo '<div>';
+                    echo '<label>';
+                    echo '<input type="checkbox" class="form-check-input" name="selected_colors[]" value="' . $row['color'] . '" style="margin-right: 5px;">';
+                    echo '<div style="width: 20px; height: 20px; border-radius: 50%; background-color: ' . $colorCode . '; display: inline-block; margin-right: 5px;"></div>';
+                    echo $row['color'];
+                    echo '</label>';
+                    echo '</div>';
+                }
+                echo '</form>';
+            }
+            ?>
             </div>
           </div>
             <hr />
@@ -339,38 +287,25 @@
 
         <div class="head-content__product-list">
           <div class="row">
-          <div class="col-6 px-0">
-             <p><?php echo $num_items . " ITEMS FOUND"; ?></p>
+          <div class="col-6 px-0" style="margin-top: 20px;"> 
+             <p><?php 
+                   $sql = "SELECT * FROM product WHERE status = 'Còn hàng'";
+                   $result = chayTruyVanTraVeDL($link, $sql);
+                   $num_items = mysqli_num_rows($result);
+                  echo "Tìm thấy ".$num_items . " sản phẩm"; ?></p>
           </div>
             <div class="col-6 d-flex justify-content-end">
-              <div class="d-flex align-items-center justify-content-center">
-                <img
-                  src="./images/List-View.png"
-                  alt=""
-                  style="width: 30px; height: 30px;"
-                  class="mx-2"
-                />
-                <img
-                  src="./images/Grid-View.png"
-                  alt=""
-                  style="width: 30px; height: 30px"
-                  class="mx-2"
-                />
-              </div>
               <select
                 class="form-select"
                 aria-label="Default select example"
                 style="width: 353px"
               >
-                <option selected>PRICE (HIGH TO LOW)</option>
+                <option selected>Giá (Tăng dần)</option>
+                <option selected>Giá (Giảm dần)</option>
               </select>
             </div>
           </div>
           <?php
-          require_once "db_module.php";
-          $link = null;
-          taoKetNoi($link);
-
           $sql = "SELECT 
               p.productName,
               CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
@@ -385,14 +320,15 @@
           JOIN
               category c ON sc.categoryID = c.categoryID
           JOIN
-              discount d ON p.discountID = d.discountID";
+              discount d ON p.discountID = d.discountID
+          WHERE 
+            p.status = 'Còn hàng'";
 
           $result = chayTruyVanTraVeDL($link, $sql);
           ?>
 
           <div class="product-container row d-flex flex-wrap mt-3">
               <?php
-              $num_items = mysqli_num_rows($result);
               while ($row = mysqli_fetch_assoc($result)) {
                   ?>
                   <div class="product-info d-block">
