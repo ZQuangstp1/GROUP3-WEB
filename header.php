@@ -10,7 +10,7 @@
   @media (max-width: 991px) {
     .header-container {
       max-width: 100%;
-      flex-wrap: wrap;
+      /* flex-wrap: wrap; */
     }
   }
   .content-header {
@@ -97,6 +97,7 @@
 }
 
     @media (max-width: 991px) {
+      
         .logo-img {
             margin-left: auto;
             max-width: auto; /* Adjusting width for smaller screens */
@@ -138,6 +139,65 @@
     width: 20px;
     align-self: stretch;
   }
+
+  @media screen and (max-width: 991px) {
+  .content-header {
+    flex-direction: column; /* Chuyển hướng layout thành dọc */
+    align-items: center; /* Canh giữa nội dung */
+  }
+
+  .logo-container {
+    justify-content: center; /* Center the logo */
+    margin: 10px auto; /* Adjust margin */
+    max-width: 50%; /* Adjusting width for smaller screens */
+    padding-top: 0; /* Remove top padding */
+    padding-left: 25px;
+    order: 1
+  }
+
+  .searchbar-container {
+    margin: 0; /* Center the search bar */
+    text-align: left; /* Center the contents */
+    padding-left: 0; /* Remove left padding */
+    padding-top: 10px; /* Add top padding */
+    max-width: 100%;
+    order: 2
+  }
+
+  #search img{
+    max-width: 20px;
+    margin-left: 5px;
+  }
+
+  #searchInput{
+    max-width: 200%; /* Adjust max width of search input */
+    font-size: 14px; /* Adjust font size of search input */
+    margin-left: 2px; /* Add margin to the left of search input */
+  }
+
+  .three-logos-container {
+    order: 3;
+    justify-content: center; /* Center the logos */
+    margin: 0 auto; /* Center the container */
+    max-width: 100%; /* Adjusting width for smaller screens */
+    padding-right: 0; /* Remove right padding */
+    padding-top: 10px; /* Add top padding */
+  }
+
+  .three-logos-content {
+    display: flex;
+    flex-direction: row; /* Align logos in a row */
+    gap: 10px; /* Add gap between logos */
+    align-items: center; /* Center the logos vertically */
+  }
+
+  .user,
+  .fav,
+  .cart {
+    width: 18px; /* Adjust width of icons */
+  }
+}
+
     </style>
 </head>
 <body>
@@ -147,7 +207,7 @@
             <div id = "searchbar">
               <img src="img/Search.png" alt="" class="kinhlup">
               <input type="text" id="searchInput" placeholder="Tìm sản phẩm" size="13px">
-              <button id="searchButton" onclick="search()"><i class="fas fa-search"></i></button>
+              <button id="searchButton" onclick="search()"></button>
           </div>
           </div>
           <div class="logo-container">

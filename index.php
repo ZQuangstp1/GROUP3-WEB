@@ -3,22 +3,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="upperstyles.css">
   <link rel="stylesheet" href="stylemenu.css">
-  <!-- <script type="text/javascript" src="search.js" language="JavaScript"> -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <!-- <script type="text/javascript" src="responsivemenu.js" language="JavaScript"> -->
 
   <!-- // <script type="text/javascript" src="script.js" language="JavaScript"> -->
-  </script>  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'> 
+  <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'>  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Trang sức Flamingo</title>
 </head>
 
-<body>
+<body>  
+  <script>
+    $(document).ready(function(){
+      $('#toggle').click(function(){
+        $('nav').slideToggle();
+      });
+    })
+  </script>
   <div class="main-container">
     <div class="content-container">
       <!-- HEADER -->
     <?php include "header.php"; ?> 
     <!-- MENU -->
+    <div id = "toggle">
+                  <i class="fa fa-bars"></i>
+            </div>
       <div id = "menu-container">
             <nav class = "container">
-                <ul id="main-menu">
+                <ul id="main-menu" >
                     <li><a href="index.php">Trang chủ</a></li>
                     <li><a href="">Sản phẩm</a>
                     <ul class="sub-menu">
@@ -63,7 +75,10 @@
                     <li><a href="">Quà tặng</a></li>
                     <li><a href="">Thông tin chung</a></li>
                 </ul>
+                
             </nav>
+            
+            <!-- <a href="javascript:void(0);" class="icon"><i class="fa fa-bars"></i></a> -->
         </div>
         <!-- BANNER -->
       <div class="banner-container">
@@ -168,7 +183,7 @@
                   LEFT JOIN category c ON sc.categoryID = c.categoryID
                   LEFT JOIN orderdetail od ON p.productID = od.productID
                   LEFT JOIN orders o ON o.orderID = od.orderID
-                  LEFT JOIN discount d ON p.discountID = d.discountID
+                  LEFT JOIN discount d ON p.discountID = d.discountID -- Assuming there's a discount table to join
                   GROUP BY p.productName, formattedUnitPrice, p.image, discountPercentage, c.categoryName, sc.subcategoryName -- Grouping by all selected columns
                   ORDER BY SUM(od.quantity) DESC
                   LIMIT 5;
@@ -201,7 +216,7 @@
     <br>
     <br>
     <!-- INCLUDE QUANG'S PHP FILE BELOW HERE  -->
-    
+    <?php include "index-2.php"; ?>
   </div>
 </body>
 </html>
