@@ -108,7 +108,7 @@ product-container {
   width: calc(25% - 30px);
   border: 2px solid #000000;
   margin-bottom: 20px;
-  padding: 20px 0 0 0;
+  padding: 0px 0 0 0;
   position: relative;
   margin-right: 20px;
 }
@@ -117,7 +117,6 @@ product-container {
 .product-info img {
   width: 100%;
   height: 200px;
-  padding-bottom: 20px;
 }
 
 
@@ -152,7 +151,7 @@ product-container {
   color: #fff;
   position: absolute;
   top: 10px;
-  left: -2px;
+  text-align:center;
 }
 
 @media only screen and (max-width: 768px) {

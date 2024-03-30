@@ -174,82 +174,6 @@
           </div>
           <hr />
 
-          <div class="sidebar-section">
-          <button  class="sidebar-title" onclick="toggleFilter('brand')">- Thương hiệu</button >
-          <div class="filter-content collapsed" id="brand">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                STATE
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                COOPER
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckChecked"
-                checked
-              />
-              <label class="form-check-label" for="flexCheckChecked">
-                BAROOT
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                ALFANI
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                CECE
-              </label>
-            </div>
-
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                DONNA RICCO
-              </label>
-            </div>
-
-            <div class="form-check form-check-price-last">
-              <label class="form-check-label" style="color: #b68888">
-                MORE
-              </label>
-            </div>
-          </div>
-          </div>
-          <hr />
-
          <div class="sidebar-section">
           <button  class="sidebar-title" onclick="toggleFilter('color')">- Màu</button >
           <div class="filter-content collapsed" id="color">
@@ -415,9 +339,9 @@
 
         <div class="head-content__product-list">
           <div class="row">
-            <div class="col-6 px-0">
-              <p>51.732 ITEMS FOUND</p>
-            </div>
+          <div class="col-6 px-0">
+             <p><?php echo $num_items . " ITEMS FOUND"; ?></p>
+          </div>
             <div class="col-6 d-flex justify-content-end">
               <div class="d-flex align-items-center justify-content-center">
                 <img
@@ -467,9 +391,14 @@
           ?>
 
           <div class="product-container row d-flex flex-wrap mt-3">
-              <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+              <?php
+              $num_items = mysqli_num_rows($result);
+              while ($row = mysqli_fetch_assoc($result)) {
+                  ?>
                   <div class="product-info d-block">
-                      <div class="product-discount"><?php echo $row['discountPercentage']; ?></div>
+                      <?php if (!empty($row['discountPercentage'])) { ?>
+                          <div class="product-discount"><?php echo $row['discountPercentage']; ?></div>
+                      <?php } ?>
                       <img src="<?php echo $row['image']; ?>" alt="" />
                       <div class="product-content">
                           <p class="text-center product-title"><?php echo $row['productName']; ?></p>
@@ -477,7 +406,9 @@
                           <p class="text-center product-price"><?php echo $row['formattedUnitPrice']; ?></p>
                       </div>
                   </div>
-              <?php } ?>
+              <?php
+              }
+              ?>
           </div>
         </div>
       </div>
