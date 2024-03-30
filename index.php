@@ -168,7 +168,7 @@
                   LEFT JOIN category c ON sc.categoryID = c.categoryID
                   LEFT JOIN orderdetail od ON p.productID = od.productID
                   LEFT JOIN orders o ON o.orderID = od.orderID
-                  LEFT JOIN discount d ON p.discountID = d.discountID -- Assuming there's a discount table to join
+                  LEFT JOIN discount d ON p.discountID = d.discountID
                   GROUP BY p.productName, formattedUnitPrice, p.image, discountPercentage, c.categoryName, sc.subcategoryName -- Grouping by all selected columns
                   ORDER BY SUM(od.quantity) DESC
                   LIMIT 5;
