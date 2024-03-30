@@ -442,216 +442,42 @@
               </select>
             </div>
           </div>
+          <?php
+          require_once "db_module.php";
+          $link = null;
+          taoKetNoi($link);
 
-          <div
-            class="row d-flex flex-nowrap mt-3"
-           
-          >
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-6.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
+          $sql = "SELECT 
+              p.productName,
+              CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+              p.image,
+              CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+              c.categoryName,
+              sc.subcategoryName
+          FROM 
+              product p
+          JOIN
+              subcategory sc ON p.subcategoryID = sc.subcategoryID
+          JOIN
+              category c ON sc.categoryID = c.categoryID
+          JOIN
+              discount d ON p.discountID = d.discountID";
 
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-7.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
+          $result = chayTruyVanTraVeDL($link, $sql);
+          ?>
 
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-8.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-9.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="row d-flex flex-nowrap mt-3"
-        
-          >
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-6.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-7.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-8.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-9.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="row d-flex flex-nowrap mt-3"
-          >
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-6.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-7.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-8.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-9.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-            
-          </div>
-
-          <div
-            class="row d-flex flex-nowrap mt-3"
-          >
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-6.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-7.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-8.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
-
-            <div class="product-info d-block">
-              <div class="product-discount">-30%</div>
-              <img src="./images/image-9.png" alt="" />
-              <div class="product-content">
-                <p class="text-center product-title">
-                  14KT Yellow Gold Diamond Hoop..
-                </p>
-                <p class="text-center product-desc">Women | Earrings</p>
-                <p class="text-center product-price">Rs. 4,554.00</p>
-              </div>
-            </div>
+          <div class="product-container row d-flex flex-wrap mt-3">
+              <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                  <div class="product-info d-block">
+                      <div class="product-discount"><?php echo $row['discountPercentage']; ?></div>
+                      <img src="<?php echo $row['image']; ?>" alt="" />
+                      <div class="product-content">
+                          <p class="text-center product-title"><?php echo $row['productName']; ?></p>
+                          <p class="text-center product-desc"><?php echo $row['subcategoryName'] . ' | ' . $row['categoryName']; ?></p>
+                          <p class="text-center product-price"><?php echo $row['formattedUnitPrice']; ?></p>
+                      </div>
+                  </div>
+              <?php } ?>
           </div>
         </div>
       </div>

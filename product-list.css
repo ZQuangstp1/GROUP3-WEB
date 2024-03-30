@@ -97,8 +97,17 @@ button {
 }
 
 /* product */
+product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+}
+
+
 .product-info {
+  width: calc(25% - 30px);
   border: 2px solid #000000;
+  margin-bottom: 20px;
   padding: 20px 0 0 0;
   position: relative;
   margin-right: 20px;
@@ -107,7 +116,7 @@ button {
 
 .product-info img {
   width: 100%;
-  height: auto;
+  height: 200px;
   padding-bottom: 20px;
 }
 
