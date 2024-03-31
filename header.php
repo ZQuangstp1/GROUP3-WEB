@@ -32,11 +32,12 @@
     gap: 0px;
     margin: auto 0;
     padding-left: 15px;
+    /* background: red */
   }
   @media (max-width: 991px) {
     .searchbar-container {
       max-width: 100%;
-      flex-wrap: wrap;
+      /* flex-wrap: wrap; */
     }
   }
   #searchbar{
@@ -52,7 +53,7 @@
     width: 40%;
 }
 #searchInput { 
-    margin-left: 0;
+    margin-left: 8px;
     border: none; 
     outline: none; 
     background: none; 
@@ -69,6 +70,12 @@
     #searchInput {
       max-width: 100%;
       display: block;
+      padding-left: 0;
+      padding-right: 40px;
+    }
+    #searchbar img{
+      margin-right: 50px;
+      max-width: 25%
     }
   }
 
@@ -124,6 +131,7 @@
     width: 18px;
     stroke-width: 1.6px;
     stroke: #282828;
+    height: auto
   }
   .fav {
     aspect-ratio: 1px;
@@ -131,13 +139,15 @@
     object-position: center;
     width: 18px;
     fill: #282828;
+    height: auto
   }
   .cart {
     aspect-ratio: 1px;
     object-fit: auto;
     object-position: center;
     width: 20px;
-    align-self: stretch;
+    /* align-self: stretch; */
+    height: auto
   }
 
   @media screen and (max-width: 991px) {
@@ -151,8 +161,11 @@
     margin: 10px auto; /* Adjust margin */
     max-width: 50%; /* Adjusting width for smaller screens */
     padding-top: 0; /* Remove top padding */
-    padding-left: 25px;
-    order: 1
+    padding-left: 10px;
+    order: 1;
+    /* background: red; */
+    margin-right: 20px;
+    margin-left: 110px
   }
 
   .searchbar-container {
@@ -165,7 +178,7 @@
   }
 
   #search img{
-    max-width: 20px;
+    max-width: 5%;
     margin-left: 5px;
   }
 
@@ -182,6 +195,7 @@
     max-width: 100%; /* Adjusting width for smaller screens */
     padding-right: 0; /* Remove right padding */
     padding-top: 10px; /* Add top padding */
+    margin-right: 5px
   }
 
   .three-logos-content {
@@ -195,6 +209,7 @@
   .fav,
   .cart {
     width: 18px; /* Adjust width of icons */
+    padding-top: 70px;
   }
 }
 
