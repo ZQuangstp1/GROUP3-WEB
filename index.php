@@ -13,6 +13,7 @@ taoKetNoi($link);
     <title>Product List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="product-list.css" rel="stylesheet">
+    
 </head>
 <body>
 <form action="?opt=applyFilters" method="POST">
@@ -87,59 +88,30 @@ taoKetNoi($link);
                     <!-- Giá -->
                     <button type="button" class="sidebar-title" onclick="toggleFilter('price')">- Giá</button>
                     <div class="filter-content collapsed" id="price">
-                    <div class="form-check">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                            < 500.000
-                        </label>
-                        </div>
-                        <div class="form-check">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                            500.000 - 1.000.000
-                        </label>
-                        </div>
-                        <div class="form-check">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                          
-                        />
-                        <label class="form-check-label" for="flexCheckChecked">
-                            1.000.000 - 1.500.000
-                        </label>
-                        </div>
-                        <div class="form-check">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                            1.500.000 - 2.000.000
-                        </label>
-                        </div>
-                        <div class="form-check">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                            > 2.000.0000
-                        </label>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="under500" name="price_range[]" value="under500">
+                                <label class="form-check-label" for="under500">Dưới 500.000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="500to1000000" name="price_range[]" value="500to1000000">
+                                <label class="form-check-label" for="500to1000000">500.000 - 1.000.000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="1000000to1500000" name="price_range[]" value="1000000to1500000">
+                                <label class="form-check-label" for="1000000to1500000">1.000.000 - 1.500.000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="1500000to2000000" name="price_range[]" value="1500000to2000000">
+                                <label class="form-check-label" for="1500000to2000000">1.500.000 - 2.000.000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="over2000000" name="price_range[]" value="over2000000">
+                                <label class="form-check-label" for="over2000000">Trên 2.000.000</label>
+                            </div>              
                         </div>
                     </div>
-                    </div>
+                     </div>              
                     <hr />
                     <!-- Màu -->
                     <button type="button" class="sidebar-title" onclick="toggleFilter('color')">- Màu</button>
@@ -170,41 +142,46 @@ taoKetNoi($link);
                     </div>
                     <hr />
                     <input type="hidden" name="apply_filters" id="apply_filters" value="0">
-                  <input type="submit" class="apply-filters-button" value="Áp dụng bộ lọc" onclick="document.getElementById('apply_filters').value = '1';">
-                </div>
-        
-</form>
+                    <div class="apply-filters-container">
+                        <input type="submit" class="apply-filters-button" value="Áp dụng bộ lọc" onclick="document.getElementById('apply_filters').value = '1';">
+                    </div>
+                </form>
+            </div>
 
 <!-- Hiển thị sản phẩm -->
 <div class="head-content__product-list">
     <!-- Hiển thị số sản phẩm tìm thấy -->
     <div class="row">
-        <div class="col-6 px-0" style="margin-top: 20px;"> 
+    <div class="col-6 px-0" style="margin-top: 20px;"> 
             <p>
-                <?php 
-                $sql = "SELECT * FROM product WHERE status = 'Còn hàng'";
-                $result = chayTruyVanTraVeDL($link, $sql);
-                $num_items = mysqli_num_rows($result);
-                echo "Tìm thấy ".$num_items . " sản phẩm"; ?>
+            <?php 
+            if ($result && mysqli_num_rows($result) > 0) {
+            ?>
+                Tìm thấy <?php echo $num_items; ?> sản phẩm
+            <?php
+            } // Close the if statement
+            ?>
             </p>
         </div>
+
         <!-- Dropdown sắp xếp -->
-        <div class="col-6 d-flex justify-content-end">
-            <select class="form-select" aria-label="Default select example" style="width: 353px">
-                <option selected>Giá (Tăng dần)</option>
-                <option selected>Giá (Giảm dần)</option>
+        <div class="col-md-6 d-flex justify-content-end">
+        <div class="d-flex">
+            <select class="form-select me-3" aria-label="Default select example" name="sort_order" style="width: 353px">
+                <option value="p.unitPrice ASC">Giá (Tăng dần)</option>
+                <option value="p.unitPrice DESC">Giá (Giảm dần)</option>
+            </select>
+            <select class="form-select" aria-label="Default select example" name="sort_by" style="width: 353px">
+                <option value="p.productName ASC">Tên sản phẩm (A-Z)</option>
+                <option value="p.productName DESC">Tên sản phẩm (Z-A)</option>
             </select>
         </div>
     </div>
-
     <!-- Hiển thị danh sách sản phẩm -->
     <div class="product-container row d-flex flex-wrap mt-3">
         <?php
             applyFilters();
 
-            if(isset($_POST['apply_filters'])) {
-                applyFilters();
-            }
         function applyFilters(){
             global $link;
             $apply_filters = isset($_POST['apply_filters']) ? $_POST['apply_filters'] : '0';
@@ -233,14 +210,16 @@ taoKetNoi($link);
             $selectedSubcategories = isset($_POST['selected_subcategories']) ? $_POST['selected_subcategories'] : [];
             $selectedDiscounts = isset($_POST['selected_discounts']) ? $_POST['selected_discounts'] : [];
             $selectedColors = isset($_POST['selected_colors']) ? $_POST['selected_colors'] : [];
-
+            
             // Xây dựng điều kiện WHERE cho câu truy vấn SQL
             $whereClause = '';
-            if (!empty($selectedCategories)) {         
-                $whereClause .= " AND sc.categoryID  IN ('" . implode("','", $selectedCategories) . "')";
+
+            // Xây dựng điều kiện WHERE cho các bộ lọc category, subcategory, discount và color
+            if (!empty($selectedCategories)) {
+                $whereClause .= " AND sc.categoryID IN ('" . implode("','", $selectedCategories) . "')";
             }
             if (!empty($selectedSubcategories)) {
-                $whereClause .= " AND p.subcategoryID IN ('" . implode("','", $selectedSubcategories) ."')";
+                $whereClause .= " AND p.subcategoryID IN ('" . implode("','", $selectedSubcategories) . "')";
             }
             if (!empty($selectedDiscounts)) {
                 $whereClause .= " AND p.discountID IN ('" . implode("','", $selectedDiscounts) . "')";
@@ -249,26 +228,72 @@ taoKetNoi($link);
                 $whereClause .= " AND color IN ('" . implode("','", $selectedColors) . "')";
             }
 
-            // Xây dựng câu truy vấn SQL với điều kiện bộ lọc
+            // Xây dựng điều kiện WHERE cho bộ lọc giá
+            if (isset($_POST['price_range'])) {
+                $priceRanges = $_POST['price_range'];
+
+                foreach ($priceRanges as $range) {
+                    switch ($range) {
+                        case 'under500':
+                            $whereClause .= " AND (p.unitPrice < 500000)";
+                            break;
+                        case '500to1000000':
+                            $whereClause .= " AND (p.unitPrice >= 500000 AND p.unitPrice < 1000000)";
+                            break;
+                        case '1000000to1500000':
+                            $whereClause .= " AND (p.unitPrice >= 1000000 AND p.unitPrice < 1500000)";
+                            break;
+                        case '1500000to2000000':
+                            $whereClause .= " AND (p.unitPrice >= 1500000 AND p.unitPrice < 2000000)";
+                            break;
+                        case 'over2000000':
+                            $whereClause .= " AND (p.unitPrice >= 2000000)";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            // Loại bỏ phần "OR" đầu tiên nếu có
+            $whereClause = ltrim($whereClause, ' OR');
+            $sortOrder = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'p.unitPrice';
+            $sortBy = isset($_POST['sort_by']) ? $_POST['sort_by'] : 'p.productName';
+            // Xây dựng câu truy vấn SQL với điều kiện WHERE được xây dựng từ form
             $sql = "SELECT 
-                        p.productName,
-                        CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
-                        p.image,
-                        CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
-                        c.categoryName,
-                        sc.subcategoryName
-                    FROM 
-                        product p
-                    JOIN
-                        subcategory sc ON p.subcategoryID = sc.subcategoryID
-                    JOIN
-                        category c ON sc.categoryID = c.categoryID
-                    JOIN
-                        discount d ON p.discountID = d.discountID
-                    WHERE 
-                        p.status = 'Còn hàng'
-                        AND 1 = 1 $whereClause"; // 1=1 để dễ dàng thêm các điều kiện WHERE
+                p.productName,
+                CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+                p.image,
+                CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+                c.categoryName,
+                sc.subcategoryName
+            FROM 
+                product p
+            JOIN
+                subcategory sc ON p.subcategoryID = sc.subcategoryID
+            JOIN
+                category c ON sc.categoryID = c.categoryID
+            JOIN
+                discount d ON p.discountID = d.discountID
+            WHERE 
+            1=1
+            $whereClause
+            AND p.status = 'Còn hàng'
+            ORDER BY $sortOrder, $sortBy";
             $result = chayTruyVanTraVeDL($link, $sql);
+
+            $countSql = "SELECT COUNT(*) AS num_items FROM product p
+                            JOIN subcategory sc ON p.subcategoryID = sc.subcategoryID
+                            JOIN category c ON sc.categoryID = c.categoryID
+                            JOIN discount d ON p.discountID = d.discountID
+                            WHERE 1=1 $whereClause AND p.status = 'Còn hàng'";
+            $countResult = chayTruyVanTraVeDL($link, $countSql);
+            if ($countResult && mysqli_num_rows($countResult) > 0) {
+                $row = mysqli_fetch_assoc($countResult);
+                $num_items = $row['num_items'];
+            } else {
+                $num_items = 0;
+            }
           }
 
           if ($result && mysqli_num_rows($result) > 0) {

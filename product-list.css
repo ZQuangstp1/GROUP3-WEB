@@ -1,5 +1,7 @@
 body {
   background: #f9f2e6;
+  font-family: Barlow, sans-serif;
+
 }
 
 button {
@@ -49,6 +51,9 @@ button {
 .form-check-label {
   color: #3f3f3f;
 }
+.form-select {
+  border-color: #fb6f92; 
+}
 
 .form-check-price-last {
   margin-left: 5px !important;
@@ -96,14 +101,24 @@ button {
   background-color: #f9f2e6;
 }
 
+.apply-filters-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Điều chỉnh khoảng cách từ button lên trên */
+}
+
+
 .apply-filters-button {
   background-color: #fb6f92;
   border: none;
   color: white; 
   padding: 10px 20px; 
   border-radius: 10px; 
+  font-size: 15px;
+  align-items: center;
 }
 /* product */
+
 product-container {
   display: flex;
   flex-wrap: wrap;
@@ -135,8 +150,8 @@ product-container {
 .product-content .product-title {
   font-weight: 500;
   margin-bottom: 0;            
-  padding-right: 30px;
-  padding-left: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .product-content .product-desc {
