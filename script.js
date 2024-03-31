@@ -34,3 +34,30 @@ function toggleFilter(filterId) {
   filterContent.classList.toggle('collapsed');
 
 }
+
+function applyFilters() {
+  // Thu thập các giá trị được chọn từ các bộ lọc
+  var selectedCategories = [];
+  var selectedSubcategories = [];
+  var selectedDiscounts = [];
+  var selectedColors = [];
+  
+
+  $.ajax({
+      url: "index.php",
+      method: "POST",
+      data: {
+          selected_categories: selectedCategories,
+          selected_subcategories: selectedSubcategories,
+          selected_discounts: selectedDiscounts,
+          selected_colors: selectedColors
+      },
+      success: function(response) {
+          // Xử lý phản hồi từ server nếu cần
+      },
+      error: function(xhr, status, error) {
+          // Xử lý lỗi nếu có
+      }
+  });
+ 
+}

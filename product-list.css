@@ -96,6 +96,13 @@ button {
   background-color: #f9f2e6;
 }
 
+.apply-filters-button {
+  background-color: #fb6f92;
+  border: none;
+  color: white; 
+  padding: 10px 20px; 
+  border-radius: 10px; 
+}
 /* product */
 product-container {
   display: flex;
