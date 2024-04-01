@@ -34,7 +34,7 @@
             <div id="header">
                 <h2>ADMIN/QUẢN LÝ NHÂN VIÊN</h2> 
             </div id="content">
-                <?php include "NhanVien.php"; ?>
+                <?php include "DonHang.php"; ?>
             </div>
             <div id="footer">
                 <p>© 2024 Jewelry Store. All rights reserved.</p>

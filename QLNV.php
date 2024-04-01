@@ -178,7 +178,7 @@
             <a href="QLNV.php">
                 <li>Quản lý nhân viên</li>
             </a>
-            <a href="QuanLyDonHang.php">
+            <a href="QLDH.php">
                 <li>Quản lý đơn hàng</li>
             </a>
         </ul>
