@@ -176,117 +176,6 @@
         </div>
       </div>
 
-
-      <div class="group-div">
-        <div class="frame-container">
-          <div class="parent">
-            <div class="div1">
-              <div class="inner">
-                <div class="image-parent">
-                  <img class="image-icon" alt="" src="./public/image@2x.png" />
-
-                  <div class="offer">
-                    <div class="div2">-30%</div>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-div">
-                <div class="kt-yellow-gold-diamond-hoop-wrapper">
-                  <b class="kt-yellow-gold">14KT Yellow Gold Diamond Hoop..</b>
-                </div>
-                <div class="women-earrings-wrapper">
-                  <div class="kt-yellow-gold">Women | Earrings</div>
-                </div>
-                <div class="price-and-offer">
-                  <b class="rs-455400">Rs. 4,554.00</b>
-                </div>
-              </div>
-            </div>
-
-            <div class="div3">
-              <div class="inner">
-                <div class="image-parent">
-                  <img class="image-icon" alt="" src="./public/image1@2x.png" />
-
-                  <div class="offer1">
-                    <div class="div2">-30%</div>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-div">
-                <div class="kt-yellow-gold-diamond-hoop-wrapper">
-                  <b class="kt-yellow-gold">14KT Yellow Gold Diamond Hoop..</b>
-                </div>
-                <div class="women-earrings-wrapper">
-                  <div class="kt-yellow-gold">Women | Earrings</div>
-                </div>
-                <div class="price-and-offer">
-                  <b class="rs-455400">Rs. 4,554.00</b>
-                </div>
-              </div>
-            </div>
-
-            <div class="div3">
-              <div class="inner">
-                <div class="image-parent">
-                  <img class="image-icon" alt="" src="./public/image2@2x.png" />
-
-                  <div class="offer2">
-                    <div class="div2">-30%</div>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-div">
-                <div class="kt-yellow-gold-diamond-hoop-wrapper">
-                  <b class="kt-yellow-gold">14KT Yellow Gold Diamond Hoop..</b>
-                </div>
-                <div class="women-earrings-wrapper">
-                  <div class="kt-yellow-gold">Women | Earrings</div>
-                </div>
-                <div class="price-and-offer">
-                  <b class="rs-455400">Rs. 4,554.00</b>
-                </div>
-              </div>
-            </div>
-
-            <div class="div3">
-              <div class="inner">
-                <div class="image-parent1">
-                  <img
-                    class="image-icon3"
-                    alt=""
-                    src="./public/image3@2x.png"
-                  />
-
-                  <div class="offer3">
-                    <div class="div2">-30%</div>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-div">
-                <div class="kt-yellow-gold-diamond-hoop-wrapper">
-                  <b class="kt-yellow-gold">14KT Yellow Gold Diamond Hoop..</b>
-                </div>
-                <div class="women-earrings-wrapper">
-                  <div class="kt-yellow-gold">Women | Earrings</div>
-                </div>
-                <div class="price-and-offer">
-                  <b class="rs-455400">Rs. 4,554.00</b>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="header-heading-3-trending-wrapper">
-            <div class="header-heading">Sản phẩm mới</div>
-          </div>
-
-          <div class="link">
-            <div class="xem-thm">XEM THÊM</div>
-          </div>
-        </div>
-
-
-      </div>
       <div class="detail-inner1">
         <div class="group-wrapper">
           <div class="group-wrapper">
@@ -454,5 +343,64 @@
         </div>
       </div>
     </div>
+      <div class="group-div">
+        <div class="frame-container">
+          <div id="menu-container2" class="animate-on-scroll">
+          <div class="header-heading-3-trending-wrapper">
+            <div class="header-heading">SẢN PHẨM TƯƠNG TỰ</div>
+          </div>
+            <div class="top-products">
+                <?php
+                require_once "db_module.php";
+                $link = null;
+                taoKetNoi($link);
+
+                $sql = "SELECT 
+                    p.productName,
+                    CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+                    p.image,
+                    CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+                    c.categoryName,
+                    sc.subcategoryName
+                FROM 
+                    product p
+                JOIN
+                    subcategory sc ON p.subcategoryID = sc.subcategoryID
+                JOIN
+                    category c ON sc.categoryID = c.categoryID
+                JOIN
+                    discount d ON p.discountID = d.discountID
+                WHERE 
+                    d.discountID IS NOT NULL
+                LIMIT 5";
+
+                $result = chayTruyVanTraVeDL($link, $sql);
+
+                if ($result->num_rows > 0) {
+                    // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
+                    while ($row = $result->fetch_assoc()) {
+                        ?>
+                        <div class="product-item">
+                            <img src="<?php echo $row['image']; ?>" class="img">
+                            <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
+                            <div class="product-info">
+                                <div class="product-name"><?php echo $row['productName']; ?></div>
+                                <div class="product-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
+                                <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                } else {
+                    echo "0 results";
+                }
+                giaiPhongBoNho($link, $result);
+                ?>
+            </div> 
+          
+               <div class="button-container"><button class="SeeAll">Xem tất cả</button></div>
+        </div>
+      </div>
+     
   </body>
 </html>

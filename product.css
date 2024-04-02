@@ -758,20 +758,14 @@
   line-height: 32.5px;
 }
 .header-heading-3-trending-wrapper {
-  position: absolute;
-  top: 0;
-  left: calc(50% - 666.5px);
   width: 1305px;
-  height: 54.3px;
-  display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
   padding: var(--padding-3xs);
-  box-sizing: border-box;
   font-size: var(--font-size-21xl);
   color: var(--color-palevioletred-100);
   font-family: var(--font-lora);
+  margin-bottom: 20px;
 }
 .link,
 .xem-thm {
@@ -1448,3 +1442,110 @@
   color: var(--color-palevioletred-100);
   font-family: var(--oswald-regular-24);
 }
+
+.main-container2 {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 24px;
+}
+
+#menu-container2 {
+  padding: 20px;
+  box-shadow: 0 0 10px #fb6f92;
+}
+
+.top-products {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.product-item {
+  width: calc(20% - 20px); 
+  margin-right: 20px; 
+  border: 2px solid #000000;
+  padding: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  position: relative;
+  box-sizing: border-box; 
+}
+
+.product-item:last-child {
+  margin-right: 0; 
+}
+
+.product-item img {
+  width: 100%;
+  height: 260px;  
+  border-bottom: 2px solid #000000;  
+}
+
+.discount-tag {
+  background-color: #fb6f92;
+  color: #fff;
+  font-family: 'Barlow', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px;
+  position: absolute;
+  top: 17;
+  left: 0;
+}
+
+.product-info {
+  margin-top: 10px;
+  align-items: center;
+  text-align: center; 
+  display: flex;
+  flex-direction: column;
+  color: #212121;
+  font-weight: 700;
+}
+
+.product-name {
+  text-transform: capitalize;
+  text-align: center; 
+  font: 17px Barlow, sans-serif;
+  padding: 10px 25px;
+
+}
+
+.product-category {
+  color: #777;
+  text-transform: capitalize;
+  margin-top: 6px;
+  font: 400 14px Barlow, sans-serif;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
+.product-price {
+  color: #fb6f92;
+  text-align: center;
+  margin-top: 6px;
+  font: 18px/135% Barlow, sans-serif;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; 
+}
+
+.SeeAll {
+  background-color: #fb6f92;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0 36px;
+  font: 500 12px/52px Barlow, sans-serif;
+  border: none;
+  cursor: pointer; 
+}
+
