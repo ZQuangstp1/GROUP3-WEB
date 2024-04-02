@@ -125,71 +125,36 @@
         </div>
       </div>
 
+
+      
       <div class="detail-child">
         <div class="description-parent">
           <div class="description">
-            <div class="description-child"></div>
-            <div class="about-product-cool-container">
-              <span class="about-product-cool-container1">
-                <p class="about-product">ABOUT PRODUCT</p>
-                <p class="cool-off-this">
-                <?php echo $description; ?>
-                </p>
-              </span>
+            <div class="description-child">
+              <div class="about-product-cool-container">
+                <span class="about-product-cool-container1">
+                  <p class="cool-off-this">
+                    <?php echo $description; ?>
+                  </p>
+                </span>
+              </div>
             </div>
-            <div class="advantages-smocked-body-container">
-              <span class="about-product-cool-container1">
-                <p class="about-product">ADVANTAGES</p>
-                <ul class="smocked-body-adjustable-straps">
-                  <li class="smocked-body">
-                    <span>Smocked body</span>
-                  </li>
-                  <li class="smocked-body">
-                    <span>Adjustable straps</span>
-                  </li>
-                  <li>
-                    <span>Scoop neckline</span>
-                  </li>
-                </ul>
-              </span>
-            </div>
-            <div class="shipping-we-offer-container">
-              <span class="about-product-cool-container1">
-                <p class="shipping">SHIPPING</p>
-                <p class="we-offer-free-standard-shippin">
-                  <span>
-                    <span class="we-offer-free"
-                      >We offer Free Standard Shipping for all orders over $75
-                      to the 50 states and the District of
+            <div class="description-child">
+              <div class="shipping-we-offer-container">
+                <span class="about-product-cool-container1">
+                  <p class="shipping">SHIPPING</p>
+                  <p class="we-offer-free-standard-shippin">
+                    <span>
+                      <span class="we-offer-free">
+                        We offer Free Standard Shipping for all orders over $75 to the 50 states and the District of Columbia. The minimum order value must be $75 before taxes, shipping and handling. Shipping fees are non-refundable.
+                      </span>
+                      <span class="columbia-the-minimum">
+                        Please allow up to 2 business days (excluding weekends, holidays, and sale days) to process your order. Processing Time + Shipping Time = Delivery Time.
+                      </span>
                     </span>
-                    <span class="columbia-the-minimum"
-                      >Columbia. The minimum order value must be $75 before
-                      taxes, shipping and handling. Shipping fees are
-                      non-refundable.</span
-                    >
-                  </span>
-                </p>
-                <p class="about-product">
-                  <span>
-                    <span class="columbia-the-minimum">&nbsp;</span>
-                  </span>
-                </p>
-                <p class="about-product">
-                  <span>
-                    <span class="columbia-the-minimum"
-                      >Please allow up to 2 business days (excluding weekends,
-                      holidays, and sale days) to process your order.</span
-                    >
-                  </span>
-                </p>
-                <p class="about-product">
-                  <span>
-                    <span class="columbia-the-minimum"
-                      >Processing Time + Shipping Time = Delivery Time</span
-                    >
-                  </span>
-                </p>
-              </span>
+                  </p>
+                </span>
+              </div>
             </div>
           </div>
           <div class="tab">

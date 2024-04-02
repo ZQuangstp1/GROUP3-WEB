@@ -400,9 +400,7 @@
   width: 1018.9px;
   height: 274.6px;
 }
-.about-product {
-  margin: 0;
-}
+
 .cool-off-this {
   margin: 0;
   font-family: var(--font-roboto);
@@ -419,7 +417,9 @@
   align-items: center;
   width: 451px;
   height: 61.1px;
+  margin-top: 20px;
 }
+
 .smocked-body {
   margin-bottom: 0;
 }
