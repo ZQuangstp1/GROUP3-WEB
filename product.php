@@ -30,6 +30,31 @@
 
 
   <body>
+  <?php
+        require_once "db_module.php";
+        $link = null;
+        taoKetNoi($link);
+        
+        // Kiểm tra xem ID sản phẩm đã được truyền qua URL hay chưa
+        if(isset($_GET['product_id'])) {
+            // Kết nối đến cơ sở dữ liệu và thực hiện truy vấn
+            $productId = $_GET['product_id'];
+            $sql = "SELECT * FROM product WHERE productID = '$productId'"; 
+            $result = chayTruyVanTraVeDL($link, $sql);
+            if ($result->num_rows > 0) {
+              // Lấy dữ liệu từ kết quả truy vấn
+              $row = $result->fetch_assoc();
+              $unitPrice = $row['unitPrice'];
+              $description = $row['description'];
+              $productName = $row['ProductName'];
+              $image = $row['image'];
+            giaiPhongBoNho($link, $result);
+        } else {
+            echo "Không có ID sản phẩm được cung cấp!";
+        }
+      }
+ ?>
+
     <div class="detail">
       <div class="detail-inner">
         <div class="add-to-bag-parent">
@@ -64,10 +89,10 @@
               <span class="details">Details</span>
             </div>
           </div>
-          <div class="vng-tay-i">Bộ vòng tay đôi đính đá</div>
+          <div class="vng-tay-i"><?php echo $productName; ?></div>
           <div class="tng-tin-parent">
             <div class="tng-tin">TỔNG TIỀN</div>
-            <div class="vnd">900.000 VND</div>
+            <div class="vnd"><?php echo $unitPrice; ?></div>
           </div>
           <div class="s-lng-parent">
             <div class="s-lng">SỐ LƯỢNG</div>
@@ -89,10 +114,10 @@
           <div class="star">
             <img class="star-child" alt="" src="./public/group-929.svg" />
           </div>
-          <img class="image-4-icon" alt="" src="./public/image-4@2x.png" />
+          <img class="image-4-icon" alt="" src="<?php echo $image; ?>" />
 
           <div class="active"></div>
-          <img class="image-8-icon" alt="" src="./public/image-8@2x.png" />
+          <img class="image-8-icon" alt="" src="<?php echo $image; ?>" />
 
           <img class="zoom-image-icon" alt="" src="./public/zoom-image.svg" />
 
@@ -108,10 +133,7 @@
               <span class="about-product-cool-container1">
                 <p class="about-product">ABOUT PRODUCT</p>
                 <p class="cool-off-this">
-                  Cool off this summer in the Mini Ruffle Smocked Tank Top from
-                  our very own LA Hearts. This tank features a smocked body,
-                  adjustable straps, scoop neckline, ruffled hems, and a cropped
-                  fit.
+                <?php echo $description; ?>
                 </p>
               </span>
             </div>

@@ -169,6 +169,7 @@
             if ($apply_filters == '0') {
               $sql = "SELECT 
                       p.productName,
+                      p.productID,
                       CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
                       p.image,
                       CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
@@ -243,6 +244,7 @@
             // Xây dựng câu truy vấn SQL với điều kiện WHERE được xây dựng từ form
             $sql = "SELECT 
                 p.productName,
+                p.productID,
                 CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
                 p.image,
                 CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
@@ -289,27 +291,28 @@
                     Tìm thấy <?php echo $num_items; ?> sản phẩm
                 </p>
             </div>
-       
-       <?php 
-          if ($result && mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                ?>         
-                <div class="product-info d-block">
-                    <?php if (!empty($row['discountPercentage'])) { ?>
-                        <div class="product-discount"><?php echo $row['discountPercentage']; ?></div>
-                    <?php } ?>
-                    <img src="<?php echo $row['image']; ?>" alt="" />
-                    <div class="product-content">
-                        <p class="text-center product-title"><?php echo $row['productName']; ?></p>
-                        <p class="text-center product-desc"><?php echo $row['subcategoryName'] . ' | ' . $row['categoryName']; ?></p>
-                        <p class="text-center product-price"><?php echo $row['formattedUnitPrice']; ?></p>
-                    </div>
-                </div>
-                <?php
+
+            <?php 
+            if ($result && mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    ?>         
+                    <a href="product.php?product_id=<?php echo $row['productID']; ?>" class="product-info d-block" style="text-decoration: none; color: inherit;">
+                        <?php if (!empty($row['discountPercentage'])) { ?>
+                            <div class="product-discount"><?php echo $row['discountPercentage']; ?></div>
+                        <?php } ?>
+                        <img src="<?php echo $row['image']; ?>" alt="" />
+                        <div class="product-content">
+                            <p class="text-center product-title"><?php echo $row['productName']; ?></p>
+                            <p class="text-center product-desc"><?php echo $row['subcategoryName'] . ' | ' . $row['categoryName']; ?></p>
+                            <p class="text-center product-price"><?php echo $row['formattedUnitPrice']; ?></p>
+                        </div>
+                    </a>
+                    <?php
+                }
             }
-        }
-        }
-        ?>
+          }
+          giaiPhongBoNho($link, $result)
+            ?>
     </div>
 </div>
 
