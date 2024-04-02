@@ -1,10 +1,3 @@
-<?php
-require_once "db_module.php";
-$link = null;
-taoKetNoi($link);
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +9,11 @@ taoKetNoi($link);
     
 </head>
 <body>
+    <?php
+        require_once "db_module.php";
+        $link = null;
+        taoKetNoi($link);
+    ?>
 <form action="?opt=applyFilters" method="POST">
     <div class="container">
         <div class="head-content">
@@ -148,34 +146,17 @@ taoKetNoi($link);
                 </form>
             </div>
 
-<!-- Hiển thị sản phẩm -->
-<div class="head-content__product-list">
-    <!-- Hiển thị số sản phẩm tìm thấy -->
-    <div class="row">
-    <div class="col-6 px-0" style="margin-top: 20px;"> 
-            <p>
-            <?php 
-            if ($result && mysqli_num_rows($result) > 0) {
-            ?>
-                Tìm thấy <?php echo $num_items; ?> sản phẩm
-            <?php
-            } // Close the if statement
-            ?>
-            </p>
-        </div>
-
-        <!-- Dropdown sắp xếp -->
-        <div class="col-md-6 d-flex justify-content-end">
-        <div class="d-flex">
-            <select class="form-select me-3" aria-label="Default select example" name="sort_order" style="width: 353px">
-                <option value="p.unitPrice ASC">Giá (Tăng dần)</option>
-                <option value="p.unitPrice DESC">Giá (Giảm dần)</option>
-            </select>
-            <select class="form-select" aria-label="Default select example" name="sort_by" style="width: 353px">
-                <option value="p.productName ASC">Tên sản phẩm (A-Z)</option>
-                <option value="p.productName DESC">Tên sản phẩm (Z-A)</option>
-            </select>
-        </div>
+    <!-- Hiển thị dropdown để sort-->
+    <div class="head-content__product-list">
+    <div class="sort-dropdown-wrapper">
+        <select class="form-select" aria-label="Default select example" name="sort_order">
+            <option value="p.unitPrice ASC">Giá (Tăng dần)</option>
+            <option value="p.unitPrice DESC">Giá (Giảm dần)</option>
+        </select>
+        <select class="form-select" aria-label="Default select example" name="sort_by">
+            <option value="p.productName ASC">Tên sản phẩm (A-Z)</option>
+            <option value="p.productName DESC">Tên sản phẩm (Z-A)</option>
+        </select>
     </div>
     <!-- Hiển thị danh sách sản phẩm -->
     <div class="product-container row d-flex flex-wrap mt-3">
@@ -281,24 +262,38 @@ taoKetNoi($link);
             AND p.status = 'Còn hàng'
             ORDER BY $sortOrder, $sortBy";
             $result = chayTruyVanTraVeDL($link, $sql);
-
-            $countSql = "SELECT COUNT(*) AS num_items FROM product p
-                            JOIN subcategory sc ON p.subcategoryID = sc.subcategoryID
-                            JOIN category c ON sc.categoryID = c.categoryID
-                            JOIN discount d ON p.discountID = d.discountID
-                            WHERE 1=1 $whereClause AND p.status = 'Còn hàng'";
-            $countResult = chayTruyVanTraVeDL($link, $countSql);
-            if ($countResult && mysqli_num_rows($countResult) > 0) {
-                $row = mysqli_fetch_assoc($countResult);
-                $num_items = $row['num_items'];
-            } else {
-                $num_items = 0;
-            }
+           
           }
 
+            $sql = "SELECT 
+                        COUNT(*) AS num_items
+                    FROM 
+                        product p
+                    JOIN
+                        subcategory sc ON p.subcategoryID = sc.subcategoryID
+                    JOIN
+                        category c ON sc.categoryID = c.categoryID
+                    JOIN
+                        discount d ON p.discountID = d.discountID
+                    WHERE 
+                        1=1
+                        $whereClause
+                        AND p.status = 'Còn hàng'";
+            $result_count = chayTruyVanTraVeDL($link, $sql);
+            $row_count = mysqli_fetch_assoc($result_count);
+            $num_items = $row_count['num_items'];
+          ?> 
+       
+            <div style="margin-top: 20px;"> 
+                <p>    
+                    Tìm thấy <?php echo $num_items; ?> sản phẩm
+                </p>
+            </div>
+       
+       <?php 
           if ($result && mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                ?>
+                ?>         
                 <div class="product-info d-block">
                     <?php if (!empty($row['discountPercentage'])) { ?>
                         <div class="product-discount"><?php echo $row['discountPercentage']; ?></div>

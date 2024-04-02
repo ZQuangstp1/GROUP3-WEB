@@ -40,8 +40,8 @@ button {
 }
 
 .form-check-input:checked {
-  background-color: #000000;
-  border-color: #000000;
+  background-color: #fb6f92;
+  border-color: #fb6f92;
 }
 
 .form-check-input[type="checkbox"] {
@@ -117,6 +117,23 @@ button {
   font-size: 15px;
   align-items: center;
 }
+
+.sort-dropdowns {
+  display: flex;
+  justify-content: flex-end; /* căn chỉnh sang phải */
+  align-items: center; /* căn chỉnh các phần tử vào giữa theo chiều dọc */
+  margin-right: 20px; /* khoảng cách từ lề phải của trang */
+}
+
+.sort-dropdown-wrapper {
+  display: flex;
+  justify-content: flex-end; /* Căn chỉnh sang phải */
+}
+
+.sort-dropdown-wrapper select {
+  margin-left: 10px; /* Khoảng cách giữa hai dropdown */
+}
+
 /* product */
 
 product-container {
@@ -133,6 +150,11 @@ product-container {
   padding: 0px 0 0 0;
   position: relative;
   margin-right: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.product-info:hover {
+  border-color: #fb6f92; 
 }
 
 
@@ -145,6 +167,11 @@ product-container {
 .product-content {
   padding-top: 10px;
   border-top: 2px solid #000000;
+  transition: border-color 0.3s ease;
+}
+
+.product-content:hover {
+  border-top-color: #fb6f92; 
 }
 
 .product-content .product-title {
