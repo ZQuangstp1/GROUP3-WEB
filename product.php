@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
+    <script type="text/javascript" src="script.js" language="JavaScript">
+    </script>
     <link rel="stylesheet" href="./global.css" />
     <link rel="stylesheet" href="./product.css" />
     <link
@@ -28,9 +30,9 @@
     />
   </head>
 
-
   <body>
-  <?php
+  
+<?php
         require_once "db_module.php";
         $link = null;
         taoKetNoi($link);
@@ -46,22 +48,142 @@
               $row = $result->fetch_assoc();
               $unitPrice = $row['unitPrice'];
               $description = $row['description'];
-              $productName = $row['ProductName'];
+              $productName = $row['productName'];
               $image = $row['image'];
             giaiPhongBoNho($link, $result);
         } else {
             echo "Không có ID sản phẩm được cung cấp!";
         }
       }
- ?>
-
+ ?>  
+<!-- PHẦN: Thông tin về sản phẩm --> 
     <div class="detail">
       <div class="detail-inner">
         <div class="add-to-bag-parent">
-          <div class="add-to-bag">
-            <div class="rectangle"></div>
-            <div class="add-to-bag1">THÊM VÀO GIỎ HÀNG</div>
+<!--Thông tin chính sản phẩm -->        
+          <div class="tieu-de"><?php echo $productName; ?></div>
+          <div class="tng-tin-parent">
+            <div class="tng-tin">TỔNG TIỀN</div>
+            <div class="vnd"><?php echo round ($unitPrice);?> VND</div>
           </div>
+
+<!--Chọn số lượng -->
+          <div class="s-lng-parent">
+            <div class="s-lng">SỐ LƯỢNG</div>
+            <div class="qty">
+              <div class="qty-child"></div>
+                <button class="btn-minus">
+                  <div class="qty-item">
+                  </div>
+                </button>
+              <div class="rectangle-parent">
+                <button class="btn-plus">
+                <div class="group-child"></div>
+                <div class="group-item"></div>
+                </button>
+              </div>
+              <div class="div">
+                <input type="number" class="input-quantity" value="1" min="1">
+              </div>
+            </div>
+          </div>
+              
+<!--Nút giỏ hàng -->
+          <div class="add-to-bag" id="add-to-bag">
+            <div class="rectangle"></div>
+            <button class="add-to-bag1" id="add-to-cart-btn">THÊM VÀO GIỎ HÀNG</button>
+          </div>
+          <div class="popup" id="popup">
+            <span class="popup-message">Thêm vào giỏ hàng thành công!</span>
+          </div>
+
+<!--Lưu sp vào cookies-->
+    <script>
+    document.getElementById("add-to-cart-btn").addEventListener("click", function() {
+      // Lấy thông tin sản phẩm
+      var productName = document.querySelector(".tieu-de").textContent;
+      var productPrice = document.querySelector(".vnd").textContent;
+      var quantity = parseInt(document.querySelector(".input-quantity").value);
+
+      // Tạo đối tượng sản phẩm
+      var productInfo = {
+        name: productName,
+        price: productPrice,
+        quantity: quantity
+      };
+
+      // Lấy danh sách sản phẩm từ cookies (nếu có)
+      var cart = JSON.parse(getCookie("cart")) || [];
+
+      // Thêm sản phẩm vào danh sách
+      cart.push(productInfo);
+
+      // Lưu danh sách sản phẩm mới vào cookies
+      setCookie("cart", JSON.stringify(cart), 1); // Lưu trong 1 ngày
+
+      // Hiển thị thông báo thành công
+      document.getElementById("popup").style.display = "block";
+
+      // Sau 2 giây, ẩn thông báo
+      setTimeout(function() {
+        document.getElementById("popup").style.display = "none";
+      }, 2000);
+    });
+
+    // Hàm lấy cookie
+    function getCookie(name) {
+      var value = "; " + document.cookie;
+      var parts = value.split("; " + name + "=");
+      if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+
+
+    // Hàm kiểm tra cookie
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        while (cookie.charAt(0) == ' ') {
+          cookie = cookie.substring(1, cookie.length);
+        }
+        if (cookie.indexOf(nameEQ) == 0) {
+          return decodeURIComponent(cookie.substring(nameEQ.length, cookie.length));
+        }
+      }
+      return null;
+    }
+
+    // Hàm thiết lập cookie
+    function setCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+    }
+
+    // Sử dụng hàm kiểm tra cookie
+    var cart = getCookie("cart");
+    if (cart) {
+      console.log("Đã tìm thấy cookie 'cart':", cart);
+    } else {
+      console.log("Không tìm thấy cookie 'cart'");
+    }
+
+    // Sử dụng hàm thiết lập cookie
+    var exampleData = { product: "Bộ vòng tay", quantity: 2 };
+    setCookie("cart", JSON.stringify(exampleData), 1); // Lưu trong 1 ngày
+    console.log("Cookie 'cart' đã được thiết lập.");
+    </script>
+
+
+
+
+
+<!--Nút thích -->
           <div class="save-button">
             <div class="rectangle1"></div>
             <img
@@ -70,91 +192,102 @@
               src="./public/heartoutline.svg"
             />
           </div>
-          <div class="thch">THÍCH</div>
+          <div class="thich">THÍCH</div>
+
+<!--Phí vận chuyển -->
           <div class="frame-parent">
             <img class="frame-icon" alt="" src="./public/frame.svg" />
-
-            <div class="ph-vn-chuyn">Phí vận chuyển</div>
+            <div class="phi-van-chuyen">Phí vận chuyển</div>
             <div class="enter-your-postal">
               Enter your Postal code for Delivery Availability
             </div>
           </div>
+
           <div class="line"></div>
+<!--Chính sách đổi trả -->          
           <div class="frame-group">
             <img class="frame-icon1" alt="" src="./public/frame1.svg" />
-
-            <div class="chnh-sch-i">Chính sách đổi trả</div>
+            <div class="chinh-sach">Chính sách đổi trả</div>
             <div class="free-30-days-container">
               Free 30 days Delivery Return.
               <span class="details">Details</span>
             </div>
           </div>
-          <div class="vng-tay-i"><?php echo $productName; ?></div>
-          <div class="tng-tin-parent">
-            <div class="tng-tin">TỔNG TIỀN</div>
-            <div class="vnd"><?php echo $unitPrice; ?></div>
-          </div>
-          <div class="s-lng-parent">
-            <div class="s-lng">SỐ LƯỢNG</div>
-            <div class="qty">
-              <div class="qty-child"></div>
-              <div class="qty-item"></div>
-              <div class="rectangle-parent">
-                <div class="group-child"></div>
-                <div class="group-item"></div>
-              </div>
-              <div class="div">1</div>
-            </div>
-          </div>
+
+<!--Thanh địa chỉ nhỏ-->
           <div class="stylum-text">
             <div class="rectangle2"></div>
             <div class="stylum">STYLUM</div>
           </div>
+
           <div class="xem-nh-gi">Xem Đánh giá (27)</div>
           <div class="star">
             <img class="star-child" alt="" src="./public/group-929.svg" />
           </div>
+          <img class="image-4-icon" alt="" src="./public/image-4@2x.png" />
           <img class="image-4-icon" alt="" src="<?php echo $image; ?>" />
 
           <div class="active"></div>
+          <img class="image-8-icon" alt="" src="./public/image-8@2x.png" />
           <img class="image-8-icon" alt="" src="<?php echo $image; ?>" />
 
           <img class="zoom-image-icon" alt="" src="./public/zoom-image.svg" />
 
-          <div class="vng-tay-i1">Home / Stellar Dainty Diamond Hoop</div>
+          <div class="breadcrumb">Home / <?php echo $productName; ?></div>
         </div>
       </div>
 
-
-      
+<!-- PHẦN: Mô tả và đánh giá về sản phẩm --> 
+<!--Mô tả sản phẩm -->
       <div class="detail-child">
         <div class="description-parent">
           <div class="description">
-            <div class="description-child">
-              <div class="about-product-cool-container">
-                <span class="about-product-cool-container1">
-                  <p class="cool-off-this">
-                    <?php echo $description; ?>
-                  </p>
-                </span>
-              </div>
+            <div class="description-child"></div>
+            <div class="about-product-cool-container">
+              <span class="about-product-cool-container1">
+                <br>
+                <br>
+                <br>
+                <br>
+                <p class="about-product">VỀ SẢN PHẨM</p>
+                <br>
+                <p class="cool-off-this">
+                <?php echo $description; ?>
+                </p>
+              </span>
             </div>
-            <div class="description-child">
-              <div class="shipping-we-offer-container">
-                <span class="about-product-cool-container1">
-                  <p class="shipping">SHIPPING</p>
-                  <p class="we-offer-free-standard-shippin">
-                    <span>
-                      <span class="we-offer-free">
-                        We offer Free Standard Shipping for all orders over $75 to the 50 states and the District of Columbia. The minimum order value must be $75 before taxes, shipping and handling. Shipping fees are non-refundable.
-                      </span>
-                      <span class="columbia-the-minimum">
-                        Please allow up to 2 business days (excluding weekends, holidays, and sale days) to process your order. Processing Time + Shipping Time = Delivery Time.
-                      </span>
+
+            <div class="shipping-we-offer-container">
+              <span class="about-product-cool-container1">
+                <p class="shipping">VẬN CHUYỂN</p>
+                <br>
+                <p class="we-offer-free-standard-shippin">
+                  <span>
+                    <span class="we-offer-free"
+                      >Chúng tôi cung cấp miễn phí vận chuyển tiêu chuẩn cho tất cả các đơn hàng trong khu vực nội thành Hồ Chí Minh. Giá trị đơn hàng tối thiểu phải là 2,000,000 VND trước thuế, vận chuyển và xử lý. Các phí vận chuyển thì không được hoàn lại.
                     </span>
-                  </p>
-                </span>
-              </div>
+                  </span>
+                </p>
+                <p class="about-product">
+                  <span>
+                    <span class="columbia-the-minimum">&nbsp;</span>
+                  </span>
+                </p>
+                <p class="about-product">
+                  <span>
+                    <span class="columbia-the-minimum"
+                      >Vui lòng chờ tối đa 2 ngày làm việc (không bao gồm cuối tuần, ngày lễ và ngày bán hàng) để xử lý đơn đặt hàng của bạn.</span
+                    >
+                  </span>
+                </p>
+                <p class="about-product">
+                  <span>
+                    <span class="columbia-the-minimum"
+                      >Thời gian xử lý + Thời gian vận chuyển = Thời gian giao hàng</span
+                    >
+                  </span>
+                </p>
+              </span>
             </div>
           </div>
           <div class="tab">
@@ -165,17 +298,7 @@
         </div>
       </div>
 
-      <div class="other-information-wrapper">
-        <div class="other-information">
-          <div class="other-information-child"></div>
-          <div class="frame">
-            <div class="frame-child"></div>
-            <div class="frame-item"></div>
-          </div>
-          <div class="thng-tin-thm">Thông tin thêm</div>
-        </div>
-      </div>
-
+<!--Phần đánh giá -->  
       <div class="detail-inner1">
         <div class="group-wrapper">
           <div class="group-wrapper">
@@ -280,7 +403,7 @@
                         src="./public/vuesaxlinearlike.svg"
                       />
                     </div>
-                    <div class="greate-product">Greate Product</div>
+                    <div class="greate-product">Sản phẩm có mẫu mã đẹp</div>
                     <div class="head">
                       <div class="star-parent">
                         <img
@@ -290,7 +413,7 @@
                         />
 
                         <div class="ngy-trc">3 ngày trước</div>
-                        <div class="nicolas-cage">Nicolas cage</div>
+                        <div class="nicolas-cage">Bảo Uyên</div>
                       </div>
                     </div>
                   </div>
@@ -304,7 +427,7 @@
                         src="./public/vuesaxlinearlike.svg"
                       />
                     </div>
-                    <div class="greate-product">Greate Product</div>
+                    <div class="greate-product">Sản phẩm đẹp</div>
                     <div class="head">
                       <div class="star-parent">
                         <img
@@ -313,8 +436,8 @@
                           src="./public/star6.svg"
                         />
 
-                        <div class="ngy-trc">3 ngày trước</div>
-                        <div class="nicolas-cage">Nicolas cage</div>
+                        <div class="ngy-trc">10 ngày trước</div>
+                        <div class="nicolas-cage">Quang Huy</div>
                       </div>
                     </div>
                   </div>
@@ -325,14 +448,22 @@
                 </div>
               </div>
               <div class="form-parent">
+
+      <!-- Viết đánh giá-->
                 <div class="form">
                   <div class="div20">
                     <div class="child11"></div>
-                    <div class="great-products">Great Products</div>
-                    <div class="review-title">Review Title</div>
+            
+                    <div class="great-products">
+                      <input type="text" id="input" placeholder="Great Products" />
+                      <br>
+                      <br>
+                      <button type="button" name="button" id="comment">Đánh giá</button>
+                    </div>
+                    <div class="review-title">Nội dung đánh giá</div>
                   </div>
                   <div class="star1">
-                    <div class="what-is-it">What is it like to Product?</div>
+                    <div class="what-is-it">Sản phẩm như thế nào?</div>
                     <img class="star-icon8" alt="" src="./public/star7.svg" />
                   </div>
                 </div>
@@ -342,65 +473,106 @@
           </div>
         </div>
       </div>
-    </div>
-      <div class="group-div">
-        <div class="frame-container">
-          <div id="menu-container2" class="animate-on-scroll">
-          <div class="header-heading-3-trending-wrapper">
-            <div class="header-heading">SẢN PHẨM TƯƠNG TỰ</div>
+      
+<!--Thông tin thêm -->
+      <div class="other-information-wrapper">
+        <div class="other-information">
+          <div class="other-information-child"></div>
+          <div class="frame">
+            <div class="frame-child"></div>
+            <div class="frame-item"></div>
           </div>
-            <div class="top-products">
-                <?php
-                require_once "db_module.php";
-                $link = null;
-                taoKetNoi($link);
-
-                $sql = "SELECT 
-                    p.productName,
-                    CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
-                    p.image,
-                    CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
-                    c.categoryName,
-                    sc.subcategoryName
-                FROM 
-                    product p
-                JOIN
-                    subcategory sc ON p.subcategoryID = sc.subcategoryID
-                JOIN
-                    category c ON sc.categoryID = c.categoryID
-                JOIN
-                    discount d ON p.discountID = d.discountID
-                WHERE 
-                    d.discountID IS NOT NULL
-                LIMIT 5";
-
-                $result = chayTruyVanTraVeDL($link, $sql);
-
-                if ($result->num_rows > 0) {
-                    // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
-                    while ($row = $result->fetch_assoc()) {
-                        ?>
-                        <div class="product-item">
-                            <img src="<?php echo $row['image']; ?>" class="img">
-                            <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
-                            <div class="product-info">
-                                <div class="product-name"><?php echo $row['productName']; ?></div>
-                                <div class="product-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
-                                <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
-                            </div>
-                        </div>
-                    <?php
-                    }
-                } else {
-                    echo "0 results";
-                }
-                giaiPhongBoNho($link, $result);
-                ?>
-            </div> 
-          
-               <div class="button-container"><button class="SeeAll">Xem tất cả</button></div>
+          <div class="thng-tin-thm">Thông tin thêm</div>
         </div>
       </div>
-     
+
+<!--Sản phẩm mới -->
+      <div class="group-div">
+        <div class="frame-container">
+          <div class="parent">
+           <!-- Copy sản phẩm giảm giá-->
+            <?php   
+              require_once "db_module.php";
+
+              $link = null;
+              taoKetNoi($link);
+                //Tạo kết nối vào CSDL
+                  $sql = "SELECT 
+                        p.productName,
+                        p.description,
+                        p.image,
+                        sc.subcategoryName
+                    FROM 
+                        product p
+                    JOIN
+                        subcategory sc ON p.subcategoryID = sc.subcategoryID        
+                        LIMIT 1";
+
+            $result = chayTruyVanTraVeDL($link,$sql);
+            giaiPhongBoNho($link, $result);
+            ?>
+
+            <div id="menu-container2" class="animate-on-scroll">
+                <div class="top-products">
+                    <?php
+                    require_once "db_module.php";
+                    $link = null;
+                    taoKetNoi($link);
+
+                    $sql = "SELECT 
+                        p.productName,
+                        CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+                        p.image,
+                        CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+                        c.categoryName,
+                        sc.subcategoryName
+                    FROM 
+                        product p
+                    JOIN
+                        subcategory sc ON p.subcategoryID = sc.subcategoryID
+                    JOIN
+                        category c ON sc.categoryID = c.categoryID
+                    JOIN
+                        discount d ON p.discountID = d.discountID
+                    WHERE 
+                        d.discountID IS NOT NULL
+                    LIMIT 5";
+
+                    $result = chayTruyVanTraVeDL($link, $sql);
+
+                    if ($result->num_rows > 0) {
+                        // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+                            <div class="product-item">
+                                <img src="<?php echo $row['image']; ?>" class="img">
+                                <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
+                                <div class="product-info">
+                                    <div class="product-name"><?php echo $row['productName']; ?></div>
+                                    <div class="product-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
+                                    <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    giaiPhongBoNho($link, $result);
+                    ?>
+                </div>
+                <div class="button-container"><button class="SeeAll">Xem thêm</button></div>
+            </div> 
+          </div>
+          <div class="header-heading-3-trending-wrapper">
+            <div class="header-heading">Sản phẩm mới</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!--FOOTER -->
+  <?php require "footer.php"; ?>
   </body>
 </html>
