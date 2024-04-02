@@ -1,471 +1,321 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="product-list.css" rel="stylesheet">
+    
+</head>
+<body>
+    <?php
+        require_once "db_module.php";
+        $link = null;
+        taoKetNoi($link);
+    ?>
+<form action="?opt=applyFilters" method="POST">
+    <div class="container">
+        <div class="head-content">
+            <!-- Sidebar -->
+            <div class="head-content__sidebar">
+                <!-- Danh mục -->
+                <div class="sidebar-section" style="margin-top: 50px;">
+                    <button type="button" class="sidebar-title" onclick="toggleFilter('category')">- Danh mục</button>
+                    <div class="filter-content collapsed" id="category">
+                        <?php
+                        $sql = "SELECT * FROM Category"; // Truy vấn để lấy danh sách các danh mục
+                        $result = chayTruyVanTraVeDL($link, $sql);
 
-    <link rel="stylesheet" href="./global.css" />
-    <link rel="stylesheet" href="./index.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Baloo Bhaina 2:wght@400;500;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap"
-    />
-  </head>
-
-
-  <body>
-    <div class="detail">
-      <div class="detail-inner">
-        <div class="add-to-bag-parent">
-          <div class="add-to-bag">
-            <div class="rectangle"></div>
-            <div class="add-to-bag1">THÊM VÀO GIỎ HÀNG</div>
-          </div>
-          <div class="save-button">
-            <div class="rectangle1"></div>
-            <img
-              class="heart-outline-icon"
-              alt=""
-              src="./public/heartoutline.svg"
-            />
-          </div>
-          <div class="thch">THÍCH</div>
-          <div class="frame-parent">
-            <img class="frame-icon" alt="" src="./public/frame.svg" />
-
-            <div class="ph-vn-chuyn">Phí vận chuyển</div>
-            <div class="enter-your-postal">
-              Enter your Postal code for Delivery Availability
-            </div>
-          </div>
-          <div class="line"></div>
-          <div class="frame-group">
-            <img class="frame-icon1" alt="" src="./public/frame1.svg" />
-
-            <div class="chnh-sch-i">Chính sách đổi trả</div>
-            <div class="free-30-days-container">
-              Free 30 days Delivery Return.
-              <span class="details">Details</span>
-            </div>
-          </div>
-          <div class="vng-tay-i">Bộ vòng tay đôi đính đá</div>
-          <div class="tng-tin-parent">
-            <div class="tng-tin">TỔNG TIỀN</div>
-            <div class="vnd">900.000 VND</div>
-          </div>
-          <div class="s-lng-parent">
-            <div class="s-lng">SỐ LƯỢNG</div>
-            <div class="qty">
-              <div class="qty-child"></div>
-              <div class="qty-item"></div>
-              <div class="rectangle-parent">
-                <div class="group-child"></div>
-                <div class="group-item"></div>
-              </div>
-              <div class="div">1</div>
-            </div>
-          </div>
-          <div class="stylum-text">
-            <div class="rectangle2"></div>
-            <div class="stylum">STYLUM</div>
-          </div>
-          <div class="xem-nh-gi">Xem Đánh giá (27)</div>
-          <div class="star">
-            <img class="star-child" alt="" src="./public/group-929.svg" />
-          </div>
-          <img class="image-4-icon" alt="" src="./public/image-4@2x.png" />
-
-          <div class="active"></div>
-          <img class="image-8-icon" alt="" src="./public/image-8@2x.png" />
-
-          <img class="zoom-image-icon" alt="" src="./public/zoom-image.svg" />
-
-          <div class="vng-tay-i1">Home / Stellar Dainty Diamond Hoop</div>
-        </div>
-      </div>
-
-      <div class="detail-child">
-        <div class="description-parent">
-          <div class="description">
-            <div class="description-child"></div>
-            <div class="about-product-cool-container">
-              <span class="about-product-cool-container1">
-                <p class="about-product">ABOUT PRODUCT</p>
-                <p class="cool-off-this">
-                  Cool off this summer in the Mini Ruffle Smocked Tank Top from
-                  our very own LA Hearts. This tank features a smocked body,
-                  adjustable straps, scoop neckline, ruffled hems, and a cropped
-                  fit.
-                </p>
-              </span>
-            </div>
-            <div class="advantages-smocked-body-container">
-              <span class="about-product-cool-container1">
-                <p class="about-product">ADVANTAGES</p>
-                <ul class="smocked-body-adjustable-straps">
-                  <li class="smocked-body">
-                    <span>Smocked body</span>
-                  </li>
-                  <li class="smocked-body">
-                    <span>Adjustable straps</span>
-                  </li>
-                  <li>
-                    <span>Scoop neckline</span>
-                  </li>
-                </ul>
-              </span>
-            </div>
-            <div class="shipping-we-offer-container">
-              <span class="about-product-cool-container1">
-                <p class="shipping">SHIPPING</p>
-                <p class="we-offer-free-standard-shippin">
-                  <span>
-                    <span class="we-offer-free"
-                      >We offer Free Standard Shipping for all orders over $75
-                      to the 50 states and the District of
-                    </span>
-                    <span class="columbia-the-minimum"
-                      >Columbia. The minimum order value must be $75 before
-                      taxes, shipping and handling. Shipping fees are
-                      non-refundable.</span
-                    >
-                  </span>
-                </p>
-                <p class="about-product">
-                  <span>
-                    <span class="columbia-the-minimum">&nbsp;</span>
-                  </span>
-                </p>
-                <p class="about-product">
-                  <span>
-                    <span class="columbia-the-minimum"
-                      >Please allow up to 2 business days (excluding weekends,
-                      holidays, and sale days) to process your order.</span
-                    >
-                  </span>
-                </p>
-                <p class="about-product">
-                  <span>
-                    <span class="columbia-the-minimum"
-                      >Processing Time + Shipping Time = Delivery Time</span
-                    >
-                  </span>
-                </p>
-              </span>
-            </div>
-          </div>
-          <div class="tab">
-            <div class="line1"></div>
-            <div class="active-line"></div>
-            <div class="m-t">MÔ TẢ</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="other-information-wrapper">
-        <div class="other-information">
-          <div class="other-information-child"></div>
-          <div class="frame">
-            <div class="frame-child"></div>
-            <div class="frame-item"></div>
-          </div>
-          <div class="thng-tin-thm">Thông tin thêm</div>
-        </div>
-      </div>
-
-
-      <div class="group-div">
-        <div class="frame-container">
-          <div class="parent">
-            <div class="div1">
-              <div class="inner">
-                <div class="image-parent">
-                  <img class="image-icon" alt="" src="./public/image@2x.png" />
-
-                  <div class="offer">
-                    <div class="div2">-30%</div>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-div">
-                <div class="kt-yellow-gold-diamond-hoop-wrapper">
-                  <b class="kt-yellow-gold">14KT Yellow Gold Diamond Hoop..</b>
-                </div>
-                <div class="women-earrings-wrapper">
-                  <div class="kt-yellow-gold">Women | Earrings</div>
-                </div>
-                <div class="price-and-offer">
-                  <b class="rs-455400">Rs. 4,554.00</b>
-                </div>
-              </div>
-            </div>
-
-            <div class="div3">
-              <div class="inner">
-                <div class="image-parent">
-                  <img class="image-icon" alt="" src="./public/image1@2x.png" />
-
-                  <div class="offer1">
-                    <div class="div2">-30%</div>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-div">
-                <div class="kt-yellow-gold-diamond-hoop-wrapper">
-                  <b class="kt-yellow-gold">14KT Yellow Gold Diamond Hoop..</b>
-                </div>
-                <div class="women-earrings-wrapper">
-                  <div class="kt-yellow-gold">Women | Earrings</div>
-                </div>
-                <div class="price-and-offer">
-                  <b class="rs-455400">Rs. 4,554.00</b>
-                </div>
-              </div>
-            </div>
-
-            <div class="div3">
-              <div class="inner">
-                <div class="image-parent">
-                  <img class="image-icon" alt="" src="./public/image2@2x.png" />
-
-                  <div class="offer2">
-                    <div class="div2">-30%</div>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-div">
-                <div class="kt-yellow-gold-diamond-hoop-wrapper">
-                  <b class="kt-yellow-gold">14KT Yellow Gold Diamond Hoop..</b>
-                </div>
-                <div class="women-earrings-wrapper">
-                  <div class="kt-yellow-gold">Women | Earrings</div>
-                </div>
-                <div class="price-and-offer">
-                  <b class="rs-455400">Rs. 4,554.00</b>
-                </div>
-              </div>
-            </div>
-
-            <div class="div3">
-              <div class="inner">
-                <div class="image-parent1">
-                  <img
-                    class="image-icon3"
-                    alt=""
-                    src="./public/image3@2x.png"
-                  />
-
-                  <div class="offer3">
-                    <div class="div2">-30%</div>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-div">
-                <div class="kt-yellow-gold-diamond-hoop-wrapper">
-                  <b class="kt-yellow-gold">14KT Yellow Gold Diamond Hoop..</b>
-                </div>
-                <div class="women-earrings-wrapper">
-                  <div class="kt-yellow-gold">Women | Earrings</div>
-                </div>
-                <div class="price-and-offer">
-                  <b class="rs-455400">Rs. 4,554.00</b>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="header-heading-3-trending-wrapper">
-            <div class="header-heading">Sản phẩm mới</div>
-          </div>
-
-          <div class="link">
-            <div class="xem-thm">XEM THÊM</div>
-          </div>
-        </div>
-
-
-      </div>
-      <div class="detail-inner1">
-        <div class="group-wrapper">
-          <div class="group-wrapper">
-            <div class="group-wrapper">
-              <div class="group-inner"></div>
-
-              <div class="tab1">
-                <div class="line2"></div>
-                <div class="active-line1"></div>
-                <div class="m-t">ĐÁNH GIÁ</div>
-              </div>
-
-              <div class="inner-parent">
-                <div class="inner3">
-                  <div class="stars-box">
-                    <div class="stars-box-child"></div>
-                    <div class="inner4">
-                      <div class="div9">
-                        <div class="item"></div>
-                        <div class="rectangle-div"></div>
-                        <img class="star-icon" alt="" src="./public/star.svg" />
-
-                        <div class="div10">70%</div>
-                      </div>
-                      <div class="div11">
-                        <div class="child1"></div>
-                        <div class="child2"></div>
-                        <div class="div10">15%</div>
-                        <img
-                          class="star-icon1"
-                          alt=""
-                          src="./public/star1.svg"
-                        />
-                      </div>
-                      <div class="div13">
-                        <div class="child3"></div>
-                        <div class="child4"></div>
-                        <div class="div10">10%</div>
-                        <img
-                          class="star-icon2"
-                          alt=""
-                          src="./public/star2.svg"
-                        />
-                      </div>
-                      <div class="div15">
-                        <div class="child5"></div>
-                        <div class="child6"></div>
-                        <img
-                          class="star-icon3"
-                          alt=""
-                          src="./public/star3.svg"
-                        />
-
-                        <div class="div16">3%</div>
-                      </div>
-                      <div class="div17">
-                        <div class="child7"></div>
-                        <div class="child8"></div>
-                        <div class="div16">2%</div>
-                        <img
-                          class="star-icon4"
-                          alt=""
-                          src="./public/star4.svg"
-                        />
-                      </div>
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<div class="form-check">';
+                                echo '<input type="checkbox" class="form-check-input" name="selected_categories[]" value="' . $row['categoryID'] . '">';
+                                echo '<label class="form-check-label" for="category' . $row['categoryID'] . '">' . $row['categoryName'] . '</label>';
+                                echo '</div>';
+                            }
+                        }
+                        ?>
                     </div>
-                  </div>
-                  <div class="rating-box">
-                    <div class="rating-box-child"></div>
-                    <div class="info">
-                      <div class="product-rating">Product Rating</div>
-                      <img class="star-icon5" alt="" src="./public/star5.svg" />
+                    <hr />
+                    <!-- Danh mục phụ -->
+                    <button type="button" class="sidebar-title" onclick="toggleFilter('subcategory')">- Danh mục phụ</button>
+                    <div class="filter-content collapsed" id="subcategory">
+                        <?php
+                        $sql = "SELECT * FROM Subcategory"; // Truy vấn để lấy danh sách các subcategory
+                        $result = chayTruyVanTraVeDL($link, $sql);
 
-                      <b class="b">4.8</b>
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<div class="form-check">';
+                                echo '<input class="form-check-input" type="checkbox" value="' . $row['subcategoryID'] . '" name="selected_subcategories[]" id="subcategory' . $row['subcategoryID'] . '">';
+                                echo '<label class="form-check-label" for="subcategory' . $row['subcategoryID'] . '">' . $row['subcategoryName'] . '</label>';
+                                echo '</div>';
+                            }
+                        }
+                        ?>
                     </div>
-                  </div>
-                </div>
-                <div class="nh-gi-t">Đánh giá từ Khách hàng</div>
-              </div>
-              
-              <div class="inset-parent">
-                <div class="inset">
-                  <div class="xem-thm1">Xem thêm</div>
-                </div>
-                <div class="nh-gi1">Đánh giá</div>
-              </div>
-              <div class="profile">
-                <div class="profile-child"></div>
-                <div class="user">user</div>
-              </div>
-              <div class="group">
-                <div class="div19">
-                  <div class="child9"></div>
-                  <div class="child10"></div>
-                  <div class="info1">
-                    <div class="helpfull-btn">
-                      <div class="reply">reply</div>
-                      <div class="like">Like</div>
-                      <img
-                        class="vuesaxlinearlike-icon"
-                        alt=""
-                        src="./public/vuesaxlinearlike.svg"
-                      />
-                    </div>
-                    <div class="greate-product">Greate Product</div>
-                    <div class="head">
-                      <div class="star-parent">
-                        <img
-                          class="star-icon6"
-                          alt=""
-                          src="./public/star6.svg"
-                        />
+                    <hr />
+                    <!-- Giảm giá -->
+                    <button type="button" class="sidebar-title" onclick="toggleFilter('sale')">- Giảm giá</button>
+                    <div class="filter-content collapsed" id="sale">
+                        <?php
+                        $sql = "SELECT distinct
+                                    p.discountID,
+                                    CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage
+                                FROM 
+                                    product p
+                                JOIN
+                                    discount d ON p.discountID = d.discountID
+                                WHERE 
+                                    d.discountID IS NOT NULL AND d.discountAmount IS NOT NULL";
 
-                        <div class="ngy-trc">3 ngày trước</div>
-                        <div class="nicolas-cage">Nicolas cage</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="info2">
-                    <div class="helpfull-btn1">
-                      <div class="reply">reply</div>
-                      <div class="like">Like</div>
-                      <img
-                        class="vuesaxlinearlike-icon1"
-                        alt=""
-                        src="./public/vuesaxlinearlike.svg"
-                      />
-                    </div>
-                    <div class="greate-product">Greate Product</div>
-                    <div class="head">
-                      <div class="star-parent">
-                        <img
-                          class="star-icon6"
-                          alt=""
-                          src="./public/star6.svg"
-                        />
+                        $result = chayTruyVanTraVeDL($link, $sql);
 
-                        <div class="ngy-trc">3 ngày trước</div>
-                        <div class="nicolas-cage">Nicolas cage</div>
-                      </div>
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<div class="form-check">';
+                                echo '<input class="form-check-input" type="checkbox" value="' . $row['discountID'] . '" name="selected_discounts[]" id="discount' . $row['discountID'] . '">';
+                                echo '<label class="form-check-label" for="discount' . $row['discountID'] . '">' . $row['discountPercentage'] . '</label>';
+                                echo '</div>';
+                            }
+                        }
+                        ?>
                     </div>
-                  </div>
-                </div>
-                <div class="profile1">
-                  <div class="profile-child"></div>
-                  <div class="user">user</div>
-                </div>
-              </div>
-              <div class="form-parent">
-                <div class="form">
-                  <div class="div20">
-                    <div class="child11"></div>
-                    <div class="great-products">Great Products</div>
-                    <div class="review-title">Review Title</div>
-                  </div>
-                  <div class="star1">
-                    <div class="what-is-it">What is it like to Product?</div>
-                    <img class="star-icon8" alt="" src="./public/star7.svg" />
-                  </div>
-                </div>
-                <div class="vit-nh-gi">Viết đánh giá</div>
-              </div>
+                    <hr />
+                    <!-- Giá -->
+                    <button type="button" class="sidebar-title" onclick="toggleFilter('price')">- Giá</button>
+                    <div class="filter-content collapsed" id="price">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="under500" name="price_range[]" value="under500">
+                                <label class="form-check-label" for="under500">Dưới 500.000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="500to1000000" name="price_range[]" value="500to1000000">
+                                <label class="form-check-label" for="500to1000000">500.000 - 1.000.000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="1000000to1500000" name="price_range[]" value="1000000to1500000">
+                                <label class="form-check-label" for="1000000to1500000">1.000.000 - 1.500.000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="1500000to2000000" name="price_range[]" value="1500000to2000000">
+                                <label class="form-check-label" for="1500000to2000000">1.500.000 - 2.000.000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="over2000000" name="price_range[]" value="over2000000">
+                                <label class="form-check-label" for="over2000000">Trên 2.000.000</label>
+                            </div>              
+                        </div>
+                    </div>
+                     </div>              
+                    <hr />
+                    <!-- Màu -->
+                    <button type="button" class="sidebar-title" onclick="toggleFilter('color')">- Màu</button>
+                    <div class="filter-content collapsed" id="color">
+                        <?php
+                        $sql = "SELECT distinct color FROM Product";
+                        $result = chayTruyVanTraVeDL($link, $sql);
+
+                        $colorCodes = array(
+                            "Vàng" => "#ffd700",
+                            "Bạc" => "#c0c0c0",
+                            "Không" => "#ffffff"
+                        );
+
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $colorCode = isset($colorCodes[$row['color']]) ? $colorCodes[$row['color']] : "#000000";
+                                echo '<div>';
+                                echo '<label>';
+                                echo '<input type="checkbox" class="form-check-input" name="selected_colors[]" value="' . $row['color'] . '" style="margin-right: 5px;">';
+                                echo '<div style="width: 20px; height: 20px; border-radius: 50%; background-color: ' . $colorCode . '; display: inline-block; margin-right: 5px;"></div>';
+                                echo $row['color'];
+                                echo '</label>';
+                                echo '</div>';
+                            }
+                        }
+                        ?>
+                    </div>
+                    <hr />
+                    <input type="hidden" name="apply_filters" id="apply_filters" value="0">
+                    <div class="apply-filters-container">
+                        <input type="submit" class="apply-filters-button" value="Áp dụng bộ lọc" onclick="document.getElementById('apply_filters').value = '1';">
+                    </div>
+                </form>
             </div>
-          </div>
-        </div>
-      </div>
+
+    <!-- Hiển thị dropdown để sort-->
+    <div class="head-content__product-list">
+    <div class="sort-dropdown-wrapper">
+        <select class="form-select" aria-label="Default select example" name="sort_order">
+            <option value="p.unitPrice ASC">Giá (Tăng dần)</option>
+            <option value="p.unitPrice DESC">Giá (Giảm dần)</option>
+        </select>
+        <select class="form-select" aria-label="Default select example" name="sort_by">
+            <option value="p.productName ASC">Tên sản phẩm (A-Z)</option>
+            <option value="p.productName DESC">Tên sản phẩm (Z-A)</option>
+        </select>
     </div>
-  </body>
+    <!-- Hiển thị danh sách sản phẩm -->
+    <div class="product-container row d-flex flex-wrap mt-3">
+        <?php
+            applyFilters();
+
+        function applyFilters(){
+            global $link;
+            $apply_filters = isset($_POST['apply_filters']) ? $_POST['apply_filters'] : '0';
+            if ($apply_filters == '0') {
+              $sql = "SELECT 
+                      p.productName,
+                      CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+                      p.image,
+                      CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+                      c.categoryName,
+                      sc.subcategoryName
+                      FROM 
+                            product p
+                        JOIN
+                            subcategory sc ON p.subcategoryID = sc.subcategoryID
+                        JOIN
+                            category c ON sc.categoryID = c.categoryID
+                        JOIN    
+                            discount d ON p.discountID = d.discountID
+                        WHERE 
+                          p.status = 'Còn hàng'";
+              $result = chayTruyVanTraVeDL($link, $sql);
+          } else {
+            // Thu thập các giá trị bộ lọc từ người dùng
+            $selectedCategories = isset($_POST['selected_categories']) ? $_POST['selected_categories'] : [];
+            $selectedSubcategories = isset($_POST['selected_subcategories']) ? $_POST['selected_subcategories'] : [];
+            $selectedDiscounts = isset($_POST['selected_discounts']) ? $_POST['selected_discounts'] : [];
+            $selectedColors = isset($_POST['selected_colors']) ? $_POST['selected_colors'] : [];
+            
+            // Xây dựng điều kiện WHERE cho câu truy vấn SQL
+            $whereClause = '';
+
+            // Xây dựng điều kiện WHERE cho các bộ lọc category, subcategory, discount và color
+            if (!empty($selectedCategories)) {
+                $whereClause .= " AND sc.categoryID IN ('" . implode("','", $selectedCategories) . "')";
+            }
+            if (!empty($selectedSubcategories)) {
+                $whereClause .= " AND p.subcategoryID IN ('" . implode("','", $selectedSubcategories) . "')";
+            }
+            if (!empty($selectedDiscounts)) {
+                $whereClause .= " AND p.discountID IN ('" . implode("','", $selectedDiscounts) . "')";
+            }
+            if (!empty($selectedColors)) {
+                $whereClause .= " AND color IN ('" . implode("','", $selectedColors) . "')";
+            }
+
+            // Xây dựng điều kiện WHERE cho bộ lọc giá
+            if (isset($_POST['price_range'])) {
+                $priceRanges = $_POST['price_range'];
+
+                foreach ($priceRanges as $range) {
+                    switch ($range) {
+                        case 'under500':
+                            $whereClause .= " AND (p.unitPrice < 500000)";
+                            break;
+                        case '500to1000000':
+                            $whereClause .= " AND (p.unitPrice >= 500000 AND p.unitPrice < 1000000)";
+                            break;
+                        case '1000000to1500000':
+                            $whereClause .= " AND (p.unitPrice >= 1000000 AND p.unitPrice < 1500000)";
+                            break;
+                        case '1500000to2000000':
+                            $whereClause .= " AND (p.unitPrice >= 1500000 AND p.unitPrice < 2000000)";
+                            break;
+                        case 'over2000000':
+                            $whereClause .= " AND (p.unitPrice >= 2000000)";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            // Loại bỏ phần "OR" đầu tiên nếu có
+            $whereClause = ltrim($whereClause, ' OR');
+            $sortOrder = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'p.unitPrice';
+            $sortBy = isset($_POST['sort_by']) ? $_POST['sort_by'] : 'p.productName';
+            // Xây dựng câu truy vấn SQL với điều kiện WHERE được xây dựng từ form
+            $sql = "SELECT 
+                p.productName,
+                CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+                p.image,
+                CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+                c.categoryName,
+                sc.subcategoryName
+            FROM 
+                product p
+            JOIN
+                subcategory sc ON p.subcategoryID = sc.subcategoryID
+            JOIN
+                category c ON sc.categoryID = c.categoryID
+            JOIN
+                discount d ON p.discountID = d.discountID
+            WHERE 
+            1=1
+            $whereClause
+            AND p.status = 'Còn hàng'
+            ORDER BY $sortOrder, $sortBy";
+            $result = chayTruyVanTraVeDL($link, $sql);
+           
+          }
+
+            $sql = "SELECT 
+                        COUNT(*) AS num_items
+                    FROM 
+                        product p
+                    JOIN
+                        subcategory sc ON p.subcategoryID = sc.subcategoryID
+                    JOIN
+                        category c ON sc.categoryID = c.categoryID
+                    JOIN
+                        discount d ON p.discountID = d.discountID
+                    WHERE 
+                        1=1
+                        $whereClause
+                        AND p.status = 'Còn hàng'";
+            $result_count = chayTruyVanTraVeDL($link, $sql);
+            $row_count = mysqli_fetch_assoc($result_count);
+            $num_items = $row_count['num_items'];
+          ?> 
+       
+            <div style="margin-top: 20px;"> 
+                <p>    
+                    Tìm thấy <?php echo $num_items; ?> sản phẩm
+                </p>
+            </div>
+       
+       <?php 
+          if ($result && mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                ?>         
+                <div class="product-info d-block">
+                    <?php if (!empty($row['discountPercentage'])) { ?>
+                        <div class="product-discount"><?php echo $row['discountPercentage']; ?></div>
+                    <?php } ?>
+                    <img src="<?php echo $row['image']; ?>" alt="" />
+                    <div class="product-content">
+                        <p class="text-center product-title"><?php echo $row['productName']; ?></p>
+                        <p class="text-center product-desc"><?php echo $row['subcategoryName'] . ' | ' . $row['categoryName']; ?></p>
+                        <p class="text-center product-price"><?php echo $row['formattedUnitPrice']; ?></p>
+                    </div>
+                </div>
+                <?php
+            }
+        }
+        }
+        ?>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
 </html>
