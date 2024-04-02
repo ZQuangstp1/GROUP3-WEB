@@ -2,7 +2,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="upperstyles.css">
-  <link rel="stylesheet" href="stylemenu.css">
+  <!-- <link rel="stylesheet" href="stylemenu.css"> -->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <!-- <script type="text/javascript" src="responsivemenu.js" language="JavaScript"> -->
 
@@ -13,73 +13,31 @@
 </head>
 
 <body>  
-  <script>
+  <!-- <script>
     $(document).ready(function(){
       $('#toggle').click(function(){
         $('nav').slideToggle();
       });
+
+      // Thêm sự kiện toggle sub-menu khi click vào tiêu đề của menu
+      $('#main-menu li').click(function(){
+          $(this).children('ul.sub-menu').slideToggle();
+      });
+
+    //   $('#main-menu li').click(function(event) {
+    //     if ($(this).hasClass('product')) {
+    //         event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+    //         $(this).toggleClass('submenu-active').siblings().removeClass('submenu-active');
+    //     }
+    // });
     })
-  </script>
+  </script> -->
   <div class="main-container">
     <div class="content-container">
       <!-- HEADER -->
     <?php include "header.php"; ?> 
     <!-- MENU -->
-    <div id = "toggle">
-                  <i class="fa fa-bars"></i>
-            </div>
-      <div id = "menu-container">
-            <nav class = "container">
-                <ul id="main-menu" >
-                    <li><a href="index.php">Trang chủ</a></li>
-                    <li><a href="">Sản phẩm</a>
-                    <ul class="sub-menu">
-                        <li><a href="">Lắc</a>
-                            <ul class="sub-menu">
-                                <li><a href="">Vòng bạc</a></li>
-                                <li><a href="">Lắc tay bạc</a></li>
-                                <li><a href="">Lắc chân bạc</a></li>
-                                <li><a href="">Charm bạc</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Mặt dây chuyền</a>
-                            <ul class="sub-menu">
-                                <li><a href="">Mặt dây chuyền bạc</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Bông tai</a>
-                            <ul class="sub-menu">
-                                <li><a href="">Bông tai treo</a></li>
-                                <li><a href="">Bông tai xỏ lỗ</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Dây chuyền</a>
-                            <ul class="sub-menu">
-                                <li><a href="">Dây chuyền bạc</a></li>
-                                <li><a href="">Dây chuyền vàng</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Nhẫn</a>
-                            <ul class="sub-menu">
-                                <li><a href="">Nhẫn bạc</a></li>
-                                <li><a href="">Nhẫn vàng</a></li>
-                            </ul>
-                        <li><a href="">Phụ kiện rời</a>
-                            <ul class="sub-menu">
-                                <li><a href="">Hộp đựng trang sức</a></li>
-                                <li><a href="">Dụng cụ vệ sinh</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    </li>
-                    <li><a href="">Quà tặng</a></li>
-                    <li><a href="">Thông tin chung</a></li>
-                </ul>
-                
-            </nav>
-            
-            <!-- <a href="javascript:void(0);" class="icon"><i class="fa fa-bars"></i></a> -->
-        </div>
+    <?php include "menu.php"; ?>
         <!-- BANNER -->
       <div class="banner-container">
         <img

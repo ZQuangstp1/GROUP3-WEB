@@ -5,10 +5,12 @@
 #menu-container{
     border-top: 1px solid #dcceb5 ;
     background-color: #f9f2e6 ;
+    width: 100%;
 }
 
 .container{
-    max-width: 960px;
+    max-width: 100%;
+    width: 100%;
     margin: 0px auto;
     /* height: 10px; */
 }
@@ -25,19 +27,20 @@ nav{
     margin: 0;
     padding: 5px;
     justify-content: flex-start;
+    margin-left: 140px;
 }
 
 #main-menu li{
     position: relative;
     white-space: nowrap; /* Prevents wrapping */
-    padding-right: 130px;
+    padding-right: 100px;
 }
 
 #main-menu li a{
     color: #ff678d;
     display: block;
     padding: 10px 25px;
-    margin-left: 15px;
+    margin-left: 30px;
     /* padding: 18px 20px; */
     text-decoration: none;
     font-family: Barlow, sans-serif;
@@ -48,12 +51,13 @@ nav{
     position: absolute;
     background-color: #f9f2e6;
     /* background-color:black; */
-    padding: 6px 0;
+    padding: 10px 0;
     list-style: none;
     width: 200px;
     /* border: 1px solid #ab2647; */
     display: none;
     z-index: 999;
+    left:30px
 }
 
 #main-menu li:hover>ul.sub-menu{
@@ -144,7 +148,7 @@ nav{
     }
 } */
 
-@media screen and (max-width: 991px) {
+/* @media screen and (max-width: 991px) {
     #main-menu{
         flex-direction: column;
         text-align: left;
@@ -156,4 +160,39 @@ nav{
     nav{
         display: none;
     }
-} 
+}  */
+@media screen and (max-width: 991px) {
+    #main-menu {
+        flex-direction: column;
+        text-align: left;
+    }
+    #toggle {
+        display: block;
+    }
+
+    nav {
+        display: none; /* Ẩn menu */
+    }
+
+    #main-menu li {
+        position: relative;
+    }
+
+    /* #main-menu ul.sub-menu {
+        display: none; /* Ẩn sub-menu */
+    } */
+
+    #main-menu ul.submenu {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    #main-menu ul.submenu ul.submenu {
+        flex-direction: column;
+        text-align: left;
+    }
+    #main-menu li:hover > ul.sub-menu ul.submenu {
+        display: block; /* Hiển thị sub-menu khi hover */
+        position: static; /* Hiển thị sub-menu dọc */
+    }
+

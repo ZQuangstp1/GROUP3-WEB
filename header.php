@@ -226,12 +226,11 @@
           </div>
           </div>
           <div class="logo-container">
-            <img
-            loading="lazy"
-            src="img/img3.png"
-            class="logo-img"
-          />
-          </div>
+            <a href="index.php">
+                <img loading="lazy" src="img/img3.png" class="logo-img" />
+            </a>
+        </div>
+
         </div>
         <div class="three-logos-container">
           <div class="three-logos-content">
