@@ -15,8 +15,7 @@
         taoKetNoi($link);
     ?>
 <form action="?opt=applyFilters" method="POST">
-    <div class="container">
-       
+    <a name="top"> <div class="container"></a>
         <div class="head-content">
             <!-- Sidebar -->
             <div class="head-content__sidebar">
@@ -315,6 +314,7 @@
           giaiPhongBoNho($link, $result)
             ?>
     </div>
+    <a href="#top" id="back-to-top" class="back-to-top-btn" title="Go to top">↑</a>
 </div>
  
 <!-- Scripts -->
