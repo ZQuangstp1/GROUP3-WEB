@@ -1,63 +1,57 @@
+
 <?php
-
-
 require_once "db_module.php";
 require_once "users_module.php";
 require_once "validate_module.php";
 
-// Xử lý form khi được submit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["password2"])) {
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        $password2 = $_POST["password2"];
+        $username = mysqli_real_escape_string($link, $_POST["username"]);
+        $password = mysqli_real_escape_string($link, $_POST["password"]);
+        $password2 = mysqli_real_escape_string($link, $_POST["password2"]);
 
-        if (kiemTraMatKhau($_POST['password'], $_POST['password2'])) {
+        if (kiemTraMatKhau($password, $password2)) {
             $valid = true;
-            $valid = $valid && validateLenUP($_POST['username']);
-            $valid = $valid && validateLenUP($_POST['password']);
+            $valid = $valid && validateLenUP($username);
+            $valid = $valid && validateLenUP($password);
 
             if ($valid) {
-                if (existsUsername($link, $_POST["username"])) {
-                    $_SESSION['error'] = "Tài khoản đã tồn tại";
-                } else {
-                    // Thực hiện đăng ký tài khoản
-                    $new_account_id = '';
-                    $new_cus_id = '';
-
-                    $link = null;
-                    taoKetNoi($link);
-
-                    $query = "SELECT COUNT(*) AS num_records FROM useraccount";
-                    $result = mysqli_query($link, $query);
+                $link = null;
+                taoKetNoi($link);
+                if (!existsUsername($link, $username)) {
+                    $query = "SELECT COUNT(*) AS num_records FROM useraccount WHERE username = '$username'";
+                    $result = chayTruyVanTraVeDL($link, $query);
                     $row = mysqli_fetch_assoc($result);
-                    $num_records = $row['num_records'];
+                    if ($row['num_records'] == 0) {
+                        // Generate new IDs
+                        $query = "SELECT COUNT(*) AS num_records FROM useraccount";
+                        $result = chayTruyVanTraVeDL($link, $query);
+                        $row = mysqli_fetch_assoc($result);
+                        $num_records = $row['num_records'];
 
-                    $new_account_id = 'A' . str_pad($num_records + 1, 6, '0', STR_PAD_LEFT);
-                    $new_cus_id = 'CS' . str_pad($num_records + 1, 5, '0', STR_PAD_LEFT);
-                    
+                        $new_account_id = 'A' . str_pad($num_records + 1, 6, '0', STR_PAD_LEFT);
+                        $new_cus_id = 'CS0' . str_pad($num_records + 1, 5, '0', STR_PAD_LEFT);
 
-                    mysqli_begin_transaction($link);
-                    $insert_user_query = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$password', '$new_cus_id')";
-                    if (mysqli_query($link, $insert_user_query)) {
-                        // Thực hiện insert vào bảng customer
-                        $insert_customer_query = "INSERT INTO customer (customerID) VALUES ('$new_cus_id')";
-                        if (mysqli_query($link, $insert_customer_query)) {
-                            // Commit transaction nếu mọi thứ thành công
-                            mysqli_commit($link);
-                            $_SESSION['success'] = "Đăng ký tài khoản thành công!";
-                            header("Location: dangnhap.php");
-                            exit();
+                        // Insert into customer table first
+                        $insertCustomerQuery = "INSERT INTO customer (customerID) VALUES ('$new_cus_id')";
+                        if (chayTruyVanKhongTraVeDL($link, $insertCustomerQuery)) {
+                            // Now, insert into useraccount
+                            $insertQuery = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$password', '$new_cus_id')";
+                            if (chayTruyVanKhongTraVeDL($link, $insertQuery)) {
+                                $_SESSION['success'] = "Đăng ký tài khoản thành công!";
+                                header("Location: TTDH.php");
+                                exit();
+                            } else {
+                                $_SESSION['error'] = "Có lỗi xảy ra trong quá trình đăng ký tài khoản";
+                            }
                         } else {
-                            // Rollback nếu có lỗi khi insert vào bảng customer
-                            mysqli_rollback($link);
-                            $_SESSION['error'] = "Có lỗi xảy ra trong quá trình đăng ký tài khoản";
+                            $_SESSION['error'] = "Không thể tạo mới khách hàng";
                         }
                     } else {
-                        // Rollback nếu có lỗi khi insert vào bảng useraccount
-                        mysqli_rollback($link);
-                        $_SESSION['error'] = "Có lỗi xảy ra trong quá trình đăng ký tài khoản";
+                        $_SESSION['error'] = "Tài khoản đã tồn tại";
                     }
+                } else {
+                    $_SESSION['error'] = "Tài khoản đã tồn tại";
                 }
             } else {
                 $_SESSION['error'] = "Tên đăng nhập và mật khẩu phải từ 8 ký tự trở lên";

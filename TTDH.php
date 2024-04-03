@@ -1,29 +1,38 @@
-<?php  
+<?php
+// Kết nối đến cơ sở dữ liệu
+require_once("db_module.php");
+$link = null;
+taoKetNoi($link);
 
-require_once "db_module.php";
-require_once "users_module.php";
-
-if(isset($_POST)){
-    if(isset($_POST["username"]) && isset($_POST["password"])) {
-        $_username = $_POST["username"];
-        $_password = $_POST["password"];
-
-        $link = null;
-        taoKetNoi($link);
-
-        if(dangnhap($link, $_username, $_password)) {
-            giaiPhongBoNho($link, true);
-            header("Location: TTKH.php");
-            exit(); // Exit to prevent further execution
-        } else {
-            giaiPhongBoNho($link, true);
-            $_SESSION['error_message'] = "Tên đăng nhập hoặc mật khẩu không chính xác";
-           
-            
-
-        }
-           
+if(isset($_POST['submit'])) {
+    // Lấy dữ liệu từ form
+    $lastName = $_POST['lastName'];
+    $firstName = $_POST['firstName'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $gender = $_POST['gender'];
+    $dateOfBirth = $_POST['dateOfBirth'];
     
+    // Biến $gender là giới tính cần cập nhật
+    // Giới tính Nam sẽ được lưu là 'M', Nữ là 'F', và Khác là 'unknown'
+    if ($gender == "Nam") {
+        $gender_code = "M";
+    } elseif ($gender == "Nữ") {
+        $gender_code = "F";
+    }
+    
+    // Câu lệnh SQL để chèn dữ liệu mới vào bảng customer
+    $sql = "INSERT INTO customer (lastName, firstName, phone, email, gender, dateOfBirth) VALUES ('$lastName', '$firstName', '$phone', '$email', '$gender_code', '$dateOfBirth') WHERE customerID ='CS000151'";
+    
+    // Thực thi truy vấn
+    $result = chayTruyVanKhongTraVeDL($link, $sql);
+
+    if($result) {
+        echo "<script>alert('Tạo thông tin thành công');</script>";
+        // Redirect hoặc chuyển hướng tới trang khác sau khi cập nhật thành công
+        echo "<script>window.location.href='TTKH.php';</script>";
+    } else {
+        echo "<script>alert('Tạo thông tin thất bại');</script>";
     }
 }
 
@@ -31,9 +40,10 @@ if(isset($_POST)){
 
 
 
+
 <html>
 <head>
-    <title>Đăng Nhập</title>
+    <title>Thông tin khách hàng</title>
     <style>
 
 
@@ -114,23 +124,26 @@ if(isset($_POST)){
             onclick="CloseTab()"
             style="cursor: pointer;"
         />
-        <div class="login-title">Đăng Nhập</div>
+        <div class="login-title">Thông tin khách hàng</div>
        
-        <form id="loginForm" action="dangnhap.php" method="post" enctype="multipart/form-data">
-    <input type="text" class="input-field" id="username" name="username" placeholder="Tên đăng nhập" required>
-    <input type="password" class="input-field" id="password" name="password" placeholder="Mật khẩu" required>
-
-      
-    <?php if(isset($_SESSION['error_message'])): ?>
-            <div class="error-message"><?php echo $_SESSION['error_message']; ?></div>
-            <?php unset($_SESSION['error_message']); ?> <!-- Xóa session để không hiển thị lại -->
-        <?php endif; ?>
-
-    <button type="submit" class="login-button">Đăng nhập</button>
+        <form id="loginForm" action="TTDH.php" method="post" enctype="multipart/form-data">
+        <input type="text" name="lastName" placeholder="Họ" class="input-field">
+        <input type="text" name="firstName" placeholder="Tên" class="input-field">
+        <input type="tel" name="phone" placeholder="Số điện thoại" class="input-field">
+        <input type="email" name="email" placeholder="Địa chỉ Email" class="input-field">
+        <select name="gender" class="input-field">
+            <option value="" disabled selected>Giới tính</option>
+            <option value="male">Nam</option>
+            <option value="female">Nữ</option>
+            
+        </select>
+        <input type="date" name="dateOfBirth" placeholder="Ngày sinh" class="input-field">
+        
+    <input type="submit" value="Tạo" class="login-button">
 </form>
 
      
-        
+      
         
     </div>
    
