@@ -6,7 +6,7 @@
     <title>Product List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="product-list.css" rel="stylesheet">
-    
+   
 </head>
 <body>
     <?php
@@ -15,7 +15,7 @@
         taoKetNoi($link);
     ?>
 <form action="?opt=applyFilters" method="POST">
-    <div class="container">
+    <a name="top"> <div class="container"></a>
         <div class="head-content">
             <!-- Sidebar -->
             <div class="head-content__sidebar">
@@ -26,7 +26,7 @@
                         <?php
                         $sql = "SELECT * FROM Category"; // Truy vấn để lấy danh sách các danh mục
                         $result = chayTruyVanTraVeDL($link, $sql);
-
+ 
                         if ($result && mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo '<div class="form-check">';
@@ -44,7 +44,7 @@
                         <?php
                         $sql = "SELECT * FROM Subcategory"; // Truy vấn để lấy danh sách các subcategory
                         $result = chayTruyVanTraVeDL($link, $sql);
-
+ 
                         if ($result && mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo '<div class="form-check">';
@@ -63,15 +63,15 @@
                         $sql = "SELECT distinct
                                     p.discountID,
                                     CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage
-                                FROM 
+                                FROM
                                     product p
                                 JOIN
                                     discount d ON p.discountID = d.discountID
-                                WHERE 
+                                WHERE
                                     d.discountID IS NOT NULL AND d.discountAmount IS NOT NULL";
-
+ 
                         $result = chayTruyVanTraVeDL($link, $sql);
-
+ 
                         if ($result && mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo '<div class="form-check">';
@@ -117,13 +117,13 @@
                         <?php
                         $sql = "SELECT distinct color FROM Product";
                         $result = chayTruyVanTraVeDL($link, $sql);
-
+ 
                         $colorCodes = array(
                             "Vàng" => "#ffd700",
                             "Bạc" => "#c0c0c0",
                             "Không" => "#ffffff"
                         );
-
+ 
                         if ($result && mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $colorCode = isset($colorCodes[$row['color']]) ? $colorCodes[$row['color']] : "#000000";
@@ -145,7 +145,7 @@
                     </div>
                 </form>
             </div>
-
+ 
     <!-- Hiển thị dropdown để sort-->
     <div class="head-content__product-list">
     <div class="sort-dropdown-wrapper">
@@ -162,12 +162,12 @@
     <div class="product-container row d-flex flex-wrap mt-3">
         <?php
             applyFilters();
-
+ 
         function applyFilters(){
             global $link;
             $apply_filters = isset($_POST['apply_filters']) ? $_POST['apply_filters'] : '0';
             if ($apply_filters == '0') {
-              $sql = "SELECT 
+              $sql = "SELECT
                       p.productName,
                       p.productID,
                       CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
@@ -175,7 +175,7 @@
                       CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
                       c.categoryName,
                       sc.subcategoryName
-                      FROM 
+                      FROM
                             product p
                         JOIN
                             subcategory sc ON p.subcategoryID = sc.subcategoryID
@@ -183,7 +183,7 @@
                             category c ON sc.categoryID = c.categoryID
                         JOIN    
                             discount d ON p.discountID = d.discountID
-                        WHERE 
+                        WHERE
                           p.status = 'Còn hàng'";
               $result = chayTruyVanTraVeDL($link, $sql);
           } else {
@@ -192,10 +192,10 @@
             $selectedSubcategories = isset($_POST['selected_subcategories']) ? $_POST['selected_subcategories'] : [];
             $selectedDiscounts = isset($_POST['selected_discounts']) ? $_POST['selected_discounts'] : [];
             $selectedColors = isset($_POST['selected_colors']) ? $_POST['selected_colors'] : [];
-            
+           
             // Xây dựng điều kiện WHERE cho câu truy vấn SQL
             $whereClause = '';
-
+ 
             // Xây dựng điều kiện WHERE cho các bộ lọc category, subcategory, discount và color
             if (!empty($selectedCategories)) {
                 $whereClause .= " AND sc.categoryID IN ('" . implode("','", $selectedCategories) . "')";
@@ -209,11 +209,11 @@
             if (!empty($selectedColors)) {
                 $whereClause .= " AND color IN ('" . implode("','", $selectedColors) . "')";
             }
-
+ 
             // Xây dựng điều kiện WHERE cho bộ lọc giá
             if (isset($_POST['price_range'])) {
                 $priceRanges = $_POST['price_range'];
-
+ 
                 foreach ($priceRanges as $range) {
                     switch ($range) {
                         case 'under500':
@@ -236,13 +236,13 @@
                     }
                 }
             }
-
+ 
             // Loại bỏ phần "OR" đầu tiên nếu có
             $whereClause = ltrim($whereClause, ' OR');
             $sortOrder = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'p.unitPrice';
             $sortBy = isset($_POST['sort_by']) ? $_POST['sort_by'] : 'p.productName';
             // Xây dựng câu truy vấn SQL với điều kiện WHERE được xây dựng từ form
-            $sql = "SELECT 
+            $sql = "SELECT
                 p.productName,
                 p.productID,
                 CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
@@ -250,7 +250,7 @@
                 CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
                 c.categoryName,
                 sc.subcategoryName
-            FROM 
+            FROM
                 product p
             JOIN
                 subcategory sc ON p.subcategoryID = sc.subcategoryID
@@ -258,7 +258,7 @@
                 category c ON sc.categoryID = c.categoryID
             JOIN
                 discount d ON p.discountID = d.discountID
-            WHERE 
+            WHERE
             1=1
             $whereClause
             AND p.status = 'Còn hàng'
@@ -266,10 +266,10 @@
             $result = chayTruyVanTraVeDL($link, $sql);
            
           }
-
-            $sql = "SELECT 
+ 
+            $sql = "SELECT
                         COUNT(*) AS num_items
-                    FROM 
+                    FROM
                         product p
                     JOIN
                         subcategory sc ON p.subcategoryID = sc.subcategoryID
@@ -277,25 +277,25 @@
                         category c ON sc.categoryID = c.categoryID
                     JOIN
                         discount d ON p.discountID = d.discountID
-                    WHERE 
+                    WHERE
                         1=1
                         $whereClause
                         AND p.status = 'Còn hàng'";
             $result_count = chayTruyVanTraVeDL($link, $sql);
             $row_count = mysqli_fetch_assoc($result_count);
             $num_items = $row_count['num_items'];
-          ?> 
+          ?>
        
-            <div style="margin-top: 20px;"> 
+            <div style="margin-top: 20px;">
                 <p>    
                     Tìm thấy <?php echo $num_items; ?> sản phẩm
                 </p>
             </div>
-
-            <?php 
+ 
+            <?php
             if ($result && mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    ?>         
+                    ?>        
                     <a href="product.php?product_id=<?php echo $row['productID']; ?>" class="product-info d-block" style="text-decoration: none; color: inherit;">
                         <?php if (!empty($row['discountPercentage'])) { ?>
                             <div class="product-discount"><?php echo $row['discountPercentage']; ?></div>
@@ -314,8 +314,9 @@
           giaiPhongBoNho($link, $result)
             ?>
     </div>
+    <a href="#top" id="back-to-top" class="back-to-top-btn" title="Go to top">↑</a>
 </div>
-
+ 
 <!-- Scripts -->
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
