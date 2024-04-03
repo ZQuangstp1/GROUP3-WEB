@@ -132,7 +132,6 @@ button {
 
 .product-info {
   width: 200px;
-  height: 350px;
   border: 2px solid #000000;
   margin-bottom: 20px;
   padding: 0px 0 0 0;
@@ -182,10 +181,7 @@ button {
   padding-top: 5px;
   color: #fb6f92;
   font-weight: 500;
-  position: absolute; 
-  top: 250px;
-  bottom: 10px;
-  left: 65px; 
+  
 }
 
 .product-discount {
