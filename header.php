@@ -1,4 +1,5 @@
 <head>
+<script type="text/javascript" src="header.js" language="JavaScript"></script>
     <style>
   .header-container {
     justify-content: space-between;
@@ -212,7 +213,6 @@
     padding-top: 70px;
   }
 }
-
     </style>
 </head>
 <body>

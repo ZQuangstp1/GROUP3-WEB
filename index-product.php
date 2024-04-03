@@ -12,6 +12,7 @@ taoKetNoi($link);
     <title>Product List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="product-list.css" rel="stylesheet">
+    <!-- <script type="text/javascript" src="test.js" language="JavaScript"></script> -->
     <!-- <link rel="stylesheet" href="stylemenu.css"> -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,7 +21,9 @@ taoKetNoi($link);
 <body>
 <form action="?opt=applyFilters" method="POST">
     <div class="container">
-    <?php include "header.php"; ?> 
+    <!-- HEADER -->
+    <?php include "header.php"; ?>
+    <!-- MENU -->
     <?php include "menu.php"; ?>
         <div class="head-content">
             <!-- Sidebar -->
@@ -301,6 +304,114 @@ taoKetNoi($link);
             }
           }
 
+        //   Hiển thị sản phẩm theo danh mục tương ứng khi tương tác với menu
+          if(isset($_GET['category'])) {
+            $category = $_GET['category'];
+            
+            // Sử dụng prepared statement để tránh SQL injection
+            $sql = "SELECT 
+                        p.productName,
+                        CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+                        p.image,
+                        CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+                        c.categoryName,
+                        sc.subcategoryName
+                    FROM 
+                        product p
+                    JOIN
+                        subcategory sc ON p.subcategoryID = sc.subcategoryID
+                    JOIN
+                        category c ON sc.categoryID = c.categoryID
+                    JOIN
+                        discount d ON p.discountID = d.discountID
+                    WHERE 
+                        c.categoryName = ? AND p.status = 'Còn hàng'";
+                        
+            // Sử dụng prepared statement để tránh SQL injection
+            if($stmt = mysqli_prepare($link, $sql)) {
+                // Bind tham số
+                mysqli_stmt_bind_param($stmt, "s", $category);
+                // Thực thi truy vấn
+                mysqli_stmt_execute($stmt);
+                // Lấy kết quả
+                $result = mysqli_stmt_get_result($stmt);
+            }
+        } else {
+            // Nếu không có tham số "category" trong URL, sử dụng câu truy vấn mặc định
+            $sql = "SELECT 
+                        p.productName,
+                        CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+                        p.image,
+                        CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+                        c.categoryName,
+                        sc.subcategoryName
+                    FROM 
+                        product p
+                    JOIN
+                        subcategory sc ON p.subcategoryID = sc.subcategoryID
+                    JOIN
+                        category c ON sc.categoryID = c.categoryID
+                    JOIN
+                        discount d ON p.discountID = d.discountID
+                    WHERE 
+                        p.status = 'Còn hàng'";
+            $result = chayTruyVanTraVeDL($link, $sql);
+        }
+
+        //   Hiển thị sản phẩm theo danh mục phụ tương ứng khi tương tác với menu
+        if(isset($_GET['subcategory'])) {
+            $category = $_GET['subcategory'];
+            
+            // Sử dụng prepared statement để tránh SQL injection
+            $sql = "SELECT 
+                        p.productName,
+                        CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+                        p.image,
+                        CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+                        c.categoryName,
+                        sc.subcategoryName
+                    FROM 
+                        product p
+                    JOIN
+                        subcategory sc ON p.subcategoryID = sc.subcategoryID
+                    JOIN
+                        category c ON sc.categoryID = c.categoryID
+                    JOIN
+                        discount d ON p.discountID = d.discountID
+                    WHERE 
+                        sc.subcategoryName = ? AND p.status = 'Còn hàng'";
+                        
+            // Sử dụng prepared statement để tránh SQL injection
+            if($stmt = mysqli_prepare($link, $sql)) {
+                // Bind tham số
+                mysqli_stmt_bind_param($stmt, "s", $category);
+                // Thực thi truy vấn
+                mysqli_stmt_execute($stmt);
+                // Lấy kết quả
+                $result = mysqli_stmt_get_result($stmt);
+            }
+        } else {
+            // Nếu không có tham số "category" trong URL, sử dụng câu truy vấn mặc định
+            $sql = "SELECT 
+                        p.productName,
+                        CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+                        p.image,
+                        CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+                        c.categoryName,
+                        sc.subcategoryName
+                    FROM 
+                        product p
+                    JOIN
+                        subcategory sc ON p.subcategoryID = sc.subcategoryID
+                    JOIN
+                        category c ON sc.categoryID = c.categoryID
+                    JOIN
+                        discount d ON p.discountID = d.discountID
+                    WHERE 
+                        p.status = 'Còn hàng'";
+            $result = chayTruyVanTraVeDL($link, $sql);
+        }
+        
           if ($result && mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 ?>

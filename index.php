@@ -5,7 +5,7 @@
   <!-- <link rel="stylesheet" href="stylemenu.css"> -->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <!-- <script type="text/javascript" src="responsivemenu.js" language="JavaScript"> -->
-
+  
   <!-- // <script type="text/javascript" src="script.js" language="JavaScript"> -->
   <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'>  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -141,7 +141,7 @@
                   LEFT JOIN category c ON sc.categoryID = c.categoryID
                   LEFT JOIN orderdetail od ON p.productID = od.productID
                   LEFT JOIN orders o ON o.orderID = od.orderID
-                  LEFT JOIN discount d ON p.discountID = d.discountID -- Assuming there's a discount table to join
+                  LEFT JOIN discount d ON p.discountID = d.discountID
                   GROUP BY p.productName, formattedUnitPrice, p.image, discountPercentage, c.categoryName, sc.subcategoryName -- Grouping by all selected columns
                   ORDER BY SUM(od.quantity) DESC
                   LIMIT 5;
