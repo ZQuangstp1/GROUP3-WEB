@@ -118,16 +118,10 @@ button {
   align-items: center;
 }
 
-.sort-dropdowns {
-  display: flex;
-  justify-content: flex-end; /* căn chỉnh sang phải */
-  align-items: center; /* căn chỉnh các phần tử vào giữa theo chiều dọc */
-  margin-right: 20px; /* khoảng cách từ lề phải của trang */
-}
 
 .sort-dropdown-wrapper {
   display: flex;
-  justify-content: flex-end; /* Căn chỉnh sang phải */
+  justify-content: flex-start; /* Căn chỉnh sang phải */
 }
 
 .sort-dropdown-wrapper select {
@@ -136,21 +130,16 @@ button {
 
 /* product */
 
-product-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; 
-}
-
-
 .product-info {
-  width: calc(25% - 30px);
+  width: 200px;
+  height: 350px;
   border: 2px solid #000000;
   margin-bottom: 20px;
   padding: 0px 0 0 0;
   position: relative;
   margin-right: 20px;
   transition: border-color 0.3s ease;
+  overflow: hidden;
 }
 
 .product-info:hover {
@@ -168,6 +157,7 @@ product-container {
   padding-top: 10px;
   border-top: 2px solid #000000;
   transition: border-color 0.3s ease;
+  position: relative;
 }
 
 .product-content:hover {
@@ -184,13 +174,18 @@ product-container {
 .product-content .product-desc {
   font-size: 12px;
   color: #212121;
-  margin-bottom: 0;
+  margin-top: 10px;
+  
 }
 
 .product-content .product-price {
   padding-top: 5px;
   color: #fb6f92;
   font-weight: 500;
+  position: absolute; 
+  top: 250px;
+  bottom: 10px;
+  left: 65px; 
 }
 
 .product-discount {
@@ -216,7 +211,7 @@ product-container {
   .head-content__product-list {
     width: 100%;
     max-width: 100%; 
-    margin-left: 30px;
+    margin-left: 0px;
   }
 
   .product-info {
@@ -225,9 +220,16 @@ product-container {
 }
 
 /* Thêm các phương tiện truyền thông khác cho các kích thước màn hình khác */
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 430px) {
   /* Khi màn hình có kích thước nhỏ hơn hoặc bằng 576px */
   .product-info {
-    max-width: calc(100% - 20px); /* Hiển thị 1 sản phẩm trên mỗi dòng */
+    max-width: calc(50% - 20px); /* Hiển thị 2 sản phẩm trên mỗi dòng */
+  }
+  .product-title{
+    font-size: 10px;
+    padding-bottom: 10px;
+  }
+  .product-desc{
+    font-size: 2px;
   }
 }
