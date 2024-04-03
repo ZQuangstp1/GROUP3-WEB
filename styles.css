@@ -241,7 +241,8 @@ body {
  
 #custom-div-6 {
   margin-top: 23px;
-  font: 40px Barlow, sans-serif;
+  font: 20px/24px Barlow, sans-serif;
+  line-height: 30px;
 }
 
 @media (max-width: 991px) {
