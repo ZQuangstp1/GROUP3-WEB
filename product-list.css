@@ -156,7 +156,6 @@ button {
   padding-top: 10px;
   border-top: 2px solid #000000;
   transition: border-color 0.3s ease;
-  position: relative;
 }
 
 .product-content:hover {
