@@ -1,8 +1,55 @@
+<?php  
+
+require_once "db_module.php";
+require_once "users_module.php";
+
+if(isset($_POST)){
+    if(isset($_POST["username"]) && isset($_POST["password"])) {
+        $_username = $_POST["username"];
+        $_password = $_POST["password"];
+
+        $link = null;
+        taoKetNoi($link);
+
+        if(dangnhap($link, $_username, $_password)) {
+            giaiPhongBoNho($link, true);
+            header("Location: TTKH.php");
+            exit(); // Exit to prevent further execution
+        } else {
+            giaiPhongBoNho($link, true);
+            $_SESSION['error_message'] = "Tên đăng nhập hoặc mật khẩu không chính xác";
+           
+            
+
+        }
+           
+    
+    }
+}
+
+?>
+
+
+
 <html>
 <head>
     <title>Đăng Nhập</title>
     <style>
-       
+
+
+.error-message {
+            /* CSS cho thông báo lỗi */
+            font-size: bigger;
+            padding: 10px;
+           
+            margin-top : 15px;
+            border-radius: 5px;
+            text-align: center;
+            background-color: #f2dede; /* Màu nền cho thông báo lỗi */
+            color: #a94442; /* Màu chữ cho thông báo lỗi */
+            font-weight: bold;
+        }
+
         body {
             display: flex;
             justify-content: center;
@@ -73,10 +120,17 @@
             style="cursor: pointer;"
         />
         <div class="login-title">Đăng Nhập</div>
-        <?php require_once "msg.php";?>
-        <form id="loginForm" action="xulydangnhap.php" method="post" enctype="multipart/form-data">
+       
+        <form id="loginForm" action="dangnhap.php" method="post" enctype="multipart/form-data">
     <input type="text" class="input-field" id="username" name="username" placeholder="Tên đăng nhập" required>
     <input type="password" class="input-field" id="password" name="password" placeholder="Mật khẩu" required>
+
+      
+    <?php if(isset($_SESSION['error_message'])): ?>
+            <div class="error-message"><?php echo $_SESSION['error_message']; ?></div>
+            <?php unset($_SESSION['error_message']); ?> <!-- Xóa session để không hiển thị lại -->
+        <?php endif; ?>
+
     <button type="submit" class="login-button">Đăng nhập</button>
 </form>
 

@@ -35,14 +35,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     $new_account_id = 'A' . str_pad($num_records + 1, 6, '0', STR_PAD_LEFT);
                     $new_cus_id = 'CS' . str_pad($num_records + 1, 5, '0', STR_PAD_LEFT);
+                    
 
-                    $insert_query = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$password', '$new_cus_id')";
-
-                    if (chayTruyVanKhongTraVeDL($link, $insert_query)) {
-                        $_SESSION['success'] = "Đăng ký tài khoản thành công!";
-                        header("Location: dangnhap.php");
-                        exit();
+                    mysqli_begin_transaction($link);
+                    $insert_user_query = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$password', '$new_cus_id')";
+                    if (mysqli_query($link, $insert_user_query)) {
+                        // Thực hiện insert vào bảng customer
+                        $insert_customer_query = "INSERT INTO customer (customerID) VALUES ('$new_cus_id')";
+                        if (mysqli_query($link, $insert_customer_query)) {
+                            // Commit transaction nếu mọi thứ thành công
+                            mysqli_commit($link);
+                            $_SESSION['success'] = "Đăng ký tài khoản thành công!";
+                            header("Location: dangnhap.php");
+                            exit();
+                        } else {
+                            // Rollback nếu có lỗi khi insert vào bảng customer
+                            mysqli_rollback($link);
+                            $_SESSION['error'] = "Có lỗi xảy ra trong quá trình đăng ký tài khoản";
+                        }
                     } else {
+                        // Rollback nếu có lỗi khi insert vào bảng useraccount
+                        mysqli_rollback($link);
                         $_SESSION['error'] = "Có lỗi xảy ra trong quá trình đăng ký tài khoản";
                     }
                 }

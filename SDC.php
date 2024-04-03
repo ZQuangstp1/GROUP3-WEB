@@ -41,7 +41,8 @@ require_once("view_TTKH.php");
 // Gọi hàm view_TTKH() để hiển thị thông tin khách hàng
 view_SDC();
 ?>
-              <button class="button" style ="width :180px; margin-left: 0px;" onclick="toggleDiaChi()">+ Thêm địa chỉ</button>
+<button class="button" style="width: 180px; margin-left: 0px;" onclick="toggleDiaChi()">+ Thêm địa chỉ</button>
+
               <!-- Form để gửi dữ liệu -->
 <form action="upade_sdc.php" method="POST">
     <!-- Địa chỉ giao hàng -->
@@ -73,7 +74,7 @@ view_SDC();
                 </div>
             </div>
         </div>
-    </div>
+    
 
     <!-- Thông tin liên lạc -->
     <div class="TTLL">
@@ -132,13 +133,11 @@ view_SDC();
     <!-- Nút thêm để gửi form -->
     <button type="submit" class="button">Thêm</button>
 </form>
+</div>
+</div>
 
 
-                </div>
-              </div>
-            
-            </div>
-   
+
      
     <style>
        

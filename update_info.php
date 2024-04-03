@@ -3,7 +3,7 @@
 require_once("db_module.php");
 $link = null;
 taoKetNoi($link);
-$customerID = dangnhap($link, $_username, $_password);
+
 if(isset($_POST['submit'])) {
     // Lấy dữ liệu từ form
     $lastName = $_POST['lastName'];
@@ -12,9 +12,15 @@ if(isset($_POST['submit'])) {
     $email = $_POST['email'];
     $gender = $_POST['gender'];
     $dateOfBirth = $_POST['dateOfBirth'];
-
-    // Mã SQL cập nhật thông tin vào cơ sở dữ liệu
-    $sql = "UPDATE customer SET lastName='$lastName', firstName='$firstName', phone='$phone', email='$email', gender='$gender', dateOfBirth='$dateOfBirth' WHERE customerID='$customerID'";
+// Biến $gender là giới tính cần cập nhật
+// Giới tính Nam sẽ được lưu là 'M', Nữ là 'F', và Khác là 'unknown'
+if ($gender == "Nam") {
+    $gender_code = "M";
+} elseif ($gender == "Nữ") {
+    $gender_code = "F";
+}
+// Câu lệnh SQL để cập nhật dữ liệu với giới tính đã được chuyển đổi
+$sql = "UPDATE customer SET lastName='$lastName', firstName='$firstName', phone='$phone', email='$email', gender='$gender_code', dateOfBirth='$dateOfBirth' WHERE customerID='CS000001'";
 
     // Thực thi truy vấn
     $result = chayTruyVanKhongTraVeDL($link, $sql);

@@ -108,7 +108,7 @@ view_TTKH();
             <option value="" disabled selected>Giới tính</option>
             <option value="male">Nam</option>
             <option value="female">Nữ</option>
-            <option value="other">Khác</option>
+            
         </select>
         <input type="date" name="dateOfBirth" placeholder="Ngày sinh" class="input-field">
         
@@ -135,7 +135,7 @@ view_TTKH();
 </div>
 
 </div>
-
+</div>
           </br>
         <div class="column-3">
           <div class="div-19">
@@ -154,9 +154,9 @@ view_TTLL();
             <button class="button" id ="tdc" onclick="window.location.href='SDC.php'">Thêm địa chỉ</button>
           </div>
         </div>
-    </div>
-      </div>
-    </div>
+  
+   
+   
   </div>
 
   <style>
