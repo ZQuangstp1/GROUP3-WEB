@@ -50,7 +50,7 @@
       </div>      
 
       <?php   
-   require_once "dbmodule.php";
+   require_once "db_module.php";
 
    $link = null;
    taoKetNoi($link);
@@ -131,7 +131,7 @@ giaiPhongBoNho($link, $result);
 <div id ="menu-container2" class ="animate-on-scroll">
   <div class="top-products">
   <?php
-        require_once "dbmodule.php";
+        require_once "db_module.php";
         $link = null;
         taoKetNoi($link);
 

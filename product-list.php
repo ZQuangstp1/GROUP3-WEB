@@ -23,7 +23,7 @@
 </head>
 <body>
     <?php
-        require_once "dbmodule.php";
+        require_once "db_module.php";
         $link = null;
         taoKetNoi($link);
     ?>

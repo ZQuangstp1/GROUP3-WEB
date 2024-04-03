@@ -1,11 +1,7 @@
 
 // Gọi hàm adjustProductLayout khi trang được tải
 
-function toggleFilter(filterId) {
-  const filterContent = document.getElementById(filterId);
-  filterContent.classList.toggle('collapsed');
 
-}
 
 
 // //Hàm pop-up Thêm giỏ hàng thành công 
