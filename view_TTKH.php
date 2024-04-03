@@ -1,13 +1,23 @@
 <?php 
+
 require_once("db_module.php");
 require_once("users_module.php");
+
+// Đảm bảo rằng customerID có trong session
+if (!isset($_SESSION['customerID'])) {
+  // Xử lý trường hợp không tìm thấy customerID, ví dụ chuyển hướng đến trang đăng nhập
+  header('Location: dangnhap.php');
+  exit();
+}
 
 
 function view_TTKH()
 {
+    global $customerID;
     $link = null;
     taoKetNoi($link);
-    $result = chayTruyVanTraVeDL($link, "SELECT CONCAT(customer.lastName, ' ', customer.firstName) AS customerName,
+
+    $_sql= "SELECT CONCAT(customer.lastName, ' ', customer.firstName) AS customerName,
     customer.phone,
     customer.email,
     CASE
@@ -17,11 +27,13 @@ function view_TTKH()
     END AS gender,
     customer.dateOfBirth,
     CONCAT(location.address, ', ', d.district, ', ', province.province) AS address
-FROM customer
-LEFT JOIN location ON customer.locationID = location.locationID
-LEFT JOIN district d ON location.districtID = d.districtID
-LEFT JOIN province ON d.provinceID = province.provinceID
-WHERE customerID = 'CS000001'");
+    FROM customer
+    LEFT JOIN location ON customer.locationID = location.locationID
+    LEFT JOIN district d ON location.districtID = d.districtID
+    LEFT JOIN province ON d.provinceID = province.provinceID
+    WHERE customerID = '" . $_SESSION['customerID']  . "'"; 
+
+    $result = chayTruyVanTraVeDL($link, $_sql);
  
     echo "<table>";
 
@@ -70,7 +82,7 @@ taoKetNoi($link);
  FROM customer
  LEFT JOIN location ON customer.locationID = location.locationID
  LEFT JOIN district d ON location.districtID = d.districtID
- LEFT JOIN province ON d.provinceID = province.provinceID WHERE customerID = 'CS000001'");
+ LEFT JOIN province ON d.provinceID = province.provinceID WHERE customerID = '" . $_SESSION['customerID']  . "'" );
 if (mysqli_num_rows($result) > 0) {
   // Nếu có dòng dữ liệu trả về, tức là người dùng đã đặt địa chỉ giao hàng mặc định
   $row = mysqli_fetch_assoc($result);
@@ -86,7 +98,7 @@ function view_TTLL ()
 $link = null;
 taoKetNoi($link);
  $result = chayTruyVanTraVeDL($link, "SELECT CONCAT(customer.lastName, ' ', customer.firstName) AS customerName,phone FROM customer
- WHERE customerID = 'CS000001'");
+ WHERE customerID = '" . $_SESSION['customerID']  . "'" );
 if (mysqli_num_rows($result) > 0) {
   // Nếu có dòng dữ liệu trả về, tức là người dùng đã đặt địa chỉ giao hàng mặc định
   $row = mysqli_fetch_assoc($result);
@@ -112,8 +124,7 @@ LEFT JOIN location ON customer.locationID = location.locationID
 LEFT JOIN district d ON location.districtID = d.districtID
 LEFT JOIN province ON d.provinceID = province.provinceID
 RIGHT JOIN orders ON customer.customerID = orders.customerID
-WHERE customer.customerID = 'CS000001'
-");
+WHERE customerID = '" . $_SESSION['customerID']  . "'" );
  
     echo "<table>";
 

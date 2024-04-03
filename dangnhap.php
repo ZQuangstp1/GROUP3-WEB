@@ -1,52 +1,48 @@
-<?php  
+<?php
 
 require_once "db_module.php";
 require_once "users_module.php";
 
-if(isset($_POST)){
-    if(isset($_POST["username"]) && isset($_POST["password"])) {
-        $_username = $_POST["username"];
-        $_password = $_POST["password"];
-
-        $link = null;
-        taoKetNoi($link);
-
-        if(dangnhap($link, $_username, $_password)) {
-            giaiPhongBoNho($link, true);
-            header("Location: TTKH.php");
-            exit(); // Exit to prevent further execution
-        } else {
-            giaiPhongBoNho($link, true);
-            $_SESSION['error_message'] = "Tên đăng nhập hoặc mật khẩu không chính xác";
-           
-            
-
-        }
-           
+    if (isset($_POST)) {
+        if (isset($_POST["username"]) && isset($_POST["password"])) {
+            $_username = $_POST["username"];
+            $_password = $_POST["password"];
     
+            $link = null;
+            taoKetNoi($link);
+    
+            // Giả sử hàm dangnhap() đã được cập nhật để trả về customerID
+            $customerID = dangnhap($link, $_username, $_password);
+    
+            if ($customerID) { // Nếu có customerID, tức là đăng nhập thành công
+                giaiPhongBoNho($link, true);
+                header("Location: TTKH.php");
+                exit(); // Thoát để ngăn code phía sau chạy khi đã chuyển hướng
+            } else {
+                giaiPhongBoNho($link, true);
+                $_SESSION['error_message'] = "Tên đăng nhập hoặc mật khẩu không chính xác";
+            }
+        }
     }
-}
 
 ?>
-
-
-
 <html>
+
 <head>
     <title>Đăng Nhập</title>
     <style>
-
-
-.error-message {
+        .error-message {
             /* CSS cho thông báo lỗi */
             font-size: bigger;
             padding: 10px;
-           
-            margin-top : 15px;
+
+            margin-top: 15px;
             border-radius: 5px;
             text-align: center;
-            background-color: #f2dede; /* Màu nền cho thông báo lỗi */
-            color: #a94442; /* Màu chữ cho thông báo lỗi */
+            background-color: #f2dede;
+            /* Màu nền cho thông báo lỗi */
+            color: #a94442;
+            /* Màu chữ cho thông báo lỗi */
             font-weight: bold;
         }
 
@@ -57,6 +53,7 @@ if(isset($_POST)){
             height: 100vh;
             background-color: #fff;
         }
+
         .login-container {
             background-color: #f9f2e6;
             padding: 28px 33px 50px;
@@ -65,19 +62,22 @@ if(isset($_POST)){
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
+
         .logo {
             display: block;
-           margin-left :auto;
+            margin-left: auto;
             margin-right: 0%;
             width: 35px;
         }
+
         .login-title {
             text-align: center;
             margin-top: 15px;
-            margin-bottom : 20px;
+            margin-bottom: 20px;
             font: 600 30px Barlow, sans-serif;
             color: #333;
         }
+
         .input-field {
             font-family: Barlow, sans-serif;
             width: 100%;
@@ -86,6 +86,7 @@ if(isset($_POST)){
             border: 1px solid rgba(212, 213, 217, 1);
             border-radius: 0px;
         }
+
         .login-button {
             background-color: #fb6f92;
             color: #f9f2e6;
@@ -100,45 +101,53 @@ if(isset($_POST)){
             font-family: Oswald, sans-serif;
             letter-spacing: 1.35px;
         }
-        
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 25px;
+            font: 15px Poppins, sans-serif;
+            color: #3766e8;
+        }
     </style>
 </head>
+
 <body>
 
 
     <div class="login-container">
-        <img
-            loading="lazy"
+        <img loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/616c9d301410ca581dfc86f37ec6202edb3d0cefd2cbbcf217383b2388515c5f?apiKey=eb23b2963eda46448725d8ef1c3cf67d&"
-            class="logo"
-            onclick="CloseTab()"
-            style="cursor: pointer;"
-        />
+            class="logo" onclick="CloseTab()" style="cursor: pointer;" />
         <div class="login-title">Đăng Nhập</div>
-       
+
         <form id="loginForm" action="dangnhap.php" method="post" enctype="multipart/form-data">
-    <input type="text" class="input-field" id="username" name="username" placeholder="Tên đăng nhập" required>
-    <input type="password" class="input-field" id="password" name="password" placeholder="Mật khẩu" required>
+            <input type="text" class="input-field" id="username" name="username" placeholder="Tên đăng nhập" required>
+            <input type="password" class="input-field" id="password" name="password" placeholder="Mật khẩu" required>
 
-      
-    <?php if(isset($_SESSION['error_message'])): ?>
-            <div class="error-message"><?php echo $_SESSION['error_message']; ?></div>
-            <?php unset($_SESSION['error_message']); ?> <!-- Xóa session để không hiển thị lại -->
-        <?php endif; ?>
 
-    <button type="submit" class="login-button">Đăng nhập</button>
-</form>
+            <?php if (isset($_SESSION['error_message'])): ?>
+                <div class="error-message">
+                    <?php echo $_SESSION['error_message']; ?>
+                </div>
+                <?php unset($_SESSION['error_message']); ?> <!-- Xóa session để không hiển thị lại -->
+            <?php endif; ?>
 
-     
-        
-        
+            <button type="submit" class="login-button">Đăng nhập</button>
+        </form>
+
+
+        <div class="forgot-password" onclick="window.location.href='QMK1.html'" style="cursor: pointer;">
+            Quên mật khẩu ?
+        </div>
+
     </div>
-   
+
     <script>
         function CloseTab() {
             window.location.href = 'admin.php';
         }
     </script>
-    
+
 </body>
+
 </html>
