@@ -12,40 +12,40 @@
                     <li><a href="index.php">Trang chủ</a></li>
                     <li><a href="">Sản phẩm</a>
                     <ul class="sub-menu">
-                        <li><a href="index-product.php?category=Lắc">Lắc</a>
+                        <li><a href="product-list.php?category=C001">Lắc</a>
                             <ul class="sub-menu">
-                                <li><a href="index-product.php?subcategory=Vòng bạc">Vòng bạc</a></li>
-                                <li><a href="index-product.php?subcategory=Lắc tay bạc">Lắc tay bạc</a></li>
-                                <li><a href="index-product.php?subcategory=Lắc chân bạc">Lắc chân bạc</a></li>
-                                <li><a href="index-product.php?subcategory=Charm bạc">Charm bạc</a></li>
+                                <li><a href="product-list.php?subcategory=SC001">Vòng bạc</a></li>
+                                <li><a href="product-list.php?subcategory=SC002">Lắc tay bạc</a></li>
+                                <li><a href="product-list.php?subcategory=SC003">Lắc chân bạc</a></li>
+                                <li><a href="product-list.php?subcategory=SC004">Charm bạc</a></li>
                             </ul>
                         </li>
-                        <li><a href="index-product.php?category=Mặt dây chuyền">Mặt dây chuyền</a>
+                        <li><a href="product-list.php?category=C002">Mặt dây chuyền</a>
                             <ul class="sub-menu">
-                                <li><a href="index-product.php?subcategory=Mặt dây chuyền bạc">Mặt dây chuyền bạc</a></li>
+                                <li><a href="product-list.php?subcategory=SC005">Mặt dây chuyền bạc</a></li>
                             </ul>
                         </li>
-                        <li><a href="index-product.php?category=Bông tai">Bông tai</a>
+                        <li><a href="product-list.php?category=C003">Bông tai</a>
                             <ul class="sub-menu">
-                                <li><a href="index-product.php?subcategory=Bông tai treo">Bông tai treo</a></li>
-                                <li><a href="index-product.php?subcategory=Bông tai xỏ lỗ">Bông tai xỏ lỗ</a></li>
+                                <li><a href="product-list.php?subcategory=SC006">Bông tai treo</a></li>
+                                <li><a href="product-list.php?subcategory=SC007">Bông tai xỏ lỗ</a></li>
                             </ul>
                         </li>
-                        <li><a href="index-product.php?category=Dây chuyền">Dây chuyền</a>
+                        <li><a href="product-list.php?category=C004">Dây chuyền</a>
                             <ul class="sub-menu">
-                                <li><a href="index-product.php?subcategory=Dây chuyền bạc">Dây chuyền bạc</a></li>
-                                <li><a href="index-product.php?subcategory=Dây chuyền vàng">Dây chuyền vàng</a></li>
+                                <li><a href="product-list.php?subcategory=SC008">Dây chuyền bạc</a></li>
+                                <li><a href="product-list.php?subcategory=SC009">Dây chuyền vàng</a></li>
                             </ul>
                         </li>
-                        <li><a href="index-product.php?category=Nhẫn">Nhẫn</a>
+                        <li><a href="product-list.php?category=C005">Nhẫn</a>
                             <ul class="sub-menu">
-                                <li><a href="index-product.php?subcategory=Nhẫn bạc">Nhẫn bạc</a></li>
-                                <li><a href="index-product.php?subcategory=Nhẫn vàng">Nhẫn vàng</a></li>
+                                <li><a href="product-list.php?subcategory=SC010">Nhẫn bạc</a></li>
+                                <li><a href="product-list.php?subcategory=SC011">Nhẫn vàng</a></li>
                             </ul>
-                        <li><a href="index-product.php?category=Phụ kiện rời">Phụ kiện rời</a>
+                        <li><a href="product-list.php?category=S006">Phụ kiện rời</a>
                             <ul class="sub-menu">
-                                <li><a href="index-product.php?subcategory=Hộp đựng trang sức">Hộp đựng trang sức</a></li>
-                                <li><a href="index-product.php?subcategory=Dụng cụ vệ sinh">Dụng cụ vệ sinh</a></li>
+                                <li><a href="product-list.php?subcategory=SC012">Hộp đựng trang sức</a></li>
+                                <li><a href="product-list.php?subcategory=SC013">Dụng cụ vệ sinh</a></li>
                             </ul>
                         </li>
                     </ul>
