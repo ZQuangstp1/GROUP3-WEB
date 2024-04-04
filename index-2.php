@@ -1,16 +1,14 @@
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="upperstyles.css">
     <link rel="stylesheet" href="styles.css">
-    <script type="text/javascript" src="script.js" language="JavaScript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'> 
     <title>Trang sức Flamingo</title>
 </head>
 <body>
     <div class="main-container2">
         <div class="content-container2">
-          <div class="feature-section">
+          <div class="feature-section"> 
             <div class="feature-item">
               <img
                 loading="lazy"
@@ -49,7 +47,7 @@
         </div>
       </div>      
 
-      <?php   
+  <?php   
    require_once "db_module.php";
 
    $link = null;
@@ -93,44 +91,11 @@ if ($result->num_rows > 0) {
 }
 giaiPhongBoNho($link, $result);
 ?>
-<!-- <div id="main-container3" class="animate-on-scroll">
-  <div id="custom-div" class="animate-on-scroll">
-    <div id="custom-column" class="animate-on-scroll">
-      <img
-        loading="lazy"
-        srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/664537f1846170aaae206a8be3080a91f1a478030faab3ab38f4304828d188f6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-        class="custom-img animate-on-scroll"
-      />
-    </div>
-    <div id="custom-column-2" class="animate-on-scroll">
-      <div id="custom-div-3" class="animate-on-scroll">
-        <div id="custom-div-4" class="animate-on-scroll">Lorem Ipsum</div>
-        <div id="custom-div-5" class="animate-on-scroll">
-          Lorem Ipsum is simply dummy
-          <br />
-          text of the printing.
-        </div>
-        <div id="custom-div-6" class="animate-on-scroll">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
-<div id="trend" class = "animate-on-scroll">SẢN PHẨM GIẢM GIÁ</div>
-
-<div id ="menu-container2" class ="animate-on-scroll">
-  <div class="top-products">
-  <?php
+<div id="trend" class="animate-on-scroll">SẢN PHẨM GIẢM GIÁ</div>
+<div id="menu-container2" class="animate-on-scroll">
+    <div class="top-products">
+        <?php
         require_once "db_module.php";
         $link = null;
         taoKetNoi($link);
@@ -154,95 +119,31 @@ giaiPhongBoNho($link, $result);
             d.discountID IS NOT NULL
         LIMIT 5";
 
-$result = chayTruyVanTraVeDL($link, $sql);
-if ($result->num_rows > 0) {
-  // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
-  while ($row = $result->fetch_assoc()) {
-      ?>
-      <div class="product-item">
-          <img src="<?php echo $row['image']; ?>" class="img">
-          <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
-          <div class="product-info">
-              <div class="product-name"><?php echo $row['productName']; ?></div>
-              <div class="product-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
-              <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
-          </div>
-      </div>
-  <?php
-  }
-} else {
-  echo "0 results";
-}
-giaiPhongBoNho($link, $result);
-?>
-</div>
-<div class="button-container"><button class="SeeAll">Xem tất cả</button></div>
-</div>
-    <!-- <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img"
-    />      <div class="discount-tag">-20%</div>
-      <div class="product-info">
-        <div class="product-name">Product 1 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 1,999.00</div>
-      </div>
-    </div>
-    <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img"
-    />      <div class="discount-tag">-15%</div>
-      <div class="product-info">
-        <div class="product-name">Product 2 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 2,499.00</div>
-      </div>
-    </div>
-    <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img"
-    />      <div class="discount-tag">-15%</div>
-      <div class="product-info">
-        <div class="product-name">Product 3 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 2,499.00</div>
-      </div>
-    </div>
+        $result = chayTruyVanTraVeDL($link, $sql);
 
-    <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img">
-      <div class="discount-tag">-15%</div>
-      <div class="product-info">
-        <div class="product-name">Product 4 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 2,499.00</div>
-      </div>
+        if ($result->num_rows > 0) {
+            // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <div class="product-item">
+                    <img src="<?php echo $row['image']; ?>" class="img">
+                    <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
+                    <div class="product-info">
+                        <div class="product-name"><?php echo $row['productName']; ?></div>
+                        <div class="product-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
+                        <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
+                    </div>
+                </div>
+            <?php
+            }
+        } else {
+            echo "0 results";
+        }
+        giaiPhongBoNho($link, $result);
+        ?>
     </div>
-
-    <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img"
-    />      <div class="discount-tag">-15%</div>
-      <div class="product-info">
-        <div class="product-name">Product 5 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 2,499.00</div>
-      </div>
-    </div>
-    <button class="SeeAll">Xem tất cả</button>
-    </div>
-  </div> -->
+    <div class="button-container"><button class="SeeAll">Xem tất cả</button></div>
+</div>
     <div class="Insta">
       <header class="header">Follow Flamingo trên Instagram</header>
       <div class="image-wrapper">
@@ -273,106 +174,106 @@ giaiPhongBoNho($link, $result);
           <div class="swiper-wrapper">
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=31" />
+                      <img class="avatar" src="https://lavenderstudio.com.vn/wp-content/uploads/2019/10/1.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
                
               </svg>
                       <div class="header">
-                          <h1 class="name">Amy Liu</h1>
-                          <h2 class="title">CTO, Cybertech Solutions</h2>
+                          <h1 class="name">Lê Thị Ngọc</h1>
+                          <h2 class="title">Nhà Thiết Kế Thời Trang</h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                              Sản phẩm tốt
+                          Thời gian vận chuyển rất hợp lí. Tôi đã đặt hàng với tâm thế hào hứng chờ đợi để được trải nghiệm sản phẩm và tôi không hề bị chờ mỏi cổ. Có thể thấy bên vận chuyển không quản ngại thời tiết và đường xá xa xôi để đưa sản phẩm cho tôi trong thời gian ngắn nhất
                           </p>
                       </div>
                   </div>
               </div>
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=26" />
+                      <img class="avatar" src="https://images2.thanhnien.vn/zoom/686_429/Uploaded/dieutrang.qc/2020_03_09/kingcoffe/ceolehoangdiepthao-avatar_EZOB.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
                 
               </svg>
                       <div class="header">
-                          <h1 class="name">Sarah Price</h1>
-                          <h2 class="title">Sr. Technology Analyst</h2>
+                          <h1 class="name">Nguyễn Thị Hạnh</h1>
+                          <h2 class="title">CTO, Kafla</h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                            Sản phẩm tốt
+                          Mẫu nhìn đơn giản, tưởng không đẹp mà đẹp không tưởng ạ, đính đá rất chắc chắn mình mang được vài hôm rồi mới lên đánh giá, thấy sản phẩm chất lượng nên mọi người tham khảo thử xem
                           </p>
                       </div>
                   </div>
               </div>
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=69" />
+                      <img class="avatar" src="https://i.pinimg.com/originals/68/7f/f5/687ff58b82cf34da0cd1369598f22104.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
             
               </svg>
                       <div class="header">
-                          <h1 class="name">Dr. Miguel Torres</h1>
-                          <h2 class="title">Head of Neurobiology, Central University</h2>
+                          <h1 class="name">Lưu Bích Loan</h1>
+                          <h2 class="title">Sinh viên UEH</h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                            Sản phẩm tốt
+                          Đẹp hơn cả mô tả Giao hàng nhanh đóng gói hàng cẩn thận có cả giấy Hướng dẫn sử dụng và hộp nhẫn gói kèm theo. Giao hàng nhanh đóng gói đủ số lượng. Nhẫn rất đẹp mọi người nên mua và trải nghiệm sản phẩm nha
                           </p>
                       </div>
                   </div>
               </div>
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=59" />
+                      <img class="avatar" src="https://upanh123.com/wp-content/uploads/2021/04/Anh-gai-xinh-lam-anh-dai-dien-facebook1.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
               
               </svg>
                       <div class="header">
-                          <h1 class="name">Benjamin Moore</h1>
+                          <h1 class="name">Đặng Minh Ngọc</h1>
                           <h2 class="title">
-                              Director of HCI, FutureTech
+                              Influencer
                           </h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                            Sản phẩm tốt
+                          Đầu tiên là thấy shop phục vụ rất nhiệt tình. Đóng gói cẩn thận. Sản phẩm thì ok. Còn chất lượng thì đợi 1 thời gian mới biết đc
                           </p>
                       </div>
                   </div>
               </div>
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=49" />
+                      <img class="avatar" src="https://scr.vn/wp-content/uploads/2020/08/H%C3%ACnh-g%C3%A1i-%C4%91%E1%BA%B9p-t%C3%B3c-d%C3%A0i-ng%E1%BA%A7u.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
               
               </svg>
                       <div class="header">
-                          <h1 class="name">Dr. Simone Laurent</h1>
-                          <h2 class="title">Chief Neurologist, NeuroTech Hospital</h2>
+                          <h1 class="name">Thảo Ngọc</h1>
+                          <h2 class="title">Sinh viên UEH</h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                            Sản phẩm tốt
+                          Đẹp nè. Xinh lắm á. Trông chắc chắn. Xịn nữa. Mấy chị bên cty cứ nhờ mua hộ nhưng em báo tự vào shop đặt r Giao hàng nhanh. Hqua đặt mà trưa nay có hàng luôn r
                           </p>
                       </div>
                   </div>
               </div>
               <div class="swiper-slide">
                   <div class="card">
-                      <img class="avatar" src="https://i.pravatar.cc/200?img=68" />
+                      <img class="avatar" src="https://nguyenthihongdung.com/wp-content/uploads/2021/05/Cau-chuyen-cua-Nguyen-Thi-Hong-Dung.jpg" />
                       <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="125px" height="125px">
                 <path
                   d="M 16.482422 8.9921875 A 1.50015 1.50015 0 0 0 15.943359 9.1074219 C 15.943359 9.1074219 13.068414 10.279429 10.357422 13.464844 C 7.6464301 16.650259 5 21.927419 5 30 A 1.50015 1.50015 0 0 0 5.015625 30.21875 A 8.5 8.5 0 0 0 13.5 39 A 8.5 8.5 0 0 0 13.5 22 A 8.5 8.5 0 0 0 8.7089844 23.480469 C 9.5777265 19.777157 11.122152 17.196657 12.642578 15.410156 C 14.931586 12.720571 17.056641 11.892578 17.056641 11.892578 A 1.50015 1.50015 0 0 0 16.482422 8.9921875 z M 37.482422 8.9921875 A 1.50015 1.50015 0 0 0 36.943359 9.1074219 C 36.943359 9.1074219 34.068414 10.279429 31.357422 13.464844 C 28.64643 16.650259 26 21.927419 26 30 A 1.50015 1.50015 0 0 0 26.015625 30.21875 A 8.5 8.5 0 0 0 34.5 39 A 8.5 8.5 0 0 0 34.5 22 A 8.5 8.5 0 0 0 29.708984 23.480469 C 30.577727 19.777157 32.122152 17.196657 33.642578 15.410156 C 35.931586 12.720571 38.056641 11.892578 38.056641 11.892578 A 1.50015 1.50015 0 0 0 37.482422 8.9921875 z"
                 />
               </svg>
                       <div class="header">
-                          <h1 class="name">Jared Foster</h1>
-                          <h2 class="title">Sr. Tech Journalist, Digital Frontier</h2>
+                          <h1 class="name">Nguyễn Thị Hồng Dung</h1>
+                          <h2 class="title">Chuyên Gia Phát Triển Kinh Doanh</h2>
                       </div>
                       <div class="quote-container">
                           <p class="quote">
-                            Sản phẩm tốt
+                          Đẹp tuyệt vời, từ khi mua hàng của shop thì không muốn mua shop khác nữa 
                           </p>
                       </div>
                   </div>
@@ -386,48 +287,51 @@ giaiPhongBoNho($link, $result);
   <script src='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/textfit/2.4.0/textFit.min.js'></script>
 <script>
-  const swiper = new Swiper(".swiperCarousel", {
-    slidesPerView: 3,
-    centeredSlides: true,
-    spaceBetween: 10,
-    keyboard: {
-      enabled: true,
-    },
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-  
-  const slides = document.getElementsByClassName("swiper-slide");
-  for (const slide of slides) {
-    slide.addEventListener("click", () => {
-      const { className } = slide;
-      if (className.includes("swiper-slide-next")) {
-        swiper.slideNext();
-      } else if (className.includes("swiper-slide-prev")) {
-        swiper.slidePrev();
+      const swiper = new Swiper(".swiperCarousel", {
+        slidesPerView: 3,
+        centeredSlides: true,
+        spaceBetween: 10,
+        keyboard: {
+          enabled: true,
+        },
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+
+      const slides = document.getElementsByClassName("swiper-slide");
+      for (const slide of slides) {
+        slide.addEventListener("click", () => {
+          const { className } = slide;
+          if (className.includes("swiper-slide-next")) {
+            swiper.slideNext();
+          } else if (className.includes("swiper-slide-prev")) {
+            swiper.slidePrev();
+          }
+        });
       }
-    });
-  }
-  
-  function resizeTextToFit() {
-    const quoteEls = document.getElementsByClassName('quote');
-    for (const el of quoteEls) {
-      el.style.width = el.offsetWidth;
-      el.style.height = el.offsetHeight;
-    }
-    textFit(quoteEls, { maxFontSize: 14 });
-  }
-  resizeTextToFit();
-  addEventListener("resize", (event) => {
-    resizeTextToFit();
-  });
+
+      function resizeTextToFit() {
+        const quoteEls = document.getElementsByClassName('quote');
+        for (const el of quoteEls) {
+          el.style.width = el.offsetWidth;
+          el.style.height = el.offsetHeight;
+        }
+        textFit(quoteEls, { maxFontSize: 14 });
+      }
+      resizeTextToFit();
+      addEventListener("resize", (event) => {
+        resizeTextToFit();
+    }); 
+
+  AOS.init();
+
   </script>
-  <?php include "footer.php"; ?>
+  <?php require "footer.php"; ?>
 </body>
 </html>
