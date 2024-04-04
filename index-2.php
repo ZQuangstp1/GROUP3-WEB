@@ -170,8 +170,6 @@ giaiPhongBoNho($link, $result);
     </div>
 <br>
 <br>
-</body>
-<body>
     <div class="container">
       <div class="swiper swiperCarousel">
           <div class="swiper-wrapper">
@@ -320,5 +318,6 @@ giaiPhongBoNho($link, $result);
         resizeTextToFit();
     }); 
   </script>
+  <?php require "footer.php"; ?>
 </body>
 </html>
