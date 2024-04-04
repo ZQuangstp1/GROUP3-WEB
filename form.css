@@ -77,11 +77,31 @@
 }
 
 @media screen and (max-width: 600px) {
+    .form-container {
+        padding: 10px; /* Giảm padding để tiết kiệm không gian */
+        margin-top: 10%; /* Tăng margin-top để tránh sát quá lên trên cùng */
+    }
+
+    .form-container form {
+        grid-template-columns: 1fr; /* Chuyển sang layout một cột */
+    }
+
+    .form-container label {
+        margin-bottom: 5px; /* Tăng khoảng cách dưới của label để dễ đọc */
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="date"],
+    .form-container input[type="email"],
+    .form-container input[type="number"],
+    .form-container select,
     .form-container button,
     .form-container input[type="submit"],
     .form-container input[type="reset"] {
-        width: 100%; /* Điều chỉnh lại để phù hợp với layout một cột */
+        width: 100%; /* Đảm bảo các thành phần chiếm toàn bộ chiều rộng */
+        margin-top: 10px; /* Tăng khoảng cách trên */
     }
+
     .form-container .form-buttons {
         flex-direction: column; /* Chuyển các nút thành dạng cột */
         gap: 10px; /* Giảm khoảng cách giữa các nút */

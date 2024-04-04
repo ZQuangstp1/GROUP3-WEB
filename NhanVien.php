@@ -180,7 +180,7 @@
         }
 
         function add_NV()
-        {
+        {    
             $link = null;
             taoKetNoi($link);
             ?>

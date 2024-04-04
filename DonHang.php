@@ -112,7 +112,7 @@
             return false;
         }
 
-        return true; // Allow form submission
+        return true;
     }
 
 </script>
@@ -181,7 +181,7 @@
             $fromDate = isset($_GET['fromDate']) ? $_GET['fromDate'] : '';
             $toDate = isset($_GET['toDate']) ? $_GET['toDate'] : '';
 
-            $sql = "SELECT c.customerID, c.phone, pd.productName, pd.color, pd.size, ot.quantity, o.totalAmount, o.paymentMethod,o.status,l.address, d.FullDateVN, o.orderID, l.locationID, ot.detailsID
+            $sql = "SELECT c.customerID, c.phone, pd.productName, pd.color, pd.size, ot.quantity, o.totalAmount, o.paymentMethod,o.status,l.address, d.FullDateVN,d.Date, o.orderID, l.locationID, ot.detailsID
                 FROM orders o JOIN customer c ON o.customerID = c.customerID JOIN date d on o.DateID = d.DateID JOIN orderdetail ot ON ot.orderID = o.orderID JOIN product pd ON pd.productID = ot.productID JOIN location l ON l.locationID = c.locationID WHERE 1";
 
             // Thêm điều kiện tìm kiếm dựa trên các bộ lọc
@@ -195,10 +195,10 @@
                 $sql .= " AND o.status = '$status'";
             }
             if (!empty($fromDate)) {
-                $sql .= " AND d.FullDateVN <= '$fromDate'";
+                $sql .= " AND d.Date >= '$fromDate'";
             }
             if (!empty($toDate)) {
-                $sql .= " AND d.FullDateVN >= '$toDate'";
+                $sql .= " AND d.Date <= '$toDate'";
             }
 
             // Thực hiện truy vấn và hiển thị kết quả

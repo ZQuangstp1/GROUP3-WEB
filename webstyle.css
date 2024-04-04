@@ -120,18 +120,21 @@ a:hover {
         width: 100%;
         height: auto;
         position: relative;
+        float: none; /* Loại bỏ float để đảm bảo layout chính xác */
     }
 
-    #header,
-    #content {
-        margin-left: 0;
-        width: 100%;
+    #header {
+        left: 0; /* Đảm bảo header chiếm toàn bộ chiều rộng */
+        margin-top: auto; /* Điều chỉnh vị trí của header */
     }
 
     #content {
-        margin-top: 20px;
+        margin-top: 20px; /* Điều chỉnh vị trí của nội dung */
+        margin-left: 0; /* Loại bỏ margin trái để nội dung chiếm toàn bộ chiều rộng */
+        float: none; /* Loại bỏ float */
     }
 }
+
 
 @media (max-width: 480px) {
 
