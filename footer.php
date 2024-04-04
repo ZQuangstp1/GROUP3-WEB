@@ -1,7 +1,7 @@
 <html>
 <head>
     <style>
-        .footer {
+  .footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -145,7 +145,7 @@
 
 }
 
-    </style>
+</style>
 </head>
 <body>
 <div class="footer">

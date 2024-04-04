@@ -1,5 +1,6 @@
 body {
   background-color: #f9f2e6; /* Màu nền cho toàn bộ trang web */
+  
 }
 
 /* Thêm keyframes cho hiệu ứng */
@@ -129,14 +130,14 @@ body {
   padding: 0 20px;
 }
 /*----------------------------------------------------*/
-#main-container3 {
+.main-container3 {
   margin-top: 67px;
   width: 100%;
   max-width: 1520px;
 }
 
 @media (max-width: 991px) {
-  #main-container3 {
+  .main-container3 {
     max-width: 100%;
     margin-top: 40px;
   }
@@ -250,7 +251,7 @@ body {
     max-width: 100%;
   }
 }
-#trend {
+.trend {
   color: #282828;
   text-align: center;
   letter-spacing: -1px;
@@ -265,7 +266,7 @@ body {
   }
 }
 /*----------------------------------------------------*/
-#menu-container2 {
+.menu-container2 {
   max-width: 100%;
   margin: 20px auto;
   padding: 20px;
@@ -395,10 +396,10 @@ body {
   align-self: stretch;
   background-color: #fff;
   display: flex;
-  margin-top: 67px;
+  margin-top: 40px;
   max-width: 100%;
   justify-content: center;
-  padding: 40px 60px;
+  padding: 0px 40px 60px 60px;
   flex-direction: column;
 
 }
@@ -464,14 +465,18 @@ body {
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins&display=swap");
 
 .container {
-  width: 100%;
-  height: fit-content;
+  width: 99vw;
+  height: 100vh;
 }
 .card {
   background-color: #f9fafe;
-
+  width: 550px;
+  height: 45%;
   border-radius: 10px;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: relative;
   padding: 30px 0 0 0;
   transition: transform 400ms;
@@ -540,6 +545,16 @@ body {
   margin: 0;
 }
 
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
 
 .swiper-slide-active {
   z-index: 1;

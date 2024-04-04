@@ -7,6 +7,28 @@ body {
 
 }
 
+.back-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 18px;
+  background-color: #fb6f92;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.back-to-top-btn:hover {
+  color: black;
+}
+
 button {
   background-color: transparent;
   border: none;
@@ -19,7 +41,6 @@ button {
 .head-content {
   margin-bottom: 50px;
   display: flex;
-  width: 100%;
 }
 
 .head-content__sidebar {
@@ -126,10 +147,8 @@ button {
 .sort-dropdown-wrapper {
   display: flex;
   justify-content: flex-start; /* Căn chỉnh sang phải */
-}
-
-.sort-dropdown-wrapper select {
-  margin-left: 10px; /* Khoảng cách giữa hai dropdown */
+  gap: 20px;
+  margin-right: 20px;
 }
 
 /* product */
