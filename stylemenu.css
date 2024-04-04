@@ -40,11 +40,11 @@ nav{
     color: #ff678d;
     display: block;
     padding: 10px 25px;
-    margin-left: 30px;
+    margin-left: 60px;
     /* padding: 18px 20px; */
     text-decoration: none;
     font-family: Barlow, sans-serif;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 #main-menu ul.sub-menu{
@@ -57,7 +57,7 @@ nav{
     /* border: 1px solid #ab2647; */
     display: none;
     z-index: 999;
-    left:30px
+    left: 60px
 }
 
 #main-menu li:hover>ul.sub-menu{
