@@ -87,7 +87,7 @@
     align-items: center;
     margin-top: 3px;
     margin-right: 50px;
-    margin-left: 90px;
+    margin-left: 20px;
     max-width: 20%;
     padding-top: 5px;
 }

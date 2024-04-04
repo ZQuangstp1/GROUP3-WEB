@@ -156,7 +156,8 @@ body {
 .tieu-de {
   top: 56.5px;
   left: calc(50% + 67.5px);
-  font-size: var(--font-size-26xl);
+  /* font-size: var(--font-size-26xl); */
+  font-size: 35px;
   font-weight: 500;
   font-family: var(--font-lora);
   width: 496px;

@@ -10,7 +10,7 @@
             <nav class = "container">
                 <ul id="main-menu" >
                     <li><a href="index.php">Trang chủ</a></li>
-                    <li><a href="index-product.php">Sản phẩm</a>
+                    <li><a href="product-list.php">Sản phẩm</a>
                     <ul class="sub-menu">
                         <li><a href="product-list.php?category=C001">Lắc</a>
                             <ul class="sub-menu">
