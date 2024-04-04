@@ -169,6 +169,7 @@ giaiPhongBoNho($link, $result);
       </div>
     </div>
 <br>
+<header class="header" style="color: #fb6f92;">ĐÁNH GIÁ CỦA KHÁCH HÀNG</header>
 <br>
     <div class="container">
       <div class="swiper swiperCarousel">
