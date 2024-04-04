@@ -40,7 +40,7 @@ nav{
     color: #ff678d;
     display: block;
     padding: 10px 25px;
-    margin-left: 30px;
+    margin-left: 60px;
     /* padding: 18px 20px; */
     text-decoration: none;
     font-family: Barlow, sans-serif;
@@ -54,10 +54,10 @@ nav{
     padding: 10px 0;
     list-style: none;
     width: 200px;
-    /* border: 1px solid #ab2647; */
+    border: 1px solid #ab2647;
     display: none;
     z-index: 999;
-    left:30px
+    left: 60px
 }
 
 #main-menu li:hover>ul.sub-menu{

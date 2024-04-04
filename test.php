@@ -5,19 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="product-list.css" rel="stylesheet">
-    <script type="text/javascript" src="product-list.js" language="JavaScript"></script>
+    <link href="product-list.css" rel="stylesheet">]
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+            function toggleFilter(filterId) {
+                const filterContent = document.getElementById(filterId);
+                filterContent.classList.toggle('collapsed');
+                }
+
+    // Lấy tham số category hoặc subcategory từ URL
+            var urlParams = new URLSearchParams(window.location.search);
+            var category = urlParams.get('category');
+            var subcategory = urlParams.get('subcategory');
+            // Đánh dấu các ô checkbox tương ứng
+
+    </script>
 </head>
 <body>
     <?php
-        require_once "dbmodule.php";
+        require_once "db_module.php";
         $link = null;
         taoKetNoi($link);
     ?>
 <form action="?opt=applyFilters" method="POST">
-    <div class="container">
-    <?php include "header.php"; ?>
-    <?php include "menu.php"; ?>
+    <a name="top"> <div class="container"></a>
+         <!-- HEADER -->
+         <?php include "header.php"; ?>
+        <!-- MENU -->
+        <?php include "menu.php"; ?>
+        <div class="head-content">
         <div class="head-content">
             <!-- Sidebar -->
             <div class="head-content__sidebar">
@@ -32,12 +49,17 @@
                         if ($result && mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo '<div class="form-check">';
-                                echo '<input type="checkbox" class="form-check-input" name="selected_categories[]" value="' . $row['categoryID'] . '">';
+                                echo '<input type="checkbox" class="form-check-input" id="category' . $row['categoryID'] . '" name="selected_categories[]" value="' . $row['categoryID'] . '">';
                                 echo '<label class="form-check-label" for="category' . $row['categoryID'] . '">' . $row['categoryName'] . '</label>';
                                 echo '</div>';
                             }
                         }
                         ?>
+                          <script>
+                                if (category) {
+                                    $('input[name="selected_categories[]"][value="' + category + '"]').prop('checked', true);
+                                }
+                            </script>
                     </div>
                     <hr />
                     <!-- Danh mục phụ -->
@@ -51,11 +73,16 @@
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo '<div class="form-check">';
                                 echo '<input class="form-check-input" type="checkbox" value="' . $row['subcategoryID'] . '" name="selected_subcategories[]" id="subcategory' . $row['subcategoryID'] . '">';
-                                echo '<label class="form-check-label" for="subcategory' . $row['subcategoryID'] . '">' . $row['subcategoryName'] . '</label>';
+                                echo '<label class="form-check-label" for="subcategory' . $row['subcategoryID'] . '">' . $row['subcategoryName'] . '</label>';    
                                 echo '</div>';
                             }
                         }
                         ?>
+                    <script>
+                        if (subcategory) {
+                            $('input[name="selected_subcategories[]"][value="' + subcategory + '"]').prop('checked', true);
+                        }
+                    </script>
                     </div>
                     <hr />
                     <!-- Giảm giá -->
@@ -78,7 +105,7 @@
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo '<div class="form-check">';
                                 echo '<input class="form-check-input" type="checkbox" value="' . $row['discountID'] . '" name="selected_discounts[]" id="discount' . $row['discountID'] . '">';
-                                echo '<label class="form-check-label" for="discount' . $row['discountID'] . '">' . $row['discountPercentage'] . '</label>';
+                                echo '<label class="form-check-label" for="discount' . $row['discountID'] . '">' . $row['discountPercentage'] . '</label>';                                
                                 echo '</div>';
                             }
                         }
@@ -163,7 +190,6 @@
     <!-- Hiển thị danh sách sản phẩm -->
     <div class="product-container row d-flex flex-wrap mt-3">
         <?php
-
             applyFilters();
  
         function applyFilters(){
@@ -240,7 +266,6 @@
                 }
             }
  
-            
             // Loại bỏ phần "OR" đầu tiên nếu có
             $whereClause = ltrim($whereClause, ' OR');
             $sortOrder = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'p.unitPrice';
@@ -270,8 +295,7 @@
             $result = chayTruyVanTraVeDL($link, $sql);
            
           }
-
-        //   $whereClause ='';
+ 
             $sql = "SELECT
                         COUNT(*) AS num_items
                     FROM
@@ -289,10 +313,8 @@
             $result_count = chayTruyVanTraVeDL($link, $sql);
             $row_count = mysqli_fetch_assoc($result_count);
             $num_items = $row_count['num_items'];
-
-            
           ?>
-
+       
             <div style="margin-top: 20px;">
                 <p>    
                     Tìm thấy <?php echo $num_items; ?> sản phẩm
@@ -300,8 +322,6 @@
             </div>
  
             <?php
-            
-
             if ($result && mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     ?>        
@@ -323,10 +343,11 @@
           giaiPhongBoNho($link, $result)
             ?>
     </div>
+    <a href="#top" id="back-to-top" class="back-to-top-btn" title="Go to top">↑</a>
 </div>
  
 <!-- Scripts -->
-<!-- <script src="script.js"></script> -->
+<script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 </body>
