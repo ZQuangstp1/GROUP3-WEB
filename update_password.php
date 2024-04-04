@@ -1,9 +1,10 @@
 <?php
 // Kết nối đến cơ sở dữ liệu
 require_once("db_module.php");
+require_once("users_module.php");
 $link = null;
 taoKetNoi($link);
-$customerID = dangnhap($link, $_username, $_password);
+
 if(isset($_POST['submit'])) {
     // Lấy dữ liệu từ form
     $oldPassword = $_POST['oldPassword'];
@@ -11,7 +12,7 @@ if(isset($_POST['submit'])) {
     $confirmPassword = $_POST['confirmPassword'];
 
     // Kiểm tra mật khẩu cũ có đúng không
-    $sql = "SELECT password FROM useraccount WHERE customerID = 'CS000001' AND password = '$oldPassword'";
+    $sql = "SELECT password FROM useraccount WHERE customerID = '" . $_SESSION['customerID'] . "' AND password = '$oldPassword'";
     $result = chayTruyVanTraVeDL($link, $sql);
 
     if(mysqli_num_rows($result) == 1) {
@@ -20,7 +21,7 @@ if(isset($_POST['submit'])) {
            
             
             // Cập nhật mật khẩu mới vào cơ sở dữ liệu
-            $updateSql = "UPDATE useraccount SET password = '$newPassword' WHERE customerID = '$customerID'";
+            $updateSql = "UPDATE useraccount SET password = '$newPassword' WHERE customerID = '" . $_SESSION['customerID'] . "'";
             $updateResult = chayTruyVanKhongTraVeDL($link, $updateSql);
 
             if($updateResult) {
@@ -29,15 +30,17 @@ if(isset($_POST['submit'])) {
                 echo "<script>window.location.href='TTKH.php';</script>";
             } else {
                 echo "<script>alert('Đổi mật khẩu thất bại');</script>";
+                return;
             }
         } else {
             echo "<script>alert('Mật khẩu mới và xác nhận mật khẩu không khớp');</script>";
+            return;
         }
     } else {
         echo "<script>alert('Mật khẩu cũ không chính xác');</script>";
+        return;
     }
 }
 
 // Giải phóng bộ nhớ và đóng kết nối
-giaiPhongBoNho($link);
-?>
+giaiPhongBoNho ( $link, $result );

@@ -23,4 +23,3 @@ function kiemTraMatKhau($password, $password2) {
 ?>
 
 
-
