@@ -42,7 +42,7 @@
                                 <li><a href="product-list.php?subcategory=SC010">Nhẫn bạc</a></li>
                                 <li><a href="product-list.php?subcategory=SC011">Nhẫn vàng</a></li>
                             </ul>
-                        <li><a href="product-list.php?category=S006">Phụ kiện rời</a>
+                        <li><a href="product-list.php?category=C006">Phụ kiện rời</a>
                             <ul class="sub-menu">
                                 <li><a href="product-list.php?subcategory=SC012">Hộp đựng trang sức</a></li>
                                 <li><a href="product-list.php?subcategory=SC013">Dụng cụ vệ sinh</a></li>

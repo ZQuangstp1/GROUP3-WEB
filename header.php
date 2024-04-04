@@ -220,8 +220,8 @@
         <div class="content-header">
           <div class="searchbar-container">
             <div id = "searchbar">
-              <img src="img/Search.png" alt="" class="kinhlup">
-              <input type="text" id="searchInput" placeholder="Tìm sản phẩm" size="13px">
+              <img src="img/Search.png" alt="" class="kinhlup" >
+              <input type="text" id="searchInput" placeholder="Tìm sản phẩm" onkeypress="searchOnEnter(event)" size="13px">
               <button id="searchButton" onclick="search()"></button>
           </div>
           </div>

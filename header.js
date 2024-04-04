@@ -15,3 +15,12 @@ $(document).ready(function(){
   //     }
   // });
   })
+
+//   function search() {
+//     var keyword = document.getElementById("searchInput").value;
+//     if (keyword.trim() !== "") {
+//         window.location.href = "product-list.php?keyword=" + encodeURIComponent(keyword);
+//     }
+// }
+
+

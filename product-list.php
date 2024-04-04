@@ -14,11 +14,38 @@
                 filterContent.classList.toggle('collapsed');
                 }
 
-    // Lấy tham số category hoặc subcategory từ URL
-            var urlParams = new URLSearchParams(window.location.search);
-            var category = urlParams.get('category');
-            var subcategory = urlParams.get('subcategory');
-            // Đánh dấu các ô checkbox tương ứng
+    // // Lấy tham số category hoặc subcategory từ URL
+    //         var urlParams = new URLSearchParams(window.location.search);
+    //         var category = urlParams.get('category');
+    //         var subcategory = urlParams.get('subcategory');
+    //         // Đánh dấu các ô checkbox tương ứng
+
+// Hàm kiểm tra URL và đánh dấu các ô checkbox tương ứng
+function checkCheckboxFromUrlParams() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var category = urlParams.get('category');
+    var subcategory = urlParams.get('subcategory');
+
+    // Đánh dấu checkbox cho category
+    if (category) {
+        $('input[name="selected_categories[]"][value="' + category + '"]').prop('checked', true);
+    }
+
+    // Đánh dấu checkbox cho subcategory
+    if (subcategory) {
+        $('input[name="selected_subcategories[]"][value="' + subcategory + '"]').prop('checked', true);
+    }
+
+    // Sau khi đánh dấu các checkbox, kiểm tra nếu có checkbox được đánh dấu từ URL, thì kích hoạt sự kiện click cho nút "Áp dụng bộ lọc"
+    if (category || subcategory) {
+        $('.apply-filters-button').click(); // Kích hoạt sự kiện click cho nút "Áp dụng bộ lọc"
+    }
+}
+
+// Áp dụng bộ lọc khi trang được tải
+$(document).ready(function() {
+    checkCheckboxFromUrlParams(); // Kiểm tra checkbox từ URL
+});
     </script>
 </head>
 <body>
@@ -40,6 +67,7 @@
                 <div class="sidebar-section" style="margin-top: 50px;">
                     <button type="button" class="sidebar-title" onclick="toggleFilter('category')">- Danh mục</button>
                     <div class="filter-content collapsed" id="category">
+                        
                         <?php
                         $sql = "SELECT * FROM Category"; // Truy vấn để lấy danh sách các danh mục
                         $result = chayTruyVanTraVeDL($link, $sql);
@@ -171,6 +199,7 @@
                         <input type="submit" class="apply-filters-button" value="Áp dụng bộ lọc" onclick="document.getElementById('apply_filters').value = '1';">
                     </div>
                 </form>
+                
             </div>
  
     <!-- Hiển thị dropdown để sort-->
@@ -314,7 +343,6 @@
             $row_count = mysqli_fetch_assoc($result_count);
             $num_items = $row_count['num_items'];
           ?>
-       
             <div style="margin-top: 20px;">
                 <p>    
                     Tìm thấy <?php echo $num_items; ?> sản phẩm
@@ -342,10 +370,12 @@
           }
           giaiPhongBoNho($link, $result)
             ?>
+            
     </div>
+     
     <a href="#top" id="back-to-top" class="back-to-top-btn" title="Go to top">↑</a>
+    
 </div>
- 
 <!-- Scripts -->
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
