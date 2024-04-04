@@ -39,7 +39,7 @@
     <!-- MENU -->
     <?php include "menu.php"; ?>
         <!-- BANNER -->
-      <div class="banner-container">
+      <div class="banner-container" id="animate-on-scroll">
         <img
           loading="lazy"
           src="img/img4.png"
@@ -81,7 +81,7 @@
       <br>
       <br>
       <!-- LIST PRODUCT -->
-      <div class = "listproduct-container">
+      <div class = "listproduct-container"  id="animate-on-scroll">
         <div class = "prod1">
             <div class="overlay" ></div>
             <div class="text-on-overlay">Lắc</div>
@@ -116,14 +116,11 @@
       <br>
       <br>
       <br>
-      <br>
-      <br>
-      <br>
       <!-- BEST SELLER -->
-      <div class="bestseller-template">SẢN PHẨM BÁN CHẠY</div>
+      <div class="bestseller-template"  id="animate-on-scroll">SẢN PHẨM BÁN CHẠY</div>
       <br>
       <br>
-      <div class="best-seller">
+      <div class="best-seller"  id="animate-on-scroll">
         <?php
           require_once "db_module.php";
           $link = null;
@@ -170,9 +167,6 @@
                 giaiPhongBoNho($link, $result);
                 ?>
     </div>
-    <br>
-    <br>
-    <br>
     <!-- INCLUDE QUANG'S PHP FILE BELOW HERE  -->
     <?php include "index-2.php"; ?>
   </div>

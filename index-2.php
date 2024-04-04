@@ -6,7 +6,7 @@
     <title>Trang sức Flamingo</title>
 </head>
 <body>
-    <div class="main-container2">
+    <div class="main-container2"  id="animate-on-scroll">
         <div class="content-container2">
           <div class="feature-section"> 
             <div class="feature-item">
@@ -71,16 +71,16 @@ $result = chayTruyVanTraVeDL($link,$sql);
 if ($result->num_rows > 0) {
     // Hiển thị dữ liệu
     while($row = $result->fetch_assoc()) {
-        echo '<div id="main-container3" data-aos="fade-up"">';
-        echo '<div id="custom-div" data-aos="fade-up"">';
-        echo '<div id="custom-column" data-aos="fade-up"">';
+        echo '<div id="main-container3">';
+        echo '<div id="custom-div">';
+        echo '<div id="custom-column">';
         echo '<img loading="lazy" src="' . $row["image"] . '" class="custom-img animate-on-scroll" />';
         echo '</div>';
-        echo '<div id="custom-column-2" data-aos="fade-up"">';
-        echo '<div id="custom-div-3" data-aos="fade-up"">';
-        echo '<div id="custom-div-4" data-aos="fade-up"">' . $row["subcategoryName"] . '</div>';
-        echo '<div id="custom-div-5" data-aos="fade-up"">' . $row["productName"] . '</div>';
-        echo '<div id="custom-div-6" data-aos="fade-up"">' . $row["description"] . '</div>';
+        echo '<div id="custom-column-2">';
+        echo '<div id="custom-div-3">';
+        echo '<div id="custom-div-4">' . $row["subcategoryName"] . '</div>';
+        echo '<div id="custom-div-5">' . $row["productName"] . '</div>';
+        echo '<div id="custom-div-6">' . $row["description"] . '</div>';
         echo '</div>';
         echo '</div>';
         echo '</div>';
