@@ -44,7 +44,7 @@ nav{
     /* padding: 18px 20px; */
     text-decoration: none;
     font-family: Barlow, sans-serif;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 #main-menu ul.sub-menu{
@@ -54,7 +54,7 @@ nav{
     padding: 10px 0;
     list-style: none;
     width: 200px;
-    /* border: 1px solid #ab2647; */
+    border: 1px solid #ab2647;
     display: none;
     z-index: 999;
     left: 60px
