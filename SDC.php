@@ -43,15 +43,13 @@
                     <div class="div-12" style="font-weight: bold;">Địa chỉ của Bạn</div>
                     <?php
                     require_once ("view_TTKH.php");
-
-                    // Gọi hàm view_TTKH() để hiển thị thông tin khách hàng
                     view_SDC();
                     ?>
                     <button class="button" style="width: 180px; margin-left: 0px;" onclick="toggleDiaChi()">+ Thêm địa
                         chỉ</button>
 
                     <!-- Form để gửi dữ liệu -->
-                    <form action="upade_sdc.php" method="POST">
+                    <form action="update_SDC.php" method="POST">
                         <!-- Địa chỉ giao hàng -->
                         <div class="div-11" id="diaChiContainer" style="display: none;">
                             <div class="DCGH">
@@ -71,7 +69,34 @@
                                     <div class="div-14">
                                         <label for="quan">Quận(Huyện) <span
                                                 style="color: rgba(235, 87, 87, 1);">*</span></label>
-                                        <input type="text" class="div-15" name="quan" style="margin-left: 16px;">
+                                                <select class="div-15" name="quan" style="margin-left: 16px;">
+                                                <option value="" selected disabled>Chọn Quận(Huyện)</option>
+                                                <option value="Hải Châu" >Hải Châu</option>
+    <option value="Thanh Khê">Thanh Khê</option>
+    <option value="Sơn Trà">Sơn Trà</option>
+    <option value="Ngũ Hành Sơn">Ngũ Hành Sơn</option>
+    <option value="Cẩm Lệ">Cẩm Lệ</option>
+    <option value="Liên Chiểu">Liên Chiểu</option>
+    <option value="Ngũ Hành Sơn">Ngũ Hành Sơn</option>
+    <option value="Hòa Vang">Hòa Vang</option>
+    <option value="Hoàng Sa">Hoàng Sa</option>
+    <option value="Ba Đình">Ba Đình</option>
+    <option value="Hoàn Kiếm">Hoàn Kiếm</option>
+    <option value="Hai Bà Trưng">Hai Bà Trưng</option>
+    <option value="Đống Đa">Đống Đa</option>
+    <option value="Tây Hồ">Tây Hồ</option>
+    <option value="Nam Từ Liêm">Nam Từ Liêm</option>
+    <option value="Cầu Giấy">Cầu Giấy</option>
+    <option value="Thanh Xuân">Thanh Xuân</option>
+    <option value="Hoàng Mai">Hoàng Mai</option>
+    <option value="Long Biên">Long Biên</option>
+    <option value="Quận 1">Quận 1</option>
+    <option value="Quận 2">Quận 2</option>
+    <option value="Quận 3">Quận 3</option>
+    <option value="Quận 4">Quận 4</option>
+    <option value="Quận 5">Quận 5</option>
+</select>
+
                                     </div>
                                 </div>
 
@@ -80,51 +105,29 @@
                                     <div class="div-14">
                                         <label for="tp">Thành phố <span
                                                 style="color: rgba(235, 87, 87, 1);">*</span></label>
-                                        <input type="text" class="div-15" name="tp" style="margin-left: 35px;">
+                                                <select class="div-15" name="tp" style="margin-left: 35px;">
+    <option value="" selected disabled>Chọn Tỉnh(Thành phố)</option>
+    <option value="Bình Dương">Bình Dương</option>
+    <option value="Cần Thơ">Cần Thơ</option>
+    <option value="Đà Nẵng">Đà Nẵng</option>
+    <option value="Đồng Nai">Đồng Nai</option>
+    <option value="Hải Dương">Hải Dương</option>
+    <option value="Hà Nội">Hà Nội</option>
+    <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+    <option value="Hải Phòng">Hải Phòng</option>
+    <option value="Huế">Huế</option>
+    <option value="Quảng Nam">Quảng Nam</option>
+</select>
+
+</select>
+
                                     </div>
                                 </div>
                             </div>
 
 
                             <!-- Thông tin liên lạc -->
-                            <div class="TTLL">
-                                <div class="div-12" style="font-weight: bold;">Thông tin liên lạc</div>
-
-                                <!-- Trường nhập liệu cho họ -->
-                                <div class="div-13">
-                                    <div class="div-14">
-                                        <label for="ho">Họ <span style="color: rgba(235, 87, 87, 1);">*</span></label>
-                                        <input type="text" class="div-15" name="ho" style="margin-left: 91px;">
-                                    </div>
-                                </div>
-
-                                <!-- Trường nhập liệu cho tên -->
-                                <div class="div-13">
-                                    <div class="div-14">
-                                        <label for="ten">Tên <span style="color: rgba(235, 87, 87, 1);">*</span></label>
-                                        <input type="text" class="div-15" name="ten" style="margin-left: 82px;">
-                                    </div>
-                                </div>
-
-                                <!-- Trường nhập liệu cho số điện thoại -->
-                                <div class="div-13">
-                                    <div class="div-14">
-                                        <label for="sdt">Số điện thoại <span
-                                                style="color: rgba(235, 87, 87, 1);">*</span></label>
-                                        <input type="text" class="div-15" name="sdt" style="margin-left: 15px;">
-                                    </div>
-                                </div>
-
-                                <!-- Trường nhập liệu cho email -->
-                                <div class="div-13">
-                                    <div class="div-14">
-                                        <label for="email">Email <span
-                                                style="color: rgba(235, 87, 87, 1);">*</span></label>
-                                        <input type="email" class="div-15" name="email" style="margin-left: 70px;">
-                                    </div>
-                                </div>
-                            </div>
-
+                           
                             <!-- Thanh toán -->
                             <div class="PTTT">
                                 <div class="div-12" style="font-weight: bold;">Thanh toán</div>
@@ -135,16 +138,16 @@
                                         <label for="pttt">Phương thức <span
                                                 style="color: rgba(235, 87, 87, 1);">*</span></label>
                                         <select class="div-15" name="pttt" style="margin-left: 13px;">
-                                            <option value="tien_mat">Tiền mặt</option>
-                                            <option value="momo">Momo</option>
-                                            <option value="mobile_banking">Mobile Banking</option>
+                                            <option value="Tiền mặt">Tiền mặt</option>
+                                            <option value="MoMo">Momo</option>
+                                            <option value="Mobile Banking">Mobile Banking</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Nút thêm để gửi form -->
-                            <button type="submit" class="button">Thêm</button>
+                            <button type="submit" class="button" name="submit">Thêm</button>
                     </form>
                 </div>
             </div>

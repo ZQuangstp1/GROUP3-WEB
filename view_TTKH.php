@@ -75,7 +75,7 @@ function view_TTKH()
 }
 
 function view_DC()
-{
+{global $customerID;
   $link = null;
   taoKetNoi($link);
   $result = chayTruyVanTraVeDL($link, "SELECT CONCAT(location.address, ', ', d.district, ', ', province.province) AS address
@@ -117,8 +117,7 @@ function view_SDC()
     $result = chayTruyVanTraVeDL($link, "SELECT CONCAT(customer.lastName, ' ', customer.firstName) AS customerName,
       customer.phone,
       customer.email,
-      CONCAT(location.address, ', ', d.district, ', ', province.province) AS address,
-      orders.paymentMethod
+      CONCAT(location.address, ', ', d.district, ', ', province.province) AS address
   FROM customer
   LEFT JOIN location ON customer.locationID = location.locationID
   LEFT JOIN district d ON location.districtID = d.districtID
@@ -143,11 +142,6 @@ function view_SDC()
     echo "<tr>";
     echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Địa chỉ Email</span></td>";
     echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["email"] . "</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Phương thức thanh toán</span></td>";
-    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["paymentMethod"] . "</td>";
     echo "</tr>";
 
     echo "<tr>";

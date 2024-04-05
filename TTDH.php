@@ -1,8 +1,13 @@
 <?php
 // Kết nối đến cơ sở dữ liệu
 require_once("db_module.php");
+session_start();
+
+
 $link = null;
 taoKetNoi($link);
+
+global $new_customerID;
 
 if(isset($_POST['submit'])) {
     // Lấy dữ liệu từ form
@@ -22,7 +27,15 @@ if(isset($_POST['submit'])) {
     }
     
     // Câu lệnh SQL để chèn dữ liệu mới vào bảng customer
-    $sql = "INSERT INTO customer (lastName, firstName, phone, email, gender, dateOfBirth) VALUES ('$lastName', '$firstName', '$phone', '$email', '$gender_code', '$dateOfBirth') WHERE customerID ='CS000151'";
+    $sql = "UPDATE customer SET 
+        lastName = '$lastName', 
+        firstName = '$firstName', 
+        phone = '$phone', 
+        email = '$email', 
+        gender = '$gender_code', 
+        dateOfBirth = '$dateOfBirth' 
+        WHERE customerID = '" . $_SESSION['newcustomerID']  . "'";
+
     
     // Thực thi truy vấn
     $result = chayTruyVanKhongTraVeDL($link, $sql);
