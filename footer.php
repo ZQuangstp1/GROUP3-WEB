@@ -1,19 +1,19 @@
 <html>
 <head>
-    <style>
+  <style>
+  a {
+    text-decoration: none; /* Loại bỏ gạch chân */
+    color: inherit; 
+  }
   .footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   flex-direction: row; 
   background-color: #f9f2e6;
-    margin-top: 200px;
+  margin-top: 200px;
+  padding: 20px;
 }
-
-a {
-    text-decoration: none; /* Loại bỏ gạch chân */
-    color: inherit; 
-  }
   
 .footer::before {
   content: ""; 
@@ -25,11 +25,26 @@ a {
 }
 
 .shopping-section,
-.information-section,
-.footer-section {
+.information-section{
   flex: 0 1 calc(30% - 20px);
   margin: 10px;
 } 
+
+
+@media only screen and (min-width: 768px) {
+  .footer-section {
+    flex: 0 1 calc(33.33% - 40px); /* Chia footer thành 3 cột với khoảng cách 20px giữa các cột */
+    margin: 20px; /* Khoảng cách giữa các cột */
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+  .footer-section {
+    flex: 0 1 calc(25% - 40px); /* Chia footer thành 4 cột với khoảng cách 20px giữa các cột */
+  }
+}
+
 .mobile-app-section,
 .Noti {
   flex: 1 1 calc(50% - 20px);
@@ -37,6 +52,14 @@ a {
 .mobile-app-section{
   margin-left: 40px;
 }
+
+@media only screen and (max-width: 767px) {
+  .mobile-app-section {
+    display: none; /* Ẩn phần mobile-app-section khi độ rộng màn hình nhỏ hơn 768px */
+  }
+}
+
+
 .product-categories,
 .information-section,
 .mobile-app-section,
@@ -80,7 +103,7 @@ a {
   display: flex;
   align-items: center;
 }
-
+.return-icon,
 .guarantee-icon,
 .return-policy-icon {
   width: 50px;
@@ -195,7 +218,10 @@ a {
     <div class="footer-section">
       <div class="quality-guarantee">
         <div class="guarantee-content">
-          <img style="margin-right: 10px;" loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ca7dc1658f2f49e5494a2a360c02134ba92fc12ec2b2d63dcd5c2558b5b530e8?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="guarantee-icon" />
+          <img style="margin-right: 10px;"
+             loading="lazy" 
+             src="https://cdn.builder.io/api/v1/image/assets/TEMP/ca7dc1658f2f49e5494a2a360c02134ba92fc12ec2b2d63dcd5c2558b5b530e8?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" 
+             class="guarantee-icon" />
           <div class="guarantee-text">
             <span class="guarantee-title">100% Hàng thật nguyên gốc</span>
             <br />
@@ -208,8 +234,8 @@ a {
           <div class="return-policy-column">
             <img style="margin-right: 10px"
             loading="lazy"
-            srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-            class="img"/>
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/44feb6f2dbeb1a245196db586a7883cd2a7728c92aafc125e257d2a116a1d6b6?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
+            class="return-icon"/>
             </div>
           <div class="return-policy-column">
             <div class="return-policy-details">
