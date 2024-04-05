@@ -1233,3 +1233,99 @@ input[type="number"] {
   border: none;
 }
 
+a {
+  text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+.best-seller {
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.bestsellerproduct-item {
+  width: calc(20% - 20px); 
+  margin-right: 20px; 
+  margin-bottom: 20px;
+  border: 2px solid #000000;
+  padding: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.bestsellerproduct-item:last-child {
+  margin-right: 0; 
+}
+
+.bestsellerproduct-item img {
+  width: 100%;
+  height: 200px;
+  border-bottom: 2px solid #000000;  
+
+}
+
+.discount-tag {
+  background-color: #fb6f92;
+  color: #fff;
+  font-family: 'Barlow', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px;
+  position: absolute;
+  top: 17;
+  left: 0;
+}
+
+.bestsellerproduct-info {
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  display: flex;
+  flex-direction: column;
+  color: #212121;
+  font-weight: 700;
+  padding: 10px 33px;
+}
+
+.bestsellerproduct-name {
+  text-transform: capitalize;
+  align-self: stretch;
+  font: 17px Barlow, sans-serif;
+
+}
+
+.bestsellerproduct-category {
+  color: #777;
+  text-transform: capitalize;
+  margin-top: 6px;
+  font: 400 14px Barlow, sans-serif;
+}
+
+.bestsellerproduct-price {
+  color: #fb6f92;
+  text-align: center;
+  margin-top: 6px;
+  font: 18px/135% Barlow, sans-serif;
+}
+
+.bestseller-template {
+  color: #282828;
+  text-align: center;
+  letter-spacing: -1px;
+  align-self: center;
+  margin-top: 77px;
+  white-space: nowrap;
+  font: 400 40px/81% Barlow, sans-serif;
+  word-spacing: 5px;
+}
+@media (max-width: 991px) {
+  .div {
+    margin-top: 40px;
+    white-space: initial;
+  }
+}
+

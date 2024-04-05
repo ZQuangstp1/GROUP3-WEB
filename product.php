@@ -287,6 +287,63 @@
     </section>   
 </section>
 </div>
+
+<div class="bestseller-template"  id="animate-on-scroll">SẢN PHẨM TƯƠNG TỰ</div>
+      <br>
+      <br>
+      <div class="best-seller"  id="animate-on-scroll">
+        <?php
+          require_once "db_module.php";
+          $link = null;
+          taoKetNoi($link);
+
+          $sql = "SELECT 
+                      p.productName, 
+                      p.productID,
+                      CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice, 
+                      p.image,
+                      CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+                      c.categoryName,
+                      sc.subcategoryName
+                  FROM product p 
+                  LEFT JOIN subcategory sc ON p.subcategoryID = sc.subcategoryID
+                  LEFT JOIN category c ON sc.categoryID = c.categoryID
+                  LEFT JOIN orderdetail od ON p.productID = od.productID
+                  LEFT JOIN orders o ON o.orderID = od.orderID
+                  LEFT JOIN discount d ON p.discountID = d.discountID
+                  GROUP BY p.productName, formattedUnitPrice, p.image, discountPercentage, c.categoryName, sc.subcategoryName -- Grouping by all selected columns
+                  ORDER BY SUM(od.quantity) DESC
+                  LIMIT 5;
+                  ";
+
+          $result = chayTruyVanTraVeDL($link, $sql);
+          if ($result->num_rows > 0) {
+            // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                  <div class="bestsellerproduct-item">
+                  <a href="product.php?product_id=<?php echo $row['productID']; ?>">
+                      <img src="<?php echo $row['image']; ?>" class="img">     
+                      <?php if ($row['discountPercentage'] !== null) { ?>
+                          <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
+                      <?php } ?>        
+                      <div class="bestsellerproduct-info">
+                          <div class="bestsellerproduct-name"><?php echo $row['productName']; ?></div>
+                          <div class="bestsellerproduct-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
+                          <div class="bestsellerproduct-price"><?php echo $row['formattedUnitPrice']; ?></div>
+                    </div>
+                    </a>
+                  </div>
+            
+                <?php
+                    }
+                } else {
+                    echo "0 results";
+                }
+                giaiPhongBoNho($link, $result);
+                ?>
+    </div>
+    <?php  require_once "footer.php"; ?>
 <script>
       let counter = 0;
 
