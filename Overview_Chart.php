@@ -1,0 +1,30 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="Khung.css">    
+    <style> 
+        
+    </style>
+</head>
+<body>
+
+    <div id="sidebar">
+        <h2><img src="Picture/Logo.png" alt="Logo"></h2>
+        <ul>
+            <li><a href="Overview.php">Overview</a></li>
+            <li><a href="QLSP.php">Quản lý sản phẩm</a></li>
+            <li>Quản lý nhân viên</li>
+            <li>Quản lý đơn hàng</li>
+        </ul>
+    </div>
+
+    <div id="content">
+        <div id="header">
+            <p>ADMIN / QUẢN LÝ SẢN PHẨM / THỐNG KÊ </p>
+        </div>
+
+    <div id="footer">
+        <p>© 2024 Jewelry Store. All rights reserved.</p>
+    </div>
+
+</body>
+</html>
