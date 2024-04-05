@@ -1241,7 +1241,11 @@ body {
   font-size: var(--font-size-mini);
   color: var(--gray-800);
   display: inline-block;
+<<<<<<< HEAD
   width: 1208px;
+=======
+  width: 208px;
+>>>>>>> 6173232c1cc6801e061f19b9c634ae7a190f8745
   height: 24.5px;
 }
 .star-icon6 {

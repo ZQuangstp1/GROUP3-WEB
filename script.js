@@ -8,7 +8,10 @@ function toggleFilter(filterId) {
 }
 
 // Hàm tăng giảm số lượng 
+<<<<<<< HEAD
 /*
+=======
+>>>>>>> 6173232c1cc6801e061f19b9c634ae7a190f8745
 document.addEventListener("DOMContentLoaded", function() {
   const btnMinus = document.querySelector(".btn-minus");
   const btnPlus = document.querySelector(".btn-plus");
@@ -26,10 +29,15 @@ document.addEventListener("DOMContentLoaded", function() {
     inputQuantity.value = currentValue + 1;
   });
 });
+<<<<<<< HEAD
 */
 
 //Hàm pop-up Thêm giỏ hàng thành công 
 /*
+=======
+
+//Hàm pop-up Thêm giỏ hàng thành công 
+>>>>>>> 6173232c1cc6801e061f19b9c634ae7a190f8745
 document.addEventListener("DOMContentLoaded", function() {
   const addToCartBtn = document.getElementById("add-to-cart-btn");
   const popup = document.getElementById("popup");
@@ -42,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 2000); // 2 seconds
   });
 });
+<<<<<<< HEAD
 */
 
 function totalClick(click) {
@@ -79,3 +88,7 @@ likeBtn.addEventListener("click", function() {
     isLiked = false;
   }
 });
+=======
+
+
+>>>>>>> 6173232c1cc6801e061f19b9c634ae7a190f8745
