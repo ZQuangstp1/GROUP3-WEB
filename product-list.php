@@ -14,38 +14,32 @@
                 filterContent.classList.toggle('collapsed');
                 }
 
-    // // Lấy tham số category hoặc subcategory từ URL
-    //         var urlParams = new URLSearchParams(window.location.search);
-    //         var category = urlParams.get('category');
-    //         var subcategory = urlParams.get('subcategory');
-    //         // Đánh dấu các ô checkbox tương ứng
+            // Hàm kiểm tra URL và đánh dấu các ô checkbox tương ứng
+            function checkCheckboxFromUrlParams() {
+                var urlParams = new URLSearchParams(window.location.search);
+                var category = urlParams.get('category');
+                var subcategory = urlParams.get('subcategory');
 
-// Hàm kiểm tra URL và đánh dấu các ô checkbox tương ứng
-function checkCheckboxFromUrlParams() {
-    var urlParams = new URLSearchParams(window.location.search);
-    var category = urlParams.get('category');
-    var subcategory = urlParams.get('subcategory');
+                // Đánh dấu checkbox cho category
+                if (category) {
+                    $('input[name="selected_categories[]"][value="' + category + '"]').prop('checked', true);
+                }
 
-    // Đánh dấu checkbox cho category
-    if (category) {
-        $('input[name="selected_categories[]"][value="' + category + '"]').prop('checked', true);
-    }
+                // Đánh dấu checkbox cho subcategory
+                if (subcategory) {
+                    $('input[name="selected_subcategories[]"][value="' + subcategory + '"]').prop('checked', true);
+                }
 
-    // Đánh dấu checkbox cho subcategory
-    if (subcategory) {
-        $('input[name="selected_subcategories[]"][value="' + subcategory + '"]').prop('checked', true);
-    }
+                // Sau khi đánh dấu các checkbox, kiểm tra nếu có checkbox được đánh dấu từ URL, thì kích hoạt sự kiện click cho nút "Áp dụng bộ lọc"
+                if (category || subcategory) {
+                    $('.apply-filters-button').click(); // Kích hoạt sự kiện click cho nút "Áp dụng bộ lọc"
+                }
+            }
 
-    // Sau khi đánh dấu các checkbox, kiểm tra nếu có checkbox được đánh dấu từ URL, thì kích hoạt sự kiện click cho nút "Áp dụng bộ lọc"
-    if (category || subcategory) {
-        $('.apply-filters-button').click(); // Kích hoạt sự kiện click cho nút "Áp dụng bộ lọc"
-    }
-}
-
-// Áp dụng bộ lọc khi trang được tải
-$(document).ready(function() {
-    checkCheckboxFromUrlParams(); // Kiểm tra checkbox từ URL
-});
+            // Áp dụng bộ lọc khi trang được tải
+            $(document).ready(function() {
+                checkCheckboxFromUrlParams(); // Kiểm tra checkbox từ URL
+            });
     </script>
 </head>
 <body>
