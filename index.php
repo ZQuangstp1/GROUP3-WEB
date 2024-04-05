@@ -82,36 +82,48 @@
       <br>
       <!-- LIST PRODUCT -->
       <div class = "listproduct-container"  id="animate-on-scroll">
-        <div class = "prod1">
+        <a href="product-list.php?category=C001">
+          <div class = "prod1">
             <div class="overlay" ></div>
             <div class="text-on-overlay">Lắc</div>
             <img src="img/frame1.png" width = 100% height = 100% alt="">
-        </div>
+         </div>
+        </a>
+        <a href="product-list.php?category=C002">
         <div class = "prod2">
             <div class="overlay"></div>
             <div class="text-on-overlay">Mặt dây chuyền</div>
             <img src="img/frame2.png" width = 100% height = 100% alt="">
         </div>
+        </a>
+        <a href="product-list.php?category=C003">
         <div class = "prod3">
             <div class="overlay"></div>
             <div class="text-on-overlay">Bông tai</div>
             <img src="img/frame3.png" width = 100% height = 100% alt="">
         </div>
+        </a>
+        <a href="product-list.php?category=C004">
         <div class = "prod4">
             <div class="overlay"></div>
             <div class="text-on-overlay">Dây chuyền</div>
             <img src="img/frame4.png" width = 100% height = 100% alt="">
         </div>
+        </a>
+        <a href="product-list.php?category=C005">
         <div class = "prod5">
             <div class="overlay"></div>
             <div class="text-on-overlay">Nhẫn</div>
             <img src="img/frame5.png" width = 100% height = 100% alt="">
         </div>
+        </a>
+        <a href="product-list.php?category=C006">
         <div class = "prod6">
             <div class="overlay"></div>
             <div class="text-on-overlay">Phụ kiện rời</div>
             <img src="img/frame6.png" width = 100% height = 100% alt="">
         </div>
+        </a>
       </div>
       <br>
       <br>
@@ -128,6 +140,7 @@
 
           $sql = "SELECT 
                       p.productName, 
+                      p.productID,
                       CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice, 
                       p.image,
                       CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
@@ -149,16 +162,20 @@
             // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
             while ($row = $result->fetch_assoc()) {
                 ?>
-                <div class="bestsellerproduct-item">
-                    <img src="<?php echo $row['image']; ?>" class="img">     
-                    <?php if ($row['discountPercentage'] !== null) { ?>
-                        <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
-                    <?php } ?>                    <div class="bestsellerproduct-info">
-                        <div class="bestsellerproduct-name"><?php echo $row['productName']; ?></div>
-                        <div class="bestsellerproduct-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
-                        <div class="bestsellerproduct-price"><?php echo $row['formattedUnitPrice']; ?></div>
+                  <div class="bestsellerproduct-item">
+                  <a href="product.php?product_id=<?php echo $row['productID']; ?>">
+                      <img src="<?php echo $row['image']; ?>" class="img">     
+                      <?php if ($row['discountPercentage'] !== null) { ?>
+                          <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
+                      <?php } ?>        
+                      <div class="bestsellerproduct-info">
+                          <div class="bestsellerproduct-name"><?php echo $row['productName']; ?></div>
+                          <div class="bestsellerproduct-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
+                          <div class="bestsellerproduct-price"><?php echo $row['formattedUnitPrice']; ?></div>
+                    </div>
+                    </a>
                   </div>
-                </div>
+            
                 <?php
                     }
                 } else {

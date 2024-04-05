@@ -36,9 +36,24 @@
                 }
             }
 
+            //Chọn tất cả các product có giảm giá khi user bấm nút xem tất cả bên trang index-2.php
+            function checkAllDiscounts() {
+                var urlParams = new URLSearchParams(window.location.search);
+                var discount = urlParams.get('discount');
+                console.log(discount);
+                if (discount) {
+                    var checkboxes = document.querySelectorAll('input[name="selected_discounts[]"]');
+                    checkboxes.forEach(function(checkbox) {
+                        checkbox.checked = true;
+                    });
+                    $('.apply-filters-button').click(); 
+                }
+            }
+
             // Áp dụng bộ lọc khi trang được tải
             $(document).ready(function() {
-                checkCheckboxFromUrlParams(); // Kiểm tra checkbox từ URL
+                checkCheckboxFromUrlParams(); 
+                checkAllDiscounts();
             });
     </script>
 </head>

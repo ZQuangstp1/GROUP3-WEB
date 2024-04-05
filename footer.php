@@ -10,6 +10,11 @@
     margin-top: 200px;
 }
 
+a {
+    text-decoration: none; /* Loại bỏ gạch chân */
+    color: inherit; 
+  }
+  
 .footer::before {
   content: ""; 
   display: block;
@@ -55,6 +60,12 @@
   list-style: none;
 }
 
+.category-list li:hover,
+.information-details li:hover {
+    text-decoration: underline; /* Gạch chân khi hover */
+    color: #FB6F92; /* Màu chữ khi hover */
+}
+
 .app-icons,
 .social-icons {
   display: flex;
@@ -62,8 +73,6 @@
   gap: 20px;
   margin-right: 20px;
 }
-
-
 
 .guarantee-content,
 .return-policy-content,
@@ -155,12 +164,12 @@
           <div class="category-title">ONLINE SHOPPING</div>
           <div class="category-list">
             <ul>
-                <li>Lắc</li>
-                <li>Mặt dây chuyền</li>
-                <li>Bông tai</li>
-                <li>Dây chuyền</li>
-                <li>Nhẫn</li>
-                <li>Phụ kiện rời</li>
+            <a href="product-list.php?category=C001"><li>Lắc</li></a>
+            <a href="product-list.php?category=C002"><li>Mặt dây chuyền</li></a>
+            <a href="product-list.php?category=C003"><li>Bông tai</li></a>
+            <a href="product-list.php?category=C004"><li>Dây chuyền</li></a>
+            <a href="product-list.php?category=C005"><li>Nhẫn</li></a>
+            <a href="product-list.php?category=C006"><li>Phụ kiện rời</li></a>
             </ul>
         </div>      
         </div>

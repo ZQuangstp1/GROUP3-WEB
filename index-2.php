@@ -103,6 +103,7 @@ giaiPhongBoNho($link, $result);
 
         $sql = "SELECT 
             p.productName,
+            p.productID,
             CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
             p.image,
             CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
@@ -127,6 +128,7 @@ giaiPhongBoNho($link, $result);
             while ($row = $result->fetch_assoc()) {
                 ?>
                 <div class="product-item">
+                <a href="product.php?product_id=<?php echo $row['productID']; ?>">
                     <img src="<?php echo $row['image']; ?>" class="img">
                     <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
                     <div class="product-info">
@@ -134,6 +136,7 @@ giaiPhongBoNho($link, $result);
                         <div class="product-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
                         <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
                     </div>
+                  </a>
                 </div>
             <?php
             }
@@ -143,7 +146,9 @@ giaiPhongBoNho($link, $result);
         giaiPhongBoNho($link, $result);
         ?>
     </div>
-    <div class="button-container"><button class="SeeAll">Xem tất cả</button></div>
+    <div class="button-container">
+    <a href="product-list.php?discount=TRUE"><button class="SeeAll">Xem tất cả</button></a>
+    </div>
 </div>
     <div class="Insta">
       <header class="header">Follow Flamingo trên Instagram</header>
