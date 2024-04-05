@@ -938,8 +938,6 @@ body{
     align-items: center;
   }
   
-  .star-wrapper {
-  }
 
     .star {
         width: 20px;
@@ -1164,7 +1162,7 @@ body{
 .image-4-icon {
   left: 100px;
   width: 605px;
-  height: 619.4px;
+  height: 620px;
   object-fit: cover;
 } 
 .active {
@@ -1222,8 +1220,6 @@ input-group {
   font-size: 20px;
 }
 
-button#decrement, button#increment {
-}
 
 input[type="number"] {
   width: 60px;
