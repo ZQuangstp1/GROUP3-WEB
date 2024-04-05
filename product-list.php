@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -96,7 +97,7 @@
                                 }
                             </script>
                     </div>
-                    <hr />
+                    <hr/>
                     <!-- Danh mục phụ -->
                     <button type="button" class="sidebar-title" onclick="toggleFilter('subcategory')">- Danh mục phụ</button>
                     <div class="filter-content collapsed" id="subcategory">
@@ -229,9 +230,56 @@
             applyFilters();
  
         function applyFilters(){
-            
             global $link;
             $whereClause = ''; // Initialize $whereClause here
+
+            if (!empty($_SESSION['keyword'])) {
+                $keyword = $_SESSION['keyword']; // Use the session keyword
+                
+                $sql = "SELECT
+                p.productName,
+                p.productID,
+                CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice,
+                p.image,
+                CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage,
+                c.categoryName,
+                sc.subcategoryName
+            FROM
+                product p
+            JOIN
+                subcategory sc ON p.subcategoryID = sc.subcategoryID
+            JOIN
+                category c ON sc.categoryID = c.categoryID
+            JOIN
+                discount d ON p.discountID = d.discountID
+            WHERE p.productName LIKE '%$keyword%' AND p.status = 'Còn hàng'";
+                    $result = chayTruyVanTraVeDL($link, $sql);
+
+                        // Display the number of products found
+            $num_found = mysqli_num_rows($result);
+            echo "<div style='margin-top: 20px;'>
+                    <p>Tìm thấy $num_found sản phẩm</p>
+                </div>";
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            ?>        
+                            <a href="product.php?product_id=<?php echo $row['productID']; ?>" class="product-info d-block" style="text-decoration: none; color: inherit;">
+                                <?php if (!empty($row['discountPercentage'])) { ?>
+                                    <div class="product-discount"><?php echo $row['discountPercentage']; ?></div>
+                                <?php } ?>
+                                <img src="<?php echo $row['image']; ?>" alt="" />
+                                <div class="product-content">
+                                    <p class="text-center product-title"><?php echo $row['productName']; ?></p>
+                                    <p class="text-center product-desc"><?php echo $row['subcategoryName'] . ' | ' . $row['categoryName']; ?></p>
+                                    <p class="text-center product-price"><?php echo $row['formattedUnitPrice']; ?></p>
+                                </div>
+                            </a>
+                                    <?php
+                unset($_SESSION['keyword']); // Optional: Clear the keyword from the session after using it
+            } 
+        }
+
+            else {
             $apply_filters = isset($_POST['apply_filters']) ? $_POST['apply_filters'] : '0';
             if ($apply_filters == '0') {
               $sql = "SELECT
@@ -377,6 +425,7 @@
                 }
             }
           }
+        }
           giaiPhongBoNho($link, $result)
             ?>
             

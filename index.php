@@ -47,11 +47,11 @@
         />
         <div class="content-on-banner">
           <div class="text-on-banner">
-            <img
+            <!-- <img
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/cfb03300b34e95312e28d266a73cd7b4ec2028d5bea759722f61b49f33907171?"
               class="golden-frame"
-            />
+            /> -->
             <div class="banner-text">
               <div class="banner-text1">50%</div>
               <div class="banner-text2"></div>

@@ -23,4 +23,10 @@ $(document).ready(function(){
 //     }
 // }
 
+// function searchOnEnter(event) {
+//   if (event.keyCode === 13) { // Kiểm tra xem phím nhấn có phải là Enter không
+//       var keyword = document.getElementById("searchInput").value;
+//       window.location.href = "product-list.php?keyword=" + keyword; // Chuyển hướng đến trang product-list.php với từ khóa đã nhập
+//   }
+// }
 

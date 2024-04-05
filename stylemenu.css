@@ -6,12 +6,16 @@
     border-top: 1px solid #dcceb5 ;
     background-color: #f9f2e6 ;
     width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    height: 45px
 }
 
-.container2{
+.container{
     max-width: 100%;
     width: 100%;
     margin: 0px auto;
+    padding: 0
     /* height: 10px; */
 }
 
@@ -27,7 +31,7 @@ nav{
     margin: 0;
     padding: 5px;
     justify-content: flex-start;
-    margin-left: 170px;
+    margin-left: 140px;
 }
 
 #main-menu li{
@@ -53,7 +57,7 @@ nav{
     /* background-color:black; */
     padding: 10px 0;
     list-style: none;
-    width: 200px;
+    width: 190px;
     border: 1px solid #ab2647;
     display: none;
     z-index: 999;
@@ -64,7 +68,7 @@ nav{
     display: block;
 }
 #main-menu ul.sub-menu a{
-    padding: 8px 15px ;
+    padding: 8px 0 ;
     border-bottom: 1px solid #ffeed1;
     left: 0;
 }
@@ -76,7 +80,7 @@ nav{
 }
 
 #main-menu ul.sub-menu ul.sub-menu{
-    left: 200px;
+    left: 190px;
     /* display: block; */
 }
 

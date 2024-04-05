@@ -7,7 +7,7 @@
                   <i class="fa fa-bars"></i>
             </div>
       <div id = "menu-container">
-            <nav class = "container2">
+            <nav class = "container">
                 <ul id="main-menu" >
                     <li><a href="index.php">Trang chủ</a></li>
                     <li><a href="product-list.php">Sản phẩm</a>

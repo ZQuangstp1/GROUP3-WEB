@@ -1,4 +1,7 @@
 <head>
+  <?php
+  require_once "search.php";
+  ?>
 <script type="text/javascript" src="header.js" language="JavaScript"></script>
     <style>
   .header-container {
@@ -6,6 +9,7 @@
     display: flex;
     width: 100%;
     margin: 0px;
+    padding: 0;
     padding-bottom: 15px;
   }
   @media (max-width: 991px) {
@@ -102,7 +106,6 @@
     max-width: 100%;;
     height: auto;
     display: block;
-    margin-left: 50px;
 }
 
     @media (max-width: 991px) {
@@ -214,17 +217,29 @@
     padding-top: 70px;
   }
 }
+
+.searchbutton{
+  display:none
+}
     </style>
 </head>
 <body>
 <div class="header-container">
         <div class="content-header">
           <div class="searchbar-container">
-            <div id = "searchbar">
+          <form action="search.php" method="get">
+          <div id="searchbar">
+            <!-- Note: Added method="get" to ensure data is sent via URL parameters -->
+            <img src="img/Search.png" alt="" class="kinhlup">
+            <input type="text" id="searchInput" name="searchInput" placeholder="Tìm sản phẩm" size="13px">
+            <!-- Note: Added name attribute -->
+            <input class = "searchbutton" type="submit" value="Tìm kiếm"></div>
+          </form>
+            <!-- <div id = "searchbar">
               <img src="img/Search.png" alt="" class="kinhlup" >
               <input type="text" id="searchInput" placeholder="Tìm sản phẩm" onkeypress="searchOnEnter(event)" size="13px">
               <button id="searchButton" onclick="search()"></button>
-          </div>
+          </div> -->
           </div>
           <div class="logo-container">
             <a href="index.php">
