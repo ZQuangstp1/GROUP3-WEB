@@ -287,7 +287,6 @@
     </section>   
 </section>
 </div>
-
 <script>
       let counter = 0;
 
