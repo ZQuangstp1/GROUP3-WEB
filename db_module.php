@@ -13,8 +13,12 @@ function taoKetNoi(&$link)
 function chayTruyVanTraVeDL($link, $q)
 {
     $result = mysqli_query($link, $q);
+    if (!$result) {
+        die("Lỗi truy vấn: " . mysqli_error($link));
+    }
     return $result;
 }
+
 
 function chayTruyVanKhongTraVeDL($link, $q)
 {
