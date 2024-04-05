@@ -112,7 +112,7 @@
             <h3>Tra cứu</h3>
             <input type="text" placeholder="Nhập từ khóa...">
             <button>Tìm</button>
-            <a href="Overview_Chart.php"><button>Tạo báo cáo</button></a>
+            <a href="Overview_Chart.php"><button>Thống kê</button></a>
         </div>
         <div id="table-container">
         <?php
