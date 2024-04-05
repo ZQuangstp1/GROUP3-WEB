@@ -1,3 +1,7 @@
+body {
+  background-color: #f9f2e6; /* Màu nền cho toàn bộ trang web */
+}
+
 .add-to-bag1,
 .rectangle {
   position: absolute;
@@ -37,6 +41,7 @@
   width: 175.6px;
   height: 39.1px;
 }
+
 .heart-outline-icon {
   position: absolute;
   top: 12.5px;
@@ -46,14 +51,14 @@
   overflow: hidden;
 }
 .save-button,
-.thch {
+.thich {
   position: absolute;
   top: 312.2px;
   left: calc(50% + 263px);
   width: 175.6px;
   height: 39.1px;
 }
-.thch {
+.thich {
   top: 311.9px;
   left: calc(50% + 277.5px);
   letter-spacing: 0.5px;
@@ -66,6 +71,8 @@
   justify-content: center;
   width: 164.9px;
 }
+
+
 .frame-icon {
   position: absolute;
   top: 0;
@@ -75,7 +82,7 @@
   overflow: hidden;
 }
 .enter-your-postal,
-.ph-vn-chuyn {
+.phi-van-chuyen {
   position: absolute;
   top: 0;
   left: calc(50% - 188.5px);
@@ -113,18 +120,19 @@
 .frame-icon1 {
   position: absolute;
   top: 0;
-  left: calc(50% - 218.5px);
+  left: calc(50% - 145.5px);
   width: 19px;
-  height: 18.6px;
+  height: 19.4px;
   overflow: hidden;
 }
-.chnh-sch-i {
+.chinh-sach {
   position: absolute;
   top: 0;
-  left: calc(50% - 188.5px);
+  left: calc(50% - 110.5px);
   display: inline-block;
+  font-size: var(--font-size-mid);
   width: 407px;
-  height: 19.4px;
+  height: 20.3px;
 }
 .details {
   text-decoration: underline;
@@ -132,7 +140,7 @@
 .free-30-days-container {
   position: absolute;
   top: 19.4px;
-  left: calc(50% - 188.5px);
+  left: calc(50% - 110.5px);
   font-size: var(--font-size-smi);
   font-family: var(--font-baloo-bhaina-2);
   color: var(--color-dimgray-100);
@@ -141,23 +149,24 @@
   height: 20.3px;
 }
 .frame-group,
-.vng-tay-i {
+.tieu-de {
   position: absolute;
   top: 448px;
   left: calc(50% + 84.5px);
-  width: 437px;
-  height: 39.8px;
-  font-size: var(--font-size-mid);
+  width: 286px;
+  height: 3.8px;
+  font-size: var(--font-size-small);
 }
-.vng-tay-i {
+.tieu-de {
   top: 56.5px;
   left: calc(50% + 67.5px);
-  font-size: var(--font-size-26xl);
+  font-size: var(--font-size-21xl);
   font-weight: 500;
   font-family: var(--font-lora);
   width: 496px;
-  height: 89.2px;
+  height: 8.2 px;
 }
+
 .tng-tin,
 .vnd {
   position: absolute;
@@ -1222,8 +1231,8 @@
 .helpfull-btn {
   position: absolute;
   top: 90.5px;
-  left: calc(50% - 132px);
-  width: 102.6px;
+  left: calc(100% - 232px);
+  width: 42.6px;
   height: 21.2px;
 }
 .greate-product {
@@ -1232,7 +1241,7 @@
   font-size: var(--font-size-mini);
   color: var(--gray-800);
   display: inline-block;
-  width: 108px;
+  width: 1208px;
   height: 24.5px;
 }
 .star-icon6 {
@@ -1243,7 +1252,7 @@
   height: 8.2px;
 }
 .ngy-trc,
-.nicolas-cage {
+.tenuser {
   position: absolute;
   top: 3.7px;
   left: calc(50% + 31.95px);
@@ -1251,7 +1260,7 @@
   width: 99px;
   height: 21.2px;
 }
-.nicolas-cage {
+.tenuser {
   top: 0;
   left: calc(50% - 130.95px);
   font-size: var(--font-size-mid);
@@ -1259,13 +1268,14 @@
   text-transform: capitalize;
   font-weight: 500;
   color: var(--gray-800);
-  width: 104.7px;
+  width: 300px;
 }
 .star-parent {
   left: calc(50% - 130.95px);
   width: 261.9px;
   height: 33.5px;
 }
+
 .head,
 .info1,
 .star-parent {
@@ -1283,34 +1293,15 @@
   width: 264px;
   height: 111.7px;
 }
+.review {
+  margin-bottom: 20px; /* Khoảng cách giữa các review */
+}
 .vuesaxlinearlike-icon1 {
   position: absolute;
   top: 1.9px;
   left: calc(50% - 51.3px);
   width: 17.8px;
   height: 12.3px;
-}
-.div19,
-.helpfull-btn1,
-.info2 {
-  position: absolute;
-  top: 90.4px;
-  left: calc(50% - 132px);
-  width: 102.6px;
-  height: 21.2px;
-}
-.div19,
-.info2 {
-  top: 165px;
-  left: calc(50% - 369.5px);
-  width: 264px;
-  height: 111.7px;
-}
-.div19 {
-  top: 0;
-  left: calc(50% - 461.5px);
-  width: 923px;
-  height: 331px;
 }
 .profile1 {
   top: 0;
@@ -1320,18 +1311,21 @@
   font-size: var(--font-size-base);
   color: var(--white);
 }
+
 .child11,
-.group,
+.groupdanhgia,
 .profile1 {
   position: absolute;
 }
-.group {
+.groupdanhgia {
   top: 394.6px;
   left: calc(50% - 516.25px);
   width: 923px;
-  height: 331px;
+  height: 601px;
   font-size: var(--font-size-smi);
   color: var(--color-palevioletred-300);
+  display: flex;
+  flex-direction: row;
 }
 .child11 {
   top: 25.4px;
@@ -1362,7 +1356,7 @@
   font-size: var(--font-size-base);
   color: var(--gray-800);
   display: inline-block;
-  width: 88.7px;
+  width: 100%px;
   height: 29px;
 }
 .div20 {
@@ -1448,3 +1442,216 @@
   color: var(--color-palevioletred-100);
   font-family: var(--oswald-regular-24);
 }
+
+
+.btn-minus,
+.btn-plus {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  
+}
+
+.input-quantity {
+  width: 40px;
+  border: none;
+  text-align: center;
+  height: 80%;
+  top: 0;
+  left: 50%;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-item {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  height: 4.76%;
+  width: 8.4%;
+  top: 51.19%;
+  right: 75.64%;
+  bottom: 44.05%;
+  left: 15.96%;
+  background-color: var(--divider);
+}
+
+.add-to-bag1,
+.rectangle {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.rectangle {
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-palevioletred-100);
+}
+
+.add-to-bag1 {
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.add-to-bag {
+  position: absolute;
+  top: 311.9px;
+  left: calc(50% + 72.5px);
+  width: 176px;
+  height: 38.9px;
+  text-align: center;
+  color: var(--white);
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.popup-message {
+  color: white;
+}
+
+
+
+
+/* Phần sản phẩm giảm giá*/
+/* Áp dụng hiệu ứng cho các phần tử có class animate-on-scroll */
+#animate-on-scroll {
+  animation: fadeInUp 1s ease-out;
+  /* Thêm hiệu ứng fade-in-up */
+}
+
+.top-products {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.product-item {
+  width: calc(20% - 20px); /* Adjusted to 20% for 5 products in a row */
+  margin-right: 20px; /* Added margin-right for spacing between products */
+  margin-bottom: 20px;
+  border: 2px solid #000000;
+  padding: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  position: relative;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+.product-item:last-child {
+  margin-right: 0; /* Remove margin-right for the last product in the row */
+}
+
+.product-item img {
+  width: 100%;
+  height: 260px;  
+  border-bottom: 2px solid #000000;  
+}
+
+.discount-tag {
+  background-color: #fb6f92;
+  color: #fff;
+  font-family: 'Barlow', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px;
+  position: absolute;
+  top: 17;
+  left: 0;
+}
+
+.product-info {
+  margin-top: 10px;
+  align-items: center;
+  text-align: center; 
+  display: flex;
+  flex-direction: column;
+  color: #212121;
+  font-weight: 700;
+}
+
+.product-name {
+  text-transform: capitalize;
+  text-align: center; 
+  font: 17px Barlow, sans-serif;
+  padding: 10px 25px;
+
+}
+
+.product-category {
+  color: #777;
+  text-transform: capitalize;
+  margin-top: 6px;
+  font: 400 14px Barlow, sans-serif;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
+.product-price {
+  color: #fb6f92;
+  text-align: center;
+  margin-top: 6px;
+  font: 18px/135% Barlow, sans-serif;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 34px; 
+}
+
+.SeeAll {
+  background-color: #fb6f92;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0 36px;
+  font: 500 12px/52px Barlow, sans-serif;
+  border: none;
+  cursor: pointer; 
+}
+
+/* Hiển thị chỉ 1 sản phẩm trên mỗi hàng khi kích thước màn hình nhỏ hơn 769px */
+@media (max-width: 769px) {
+  .top-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Các sản phẩm sẽ căn giữa trên hàng */
+  }
+  .product-item {
+    width: 80%;   
+    height: 60%; 
+    margin-bottom: 20px; /* Khoảng cách giữa các dòng */
+    box-sizing: border-box;
+    padding: 0 5px; /* Khoảng cách giữa các sản phẩm */
+  }
+}
+
+
