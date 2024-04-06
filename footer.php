@@ -48,6 +48,7 @@
 .mobile-app-section,
 .Noti {
   flex: 1 1 calc(50% - 20px);
+  text-align: left;
 }
 .mobile-app-section{
   margin-left: 40px;
@@ -58,6 +59,21 @@
     display: none; /* Ẩn phần mobile-app-section khi độ rộng màn hình nhỏ hơn 768px */
   }
 }
+@media only screen and (max-width: 768px) {
+  .Noti {
+    flex: 1 1 calc(100% - 20px); /* Chiếm toàn bộ chiều rộng */
+    text-align: center; /* Căn giữa nội dung */
+    margin-bottom: 20px; /* Thêm khoảng cách dưới cùng giữa các .Noti */
+    font-size: 16px;
+  }
+
+  .Noti > * {
+    margin: 10px auto; /* Căn giữa theo chiều ngang */
+    display: block; /* Đảm bảo các phần tử con hiển thị dạng khối để có thể căn giữa */
+  }
+ 
+}
+
 
 
 .product-categories,
@@ -95,6 +111,8 @@
   margin-top: 10px;
   gap: 20px;
   margin-right: 20px;
+  width: 100%;
+  height: auto;
 }
 
 .guarantee-content,
@@ -165,9 +183,8 @@
 
 .title {
   font-size: 24px;
-  margin-top: 50px;
-  margin-bottom: 20px;
 }
+
 .email {
   width: 80%;
   padding: 10px;
@@ -248,21 +265,27 @@
       </div>
       </div>
       <div class="mobile-app-section">
-        <div class="app-title">Tải App flamingo</div>
-        <div class="app-icons">
+  <div class="app-title">Tải App flamingo</div>
+      <div class="app-icons">
+        <!-- Nút liên kết đến Play Store -->
+        <a href="https://play.google.com/store/apps" class="app-download-link">
           <img
-          loading="lazy"
-          srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-          class="img"/>
-          <img
-          loading="lazy"
-          srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-          class="img"/>
-        </div>
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/19735369f0fc4c688cb933aaebc9174062798376f0e817995defa685d9e1df29?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77"
+            class="img"/>
+        </a>
         
+        <!-- Nút liên kết đến App Store -->
+        <a href="https://www.apple.com/vn/app-store/" class="app-download-link">
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/132e4fcefd23d3cb391b25dabcb2dd68a5b23175ebdc5705a0201169ea2faff5?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77"
+            class="img"/>
+        </a>
       </div>
+    </div>
   
-    <div class="Noti" style="text-align: left;">
+    <div class="Noti">
       <h1 class="title">JOIN US</h1>
       <p>NHẬN THÔNG TIN KHUYẾN MÃI HẤP DẪN</p>
       <input type="email" class="email" placeholder="Email">
