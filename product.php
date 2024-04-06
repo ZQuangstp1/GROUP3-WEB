@@ -60,14 +60,17 @@
       }
  ?>  
 <!--Nội dung của sản phẩm -->
-<div class="product-details">
-  <div class="product-layout">
       <div class="breadcrumb">
-        <div>Home / Stellar Dainty Diamond Hoop</div></div> <br>
-          <img class="image-4-icon" alt="" src="<?php echo $image; ?>" />
-          <div class="active"></div>
-          <img class="image-8-icon" alt="" src="<?php echo $image; ?>" />
-          <img class="zoom-image-icon" alt="" src="./public/zoom-image.svg" />
+        <div>Home / Stellar Dainty Diamond Hoop</div>
+    </div>
+    <div class="product-details">
+  <div class="product-layout">
+    <div class="image-container">
+        <img class="image-4-icon" alt="" src="<?php echo $image; ?>" />
+        <img class="image-8-icon" alt="" src="<?php echo $image; ?>" />
+        <img class="zoom-image-icon" alt="" src="./public/zoom-image.svg" />
+    </div>
+         <br>
 
     <div class="product-info">
         <div class="product-header">
