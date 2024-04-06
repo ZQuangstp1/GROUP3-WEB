@@ -106,6 +106,7 @@
     max-width: 100%;;
     height: auto;
     display: block;
+    margin-left: 50px;
 }
 
     @media (max-width: 991px) {

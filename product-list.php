@@ -255,7 +255,7 @@
             WHERE p.productName LIKE '%$keyword%' AND p.status = 'Còn hàng'";
                     $result = chayTruyVanTraVeDL($link, $sql);
 
-                        // Display the number of products found
+            // Display the number of products found
             $num_found = mysqli_num_rows($result);
             echo "<div style='margin-top: 20px;'>
                     <p>Tìm thấy $num_found sản phẩm</p>
@@ -416,7 +416,7 @@
                         <?php } ?>
                         <img src="<?php echo $row['image']; ?>" alt="" />
                         <div class="product-content">
-                            <p class="text-center product-title"><?php echo $row['productName']; ?></p>
+                            <p class="product-title"><?php echo $row['productName']; ?></p>
                             <p class="text-center product-desc"><?php echo $row['subcategoryName'] . ' | ' . $row['categoryName']; ?></p>
                             <p class="text-center product-price"><?php echo $row['formattedUnitPrice']; ?></p>
                         </div>

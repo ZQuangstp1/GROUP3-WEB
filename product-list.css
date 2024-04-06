@@ -45,6 +45,7 @@ button {
   font-size: 80%; 
   max-width: 250px;
   min-width: 180px; 
+  margin-left: 10px;
 }
 
 .head-content__sidebar div {
@@ -116,7 +117,7 @@ button {
 }
 
 .head-content__product-list .product-info {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
 }
 
 .head-content__product-list .form-select {
@@ -152,13 +153,14 @@ button {
 
 .product-info {
   width: 200px;
-  border: 2px solid #000000;
   margin-bottom: 20px;
   padding: 0px 0 0 0;
   position: relative;
   margin-right: 20px;
   transition: border-color 0.3s ease;
   overflow: hidden;
+  border: 2px solid transparent; /* Đảm bảo rằng border luôn có độ dày nhưng không làm thay đổi layout */
+
 }
 
 .product-info:hover {
@@ -174,7 +176,7 @@ button {
 
 .product-content {
   padding-top: 10px;
-  border-top: 2px solid #000000;
+  border-top: 1px solid #000000;
   transition: border-color 0.3s ease;
 }
 
@@ -184,9 +186,17 @@ button {
 
 .product-content .product-title {
   font-weight: 500;
-  margin-bottom: 0;            
+  margin-bottom: 0;        
+  text-align: left;    
   padding-right: 20px;
-  padding-left: 20px;
+  padding-left: 5px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* Số dòng tối đa */
+  overflow: hidden;
+  overflow: hidden; /* Ẩn phần văn bản ra khỏi phần tử cha */
+  text-overflow: ellipsis; /* Hiển thị dấu "..." khi văn bản bị ẩn */
+
 }
 
 .product-content .product-desc {
