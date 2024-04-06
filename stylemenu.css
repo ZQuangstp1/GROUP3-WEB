@@ -61,7 +61,7 @@ nav{
     border: 1px solid #ab2647;
     display: none;
     z-index: 999;
-    left: 60px
+    left: 60px;
 }
 
 #main-menu li:hover>ul.sub-menu{
