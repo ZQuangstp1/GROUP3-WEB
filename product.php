@@ -31,7 +31,7 @@
   </head>
 
 <body>
-
+<!--PRODUCT DETAIL-->
   <?php
         require_once "db_module.php";
         $link = null;
@@ -58,6 +58,7 @@
         }
       }
  ?>  
+<!--Nội dung của sản phẩm -->
 <div class="product-details">
   <div class="product-layout">
       <div class="breadcrumb">
@@ -67,58 +68,61 @@
           <img class="image-8-icon" alt="" src="<?php echo $image; ?>" />
           <img class="zoom-image-icon" alt="" src="./public/zoom-image.svg" />
 
-  
     <div class="product-info">
-      <div class="product-header">
-        <div class="brand-info">
-          <div class="brand-name">STYLUM</div>
-          <div class="rating-stars">
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/268ecdae2f05065984d2e0d5ffcfbcb78794bcd076d2c9ff2514144993bbb60a?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e0a1850b5fb05b8f0795cae26f547fe534f781ab97da6559ea8504149b26b255?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e13f3b67020bfd57837f497625d0dea15b8266e0cd5e9bff00f5bb5fa9277dfb?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e68aec3960d65efa39c086621cd53a098cffc6475460464574257b5dc06e33e?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9a10058a869dd7acdd4a3ee287c08764a73e2812ee8e5a6335ca12c1f722c37c?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
+        <div class="product-header">
+          <div class="brand-info">
+              <div class="brand-name">STYLUM</div>
+              <div class="rating-stars">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/268ecdae2f05065984d2e0d5ffcfbcb78794bcd076d2c9ff2514144993bbb60a?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e0a1850b5fb05b8f0795cae26f547fe534f781ab97da6559ea8504149b26b255?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e13f3b67020bfd57837f497625d0dea15b8266e0cd5e9bff00f5bb5fa9277dfb?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e68aec3960d65efa39c086621cd53a098cffc6475460464574257b5dc06e33e?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9a10058a869dd7acdd4a3ee287c08764a73e2812ee8e5a6335ca12c1f722c37c?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
+              </div>
+              <a href="#" class="review-link">Xem Đánh giá (27)</a> 
           </div>
-          <a href="#" class="review-link">Xem Đánh giá (27)</a> 
-          </div>
-        <div class="product-name"><?php echo $productName; ?></div>
-        <div class="price-info">
-          <div class="price-labels">
-            <div>SỐ LƯỢNG</div>
-            <div>TỔNG TIỀN</div>
-          </div>
+          <div class="product-name"><?php echo $productName; ?></div>
+
+<!--Button số lượng và tổng tiền-->
+          <div class="price-info">
+            <div class="price-labels">
+              <div>SỐ LƯỢNG</div>
+              <div>TỔNG TIỀN</div>
+            </div>
           <div class="price-details">
-          <div class="quantitybtn">
-              <div class="input-group">
-                <button id="decrement">-</button>
-                <input type="number" id="input" value="0">
-                <button id="increment">+</button>
+            <div class="quantitybtn">
+                <div class="input-group">
+                  <button id="decrement">-</button>
+                  <input type="number" id="input" value="0">
+                  <button id="increment">+</button>
+                </div>
+            </div>
+            <div class="total-price"><?php echo $formattedPrice;?> VNĐ</div>
+          </div>
+        </div>
+<!--Button Thêm vào giỏ hàng-->
+        <div class="product-actions">
+            <div class="add-to-cart">
+              <button>THÊM VÀO GIỎ HÀNG</button>
+            </div>
+            <div class="add-to-wishlist">
+              <div class="wishlist-icon">
+                <img src="./public/heartoutline.svg" alt="Heart icon" />
+                <div class="wishlist-text">THÍCH</div>
               </div>
             </div>
-            <div class="total-price">
-            <?php echo $formattedPrice;?> VNĐ
-            </div>
-          </div>
         </div>
-        <div class="product-actions">
-          <div class="add-to-cart">
-            <button>THÊM VÀO GIỎ HÀNG</button>
-          </div>
-          <div class="add-to-wishlist">
-            <div class="wishlist-icon">
-              <img src="./public/heartoutline.svg" alt="Heart icon" />
-              <div class="wishlist-text">THÍCH</div>
-            </div>
-          </div>
-        </div>
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
+
     <br>
     <br>
     <br>
     <br>
     <br>
+
+<!--Mô tả sản phẩm-->
     <div class="add-margin">
        <section class="description-container">
           <div class="description-title-container">
@@ -147,7 +151,8 @@
         Thời gian xử lý + Thời gian vận chuyển = Thời gian giao hàng
         </p>
       </section>
-<!-- Phần đánh giá -->
+
+<!--Đánh giá sản phẩm-->
 <section class="rating-container">
   <h2 class="rating-title">Đánh giá từ Khách hàng</h2>
   <div class="rating-content">
@@ -288,7 +293,8 @@
 </section>
 </div>
 
-<div class="bestseller-template"  id="animate-on-scroll">SẢN PHẨM TƯƠNG TỰ</div>
+<!--Sản phẩm tương tự-->
+    <div class="bestseller-template"  id="animate-on-scroll">SẢN PHẨM TƯƠNG TỰ</div>
       <br>
       <br>
       <div class="best-seller"  id="animate-on-scroll">
@@ -343,8 +349,10 @@
                 giaiPhongBoNho($link, $result);
                 ?>
     </div>
+<!--FOOTER-->
     <?php  require_once "footer.php"; ?>
-<script>
+
+    <script>
       let counter = 0;
 
       function increment() {
@@ -380,5 +388,6 @@
         inputField.value = inputField.value.replace(/[^0-9]/g, '');
       });
     </script>
+
 </body>
 </html>
