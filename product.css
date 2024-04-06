@@ -599,7 +599,6 @@ body{
 .description-container {
   align-self: center;
   display: flex;
-  margin: 55px auto 0;
   width: 100%;
   max-width: 1279px;
   gap: 0;
