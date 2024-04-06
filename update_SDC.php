@@ -49,6 +49,7 @@ if(isset($_POST['submit'])) {
 
                 if($result_update_customer) {
                     echo "<script>alert('Cập nhật locationID vào bảng customer thành công');</script>";
+                    // Chuyển hướng người dùng đến trang SDC.php
                     echo "<script>window.location.href='SDC.php';</script>";
                 } else {
                     echo "<script>alert('Cập nhật locationID vào bảng customer thất bại');</script>";

@@ -14,68 +14,67 @@
                     <div class="div-10" onclick="window.location.href='YT.php'" style="cursor: pointer;">Yêu thích</div>
                   </div>
                 </div>
-                 <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img"
-    />      <div class="discount-tag">-15%</div>
-    <div class = "product-option">
-    <img
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/b92a98a450a77c4e2c9857a326b6a5d33a717d4c5870690f94eef140a2a49c80?apiKey=eb23b2963eda46448725d8ef1c3cf67d&"
-                    class="trash"
-                  />
-                  <div class="atb">| add to bag</div>
-    </div>
-      <div class="product-info">
-        <div class="product-name">Product 3 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 2,499.00</div>
-      </div>
-    </div>
+</br>
+<?php
+// Kết nối đến cơ sở dữ liệu
+require_once "db_module.php";
+$link = null;
+taoKetNoi($link);
+session_start();
 
-    <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img">
-      <div class="discount-tag">-15%</div>
-      <div class = "outofstock"> OUT OF STOCK </div>
-        
-      <div class="product-info">
-        <div class="product-name">Product 4 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 2,499.00</div>
-      </div>
-    </div>
+// Kiểm tra xem customerID có tồn tại trong session không
+if(isset($_SESSION['customerID'])) {
+    // Lấy customerID từ session
+    $customerID = $_SESSION['customerID'];
+    // Truy vấn để lấy thông tin các sản phẩm yêu thích từ bảng product
+    $query = "SELECT product.image, product.discountID, product.productName, subcategory.subcategoryName, product.unitPrice 
+    FROM product 
+    LEFT JOIN orderdetail 
+    ON orderdetail.productID = product.productID 
+    LEFT JOIN `orders` 
+    ON orderdetail.orderID = `orders`.orderID 
+    LEFT JOIN `subcategory` 
+    ON product.subcategoryID = `subcategory`.subcategoryID
+WHERE customerID = '" . $_SESSION['customerID']  . "'";
+    $result = mysqli_query($link, $query);
+    // Kiểm tra xem truy vấn có thành công hay không
+    if($result) {
+        // Kiểm tra xem có dữ liệu không
+        if (mysqli_num_rows($result) > 0) {
+            // Hiển thị thông tin sản phẩm yêu thích
+            while ($row = mysqli_fetch_assoc($result)) {
+?>
+            <div class="product-item">
+                <img loading="lazy" srcset="<?php echo $row['image']; ?>" class="img" />
 
-    <div class="product-item">
-      <img
-      loading="lazy"
-      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fec790208e5e03b4c5f9cd2bae185d6656e7dfb30e11b25e3a605f2e5d9798c9?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&"
-      class="img"
-     />      <div class="discount-tag">-15%</div>
-     <div class = "product-option">
-      <img
-                      loading="lazy"
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/b92a98a450a77c4e2c9857a326b6a5d33a717d4c5870690f94eef140a2a49c80?apiKey=eb23b2963eda46448725d8ef1c3cf67d&"
-                      class="trash"
-                    />
-                    <div class="atb">| add to bag</div>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Product 5 Name</div>
-        <div class="product-category">Category | Subcategory</div>
-        <div class="product-price">Rs. 2,499.00</div>
-      </div>
-    </div>
-   
-    </div>
-  </div>
+                <?php if ($row['discountID'] !== 'NONE')  { ?>
+                <div class="discount-tag"><?php echo $row['discountID']; ?></div>
+            <?php } ?>
+                </br>
+                <div class="product-info">
+                    <div class="product-name"><?php echo $row['productName']; ?></div>
+                    <div class="product-category"><?php echo $row['subcategoryName']; ?></div>
+                    <div class="product-price"><?php echo $row['unitPrice']; ?></div>
                 </div>
-              </div>
+                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b92a98a450a77c4e2c9857a326b6a5d33a717d4c5870690f94eef140a2a49c80?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" class="trash" />
             </div>
+<?php
+            }
+        } else {
+            echo "Không có sản phẩm yêu thích nào được tìm thấy.";
+        }
+    } else {
+        echo "Đã xảy ra lỗi trong quá trình truy vấn cơ sở dữ liệu.";
+    }
+} else {
+    header("Location: dangnhap.php");
+    // hoặc echo "Vui lòng đăng nhập để xem sản phẩm yêu thích.";
+}
+
+// Đóng kết nối
+mysqli_close($link);
+?>
+
           </div>
           <style>
             .div {
@@ -200,8 +199,8 @@
       }
     }
           
-.product-item {
-  width: calc(20% - 20px); /* Adjusted to 20% for 5 products in a row */
+    .product-item {
+  width: calc(33.33% - 20px); /* Adjusted to 33.33% for 3 products in a row */
   margin-right: 20px; /* Added margin-right for spacing between products */
   margin-bottom: 20px;
   border: 2px solid #000000;
@@ -215,6 +214,7 @@
 .product-item:last-child {
   margin-right: 0; /* Remove margin-right for the last product in the row */
 }
+
 
 .img {
   width: 100%;
@@ -248,7 +248,7 @@
 }
 
 .product-name {
-  text-transform: capitalize;
+  
   align-self: stretch;
   font: 17px Barlow, sans-serif;
 
@@ -256,7 +256,7 @@
 
 .product-category {
   color: #777;
-  text-transform: capitalize;
+  
   margin-top: 6px;
   font: 400 14px Barlow, sans-serif;
 }
@@ -266,46 +266,22 @@
   text-align: center;
   margin-top: 6px;
   font: 18px/135% Barlow, sans-serif;
+  font-weight : bold;
 }
- .trash {
+.trash {
   aspect-ratio: 1;
-    object-fit: auto;
-    object-position: center;
-    width: 35px;
-    align-self: start;
-    margin-right: 0%;
-    margin-left : auto;
-  }
-  .atb{
-    font-family: Poppins, sans-serif;
-    color: #fb6f92;
-    font-size: larger;
-    font-weight: bold;
-    align-self : center;
-    margin-right: auto;
-    margin-left : 0%;
-  }
-  .product-option {
-    justify-content: space-between;
-    display: flex;
-    gap: 13px;
-    padding: 1px 0;
-    border-bottom: 2px solid #000000;
-  }
-  .outofstock {
-    font-family: Poppins, sans-serif;
-    color: red;
-    font-size: larger;
-    font-weight :bolder;
-    align-self: center;
-    display: flex;
-    flex-direction: column; /* Đảm bảo nội dung căn giữa theo chiều dọc */
-    align-items: center; /* Căn giữa theo chiều dọc */
-    gap: 13px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #000000;
+  object-fit: auto;
+  width: 30px;
+  padding: 5px;
+  position: absolute;
+  bottom: 10;
+  right: 0;
 }
 
+
+
+
+  
 
 
           </style>
