@@ -77,16 +77,26 @@
         }
     </style>
     <script>
-        function confirmDelete() {
-            var result = confirm("Xác nhận xóa báo cáo");
+        function searchData() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("reportTable");
+            tr = table.getElementsByTagName("tr");
             
-            // Kiểm tra kết quả xác nhận
-            if (result) {
-                // Nếu người dùng đồng ý, thực hiện hành động xóa
-                alert("Bạn đã đồng ý xóa báo cáo.");
-            } else {
-                // Nếu người dùng không đồng ý
-                alert("Bạn không đồng ý xóa báo cáo.");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td");
+                for (var j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
             }
         }
     </script>
@@ -110,8 +120,8 @@
         
         <div id="search">
             <h3>Tra cứu</h3>
-            <input type="text" placeholder="Nhập từ khóa...">
-            <button>Tìm</button>
+            <input type="text" id="searchInput" placeholder="Nhập từ khóa...">
+            <button onclick="searchData()">Tìm</button>
             <a href="Overview_Chart.php"><button>Thống kê</button></a>
         </div>
         <div id="table-container">
@@ -137,7 +147,7 @@
                                         INNER JOIN employee e ON fr.employeeID = e.employeeID
                                         LIMIT $start_from, $rows_per_page");
 
-            echo "<table>";
+            echo "<table id='reportTable'>";
             echo "<tr>";
             echo "<th class='pink-header'>Ngày bán hàng</th>"; 
             echo "<th class='pink-header'>ID</th>"; 
@@ -164,10 +174,10 @@
                 // Tiếp tục hiển thị các cột khác
                 echo "<td>" . $row["reportID"] . "</td>";
                 echo "<td>" . $row["orderID"] . "</td>";
-                echo "<td>" . $row["revenue"] . "</td>";
-                echo "<td>" . $row["cost"] . "</td>";
-                echo "<td>" . $row["discountAmount"] . "</td>";
-                echo "<td>" . $row["profit"] . "</td>";
+                echo "<td>" . number_format($row["revenue"], 0, ',', '.') . "</td>";
+                echo "<td>" . number_format($row["cost"], 0, ',', '.') . "</td>";
+                echo "<td>" . number_format($row["discountAmount"], 0, ',', '.') . "</td>";
+                echo "<td>" . number_format($row["profit"], 0, ',', '.') . "</td>";
                 echo "<td>" . $row["totalOrders"] . "</td>";
                 echo "<td>" . $row["name"] . "</td>";
                 echo "</tr>";
