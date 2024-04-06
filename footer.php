@@ -20,7 +20,6 @@
   display: block;
   width: 100%;
   height: 1px; 
-  background-color: fb6f92; 
   margin-bottom: 10px; 
 }
 
@@ -191,7 +190,11 @@
   border: 1px solid #000000;
   margin-bottom: 20px;
   background-color: f9f2e6;
-
+  transition: border-color 0.3s;
+  outline: none;
+}
+.email:focus {
+  border: 1px solid #fb6f92;
 }
 
 </style>
