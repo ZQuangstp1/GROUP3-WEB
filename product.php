@@ -70,9 +70,8 @@
         <img class="image-8-icon" alt="" src="<?php echo $image; ?>" />
         <img class="zoom-image-icon" alt="" src="./public/zoom-image.svg" />
     </div>
-         <br>
-
-    <div class="product-info">
+    <br>
+       <div class="product-info">
         <div class="product-header">
           <div class="brand-info">
               <div class="brand-name">STYLUM</div>
