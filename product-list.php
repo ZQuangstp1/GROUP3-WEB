@@ -66,9 +66,9 @@
     ?>
     <a name="top"> <div class="container"></a>
          <!-- HEADER -->
-         <?php include "header.php"; ?>
+         <?php require "header.php"; ?>
         <!-- MENU -->
-        <?php include "menu.php"; ?>
+        <?php require "menu.php"; ?>
         <form action="?opt=applyFilters" method="POST">
         <div class="head-content">
             <!-- Sidebar -->
