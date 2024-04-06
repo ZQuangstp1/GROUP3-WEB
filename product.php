@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-    <script type="text/javascript" src="script.js" language="JavaScript">
+    <script src="script.js"></script>
     </script>
     <link rel="stylesheet" href="./global.css" />
     <link rel="stylesheet" href="./product.css" />
@@ -68,8 +68,9 @@
     <div class="image-container">
         <img class="image-4-icon" alt="" src="<?php echo $image; ?>" />
         <img class="image-8-icon" alt="" src="<?php echo $image; ?>" />
-        <img class="zoom-image-icon" alt="" src="./public/zoom-image.svg" />
-    </div>
+            <img class="zoom-image-icon" alt="Zoom Image" src="./public/zoom-image.svg" />
+        
+      </div>
     <br>
        <div class="product-info">
         <div class="product-header">
@@ -90,7 +91,6 @@
           <div class="price-info">
             <div class="price-labels">
               <div>SỐ LƯỢNG</div>
-              <div>TỔNG TIỀN</div>
             </div>
           <div class="price-details">
             <div class="quantitybtn">
@@ -115,6 +115,25 @@
               </div>
             </div>
         </div>
+        <section class="shipping-info">
+  <div class="shipping-row">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/bffce2d7fdd8eadb4e16c6cd31c15c8bea06339b2eb3d9cc20f4b276a5130d98?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="" class="shipping-icon" />
+    <div class="shipping-details">
+      <h3 class="shipping-title">Phí vận chuyển</h3>
+      <p class="shipping-description">Miễn phí vận chuyển đối với đơn hàng trên 1,000,000 VNĐ</p>
+    </div>
+  </div>
+  <div class="shipping-separator"></div>
+  <div class="return-policy-row">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f0bae9f3bbce71e43dedfb0e84c5922c64508050ed7296b2364955f916008c9b?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="" class="shipping-icon" />
+    <div class="return-policy-details">
+      <h3 class="return-policy-title">Chính sách đổi trả</h3>
+      <p class="return-policy-description">
+       Đổi trả miễn phí trong vòng  <span style="text-decoration: underline">30 ngày</span>
+      </p>
+    </div>
+  </div>
+</section>
       </div>
     </div>
   </div>
