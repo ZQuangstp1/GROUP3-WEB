@@ -81,7 +81,7 @@ nav{
 
 #main-menu ul.sub-menu ul.sub-menu{
     left: 190px;
-    /* display: block; */
+    top: 0;
 }
 
 /*Thiết lập border khi hover*/
@@ -110,7 +110,7 @@ nav{
 }
 #main-menu ul.sub-menu ul.sub-menu>li>a::before{
     content: "";
-    height: 4px;
+    height: 2px;
     width: 0px;
     background: #ff678d;
     position: absolute;
