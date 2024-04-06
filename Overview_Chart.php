@@ -88,7 +88,7 @@
             }
             ?>
             <!-- First row of charts -->
-            <p>Tổng doanh thu năm 2022: <?php echo $totalProfit; ?></p>
+            <p><strong>Tổng doanh thu năm 2022: </strong> <?php echo number_format($totalProfit, 0, ',', '.') . ' VND'; ?></p>
             <div class="chart-row1">
                 <div class="chart-container">
                     <canvas id="orderSalesChart" class="chart-canvas"></canvas>
