@@ -31,7 +31,8 @@
   </head>
 
 <body>
-
+<?php  require_once "header.php"; ?>
+<?php  require_once "menu.php"; ?>
   <?php
         require_once "db_module.php";
         $link = null;
