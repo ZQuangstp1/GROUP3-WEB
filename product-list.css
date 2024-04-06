@@ -159,7 +159,7 @@ button {
   margin-right: 20px;
   transition: border-color 0.3s ease;
   overflow: hidden;
-  border: 2px solid transparent; /* Đảm bảo rằng border luôn có độ dày nhưng không làm thay đổi layout */
+  border: 2px solid transparent;
 
 }
 
@@ -203,7 +203,7 @@ button {
   font-size: 12px;
   color: #212121;
   margin-top: 10px;
-  
+  padding: 0;
 }
 
 .product-content .product-price {

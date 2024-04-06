@@ -64,12 +64,12 @@
         $link = null;
         taoKetNoi($link);
     ?>
-<form action="?opt=applyFilters" method="POST">
     <a name="top"> <div class="container"></a>
          <!-- HEADER -->
          <?php include "header.php"; ?>
         <!-- MENU -->
         <?php include "menu.php"; ?>
+        <form action="?opt=applyFilters" method="POST">
         <div class="head-content">
             <!-- Sidebar -->
             <div class="head-content__sidebar">
@@ -226,7 +226,7 @@
     </div>
     <!-- Hiển thị danh sách sản phẩm -->
     <div class="product-container row d-flex flex-wrap mt-3">
-        <?php
+        <?php  
             applyFilters();
  
         function applyFilters(){
@@ -254,7 +254,6 @@
             WHERE p.productName LIKE '%$keyword%' AND p.status = 'Còn hàng'";
                     $result = chayTruyVanTraVeDL($link, $sql);
 
-            // Display the number of products found
             $num_found = mysqli_num_rows($result);
             echo "<div style='margin-top: 20px;'>
                     <p>Tìm thấy $num_found sản phẩm</p>
@@ -274,8 +273,8 @@
                                 </div>
                             </a>
                                     <?php
-                unset($_SESSION['keyword']); // Xoá keyword khỏi session khi ko còn sử dụng
             } 
+            unset($_SESSION['keyword']); // Xoá keyword khỏi session khi ko còn sử dụng
         }
 
             else {
@@ -415,7 +414,7 @@
                         <?php } ?>
                         <img src="<?php echo $row['image']; ?>" alt="" />
                         <div class="product-content">
-                            <p class="product-title"><?php echo $row['productName']; ?></p>
+                            <p class="text-center  product-title"><?php echo $row['productName']; ?></p>
                             <p class="text-center product-desc"><?php echo $row['subcategoryName'] . ' | ' . $row['categoryName']; ?></p>
                             <p class="text-center product-price"><?php echo $row['formattedUnitPrice']; ?></p>
                         </div>
