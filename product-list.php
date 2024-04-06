@@ -231,10 +231,9 @@
  
         function applyFilters(){
             global $link;
-            $whereClause = ''; // Initialize $whereClause here
-
+            $whereClause = ''; 
             if (!empty($_SESSION['keyword'])) {
-                $keyword = $_SESSION['keyword']; // Use the session keyword
+                $keyword = $_SESSION['keyword']; 
                 
                 $sql = "SELECT
                 p.productName,
@@ -275,7 +274,7 @@
                                 </div>
                             </a>
                                     <?php
-                unset($_SESSION['keyword']); // Optional: Clear the keyword from the session after using it
+                unset($_SESSION['keyword']); // Xoá keyword khỏi session khi ko còn sử dụng
             } 
         }
 
