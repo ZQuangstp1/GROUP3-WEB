@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 */
 
+// Button số lượng
 function totalClick(click) {
   const sum = document.getElementById('number');
   const sumValue = parseInt(sum.innerText) + click;
@@ -64,7 +65,7 @@ function totalClick(click) {
   else document.getElementById('input-quantity').value = sum.innerText;
 
 }
-
+//Button Like 
 const likeButton = document.getElementById("likeButton");
 const likeBtn = document.getElementById("likeBtn");
 
@@ -80,3 +81,15 @@ likeBtn.addEventListener("click", function() {
   }
 });
 
+
+//Button Like comment 
+document.getElementById("likeButtonComment").addEventListener("click", function() {
+  var likeText = this.querySelector('.like-text');
+  if (likeText.textContent === 'Like') {
+      likeText.textContent = 'Liked';
+      likeText.style.color = 'pink';
+  } else {
+      likeText.textContent = 'Like';
+      likeText.style.color = ''; // Reset to default color
+  }
+});

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-    <script src="script.js"></script>
+    <script type="text/javascript" src="script.js" language="JavaScript">
     </script>
     <link rel="stylesheet" href="./global.css" />
     <link rel="stylesheet" href="./product.css" />
@@ -33,7 +33,6 @@
 <body>
 <?php  require_once "header.php"; ?>
 <?php  require_once "menu.php"; ?>
-<!--PRODUCT DETAIL -->
   <?php
         require_once "db_module.php";
         $link = null;
@@ -61,17 +60,16 @@
       }
  ?>  
 <!--Nội dung của sản phẩm -->
-    <div class="breadcrumb">
+      <div class="breadcrumb">
         <div>Home / Stellar Dainty Diamond Hoop</div>
     </div>
-  <div class="product-details">
+    <div class="product-details">
   <div class="product-layout">
     <div class="image-container">
         <img class="image-4-icon" alt="" src="<?php echo $image; ?>" />
         <img class="image-8-icon" alt="" src="<?php echo $image; ?>" />
-            <img class="zoom-image-icon" alt="Zoom Image" src="./public/zoom-image.svg" />
-        
-      </div>
+        <img class="zoom-image-icon" alt="" src="./public/zoom-image.svg" />
+    </div>
     <br>
        <div class="product-info">
         <div class="product-header">
@@ -88,15 +86,15 @@
           </div>
           <div class="product-name"><?php echo $productName; ?></div>
 
-<!--Button số lượng và tổng tiền-->
+  <!--Button số lượng và tổng tiền-->
           <div class="price-info">
             <div class="price-labels">
               <div>SỐ LƯỢNG</div>
+              <div>TỔNG TIỀN</div>
             </div>
 
           <div class="price-details">
             <div class="quantitybtn">
-
                 <div class="input-group">
                   <button id="decrement" onclick="totalClick(-1)">-</button> 
                   <div class ="input-number">
@@ -104,6 +102,7 @@
                   </div> 
                   <!--<input type="number" id="input" value="1" min="1" max="20">-->
                   <button id="increment" onclick="totalClick(1)">+</button>
+                  
                 </div>
             </div>
             <div class="total-price"><?php echo $formattedPrice;?> VNĐ</div>
@@ -121,44 +120,15 @@
                 <input type="submit" name="addtocart" value="THÊM VÀO GIỎ HÀNG" class="add-to-bag">
               </form>
             </div>
-
-<!--Button Thích-->       
+            
+<!-- Button Thích-->
             <div class="add-to-wishlist">
               <div class="wishlist-icon">
-                  <img src="./public/heartoutline.svg" alt="Heart icon" />
-                  <form action="yeuthich.php" method="post">
-                      <input type="hidden" name="idofpro" value="<?php echo $product; ?>">
-                      <input type="hidden" name="img" value="<?php echo $image; ?>">
-                      <input type="hidden" name="tensp" value="<?php echo $productName; ?>">
-                      <input type="hidden" name="tongtien" value="<?php echo round($unitPrice); ?> VNĐ">
-                      <button type="submit" name="addtolikebag" class="wishlist-icon-button">
-                          <span class="wishlist-text">THÍCH</span>
-                      </button>
-                  </form>
+                <img src="./public/heartoutline.svg" alt="Heart icon" />
+                <div class="wishlist-text">THÍCH</div>
               </div>
             </div>
         </div>
-
-<!--Icon phí vận chuyển và chính sách đổi trả-->  
-      <section class="shipping-info">
-        <div class="shipping-row">
-          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/bffce2d7fdd8eadb4e16c6cd31c15c8bea06339b2eb3d9cc20f4b276a5130d98?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="" class="shipping-icon" />
-          <div class="shipping-details">
-            <h3 class="shipping-title">Phí vận chuyển</h3>
-            <p class="shipping-description">Miễn phí vận chuyển đối với đơn hàng trên 1,000,000 VNĐ</p>
-          </div>
-        </div>
-        <div class="shipping-separator"></div>
-        <div class="return-policy-row">
-          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f0bae9f3bbce71e43dedfb0e84c5922c64508050ed7296b2364955f916008c9b?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="" class="shipping-icon" />
-          <div class="return-policy-details">
-            <h3 class="return-policy-title">Chính sách đổi trả</h3>
-            <p class="return-policy-description">
-            Đổi trả miễn phí trong vòng  <span style="text-decoration: underline">30 ngày</span>
-            </p>
-          </div>
-        </div>
-      </section>
       </div>
     </div>
   </div>
@@ -191,95 +161,154 @@
         <p class="shipping-description">
           Flamingo cung cấp Miễn phí Giao hàng Tiêu chuẩn cho tất cả các đơn hàng trị giá trên 1,000,000 VNĐ. Giá trị đơn hàng tối thiểu phải là 1,000,000V NĐ trước thuế, phí vận chuyển và xử lý. Phí vận chuyển không được hoàn lại
         </p>
-        <p class="shipping-description-shipping-info2">
+        <p class="shipping-description shipping-info2">
            Vui lòng cho đến tối đa 2 ngày làm việc (loại trừ cuối tuần, ngày lễ và ngày bán hàng) để xử lý đơn hàng của bạn.
         </p>
-        <p class="shipping-description-shipping-info2">
+        <p class="shipping-description shipping-info2">
         Thời gian xử lý + Thời gian vận chuyển = Thời gian giao hàng
         </p>
       </section>
-<!--Đánh gía sản phẩm-->
-        <section class="description-container">
-              <div class="description-title-container">
-                <h2 class="description-title">Đánh giá</h2>
-                <div class="description-title-underline"></div>
-              </div>
-              <div class="description-underline"></div>
-        </section>
-        <?php
-          require_once "db_module.php";
-          $link = null;
-          taoKetNoi($link);
 
-          $sql = "SELECT 
-                      c.lastname, c.firstname, r.rating, r.comment
-                  FROM 
-                      product p
-                  JOIN
-                      review r ON  p.productID = r.productID
-                  JOIN
-                      userAccount u ON r.accountID = u.accountID
-                  JOIN
-                      customer c ON u.customerID = c.customerID
-                  WHERE 
-                      p.productID = '$productId'";
-
-          $result = mysqli_query($link, $sql);
-
-          if ($result) {
-              if (mysqli_num_rows($result) > 0) {
-                  while ($row = mysqli_fetch_assoc($result)) {
-                      ?>
-                      <div class="wrapper">
-                          <p class="actor-name"><?php echo $row['lastname'] . ' ' . $row['firstname']; ?></p>
-                          <div class="star-wrapper">
-                              <?php
-                              // Hiển thị số sao tương ứng với rating
-                              for ($i = 1; $i <= $row['rating']; $i++) {
-                                  ?>
-                                  <div class="star"></div>
-                                  <?php
-                              }
-                              ?>
-                          </div>
-                      </div>
-                      <article class="comment-container">
-                          <p class="comment-text">
-                              <?php echo $row['comment']; ?>
-                          </p>
-                          <div class="comment-actions">
-                              <div class="like-action" id="likeButtonComment">
-                                  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1b240edefe1abacad66bef21721864d0794a3a7e02e78368e112eb9b8d5a1977?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Like icon" class="like-icon" loading="lazy" />
-                                  <span class="like-text">Like</span>
-                              </div>
-                          </div>
-                      </article>
-                      <?php
-                  }
-              } else {
-                  echo "Chưa có đánh giá!";
-              }
-          } else {
-              echo "Lỗi trong quá trình truy vấn.";
-          }
-
-          giaiPhongBoNho($link, $result);
-        ?>
-    <br>
-    <br>
-      <section class="review-section">
-        <h2 class="review-title">Viết Đánh giá</h2>
-        <div class="wrapper">
-          <p class="actor-name">Hãy chia sẻ trải nghiệm của bạn khi dùng sản phẩm</p>
-            <div class="star-wrapper">
-              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6dbf5c6bd0bec03018b7946b667b4dc437a235d20dab1b13dd1a5750cafc2231?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Product Image" class="product-star" loading="lazy" />
-            </div>
-        </div>
-        <section class="great-products">
-            Great Products
-        </section>   
-      </section>
+<!--Đánh giá sản phẩm-->
+<section class="rating-container">
+  <h2 class="rating-title">Đánh giá từ Khách hàng</h2>
+  <div class="rating-content">
+    <div class="rating-summary">
+      <div class="rating-score">
+        <div class="rating-value">4.8</div>
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ffc52fb60f6c24cdb9e35ff5d5dc129c7b8daad8bf5b0a1769e2f1478a5a2327?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Product rating stars" class="rating-stars" loading="lazy" />
+        <div class="rating-label">Product Rating</div>
+      </div>
     </div>
+    <div class="rating-details">
+      <div class="rating-breakdown">
+        <div class="rating-bars">
+          <div class="rating-row">
+            <div class="rating-bar rating-bar-5">
+              <div class="rating-bar-fill"></div>
+            </div>
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a3d0689eb09cac44e00ac46eb1f399234b4531c32a8e2176c0db7c8777f8811?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="5 star rating" class="rating-star" loading="lazy" />
+          </div>
+          <div class="rating-row">
+            <div class="rating-bar rating-bar-4">
+              <div class="rating-bar-fill"></div>
+            </div>
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a3d0689eb09cac44e00ac46eb1f399234b4531c32a8e2176c0db7c8777f8811?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="4 star rating" class="rating-star" loading="lazy" />
+          </div>
+          <div class="rating-row">
+            <div class="rating-bar rating-bar-3">
+              <div class="rating-bar-fill"></div>
+            </div>
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a3d0689eb09cac44e00ac46eb1f399234b4531c32a8e2176c0db7c8777f8811?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="3 star rating" class="rating-star" loading="lazy" />
+          </div>
+          <div class="rating-row">
+            <div class="rating-bar rating-bar-2">
+              <div class="rating-bar-fill"></div>
+            </div>
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a3d0689eb09cac44e00ac46eb1f399234b4531c32a8e2176c0db7c8777f8811?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="2 star rating" class="rating-star" loading="lazy" />
+          </div>
+          <div class="rating-row">
+            <div class="rating-bar rating-bar-1">
+              <div class="rating-bar-fill"></div>
+            </div>
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a3d0689eb09cac44e00ac46eb1f399234b4531c32a8e2176c0db7c8777f8811?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="1 star rating" class="rating-star" loading="lazy" />
+          </div>
+        </div>
+        <div class="rating-percentages">
+          70% <br> <br>
+          15% <br> <br>
+          10% <br> <br>
+          3% <br> <br>
+          2%
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <section class="description-container">
+          <div class="description-title-container">
+            <h2 class="description-title">Đánh giá</h2>
+            <div class="description-title-underline"></div>
+          </div>
+          <div class="description-underline"></div>
+    </section>
+    <?php
+        require_once "db_module.php";
+        $link = null;
+        taoKetNoi($link);
+
+        $sql = "SELECT 
+                    c.lastname, c.firstname, r.rating, r.comment
+                FROM 
+                    product p
+                JOIN
+                    review r ON  p.productID = r.productID
+                JOIN
+                    userAccount u ON r.accountID = u.accountID
+                JOIN
+                    customer c ON u.customerID = c.customerID
+                WHERE 
+                    p.productID = '$productId'";
+
+        $result = mysqli_query($link, $sql);
+
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <div class="wrapper">
+                        <p class="actor-name"><?php echo $row['lastname'] . ' ' . $row['firstname']; ?></p>
+                        <div class="star-wrapper">
+                            <?php
+                            // Hiển thị số sao tương ứng với rating
+                            for ($i = 1; $i <= $row['rating']; $i++) {
+                                ?>
+                                <div class="star"></div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <article class="comment-container">
+                        <p class="comment-text">
+                            <?php echo $row['comment']; ?>
+                        </p>
+                        <div class="comment-actions">
+                            <div class="like-action">
+                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1b240edefe1abacad66bef21721864d0794a3a7e02e78368e112eb9b8d5a1977?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Like icon" class="like-icon" loading="lazy" />
+                                <span class="like-text">Like</span>
+                            </div>
+                            <div class="reply-action">reply</div>
+                        </div>
+                    </article>
+                    <?php
+                }
+            } else {
+                echo "Chưa có đánh giá!";
+            }
+        } else {
+            echo "Lỗi trong quá trình truy vấn.";
+        }
+
+        giaiPhongBoNho($link, $result);
+        ?>
+<br>
+<br>
+<section class="review-section">
+  <h2 class="review-title">Viết Đánh giá</h2>
+  <div class="wrapper">
+    <p class="actor-name">Hãy chia sẻ trải nghiệm của bạn khi dùng sản phẩm</p>
+      <div class="star-wrapper">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6dbf5c6bd0bec03018b7946b667b4dc437a235d20dab1b13dd1a5750cafc2231?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Product Image" class="product-star" loading="lazy" />
+      </div>
+  </div>
+  <section class="great-products">
+         Great Products
+    </section>   
+</section>
+</div>
 
 <!--Sản phẩm tương tự-->
     <div class="bestseller-template"  id="animate-on-scroll">SẢN PHẨM TƯƠNG TỰ</div>
