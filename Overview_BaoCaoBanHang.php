@@ -75,6 +75,51 @@
         th.pink-header {
             background-color: #FFC0CB; /* Màu hồng */
         }
+
+        @media (max-width: 768px) {
+            /* Reduce text size */
+            body {
+                font-size: 14px; /* Adjust as needed */
+            }
+
+            /* Minimize sidebar */
+            #sidebar {
+                display: none;
+            }
+
+            /* Minimize header */
+            #header {
+                height: 50px; /* Adjust as needed */
+            }
+
+            /* Minimize footer */
+            #footer {
+                height: 50px; /* Adjust as needed */
+            }
+
+            /* Minimize content */
+            #content {
+                padding: 20px; /* Adjust as needed */
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* For smaller screens, display table elements as block */
+            table, th, td {
+                display: block;
+            }
+
+            /* Adjust table header and data cells */
+            th, td {
+                text-align: center;
+                padding: 5px; /* Adjust as needed */
+            }
+
+            /* Hide certain table cells */
+            .hidden-on-small-screen {
+                display: none;
+            }
+        }
     </style>
     <script>
         function searchData() {
