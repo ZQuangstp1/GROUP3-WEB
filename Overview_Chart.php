@@ -142,7 +142,7 @@
             data: {
                 labels: [<?= "'" . implode("', '", array_keys($productSalesData)) . "'"; ?>],
                 datasets: [{
-                    label: 'Số lượng sản phẩm đã bán',
+                    label: 'Sản phẩm bán chạy',
                     data: [<?= implode(', ', $productSalesData); ?>],
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
@@ -166,7 +166,7 @@
             data: {
                 labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
                 datasets: [{
-                    label: 'Doanh thu',
+                    label: 'Biến động về doanh thu',
                     data: [
                         <?php
                         for ($i = 1; $i <= 12; $i++) {
