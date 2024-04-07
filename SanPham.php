@@ -22,7 +22,8 @@
     <h3>Tra cứu</h3>
     <input type="text" id="searchInput" placeholder="Nhập từ khóa...">
     <button onclick="Search()">Tìm sản phẩm</button>
-    <a href="?opt=add_SP"><button>Thêm sản phẩm</button></a>
+    <a href="?opt=add_SP"><button>Thêm sản phẩm</button></a>   
+
 </div>
 
 <?php
@@ -36,7 +37,7 @@ function view_SP()
     taoKetNoi($link);
 
     // Số lượng sản phẩm trên mỗi trang
-    $rows_per_page = 10;
+    $rows_per_page = 3;
 
     // Trang hiện tại, mặc định là trang 1
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -73,7 +74,7 @@ function view_SP()
     $result = chayTruyVanTraVeDL($link, $query);
 
     echo "<table id='productTable' width='100%' border='1' style='margin-bottom: 2%;'>";
-    echo "<tr class='pink-row'>"; // Hàng đầu tiên màu hồng
+    echo "<tr class='pink-row'>"; 
     echo "<th>Mã sản phẩm</th>";
     echo "<th>Tên sản phẩm</th>";
     echo "<th>Số lượng</th>";
@@ -94,8 +95,8 @@ function view_SP()
         echo "<td>" . $row["unitPrice"] . "</td>";
         echo "<td>" . $row["status"] . "</td>";
         echo "<td>" . $row["discountID"] . "</td>";
-        echo "<td><a href='?opt=edit_SP&productID=" . $row["productID"] . "'><img src='Picture/Group 17.png' alt='Sửa' style='width: 20px; height: 20px;'></a> |
-                <a href='?opt=del_SP&productID=" . $row["productID"] . "' onclick='return confirmDel()'><img src='Picture/Group 18.png' alt='Xóa' style='width: 20px; height: 20px;'></a></td>";
+        echo "<td><a href='?opt=edit_SP&productID=" . $row["productID"] . "'><img src='Picture/Icon Sua.png' alt='Sửa' style='width: 20px; height: 20px;'></a>
+                <a href='?opt=del_SP&productID=" . $row["productID"] . "' onclick='return confirmDel()'><img src='Picture/Icon Xoa.png' alt='Xóa' style='width: 20px; height: 20px;'></a></td>";
         echo "</tr>";
     }
 
@@ -344,9 +345,4 @@ switch ($_opt) {
     default:
         view_SP();
 }
-
-// if (in_array($_opt, ["add_NV", "edit_NV"])) {
-//     echo "<script>hideToolBar();</script>";
-// }
-
 ?>
