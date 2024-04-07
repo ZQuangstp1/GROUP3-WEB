@@ -53,6 +53,21 @@
             margin-top: 20px;
             text-align: center;
         }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        #footer {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: #FFE5EC; /* Màu nền của footer */
+            padding-top: 5px; /* Khoảng cách từ chữ trong footer đến đỉnh của footer */
+        }
     </style>
 </head>
 <body>
