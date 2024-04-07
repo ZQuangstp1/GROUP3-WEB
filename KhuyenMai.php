@@ -33,7 +33,7 @@ function view_KM()
     $link = null;
     taoKetNoi($link);
 
-    $result = chayTruyVanTraVeDL($link, "SELECT * FROM discount");
+    $result = chayTruyVanTraVeDL($link, "SELECT * FROM discount LIMIT 2");
 
     echo "<table border='1'>";
     echo "<tr class='pink-row'><th>ID</th><th>Chương trình khuyến mãi</th><th>Giảm giá</th><th>Trạng thái</th><th>Ngày bắt đầu</th><th>Ngày kết khúc</th><th>Thao tác</th></tr>";
@@ -42,15 +42,16 @@ function view_KM()
         echo "<tr>";
         echo "<td>" . $row["discountID"] . "</td>";
         echo "<td>" . $row["voucherCode"] . "</td>";
-        echo "<td>" . $row["discountAmount"] . "</td>";
+        echo "<td>" . ($row["discountAmount"] * 100) . "%</td>"; // Multiply by 100 to display as percentage
         echo "<td>" . $row["status"] . "</td>";
-        echo "<td>" . $row["startDate"] . "</td>";
-        echo "<td>" . $row["endDate"] . "</td>";
-        echo "<td><a href='?opt=edit_KM&discountID=" . $row["discountID"] . "'><img src='Picture/Icon Sua.png' alt='Sửa' style='width: 20px; height: 20px;'></a></a> 
-        <a href='?opt=del_KM&discountID=" . $row["discountID"] . "' onclick='return confirmDel()'><img src='Picture/Icon Xoa.png' alt='Xóa' style='width: 20px; height: 20px;'></a></td>";
+        echo "<td>" . date("d-m-Y", strtotime($row["startDate"])) . "</td>"; // Reformat start date as dd-mm-yyyy
+        echo "<td>" . date("d-m-Y", strtotime($row["endDate"])) . "</td>"; // Reformat end date as dd-mm-yyyy
+        echo "<td>
+                <a href='?opt=edit_KM&discountID=" . $row["discountID"] . "'><img src='Picture/Icon Sua.png' alt='Sửa' style='width: 20px; height: 20px;'></a> 
+                <a href='?opt=del_KM&discountID=" . $row["discountID"] . "' onclick='return confirmDel()'><img src='Picture/Icon Xoa.png' alt='Xóa' style='width: 20px; height: 20px;'></a>
+              </td>";
         echo "</tr>";
-    }
-
+    }     
     echo "</table>";
 
     giaiPhongBoNho($link, $result);
