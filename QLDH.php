@@ -34,7 +34,7 @@
         </div>
 
         <div id="header" >
-            <h2 style="text-align: center;">ADMIN/QUẢN LÝ ĐƠN HÀNG</h2>
+            <h2>ADMIN/QUẢN LÝ ĐƠN HÀNG</h2>
         </div id="content">
         <?php include "DonHang.php"; ?>
     </div>
