@@ -325,6 +325,7 @@ body {
 
 .product-info {
   margin-top: 10px;
+  justify-content: center;
   align-items: center;
   text-align: center; 
   display: flex;
@@ -338,7 +339,6 @@ body {
   text-align: center; 
   font: 17px Barlow, sans-serif;
   padding: 10px 25px;
-  
 }
 
 .product-category {
@@ -348,7 +348,10 @@ body {
   font: 400 14px Barlow, sans-serif;
   padding-left: 20px;
   padding-right: 20px;
-
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Số dòng tối đa */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .product-price {

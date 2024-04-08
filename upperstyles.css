@@ -499,6 +499,10 @@ body{
     text-transform: capitalize;
     margin-top: 6px;
     font: 400 14px Barlow, sans-serif;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   
   .bestsellerproduct-price {

@@ -111,11 +111,11 @@ giaiPhongBoNho($link, $result);
             sc.subcategoryName
         FROM 
             product p
-        JOIN
+            LEFT JOIN
             subcategory sc ON p.subcategoryID = sc.subcategoryID
-        JOIN
+            LEFT JOIN
             category c ON sc.categoryID = c.categoryID
-        JOIN
+            LEFT JOIN
             discount d ON p.discountID = d.discountID
         WHERE 
             d.discountID IS NOT NULL
@@ -141,7 +141,7 @@ giaiPhongBoNho($link, $result);
             <?php
             }
         } else {
-            echo "0 results";
+            echo "0 kết quả";
         }
         giaiPhongBoNho($link, $result);
         ?>
