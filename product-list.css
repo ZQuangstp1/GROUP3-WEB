@@ -196,7 +196,10 @@ button {
   overflow: hidden;
   overflow: hidden; /* Ẩn phần văn bản ra khỏi phần tử cha */
   text-overflow: ellipsis; /* Hiển thị dấu "..." khi văn bản bị ẩn */
+}
 
+.product-content .product-title:hover {
+  -webkit-line-clamp: unset;
 }
 
 .product-content .product-desc {
@@ -204,6 +207,14 @@ button {
   color: #212121;
   margin-top: 10px;
   padding: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-content .product-desc:hover {
+  -webkit-line-clamp: unset; /* Hiển thị toàn bộ nội dung khi hover */
 }
 
 .product-content .product-price {
