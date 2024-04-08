@@ -99,6 +99,7 @@ body {
   border-right: 1px solid #fff;
 }
 
+
 @media (max-width: 991px) {
   .feature-item,
   .service-item {
@@ -116,10 +117,21 @@ body {
 .feature-item:nth-child(1),
 .feature-item:nth-child(2) {
     margin-top: 20px; 
+  }
 }
 
-}
+@media (max-width: 991px) {
+  .feature-item:not(:last-child),
+  .service-item:not(:last-child) {
+    border-right: none; /* Bỏ border-right cho tất cả các item */
+  }
 
+  /* Áp dụng border-right cho item 1 và item 3 */
+  .feature-item:nth-child(odd),
+  .service-item:nth-child(odd) {
+    border-right: 1px solid #fff;
+  }
+}
 
 .feature-text,
 .service-text {
@@ -450,12 +462,20 @@ body {
   }
 }
 
+@media (max-width: 438px) {
+
+.image-wrapper {
+  flex-wrap: wrap;
+}
+
 .link {
   justify-content: center;
   display: flex;
   flex-grow: 1;
   flex-basis: 0%;
   flex-direction: column;
+  flex-basis: calc(33.33% - 20px);
+  }
 }
 
 .image {
@@ -582,10 +602,7 @@ body {
 }
 
 
-.swiper-button-prev {
-  color: #fb6f92 !important;
-}
-
+.swiper-button-prev,
 .swiper-button-next {
   color: #fb6f92 !important;
 }
@@ -594,15 +611,13 @@ body {
   background-color: #fb6f92 !important;
 }
 
-@media (max-height: 400px) {
+
+@media (max-width: 400px) {
   .header {
     margin: 40px 0 0 0;
   }
-  .name {
-    font-size: 12px;
-  }
-  .title {
-    font-size: 10px;
+  .name, .title, .quote {
+    font-size: 16px;
   }
   .quote-container {
     padding: 5px 20px 20px 20px;
