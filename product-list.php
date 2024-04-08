@@ -209,9 +209,7 @@
                         <input type="submit" class="apply-filters-button" value="Áp dụng bộ lọc" onclick="document.getElementById('apply_filters').value = '1';">
                     </div>
                 </form>
-                
             </div>
- 
     <!-- Hiển thị dropdown để sort-->
     <div class="head-content__product-list">
     <div class="sort-dropdown-wrapper">
@@ -425,15 +423,13 @@
           }
         }
           giaiPhongBoNho($link, $result)
-            ?>
-            
+            ?>  
     </div>
-     
     <a href="#top" id="back-to-top" class="back-to-top-btn" title="Go to top">↑</a>
-    
+    </div>
 </div>
+<?php require "footer.php"; ?>
 <!-- Scripts -->
-<script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 </body>
