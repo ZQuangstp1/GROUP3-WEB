@@ -196,7 +196,34 @@
 .email:focus {
   border: 1px solid #fb6f92;
 }
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 192, 203, 0.8); /* Hồng hơi trong suốt */
+  padding: 20px;
+  border-radius: 10px;
+}
 
+.popup {
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.check-icon {
+  width: auto;
+  height: 50px;
+  margin-bottom: 10px;
+}
 </style>
 </head>
 <body>
@@ -289,15 +316,64 @@
     </div>
   
     <div class="Noti">
-      <h1 class="title">JOIN US</h1>
-      <p>NHẬN THÔNG TIN KHUYẾN MÃI HẤP DẪN</p>
-      <input type="email" class="email" placeholder="Email">
-      <button class="button">ĐĂNG KÝ!</button>
+    <h1 class="title">JOIN US</h1>
+    <p>NHẬN THÔNG TIN KHUYẾN MÃI HẤP DẪN</p>
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="email" class="email" name="email" placeholder="Email"> <br>
+        <input type="submit" class="button" name="register" value="ĐĂNG KÝ!">
+    </form>
+    <?php 
+        require_once "db_module.php"; 
+        $link = null;
+        taoKetNoi($link);
+
+        if(isset($_POST['register'])) {
+            $email = $_POST['email'];
+            if (!empty($email)) {
+                $query = "SELECT COUNT(*) AS num_records FROM Customer";
+                $result = chayTruyVanTraVeDL($link, $query);
+                $row = mysqli_fetch_assoc($result);
+                $num_records = $row['num_records'];
+                $new_cus_id = 'CS0' . str_pad($num_records + 1, 5, '0', STR_PAD_LEFT);
+
+                // Truy vấn SQL để thêm dữ liệu vào bảng Customer
+                $sql = "INSERT INTO Customer (customerID, email) VALUES ('$new_cus_id', '$email')";
+                $result = chayTruyVanKhongTraVeDL($link, $sql);
+                if ($result) {
+                    ?>
+                    <div id="popup-container" class="popup-container">
+                        <div class="popup">
+                            <span class="close-btn" onclick="closePopup()">&times;</span>
+                            <img src="https://static-00.iconduck.com/assets.00/checkmark-icon-512x426-8re0u9li.png" alt="Check icon" class="check-icon">
+                            <p>Đăng ký nhận thông tin thành công!</p>
+                        </div>
+                    </div>
+                    <?php
+                    giaiPhongBoNho($link, $result);
+                  }
+            } else {
+                echo "Vui lòng nhập email!";
+            }
+        }
+    ?>
     </div>
     </div>
     <div class="copyright-section">
       © 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo
     </div>
   </div>
+  <script>
+    function showPopup() {
+        document.getElementById("popup-container").style.display = "block";
+      }
+
+      function closePopup() {
+        document.getElementById("popup-container").style.display = "none";
+      }
+      window.onload = function() {
+        showPopup();
+    };
+
+  </script>
 </body>
 </html>
