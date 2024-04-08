@@ -484,7 +484,11 @@ body{
     text-transform: capitalize;
     align-self: stretch;
     font: 17px Barlow, sans-serif;
-  
+    display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* Số dòng tối đa */
+  overflow: hidden; /* Ẩn phần văn bản ra khỏi phần tử cha */
+  text-overflow: ellipsis; /* Hiển thị dấu "..." khi văn bản bị ẩn */
   }
   
   .bestsellerproduct-category {
@@ -511,9 +515,19 @@ body{
     font: 400 40px/81% Barlow, sans-serif;
     word-spacing: 5px;
   }
-  @media (max-width: 991px) {
-    .div {
-      margin-top: 40px;
-      white-space: initial;
+
+  @media (max-width: 769px) {
+    .best-seller {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Các sản phẩm sẽ căn giữa trên hàng */
+    }
+    .bestsellerproduct-item {
+      width: 230px; 
+      height: 60%; 
+      margin-bottom: 20px; /* Khoảng cách giữa các dòng */
+      box-sizing: border-box;
+      padding: 0 5px; /* Khoảng cách giữa các sản phẩm */
     }
   }
+  
