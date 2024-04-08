@@ -102,7 +102,6 @@
                   <div class ="input-number">
                   <span id ="number"> 1</span>               
                   </div> 
-                  <!--<input type="number" id="input" value="1" min="1" max="20">-->
                   <button id="increment" onclick="totalClick(1)">+</button>
                 </div>
             </div>
@@ -112,7 +111,7 @@
 <!--Button Thêm vào giỏ hàng-->
         <div class="product-actions">
             <div class="add-to-cart">
-              <form action="addtocart.php" method="post">
+              <form id="add-to-cart-form" action="addtocart.php" method="post" onsubmit="return addToCart()">
                 <input type="hidden" name="idofpro" value="<?php echo $product; ?>">
                 <input type="hidden" name="img" value="<?php echo $image; ?>">
                 <input type="hidden" name="tensp" value="<?php echo $productName; ?>">
@@ -122,15 +121,14 @@
               </form>
             </div>
 
+
+
 <!--Button Thích-->       
             <div class="add-to-wishlist">
               <div class="wishlist-icon">
                   <img src="./public/heartoutline.svg" alt="Heart icon" />
                   <form action="yeuthich.php" method="post">
                       <input type="hidden" name="idofpro" value="<?php echo $product; ?>">
-                      <input type="hidden" name="img" value="<?php echo $image; ?>">
-                      <input type="hidden" name="tensp" value="<?php echo $productName; ?>">
-                      <input type="hidden" name="tongtien" value="<?php echo round($unitPrice); ?> VNĐ">
                       <button type="submit" name="addtolikebag" class="wishlist-icon-button">
                           <span class="wishlist-text">THÍCH</span>
                       </button>
@@ -268,16 +266,23 @@
     <br>
     <br>
       <section class="review-section">
-        <h2 class="review-title">Viết Đánh giá</h2>
+      <h2 class="review-title">Viết Đánh giá</h2>
         <div class="wrapper">
           <p class="actor-name">Hãy chia sẻ trải nghiệm của bạn khi dùng sản phẩm</p>
-            <div class="star-wrapper">
-              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6dbf5c6bd0bec03018b7946b667b4dc437a235d20dab1b13dd1a5750cafc2231?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Product Image" class="product-star" loading="lazy" />
+          <div class="star-wrapper" id="star-rating-cmt">
+            <div class="star-rating-cmt">
+              <div class="star-cmt" data-value="1"></div>
+              <div class="star-cmt" data-value="2"></div>
+              <div class="star-cmt" data-value="3"></div>
+              <div class="star-cmt" data-value="4"></div>
+              <div class="star-cmt" data-value="5"></div>
             </div>
+          </div>
         </div>
-        <section class="great-products">
-            Great Products
-        </section>   
+        <div class="comment-container">
+          <textarea class="great-products" id="comment-section"></textarea>
+          <button id="comment-button">Bình luận</button>
+        </div>      
       </section>
     </div>
 
@@ -339,43 +344,6 @@
     </div>
 <!--FOOTER-->
     <?php  require_once "footer.php"; ?>
-
-    <script>
-      let counter = 0;
-
-      function increment() {
-        counter++;
-      }
-
-      function decrement() {
-        counter--;
-      }
-
-      function get() {
-        return counter;
-      }
-
-      const inc = document.getElementById("increment");
-      const input = document.getElementById("input");
-      const dec = document.getElementById("decrement");
-
-      inc.addEventListener("click", () => {
-        increment();
-        input.value = get();
-      });
-
-      dec.addEventListener("click", () => {
-        if (input.value > 0) {
-          decrement();
-        }
-        input.value = get();
-      });
-
-      // Kiểm tra và chỉ cho phép nhập số
-      inputField.addEventListener('input', () => {
-        inputField.value = inputField.value.replace(/[^0-9]/g, '');
-      });
-    </script>
 
 </body>
 </html>

@@ -769,7 +769,7 @@ body{
   }
   
 
-    .star {
+    .star{
         width: 20px;
         height: 20px;
         background-color: gold;
@@ -867,6 +867,11 @@ body{
     text-transform: capitalize;
   }
 
+  .comment-container {
+    display: flex;
+    flex-direction: column;
+  }
+
   .great-products {
     border-radius: 5px;
     border: 1px solid rgba(251, 111, 146, 1);
@@ -878,6 +883,7 @@ body{
     justify-content: center;
     margin: 9px 0 0 102px;
     padding: 23px 21px;
+    height: 10px;
     font: 400 15px/173% Baloo Bhaina 2, -apple-system, Roboto, Helvetica, sans-serif;
   }
 
@@ -885,6 +891,15 @@ body{
     .great-products {
       padding: 0 20px;
     }
+  }
+
+  #comment-button {
+    background-color: #d6dbe6; 
+    margin: 9px 0 0 102px;
+    padding:  10px 10px 10px 10px;
+    border: 1px solid rgb(225, 217, 219);
+    font: 400 15px/173% Baloo Bhaina 2, -apple-system, Roboto, Helvetica, sans-serif;
+    cursor: pointer; 
   }
 
   .qty-child,
@@ -1165,3 +1180,26 @@ a {
   }
 }
 
+.star-rating-cmt {
+  display: inline-block;
+}
+
+.star-cmt {
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  background-image: rgb(255, 255, 255);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  margin-right: 5px; /* Khoảng cách giữa các ngôi sao */
+  display: inline-block;
+  cursor: pointer;
+}
+
+.star.active {
+  width: 20px;
+  height: 20px;
+  background-image: gold;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  margin-right: 5px; /* Khoảng cách giữa các ngôi sao */
+  display: inline-block;
+}

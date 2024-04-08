@@ -10,12 +10,9 @@ taoKetNoi($link);
 if (!empty($_POST)) {
     // Retrieve form data
     $productID = $_POST['idofpro'];
-    $productName = $_POST['tensp'];
-    $unitPrice = $_POST['tongtien'];
-    $image = $_POST['img'];
 
     // Prepare SQL statement to insert data into database
-    $sql = "INSERT INTO favProduct (productID, productName, unitPrice, image) VALUES ('$productID', '$productName', '$unitPrice', '$image')";
+    $sql = "INSERT INTO favProduct (productID) VALUES ('$productID')";
 
     // Run the query
     $result = chayTruyVanKhongTraVeDL($link, $sql);
@@ -33,7 +30,7 @@ if (!empty($_POST)) {
 // Close connection to the database
 giaiPhongBoNho($link, $result);
 
-header('Location: product.php');
+header('Location: index.php');
 ?>
 
 

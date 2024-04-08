@@ -30,18 +30,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //Hàm pop-up Thêm giỏ hàng thành công 
 /*
-document.addEventListener("DOMContentLoaded", function() {
-  const addToCartBtn = document.getElementById("add-to-cart-btn");
-  const popup = document.getElementById("popup");
-
-  addToCartBtn.addEventListener("click", function() {
-    popup.style.display = "block";
-    popup.style.zIndex = "9999"; // Thiết lập zIndex để đảm bảo popup hiển thị trên cùng
-    setTimeout(function() {
-      popup.style.display = "none";
-    }, 2000); // 2 seconds
-  });
-});
+function addToCart() {
+  // Prevent the default form submission
+  event.preventDefault();
+  
+  // Show the popup message
+  alert("Thêm giỏ hàng thành công");
+  
+  // Submit the form
+  document.getElementById("add-to-cart-form").submit();
+}
 */
 
 // Button số lượng
@@ -91,5 +89,73 @@ document.getElementById("likeButtonComment").addEventListener("click", function(
   } else {
       likeText.textContent = 'Like';
       likeText.style.color = ''; // Reset to default color
+  }
+});
+
+
+//Đánh giá 
+
+// Function to create star rating
+function createStarRating(maxRating) {
+  const starWrapper = document.getElementById('star-rating');
+  starWrapper.innerHTML = ''; // Clear previous content
+
+  for (let i = 1; i <= maxRating; i++) {
+    const star = document.createElement('img');
+    star.src = 'https://example.com/star-filled.png'; // URL to your filled star image
+    star.alt = 'Star';
+    star.classList.add('star');
+    starWrapper.appendChild(star);
+  }
+}
+
+// Function to create comment textbox and button
+function createCommentBox() {
+  const commentSection = document.getElementById('comment-section');
+  commentSection.innerHTML = ''; // Clear previous content
+
+  const commentTextbox = document.createElement('textarea');
+  commentTextbox.placeholder = 'Add your comment here...';
+  commentSection.appendChild(commentTextbox);
+
+  const sendButton = document.createElement('button');
+  sendButton.textContent = 'Send';
+  sendButton.addEventListener('click', function() {
+    const comment = commentTextbox.value;
+    // Handle sending comment data here
+    console.log('Comment:', comment);
+    // You can send the comment data to your server using AJAX or any other method
+    // For demonstration, I'm just logging the comment to the console
+    // Reset the textarea after sending
+    commentTextbox.value = '';
+  });
+  commentSection.appendChild(sendButton);
+}
+
+// Call the functions to create star rating and comment box
+createStarRating(5); // You can pass the maximum rating as an argument
+createCommentBox();
+
+document.addEventListener("DOMContentLoaded", function() {
+  const stars = document.querySelectorAll(".star-cmt");
+
+  stars.forEach(function(star) {
+    star.addEventListener("click", function() {
+      const value = parseInt(star.getAttribute("data-value"));
+      resetStars();
+      highlightStars(value);
+    });
+  });
+
+  function resetStars() {
+    stars.forEach(function(star) {
+      star.classList.remove("active");
+    });
+  }
+
+  function highlightStars(value) {
+    for (let i = 0; i < value; i++) {
+      stars[i].classList.add("active");
+    }
   }
 });
