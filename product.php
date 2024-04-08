@@ -62,7 +62,7 @@
  ?>  
 <!--Nội dung của sản phẩm -->
     <div class="breadcrumb">
-        <div>Home / Stellar Dainty Diamond Hoop</div>
+        <div>Home / <?php echo $productName; ?></div>
     </div>
   <div class="product-details">
   <div class="product-layout">
@@ -76,7 +76,7 @@
        <div class="product-info">
         <div class="product-header">
           <div class="brand-info">
-              <div class="brand-name">STYLUM</div>
+              <div class="brand-name">FLAMINGO</div>
               <div class="rating-stars">
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/268ecdae2f05065984d2e0d5ffcfbcb78794bcd076d2c9ff2514144993bbb60a?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e0a1850b5fb05b8f0795cae26f547fe534f781ab97da6559ea8504149b26b255?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
@@ -84,7 +84,7 @@
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e68aec3960d65efa39c086621cd53a098cffc6475460464574257b5dc06e33e?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9a10058a869dd7acdd4a3ee287c08764a73e2812ee8e5a6335ca12c1f722c37c?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
               </div>
-              <a href="#" class="review-link">Xem Đánh giá (27)</a> 
+              <a href="#" class="review-link">Xem Đánh giá</a> 
           </div>
           <div class="product-name"><?php echo $productName; ?></div>
 
@@ -141,8 +141,8 @@
       <section class="shipping-info">
         <div class="shipping-row">
           <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/bffce2d7fdd8eadb4e16c6cd31c15c8bea06339b2eb3d9cc20f4b276a5130d98?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="" class="shipping-icon" />
-          <div class="shipping-details">
-            <h3 class="shipping-title">Phí vận chuyển</h3>
+          <div class="return-policy-details">
+            <h3 class="return-policy-title">Phí vận chuyển</h3>
             <p class="shipping-description">Miễn phí vận chuyển đối với đơn hàng trên 1,000,000 VNĐ</p>
           </div>
         </div>
@@ -151,7 +151,7 @@
           <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f0bae9f3bbce71e43dedfb0e84c5922c64508050ed7296b2364955f916008c9b?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="" class="shipping-icon" />
           <div class="return-policy-details">
             <h3 class="return-policy-title">Chính sách đổi trả</h3>
-            <p class="return-policy-description">
+            <p class="shipping-description">
             Đổi trả miễn phí trong vòng  <span style="text-decoration: underline">30 ngày</span>
             </p>
           </div>
@@ -196,6 +196,7 @@
         Thời gian xử lý + Thời gian vận chuyển = Thời gian giao hàng
         </p>
       </section>
+
 <!--Đánh gía sản phẩm-->
         <section class="description-container">
               <div class="description-title-container">
@@ -204,6 +205,7 @@
               </div>
               <div class="description-underline"></div>
         </section>
+
         <?php
           require_once "db_module.php";
           $link = null;

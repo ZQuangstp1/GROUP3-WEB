@@ -496,6 +496,10 @@ body{
   height: 2px;
 }
 
+.product-description, 
+.shipping-container {
+  margin-left: 70px;
+}
 
 .product-summary {
   line-height: 30px;
@@ -748,6 +752,7 @@ body{
     flex-direction: column;
     color: #1d2939;
     font-weight: 500;
+    margin-left: 50px;
   }
 
   .review-title {
@@ -766,6 +771,7 @@ body{
   .wrapper {
     display: flex;
     align-items: center;
+    margin-left: 50px;
   }
   
 
@@ -790,6 +796,7 @@ body{
     padding-left: 80px;
     font-size: 15px;
     font-weight: 400;
+    margin-left: 65px;
   }
 
   @media (max-width: 991px) {
