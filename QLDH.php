@@ -33,13 +33,13 @@
             </ul>
         </div>
 
-        <div id="header">
-            <h2>ADMIN/QUẢN LÝ ĐƠN HÀNG</h2>
+        <div id="header" >
+            <h2 style="text-align: center;">ADMIN/QUẢN LÝ ĐƠN HÀNG</h2>
         </div id="content">
         <?php include "DonHang.php"; ?>
     </div>
     <div id="footer">
-        <p>© 2024 Jewelry Store. All rights reserved.</p>
+        <p>© 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo</p>
     </div>
 
     </div>

@@ -36,7 +36,7 @@
                 <?php include "NhanVien.php"; ?>
             </div>
             <div id="footer">
-                <p>© 2024 Jewelry Store. All rights reserved.</p>
+                <p>© 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo</p>
             </div>
 
         </div>

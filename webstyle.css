@@ -60,12 +60,17 @@ body {
     background: #F9F2E6;
     color: #935a5ac9;
     padding: 20px;
-    text-align: center;
+    text-align: center; 
     position: fixed;
     top: 0;
-    left: 13%;
-    width: 100%;
+    left: 0; 
+    right: 0; 
+    width: auto; 
     border-bottom: 2px solid #DF8A8A;
+}
+
+#header h2 {
+    text-align: center;
 }
 
 #content {

@@ -410,6 +410,7 @@
                 $_employeeid = $_GET["employeeID"];
 
                 chayTruyVanKhongTraVeDL($link, "DELETE FROM staffaccount WHERE employeeID='" . $_employeeid . "'");
+                chayTruyVanKhongTraVeDL($link, "UPDATE financialreport SET employeeID = NULL WHERE employeeID ='" . $_employeeid . "'");
                 $sql = "DELETE FROM employee WHERE employeeID='" . $_employeeid . "'";
 
                 $result = chayTruyVanKhongTraVeDL($link, $sql);

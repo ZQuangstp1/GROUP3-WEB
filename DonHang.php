@@ -12,7 +12,7 @@
             flex-wrap: wrap;
             gap: 10px;
             padding: 20px;
-            background-color: #f0f0f0;
+            background-color: white;
             border-radius: 10px;
             margin-top: 3%;
 
@@ -224,7 +224,7 @@
 
             // Thêm điều kiện tìm kiếm dựa trên các bộ lọc
             if (!empty($search)) {
-                $sql .= " AND (c.customerID LIKE '%$search%' OR pd.productName LIKE '%$search%' OR  o.orderID LIKE '%$search%')";
+                $sql .= " AND (c.customerID LIKE '%$search%' OR pd.productName LIKE '%$search%' OR  o.orderID LIKE '%$search%' OR c.phone LIKE '%$search%' OR pd.color LIKE '%$search%' OR pd.size LIKE '%$search%' OR ot.quantity LIKE '%$search%' OR l.address LIKE '%$search%'  )";
             }
             if (!empty($pttt)) {
                 $sql .= " AND o.paymentMethod = '$pttt'";
