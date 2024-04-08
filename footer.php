@@ -11,7 +11,6 @@
   justify-content: space-around;
   flex-direction: row; 
   background-color: #f9f2e6;
-  margin-top: 200px;
   padding: 20px;
 }
   
@@ -29,20 +28,6 @@
   margin: 10px;
 } 
 
-
-@media only screen and (min-width: 768px) {
-  .footer-section {
-    flex: 0 1 calc(33.33% - 40px); /* Chia footer thành 3 cột với khoảng cách 20px giữa các cột */
-    margin: 20px; /* Khoảng cách giữa các cột */
-  }
-
-}
-
-@media only screen and (min-width: 992px) {
-  .footer-section {
-    flex: 0 1 calc(25% - 40px); /* Chia footer thành 4 cột với khoảng cách 20px giữa các cột */
-  }
-}
 
 .mobile-app-section,
 .Noti {
@@ -70,7 +55,7 @@
     margin: 10px auto; /* Căn giữa theo chiều ngang */
     display: block; /* Đảm bảo các phần tử con hiển thị dạng khối để có thể căn giữa */
   }
- 
+
 }
 
 
@@ -85,7 +70,7 @@
 }
 
 .quality-guarantee{
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .category-list ul,
@@ -114,6 +99,13 @@
   height: auto;
 }
 
+.contact-icon {
+    width: 20px; 
+    height: auto; 
+    margin-right: 5px; 
+    margin-top: 10px;
+  }
+
 .guarantee-content,
 .return-policy-content,
 .newsletter-content {
@@ -137,6 +129,12 @@
   font-family: Lora, sans-serif;
   font-weight: bold;
   margin-top: 20px;
+}
+
+.contact-title {
+  color: #fb6f92; 
+  font-family: Lora, sans-serif;
+  font-weight: bold;
 }
 
 .return-policy-title,
@@ -189,7 +187,7 @@
   padding: 10px;
   border: 1px solid #000000;
   margin-bottom: 20px;
-  background-color: f9f2e6;
+  background-color: #f9f2e6;
   transition: border-color 0.3s;
   outline: none;
 }
@@ -202,7 +200,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(255, 192, 203, 0.8); /* Hồng hơi trong suốt */
+  background-color: rgba(255, 192, 203, 0.8);
   padding: 20px;
   border-radius: 10px;
 }
@@ -224,9 +222,46 @@
   height: 50px;
   margin-bottom: 10px;
 }
+
+.footer-line {
+  border: none; 
+  border-top: 2px solid #fb6f92; 
+  margin: 280px 0 20px 0; 
+}
+
+  @media only screen and (max-width: 768px) {
+
+  .footer {
+   flex-direction: column; /* Chuyển sang hiển thị dạng cột ở màn hình nhỏ */
+  }
+
+  .shopping-section,
+  .information-section {
+    margin-left: 20px;
+  }
+    .contact-details {
+      font-size: 14px; 
+    }
+
+    .social-icon {
+      width: 20px; 
+      height: auto;
+    }
+
+    .footer-section {
+      margin: 20px;
+    }
+
+    .title {
+      font-size: 20px; 
+    }
+}
+
+
 </style>
 </head>
 <body>
+<hr class="footer-line">
 <div class="footer">
     <div class="shopping-section">
       <div class="product-categories">
@@ -245,24 +280,31 @@
         </div>
       </div>
     </div>
-      <div class="information-section">
-        <div class="information-header">
-          <div class="information-title">THÔNG TIN</div>
-          <div class="information-details">
-            <ul>
-              <li>Về Flamingo</li>
-            </ul>
-            <div class="app-title">Kết nối với chúng tôi</div>
-          <div class="social-icons">
+    <div class="information-section">
+    <div class="information-header">
+      <div class="information-title">THÔNG TIN</div>
+      <div class="information-details">
+        <ul>
+          <li>Về Flamingo</li>
+        </ul>
+      <div class="contact-title">Liên hệ</div>
+      <div class="contact-details">
+            <li><a href="https://maps.app.goo.gl/rnHXeAdWpGF2gv7y5"><img loading="lazy" src="https://cdn-icons-png.freepik.com/512/3678/3678566.png" class="contact-icon"> 279 Nguyễn Tri Phương, Phường 5, Quận 10</a></li>
+            <li><img loading="lazy" src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/pink-phone-icon.png" class="contact-icon"> 0931104291</li>
+            <li><img loading="lazy" src="https://logodix.com/logo/689225.png" class="contact-icon"> info@flamingo.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="footer-section">
+    <div class="app-title">Kết nối với chúng tôi</div>
+        <div class="social-icons">
           <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a83812e396b6a258d8509dc01d6ec77f5825380962dace1d1788cb0cd3dc3b15?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
           <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/37bd4d23db3b53ce0a5edea0fa9eb6feb87c680064b4f8c4cedb233b56d833f1?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
           <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ace2ff80b4eafe06c81e5c420166ee391066b0b067faa6db13e4e18940315db1?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
           <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f21335ae84e5b9cfb992f641bb654ab406167cad8733128d7c7035762c289e73?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" class="social-icon" />
         </div>
-          </div>
-        </div>
-      </div>
-    <div class="footer-section">
       <div class="quality-guarantee">
         <div class="guarantee-content">
           <img style="margin-right: 10px;"

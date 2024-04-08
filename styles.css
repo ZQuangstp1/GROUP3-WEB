@@ -296,6 +296,11 @@ body {
   box-sizing: border-box; 
 }
 
+.product-item:hover  {
+  border-color: #fb6f92; 
+}
+
+
 .product-item:last-child {
   margin-right: 0; 
 }
@@ -333,6 +338,7 @@ body {
   text-align: center; 
   font: 17px Barlow, sans-serif;
   padding: 10px 25px;
+  
 }
 
 .product-category {

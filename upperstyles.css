@@ -444,7 +444,10 @@ body{
     position: relative;
     box-sizing: border-box;
   }
-  
+  .bestsellerproduct-item:hover  {
+    border-color: #fb6f92; 
+  }
+
   .bestsellerproduct-item:last-child {
     margin-right: 0; 
   }
