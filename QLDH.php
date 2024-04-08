@@ -1,45 +1,48 @@
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
-            function ConfirmDel() {
-                var confirmed = confirm("Bạn chắc chắn muốn xóa không?");
-                if (confirmed) {
-                    // Thực hiện hành động xóa nếu người dùng chọn OK
-                    // Ví dụ: gọi hàm xóa hoặc gửi yêu cầu xóa tới server
-                    console.log("Đã xóa");
-                }
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function ConfirmDel() {
+            var confirmed = confirm("Bạn chắc chắn muốn xóa không?");
+            if (confirmed) {
+                console.log("Đã xóa");
             }
-        </script>
+        }
+    </script>
 
-        <link rel="stylesheet" type="text/css" href="webstyle.css" />
+    <link rel="stylesheet" type="text/css" href="webstyle.css" />
 
-        </style>
-    </head>
 
-    <body>
-        <div id="container">
-            <div id="sidebar">
-                <h2><img src="Picture/Logo.png" alt="Logo"></h2>
-                <ul>
-                    <li><a href="Overview.php">Overview</a></li>
-                    <li><a href="QLSP.php">Quản lý sản phẩm</a></li>
-                    <a href="QLNV.php"><li>Quản lý nhân viên</li></a>
-                    <a href="QLDH.php"><li>Quản lý đơn hàng</li></a>
-                </ul>
-            </div>
-        
-            <div id="header">
-                <h2>ADMIN/QUẢN LÝ NHÂN VIÊN</h2> 
-            </div id="content">
-                <?php include "DonHang.php"; ?>
-            </div>
-            <div id="footer">
-                <p>© 2024 Jewelry Store. All rights reserved.</p>
-            </div>
+</head>
 
+<body>
+    <div id="container">
+        <div id="sidebar">
+            <h2><img src="Picture/Logo.png" alt="Logo"></h2>
+            <ul>
+                <li><a href="Overview.php">Overview</a></li>
+                <li><a href="QLSP.php">Quản lý sản phẩm</a></li>
+                <a href="QLNV.php">
+                    <li>Quản lý nhân viên</li>
+                </a>
+                <a href="QLDH.php">
+                    <li>Quản lý đơn hàng</li>
+                </a>
+            </ul>
         </div>
-    </body>
+
+        <div id="header">
+            <h2>ADMIN/QUẢN LÝ ĐƠN HÀNG</h2>
+        </div id="content">
+        <?php include "DonHang.php"; ?>
+    </div>
+    <div id="footer">
+        <p>© 2024 Jewelry Store. All rights reserved.</p>
+    </div>
+
+    </div>
+</body>
+
 </html>

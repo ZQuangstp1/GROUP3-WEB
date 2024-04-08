@@ -12,7 +12,7 @@
 
 .form-container form {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);      /* Two columns of equal width */
+    grid-template-columns: repeat(2, 1fr);      
     grid-gap: 20px;                             /*Khoảng cách giữa các field*/
     align-items: center;
 
@@ -30,7 +30,6 @@
     width: 100%;
     padding: 10px;
     margin-top: 6px;
-    /* Adjusted for better spacing */
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -53,7 +52,7 @@
     display: flex;
     justify-content: center;
     gap: 20px;
-    grid-column: 1 / -1;     /* Makes sure the container spans all columns */
+    grid-column: 1 / -1;   
 }
 
 .form-container input[type="submit"]:hover,
@@ -62,8 +61,8 @@
 }
 
 .form-container button {
-    width: 48%; /* Tương tự như submit và reset để giữ consistency */
-    background-color: #6495ED; /* Màu nền */
+    width: 48%; 
+    background-color: #008DDA; /* Màu nền */
     color: white; /* Màu chữ */
     padding: 14px 20px;
     margin: 8px 0;
@@ -73,21 +72,24 @@
 }
 
 .form-container button:hover {
-    background-color: #4169E1; /* Màu khi hover */
+    background-color: rgb(62, 95, 187); /* Màu khi hover */
 }
 
 @media screen and (max-width: 600px) {
     .form-container {
-        padding: 10px; /* Giảm padding để tiết kiệm không gian */
-        margin-top: 10%; /* Tăng margin-top để tránh sát quá lên trên cùng */
+        padding: 10px; /* Giảm padding */
+        margin: 10%; 
+        width: calc(100% - 20px); /* Điều chỉnh chiều rộng để không dính sát viền màn hình */
+        max-width: 100%; /* Đảm bảo không có giới hạn về chiều rộng tối đa */
+        box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước tổng thể */
     }
-
     .form-container form {
         grid-template-columns: 1fr; /* Chuyển sang layout một cột */
     }
 
     .form-container label {
         margin-bottom: 5px; /* Tăng khoảng cách dưới của label để dễ đọc */
+        
     }
 
     .form-container input[type="text"],
@@ -107,3 +109,4 @@
         gap: 10px; /* Giảm khoảng cách giữa các nút */
     }
 }
+

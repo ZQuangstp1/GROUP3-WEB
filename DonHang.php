@@ -6,6 +6,7 @@
             border-collapse: collapse;
             /* Loại bỏ khoảng cách giữa các border của cell */
         }
+
         #toolbar {
             display: flex;
             flex-wrap: wrap;
@@ -22,7 +23,6 @@
             flex-direction: column;
             width: 100%;
             max-width: 200px;
-            /* Hoặc một giá trị cụ thể phù hợp với layout của bạn */
             justify-content: flex-start;
         }
 
@@ -50,6 +50,44 @@
 
         #toolbar button:hover {
             background-color: #0056b3;
+        }
+
+        @media screen and (max-width: 480px) {
+            #toolbar {
+                padding: 10px;
+                gap: 5px;
+            }
+
+            .form-group {
+                width: 100%;
+                max-width: none;
+            }
+
+            #toolbar button {
+                width: 100%;
+                /* Đặt nút tìm kiếm chiếm toàn bộ chiều rộng */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            #toolbar {
+                padding: 10px;
+                gap: 5px;
+                margin-top: 10%;
+                margin-bottom: 10%;
+                margin-left: 10%;
+                /* toolbar căn giữa */
+                margin-right: auto;
+            }
+
+            .form-group {
+                width: 100%;
+                max-width: none;
+            }
+
+            #toolbar button {
+                width: 100%;
+            }
         }
     </style>
     <script type=text/JavaScript>

@@ -1,11 +1,70 @@
 <head>
     <link rel="stylesheet" type="text/css" href="form.css" />
     <style>
-                table {
+    table {
             width: 100%;
             border-collapse: collapse;
             /* Loại bỏ khoảng cách giữa các border của cell */
         }
+    #toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 2% 0;
+    flex-wrap: wrap;
+}
+
+    #searchInput {
+        padding: 8px 10px;
+        margin-right: 10px; 
+        flex-grow: 1; 
+    }
+
+    button, .add-nv-container {
+        height: 40px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        margin: 5px;
+    }
+
+    button {
+        cursor: pointer;
+        border-radius: 5px;
+        border: none; 
+        background-color: #DF8A8A;
+        color: black; 
+    }
+
+    .add-nv-container {
+        background-color: #DF8A8A; /* Màu nền cho container */
+        border-radius: 5px; /* Bo tròn góc */
+        text-decoration: none; /* Xóa gạch chân của liên kết */
+    }
+
+    .add-nv-container img {
+        height: 20px; /* Điều chỉnh kích thước ảnh */
+        margin-right: 5px; /* Khoảng cách giữa ảnh và chữ */
+    }
+
+    .add-nv-text {
+        color: black; 
+        margin: 0; 
+    }
+
+    @media (max-width: 768px) {
+        #toolbar {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #searchInput, button, .add-nv-container {
+            width: calc(100% - 20px); 
+            margin: 5px 0; 
+        }
+    }
     </style>
     <script type=text/JavaScript>
     function confirmDel() {
@@ -78,31 +137,22 @@
     return true; // Cho phép form được submit
 }
 
-
-
 </script>
 </head>
 
 <body>
     <div id="content">
-        <div style="height: 15% ;display:flex; margin-top: 2%;" id="toolbar">
+        <div id="toolbar">
             <!-- Khối chứa tra cứu và thêm nhân viên -->
 
-            <input id="searchInput" style="border-radius: 5px; margin:10px;" type="text" placeholder="Nhập thông tin" />
-            <button onclick="Search()"
-                style="border-radius: 5px; margin:10px; background-color: #DF8A8A; color: white; border: none; cursor: pointer;">Tìm
-                kiếm</button>
+            <input id="searchInput" type="text" placeholder="Nhập thông tin"/>
+            <button onclick="Search()">Tìm kiếm</button>
 
-            <div style="width: 60%;margin-left: 20%;">
-                <a href="?opt=add_NV" style="text-decoration: none; color: inherit;">
-                    <div
-                        style="width: 20%;background-color:#DF8A8A; display: flex; border-radius: 5px; float: right; margin: 5px; margin-left: 50%; align-items: center;">
-                        <img src="Picture/Vector.png" alt="ThemNV"
-                            style="height: 55%; margin-left: 5%; margin-right: 5%;">
-                        <p>Thêm nhân viên</p>
-                    </div>
+            <div class="add-nv-container">
+                <a href="?opt=add_NV" style="text-decoration: none; display: flex; align-items: center;">
+                    <img src="Picture/Vector.png" alt="ThemNV">
+                    <p class="add-nv-text">Thêm nhân viên</p>
                 </a>
-
             </div>
         </div>
 
@@ -130,7 +180,7 @@
             //Kết nối và lấy dữ liệu từ CSDL
             $searchQuery = isset($_GET['search']) ? trim($_GET['search']) : '';
 
-            $sql = "SELECT * FROM employee WHERE 1";
+            $sql = "SELECT employeeID, name, DATE_FORMAT(dateOfBirth, '%d/%m/%Y') as formattedDateOfBirth, phoneNum, email, address, gender, position, shiftTime FROM employee WHERE 1";
 
             if (!empty($search)) {
                 $sql .= " AND (employeeID LIKE '%$search%' OR 
@@ -143,7 +193,6 @@
                                 OR position LIKE '%$search%'
                                 OR shiftTime LIKE '%$search%')";
             }
-           
 
             $result = chayTruyVanTraVeDL($link, $sql);
 
@@ -164,7 +213,7 @@
                 echo "<tr>";
                 echo "<td>" . $row["employeeID"] . "</td>";
                 echo "<td>" . $row["name"] . "</td>";
-                echo "<td>" . $row["dateOfBirth"] . "</td>";
+                echo "<td>" . $row["formattedDateOfBirth"] . "</td>";
                 echo "<td>" . $row["phoneNum"] . "</td>";
                 echo "<td>" . $row["email"] . "</td>";
                 echo "<td>" . $row["address"] . "</td>";
@@ -180,7 +229,7 @@
         }
 
         function add_NV()
-        {    
+        {
             $link = null;
             taoKetNoi($link);
             ?>
@@ -222,7 +271,7 @@
                     <div class="form-buttons">
                         <input type="submit" value="Lưu">
                         <input type="reset" value="Nhập lại">
-                        <button type="button" onclick="window.location.href='QLNV_XemNV.php?opt=view_NV';">Quay lại</button>
+                        <button type="button" onclick="window.location.href='QLNV.php?opt=view_NV';">Quay lại</button>
                     </div>
                 </form>
             </div>
@@ -268,11 +317,32 @@
                         VALUES ('$_manv', '$_hoten', '$_birthday', '$_sdt', '$_email', '$_address', '$_gender', '$_position', '$_shift')";
 
                 $rs = chayTruyVanKhongTraVeDL($link, $sql);
+
+                // Tạo mật khẩu ngẫu nhiên
+                // hàm tạo password
+                function generateRandomPassword($length = 8)
+                {
+                    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    $charactersLength = strlen($characters);
+                    $randomPassword = '';
+                    for ($i = 0; $i < $length; $i++) {
+                        $randomPassword .= $characters[rand(0, $charactersLength - 1)];
+                    }
+                    return $randomPassword;
+                }
+
+                $password = generateRandomPassword(8); // Gọi hàm tạo mật khẩu ngẫu nhiên
+        
+                // Thêm vào bảng staffaccount
+                $sql_account = "INSERT INTO staffaccount (employeeID, password) VALUES ('$_manv', '$password')";
+                $result_account = chayTruyVanKhongTraVeDL($link, $sql_account);
+
                 if ($rs) {
                     echo "<script>alert('Thêm nhân viên thành công');</script>";
-                    echo "<script>window.location.href='QLNV_XemNV.php?opt=add_NV';</script>";
+                    echo "<script>window.location.href='QLNV.php?opt=add_NV';</script>";
                 } else {
                     echo "<script>alert('Có lỗi xảy ra, không thể thêm nhân viên');</script>";
+                    return;
                 }
             }
         }
@@ -292,7 +362,8 @@
                 if ($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <div class="form-container">
-                            <form name="formNV" action="?opt=update_NV" method="post" enctype="multipart/form-data" onsubmit="return ValidateForm()">
+                        <form name="formNV" action="?opt=update_NV" method="post" enctype="multipart/form-data"
+                            onsubmit="return ValidateForm()">
                             Mã nhân viên: <input type="text" name="employeeid" readonly
                                 value="<?php echo $row["employeeID"]; ?>"><br>
                             Họ tên: <input type="text" name="hoten" value="<?php echo $row["name"]; ?>"><br>
@@ -320,7 +391,7 @@
                             <div class="form-buttons">
                                 <input type="submit" value="Cập nhật">
                                 <input type="reset" value="Nhập lại">
-                                <button type="button" onclick="window.location.href='QLNV_XemNV.php?opt=view_NV';">Quay lại</button>
+                                <button type="button" onclick="window.location.href='QLNV.php?opt=view_NV';">Quay lại</button>
                             </div>
                         </form>
                     </div>
@@ -344,10 +415,10 @@
                 $result = chayTruyVanKhongTraVeDL($link, $sql);
                 if ($result) {
                     echo "<script>alert('Xóa nhân viên thành công');</script>";
-                    echo "<script>window.location.href='QLNV_XemNV.php?opt=view_NV';</script>";
+                    echo "<script>window.location.href='QLNV.php?opt=view_NV';</script>";
                 } else {
                     echo "<script>alert('Xóa nhân viên thất bại');</script>";
-                    echo "<script>window.location.href='QLNV_XemNV.php?opt=view_NV';</script>";
+                    echo "<script>window.location.href='QLNV.php?opt=view_NV';</script>";
                 }
             }
         }
@@ -382,10 +453,10 @@
                     //Kiểm tra insert
                     if ($rs) {
                         echo "<script>alert('Cập nhật thành công');</script>";
-                        echo "<script>window.location.href='QLNV_XemNV.php?opt=view_NV';</script>";
+                        echo "<script>window.location.href='QLNV.php?opt=view_NV';</script>";
                     } else {
                         echo "<script>alert('Cập nhật thất bại');</script>";
-                        echo "<script>window.location.href='QLNV_XemNV.php?opt=view_NV';</script>";
+                        echo "<script>window.location.href='QLNV.php?opt=view_NV';</script>";
                     }
                 }
 
@@ -421,5 +492,5 @@
             echo "<script>hideToolBar();</script>";
         }
         ?>
-</div>
+    </div>
 </body>

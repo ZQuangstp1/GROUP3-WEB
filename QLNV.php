@@ -16,7 +16,6 @@
 
         <link rel="stylesheet" type="text/css" href="webstyle.css" />
 
-        </style>
     </head>
 
     <body>
