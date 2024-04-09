@@ -37,7 +37,7 @@ function dangnhap($link, $username, $password)
     if ($result && mysqli_num_rows($result) > 0) {
 
         $_SESSION['customerID'] = $row['customerID'];
-       // $_SESSION['accountID'] = $row['accountID'];
+        $_SESSION['accountID'] = $row['accountID'];
         return true;
         
     } else {

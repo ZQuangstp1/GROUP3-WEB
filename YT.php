@@ -29,20 +29,11 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
     $accountID = $_SESSION['accountID'];
     
     // Tiếp tục truy vấn để lấy thông tin các sản phẩm yêu thích từ bảng product
-    $query = "SELECT product.image, product.discountID, product.productName, subcategory.subcategoryName, product.unitPrice 
-    FROM product 
-    LEFT JOIN orderdetail 
-    ON orderdetail.productID = product.productID 
-    LEFT JOIN `orders` 
-    ON orderdetail.orderID = `orders`.orderID 
-    LEFT JOIN `subcategory` 
-    ON product.subcategoryID = `subcategory`.subcategoryID
-    LEFT JOIN `customer`
-    ON `orders`.customerID = `customer`.customerID
-    LEFT JOIN `useraccount` 
-    ON `customer`.customerID = `useraccount`.customerID
-    WHERE useraccount.accountID = '$accountID'";
-    $result = mysqli_query($link, $query);
+    $query = "SELECT product.image, product.discountID, product.productName, subcategory.subcategoryName, product.unitPrice, favproduct.accountID 
+    FROM product LEFT JOIN `subcategory` ON product.subcategoryID = `subcategory`.subcategoryID 
+    LEFT JOIN `favproduct` ON product.productID = favproduct.productID 
+    JOIN useraccount u ON u.accountID = favproduct.accountID WHERE u.accountID = '$accountID'";
+    $result = chayTruyVanKhongTraVeDL($link, $query);
     // Kiểm tra xem truy vấn có thành công hay không
     if($result) {
         // Kiểm tra xem có dữ liệu không
@@ -80,7 +71,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
 }
 
 // Đóng kết nối
-mysqli_close($link);
+giaiPhongBoNho ( $link, $result )
 ?>
 
 
