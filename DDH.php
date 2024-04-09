@@ -3,9 +3,9 @@
     
     <body> 
       
-        <div class="div" id ="DDH" style ="width : 80%;margin: 0 auto;">
-            <div class="div-2">Trang chủ / Trang khách hàng</div>
-            <div class="div-3" style = "font-weight: bold;">Đơn đặt hàng</div>
+        <div class="div" id ="DDH" style="width :100%; margin: 0 auto; ">
+            <div class="div-2"></div>
+            <div class="div-3" style = "font-weight: bold; font-size :35px;">Đơn đặt hàng</div>
             <div class="div-4">
               <div class="div-5">
                 <div class="column">
@@ -45,10 +45,12 @@ $result = mysqli_query($link, $query);
   // hoặc echo "Vui lòng đăng nhập để xem đơn đặt hàng.";
 }
 
-// Kiểm tra xem có dữ liệu không
-if (mysqli_num_rows($result) > 0) {
-    // Hiển thị thông tin đơn hàng
-    while ($row = mysqli_fetch_assoc($result)) {
+  // Kiểm tra xem có dữ liệu không
+  if (mysqli_num_rows($result) > 0) {
+      // Hiển thị thông tin đơn hàng
+      while ($row = mysqli_fetch_assoc($result)) {
+          // Kiểm tra nếu orderID khác với orderID trước đó
+          if ($row['orderID'] !== $prevOrderID) {
 ?>
         <div class="div-18">
         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/190006a3d3439101c0ee4b84999b823b25c34e81bb0ba5d245c81a2b54260f4a?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" class="img-3" />
@@ -75,18 +77,39 @@ if (mysqli_num_rows($result) > 0) {
         </div>
         
 <?php
-    }
+          // Lưu trữ orderID hiện tại để sử dụng trong lần lặp tiếp theo
+          $prevOrderID = $row['orderID'];
+      }
+  } else {
+      echo "Không có đơn hàng nào được tìm thấy.";
+  }
 } else {
-    echo "Không có đơn hàng nào được tìm thấy.";
+  header("Location: dangnhap.php");
+  // hoặc echo "Vui lòng đăng nhập để xem đơn đặt hàng.";
 }
-
 // Đóng kết nối
 mysqli_close($link);
 ?>
-
               
           </div>
-          <style>
+</div>
+</div>
+</div>
+</div>
+<?php require 'footer.php'; ?>
+
+      <style>
+       body {
+        margin :0;
+        padding :0;
+       }
+             .div-7:hover,
+.div-8:hover,
+.div-9:hover,
+.div-10:hover {
+  box-shadow: 0 0 5px 0 #fb6f92; /* Hiệu ứng nổi lên nhẹ màu hồng */
+  transform: translateY(-3px); /* Nổi lên full ô */
+}
             .div {
               display: flex;
               flex-direction: column;
@@ -106,10 +129,13 @@ mysqli_close($link);
               }
             }
             .div-3 {
-              color: #000;
-              text-align: center;
-              white-space: nowrap;
-              font: 400 48px Oswald, sans-serif;
+              color: #fb6f92;
+          text-align: center;
+          white-space: nowrap;
+          margin-top : 100px;
+                    text-align: center;
+                    white-space: nowrap;
+                    font: 300 40px Barlow, sans-serif;
             }
             @media (max-width: 991px) {
               .div-3 {

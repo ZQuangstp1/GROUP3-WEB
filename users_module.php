@@ -28,7 +28,7 @@ function dangnhap($link, $username, $password)
     $escaped_password = mysqli_real_escape_string($link, $password);
 
     // Tạo câu truy vấn SQL để kiểm tra tên người dùng và mật khẩu
-    $query = "SELECT customerID,username,password FROM useraccount WHERE username = '$escaped_username' AND password = '$escaped_password'";
+    $query = "SELECT customerID, accountID, username, password FROM useraccount WHERE username = '$escaped_username' AND password = '$escaped_password'";
     
     // Thực thi truy vấn
     $result = chayTruyVanTraVeDL($link, $query);
@@ -37,7 +37,7 @@ function dangnhap($link, $username, $password)
     if ($result && mysqli_num_rows($result) > 0) {
 
         $_SESSION['customerID'] = $row['customerID'];
-
+       // $_SESSION['accountID'] = $row['accountID'];
         return true;
         
     } else {
@@ -46,6 +46,7 @@ function dangnhap($link, $username, $password)
     }
 
 }
+
 
 function dangxuat()
 {

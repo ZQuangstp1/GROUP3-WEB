@@ -10,6 +10,27 @@ if (!isset($_SESSION['customerID'])) {
   exit();
 }
 
+function hienthiQuan()
+{
+    $link = null;
+    taoKetNoi($link);
+    $selectedCity = $_POST['tp'];
+    $sql = "SELECT district FROM district 
+            LEFT JOIN province ON province.provinceID = district.provinceID 
+            WHERE province.province = '$selectedCity'";
+    $result = chayTruyVanTraVeDL($link, $sql);
+    if ($result->num_rows > 0) {
+        // Hiển thị các quận dựa trên dữ liệu từ cơ sở dữ liệu
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value='" . $row["district"] . "'>" . $row["district"] . "</option>";
+        }
+    } else {
+        echo "Không có dữ liệu";
+    }
+}
+
+
+
 
 function view_TTKH()
 {
@@ -110,6 +131,7 @@ function view_TTLL()
     echo "<div class='div-21'>Bạn chưa đặt thông tin liên lạc mặc định</div>";
   }
 }
+
 function view_SDC()
 {
     $link = null;
@@ -122,7 +144,6 @@ function view_SDC()
   LEFT JOIN location ON customer.locationID = location.locationID
   LEFT JOIN district d ON location.districtID = d.districtID
   LEFT JOIN province ON d.provinceID = province.provinceID
-  RIGHT JOIN orders ON customer.customerID = orders.customerID
   WHERE customer.customerID = '" . $_SESSION['customerID'] . "'");
 
   echo "<table>";

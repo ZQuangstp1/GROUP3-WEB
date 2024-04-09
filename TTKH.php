@@ -3,87 +3,81 @@
 <head> </head>
 
 <body>
+<script>
+  // JavaScript để mở modal Đổi Mật Khẩu và Thông tin cá nhân
+  document.addEventListener("DOMContentLoaded", function () {
+    // Lấy nút mở modal Đổi Mật Khẩu
+    var modalBtn = document.getElementById("openModal");
+    // Lấy modal Đổi Mật Khẩu
+    var passwordModal = document.getElementById("passwordChangeModal");
+    // Lấy phần tử span để đóng modal Đổi Mật Khẩu
+    var spanPassword = passwordModal.getElementsByClassName("close")[0];
 
-  <script>
-    // JavaScript để mở modal Đổi Mật Khẩu và Thông tin cá nhân
-    document.addEventListener("DOMContentLoaded", function () {
-      // Lấy nút mở modal Đổi Mật Khẩu
-      var modalBtn = document.getElementById("openModal");
-      // Lấy modal Đổi Mật Khẩu
-      var passwordModal = document.getElementById("passwordChangeModal");
-      // Lấy phần tử span để đóng modal Đổi Mật Khẩu
-      var spanPassword = passwordModal.getElementsByClassName("close")[0];
+    // Khi người dùng nhấn nút mở modal Đổi Mật Khẩu
+    modalBtn.onclick = function () {
+      passwordModal.style.display = "block";
+    }
 
-      // Khi người dùng nhấn nút mở modal Đổi Mật Khẩu
-      modalBtn.onclick = function () {
-        passwordModal.style.display = "block";
-      }
+    // Khi người dùng nhấn vào <span> (x) trong modal Đổi Mật Khẩu, đóng modal
+    spanPassword.onclick = function () {
+      passwordModal.style.display = "none";
+    }
 
-      // Khi người dùng nhấn vào <span> (x) trong modal Đổi Mật Khẩu, đóng modal
-      spanPassword.onclick = function () {
+    // Khi người dùng nhấn bất kỳ đâu bên ngoài modal Đổi Mật Khẩu, đóng nó lại
+    window.onclick = function (event) {
+      if (event.target == passwordModal) {
         passwordModal.style.display = "none";
       }
+    }
 
-      // Khi người dùng nhấn bất kỳ đâu bên ngoài modal Đổi Mật Khẩu, đóng nó lại
-      window.onclick = function (event) {
-        if (event.target == passwordModal) {
-          passwordModal.style.display = "none";
-        }
-      }
+    // Lấy nút mở modal Thông tin cá nhân
+    var openInfoBtn = document.getElementById("openInfoModal");
+    // Lấy modal Thông tin cá nhân
+    var personalInfoModal = document.getElementById("personalInfoModal");
+    // Lấy phần tử span để đóng modal Thông tin cá nhân
+    var spanPersonalInfo = personalInfoModal.getElementsByClassName("close")[0];
 
-      // Lấy nút mở modal Thông tin cá nhân
-      var openInfoBtn = document.getElementById("openInfoModal");
-      // Lấy modal Thông tin cá nhân
-      var personalInfoModal = document.getElementById("personalInfoModal");
-      // Lấy phần tử span để đóng modal Thông tin cá nhân
-      var spanPersonalInfo = personalInfoModal.getElementsByClassName("close")[0];
+    // Khi người dùng nhấn nút mở modal Thông tin cá nhân
+    openInfoBtn.onclick = function () {
+      personalInfoModal.style.display = "block";
+    }
 
-      // Khi người dùng nhấn nút mở modal Thông tin cá nhân
-      openInfoBtn.onclick = function () {
-        personalInfoModal.style.display = "block";
-      }
+    // Khi người dùng nhấn vào <span> (x) trong modal Thông tin cá nhân, đóng modal
+    spanPersonalInfo.onclick = function () {
+      personalInfoModal.style.display = "none";
+    }
 
-      // Khi người dùng nhấn vào <span> (x) trong modal Thông tin cá nhân, đóng modal
-      spanPersonalInfo.onclick = function () {
+    // Khi người dùng nhấn bất kỳ đâu bên ngoài modal Thông tin cá nhân, đóng nó lại
+    window.onclick = function (event) {
+      if (event.target == personalInfoModal) {
         personalInfoModal.style.display = "none";
       }
-
-      // Chưa sửa được
-      window.onclick = function (event) {
-        if (event.target == personalInfoModal) {
-          personalInfoModal.style.display = "none";
-        }
-      }
-    });
+    }
+  });
+</script>
 
 
-  </script>
 
-
-  <div class="div" id="TTKH" style="width :80%; margin: 0 auto; ">
-    <div class="div-2">Trang chủ / Trang khách hàng</div>
-    <div class="div-3" style="font-weight: bold;">Thông tin khách hàng</div>
+  <div class="div" id="TTKH" style="width :100%; margin: 0 auto;">
+    <div class ="div-2"></div>
+    <div class="div-3" style=" font-weight : bold;font-size : 35px;">Thông tin khách hàng</div>
     <div class="div-4">
       <div class="div-5">
         <div class="column">
           <div class="div-6">
             <div class="div-7" onclick="window.location.href='TTKH.php'" style="cursor: pointer;">Thông tin khách hàng
             </div>
-            <div class="div-8" onclick="window.location.href='SDC.php'" style="cursor: pointer;">Sổ địa chỉ</div>
-            <div class="div-9" onclick="window.location.href='DDH.php'" style="cursor: pointer;">Đơn đặt hàng</div>
+            <div class="div-8" onclick="window.location.href='SDC.php'" style="cursor: pointer; ">Sổ địa chỉ</div>
+            <div class="div-9" onclick="window.location.href='DDH.php'" style="cursor: pointer; ">Đơn đặt hàng</div>
             <div class="div-10" onclick="window.location.href='YT.php'" style="cursor: pointer;">Yêu thích</div>
           </div>
         </div>
         <div class="column-2">
-
           <div class="div-11">
-
-            <div class="div-12" style="font-weight: bold;">Thông tin chi tiết</div>
+            <div class="div-12" style="font-weight: bold ; font-size :25px;">Thông tin chi tiết</div>
           </div>
           <?php
           require_once ("view_TTKH.php");
-
-          // Gọi hàm view_TTKH() để hiển thị thông tin khách hàng
           view_TTKH();
           ?>
 
@@ -135,8 +129,8 @@
           </div>
         </div>
         </br>
-        <div class="column-3">
-          <div class="div-19">
+        <div class="column-3" >
+          <div class="div-19" >
             <div class="div-20" style="font-weight :bold">ĐỊA CHỈ GIAO HÀNG</div>
             <?php
             require_once ("view_TTKH.php");
@@ -150,14 +144,33 @@
             view_TTLL();
             ?>
             <button class="button" id="tdc" onclick="window.location.href='SDC.php'">Thêm địa chỉ</button>
+           
           </div>
+          
         </div>
 
-
-
-      </div>
+       
+        </div>
+        
+  </div>
+  </div>
+  <?php require 'footer.php'; ?>
 
       <style>
+       body {
+        margin :0;
+        padding :0;
+       }
+       .div-7:hover,
+.div-8:hover,
+.div-9:hover,
+.div-10:hover {
+  box-shadow: 0 0 5px 0 #fb6f92; /* Hiệu ứng nổi lên nhẹ màu hồng */
+  transform: translateY(-3px); /* Nổi lên full ô */
+}
+
+
+
         .modal {
           display: none;
           position: fixed;
@@ -167,7 +180,6 @@
           width: 100%;
           height: 100%;
           overflow: auto;
-          background-color: #f9f2e6;
           background-color: rgba(0, 0, 0, 0.4);
         }
 
@@ -180,8 +192,9 @@
         }
 
         .submit-button {
+         
           background-color: #fb6f92;
-          color: #f9f2e6;
+          color : #fff;
           padding: 15px;
           border: none;
           border-radius: 0px;
@@ -190,7 +203,7 @@
           font-weight: 600;
           text-transform: uppercase;
           width: 100%;
-          font-family: Oswald, sans-serif;
+          font-family:  Barlow, sans-serif;
           letter-spacing: 1.35px;
         }
 
@@ -234,7 +247,7 @@
           width: 100%;
           margin: 0%;
           padding: 0%;
-          font: 20px Oswald, sans-serif;
+          font-family: Barlow, sans-serif;
         }
 
         .div {
@@ -242,6 +255,8 @@
           flex-direction: column;
           align-items: center;
           padding: 0 20px;
+          font-family: Barlow, sans-serif;
+          
         }
 
         .div-2 {
@@ -249,7 +264,8 @@
           text-align: center;
           align-self: stretch;
           width: 100%;
-          font: 500 14px/68px Barlow, sans-serif;
+          font-size : 30px;
+          font-family: Barlow, sans-serif;
         }
 
         @media (max-width: 991px) {
@@ -259,10 +275,11 @@
         }
 
         .div-3 {
-          color: #000;
+          color: #fb6f92;
           text-align: center;
           white-space: nowrap;
-          font: 400 48px Oswald, sans-serif;
+          margin-top : 100px;
+          
         }
 
         @media (max-width: 991px) {
@@ -319,11 +336,13 @@
           color: #000;
           font-weight: 500;
           line-height: 144%;
+          font-family: Barlow, sans-serif;
         }
 
         .div-7 {
           font-family: Barlow, sans-serif;
           background-color: #fb6f92;
+          border-bottom : white;
           justify-content: center;
           align-items: start;
           color: #fff;
@@ -339,10 +358,11 @@
 
         .div-8 {
           font-family: Barlow, sans-serif;
-          background-color: #fff;
+          
           justify-content: center;
           align-items: start;
           padding: 14px 60px 14px 13px;
+          border-bottom : 5px white;
         }
 
         @media (max-width: 991px) {
@@ -353,7 +373,7 @@
 
         .div-9 {
           font-family: Barlow, sans-serif;
-          background-color: #fff;
+         
           justify-content: center;
           align-items: start;
           padding: 15px 60px 15px 13px;
@@ -367,7 +387,7 @@
 
         .div-10 {
           font-family: Barlow, sans-serif;
-          background-color: #fff;
+          
           justify-content: center;
           align-items: start;
           padding: 16px 60px 16px 13px;
@@ -394,12 +414,13 @@
         }
 
         .div-11 {
-          background-color: #fff;
+         
           display: flex;
           flex-direction: column;
           color: #000;
           width: 100%;
           padding: 40px;
+          padding-top : 0px;
         }
 
         @media (max-width: 991px) {
@@ -410,15 +431,12 @@
         }
 
         .div-12 {
-          font: 400 30px/283% Oswald, sans-serif;
-          margin: 0%;
+          font: 300 30px/283% Barlow, sans-serif;
+         
+
         }
 
-        .div-13 {
-          margin-top: 0px;
-          font: 300 16px/50px Poppins, sans-serif;
-        }
-
+       
         .div-14 {
           display: flex;
           margin-top: 40px;
@@ -430,6 +448,7 @@
           text-align: center;
           text-transform: uppercase;
           letter-spacing: 0.5px;
+          font-family: Barlow, sans-serif;
         }
 
         .div-15 {
@@ -466,7 +485,7 @@
           text-align: center;
           padding: 5px 10px;
           font: 14px/143% Barlow, sans-serif;
-          width: 40%
+          width: 35%
         }
 
         .button:hover {
@@ -474,18 +493,7 @@
           background-color: #ff5476;
         }
 
-        .div-18 {
-          font-family: Oswald, sans-serif;
-          background-color: #fb6f92;
-          justify-content: center;
-          padding: 11px 21px;
-        }
-
-        @media (max-width: 991px) {
-          .div-18 {
-            padding: 0 20px;
-          }
-        }
+        
 
         .column-3 {
           display: flex;
@@ -512,6 +520,7 @@
           font-weight: 500;
           width: 100%;
           padding: 45px 80px 45px 40px;
+          font-family: Barlow, sans-serif;
         }
 
         @media (max-width: 991px) {
@@ -522,7 +531,7 @@
         }
 
         .div-20 {
-          font-family: Oswald, sans-serif;
+          font-family:  Barlow, sans-serif;
           letter-spacing: 0.5px;
           text-transform: uppercase;
           white-space: nowrap;
@@ -537,7 +546,7 @@
         .div-21 {
           color: var(--Gray-1, #828282);
           margin-top: 11px;
-          font: 400 15px/20px Barlow, sans-serif;
+          font: 300 15px/20px Barlow, sans-serif;
         }
 
         .div-22 {
@@ -568,7 +577,7 @@
         .div-24 {
           color: var(--Gray-1, #828282);
           margin-top: 11px;
-          font: 400 15px/20px Barlow, sans-serif;
+          font: 300 15px/20px Barlow, sans-serif;
         }
       </style>
 
