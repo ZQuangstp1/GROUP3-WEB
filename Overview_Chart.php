@@ -166,7 +166,7 @@
             data: {
                 labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
                 datasets: [{
-                    label: 'Biến động về doanh thu',
+                    label: 'Biến động về doanh thu năm 2022',
                     data: [
                         <?php
                         for ($i = 1; $i <= 12; $i++) {
