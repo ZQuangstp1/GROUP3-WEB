@@ -1,6 +1,9 @@
 <html>
 <head>
   <style>
+  body {
+     background-color: #f9f2e6; /* Màu nền cho toàn bộ trang web */
+  }
   a {
     text-decoration: none; /* Loại bỏ gạch chân */
     color: inherit; 

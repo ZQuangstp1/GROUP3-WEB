@@ -4,6 +4,9 @@
   ?>
 <script type="text/javascript" src="header.js" language="JavaScript"></script>
     <style>
+  body {
+      background-color: #f9f2e6;
+    }   
   .header-container {
     justify-content: space-between;
     display: flex;
