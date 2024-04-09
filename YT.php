@@ -1,6 +1,8 @@
 <html>
     <head></head>
     <body> 
+    <?php require 'header.php'; ?>
+    <?php require 'menu.php'; ?>    
         <div class="div" id ="YT" style ="width : 100%; margin: 0 auto;">
             <div class="div-2"></div>
             <div class="div-3" style=" font-weight : bold;font-size : 35px;">Yêu thích</div>

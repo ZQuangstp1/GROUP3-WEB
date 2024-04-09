@@ -35,8 +35,8 @@
 
 <body>
     
-
-
+<?php require 'header.php'; ?>
+<?php require 'menu.php'; ?>
     <div class="div" id="SDC" style="width :100%; margin: 0 auto; ">
 
         <div class="div-2"></div>
