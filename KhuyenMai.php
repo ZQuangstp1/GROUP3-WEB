@@ -86,7 +86,7 @@ function add_KM()
         }
     }
 
-    // Display form
+    // Display add form
     echo "<form method='post'>";
     echo "ID khuyến mãi: <input type='text' name='discountID'><br>";
     echo "Chương trình khuyến mãi: <input type='text' name='tenkm'><br>";
@@ -101,7 +101,6 @@ function add_KM()
     $result = chayTruyVanTraVeDL($link, $query);
     giaiPhongBoNho($link, $result);
 }
-
 function edit_KM()
 {
     $link = null;
