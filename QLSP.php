@@ -16,7 +16,7 @@
             color: #832E43; 
             border: none; 
             cursor: pointer; 
-            font-family: Verdana, Geneva, Tahoma, sans-serif; 
+            font-family: Barlow, sans-serif;
             font-size: 14px; 
             width: 950px; 
             text-align: center; 
