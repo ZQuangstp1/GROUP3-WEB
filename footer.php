@@ -1,9 +1,6 @@
 <html>
 <head>
   <style>
-  body {
-     background-color: #f9f2e6; /* Màu nền cho toàn bộ trang web */
-  }
   a {
     text-decoration: none; /* Loại bỏ gạch chân */
     color: inherit; 
@@ -161,7 +158,7 @@
   text-align: center;
   margin-top: 20px;
   padding-top: 10px;
-  border-top: 1px solid white;
+  border-top: 2px solid white;
 }
 
 .Noti {
@@ -229,7 +226,7 @@
 .footer-line {
   border: none; 
   border-top: 2px solid #fb6f92; 
-  margin: 280px 0 20px 0; 
+  margin: 280px 0 0px 0; 
 }
 
   @media only screen and (max-width: 768px) {
@@ -402,9 +399,9 @@
         }
     ?>
     </div>
-    </div>
     <div class="copyright-section">
       © 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo
+    </div>
     </div>
   </div>
   <script>

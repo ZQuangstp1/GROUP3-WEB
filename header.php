@@ -4,10 +4,8 @@
   ?>
 <script type="text/javascript" src="header.js" language="JavaScript"></script>
     <style>
-  body {
-      background-color: #f9f2e6;
-    }   
   .header-container {
+    background-color: #f9f2e6; 
     justify-content: space-between;
     display: flex;
     width: 100%;
@@ -39,7 +37,8 @@
     display: flex;
     gap: 0px;
     margin: auto 0;
-    padding-left: 15px;
+    margin-left: 30px;
+    margin-top: 30px;
     /* background: red */
   }
   @media (max-width: 991px) {
@@ -64,7 +63,8 @@
     margin-left: 8px;
     border: none; 
     outline: none; 
-    background: none; 
+    background-color: transparent;  
+    color: #fb6f92;
     font-size: 14px; 
     margin-right: 5px; 
 }
