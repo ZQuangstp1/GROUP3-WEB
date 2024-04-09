@@ -23,8 +23,8 @@
 
         .chart-container {
             width: 100%;
-            margin-right: 54px; /* Add space between charts */
-            margin-left: 44px; /* Add space between charts */
+            margin-right: 53px; /* Add space between charts */
+            margin-left: 43px; /* Add space between charts */
 
         }
 
