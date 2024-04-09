@@ -28,7 +28,7 @@
                         require_once "db_module.php";
                         $link = null;
                         taoKetNoi($link);
-                        session_start();
+                       
 
                         // Kiểm tra xem customerID có tồn tại trong session không
                         if (isset($_SESSION['customerID'])) {

@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         // Insert into customer table first
                         $insertCustomerQuery = "INSERT INTO customer (customerID) VALUES ('$new_cus_id')";
                         if (chayTruyVanKhongTraVeDL($link, $insertCustomerQuery)) {
-                            // Now, insert into useraccount
+                            
                             $insertQuery = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$password', '$new_cus_id')";
                             if (chayTruyVanKhongTraVeDL($link, $insertQuery)) {
                                 $_SESSION['success'] = "Đăng ký tài khoản thành công!";
@@ -78,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #fff;
         }
         .registration-container {
+            background-color: #fff;
             background-color: #f9f2e6;
             padding: 28px 33px 50px;
             max-width: 584px;

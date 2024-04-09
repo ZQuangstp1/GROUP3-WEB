@@ -91,20 +91,20 @@
 
                 <!-- Form sửa thông tin cá nhân -->
                 <form action="update_info.php" method="POST">
-                  <input type="text" name="lastName" placeholder="Họ" class="input-field">
-                  <input type="text" name="firstName" placeholder="Tên" class="input-field">
-                  <input type="tel" name="phone" placeholder="Số điện thoại" class="input-field">
-                  <input type="email" name="email" placeholder="Địa chỉ Email" class="input-field">
-                  <select name="gender" class="input-field">
-                    <option value="" disabled selected>Giới tính</option>
-                    <option value="male">Nam</option>
-                    <option value="female">Nữ</option>
+    <input type="text" name="lastName" placeholder="Họ" class="input-field" required>
+    <input type="text" name="firstName" placeholder="Tên" class="input-field" required>
+    <input type="tel" name="phone" placeholder="Số điện thoại" class="input-field" required>
+    <input type="email" name="email" placeholder="Địa chỉ Email" class="input-field" required>
+    <select name="gender" class="input-field" required>
+        <option value="" disabled selected>Giới tính</option>
+        <option value="male">Nam</option>
+        <option value="female">Nữ</option>
+    </select>
+    <input type="date" name="dateOfBirth" placeholder="Ngày sinh" class="input-field" required>
 
-                  </select>
-                  <input type="date" name="dateOfBirth" placeholder="Ngày sinh" class="input-field">
+    <button type="submit" name="submit" class="submit-button">Lưu Thay Đổi</button>
+</form>
 
-                  <button type="submit" name="submit" class="submit-button">Lưu Thay Đổi</button>
-                </form>
               </div>
 
             </div>
@@ -117,11 +117,12 @@
                 <div class="title">Đổi Mật Khẩu</div>
                 <!-- Form đổi mật khẩu -->
                 <form action="update_password.php" method="POST">
-                  <input type="password" name="oldPassword" placeholder="Mật khẩu cũ" class="input-field">
-                  <input type="password" name="newPassword" placeholder="Mật khẩu mới" class="input-field">
-                  <input type="password" name="confirmPassword" placeholder="Xác nhận mật khẩu mới" class="input-field">
-                  <button type="submit" class="submit-button" name="submit">Xác Nhận</button>
-                </form>
+    <input type="password" name="oldPassword" placeholder="Mật khẩu cũ" class="input-field" required>
+    <input type="password" name="newPassword" placeholder="Mật khẩu mới" class="input-field" required>
+    <input type="password" name="confirmPassword" placeholder="Xác nhận mật khẩu mới" class="input-field" required>
+    <button type="submit" class="submit-button" name="submit">Xác Nhận</button>
+</form>
+
               </div>
             </div>
 
@@ -137,12 +138,7 @@
             ?>
             <button class="button" id="tdc" onclick="window.location.href='SDC.php'">Thêm địa chỉ</button>
 
-            <div class="div-23" style="font-weight :bold">THÔNG TIN LIÊN LẠC</div>
-            <?php
-            require_once ("view_TTKH.php");
-            view_TTLL();
-            ?>
-            <button class="button" id="tdc" onclick="window.location.href='SDC.php'">Thêm địa chỉ</button>
+           
            
           </div>
           

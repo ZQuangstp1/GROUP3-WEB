@@ -41,21 +41,18 @@ if(isset($_POST['submit'])) {
             $result_insert_location = chayTruyVanKhongTraVeDL($link, $sql_insert_location);
         
             if($result_insert_location) {
-                echo "<script>alert('Thêm mới location thành công');</script>";
-
+                
                 // Sau khi thêm mới location thành công, cập nhật locationID vào bảng customer
                 $sql_update_customer = "UPDATE customer SET locationID='$new_locationID' WHERE customer.customerID = '" . $_SESSION['customerID']  . "'";
                 $result_update_customer = chayTruyVanKhongTraVeDL($link, $sql_update_customer);
 
                 if($result_update_customer) {
-                    echo "<script>alert('Cập nhật locationID vào bảng customer thành công');</script>";
+                    echo "<script>alert('Thêm Địa chỉ giao hàng thành công');</script>";
                     // Chuyển hướng người dùng đến trang SDC.php
                     echo "<script>window.location.href='SDC.php';</script>";
-                } else {
-                    echo "<script>alert('Cập nhật locationID vào bảng customer thất bại');</script>";
-                }
+                } 
             } else {
-                echo "<script>alert('Thêm mới location thất bại');</script>";
+                echo "<script>alert('Thêm Địa chỉ giao hàng thất bại');</script>";
             }
         } else {
             echo "<script>alert('Không tìm thấy quận');</script>";

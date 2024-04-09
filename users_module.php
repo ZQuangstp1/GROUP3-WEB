@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 function dangki($link, $_username, $_password)
 {
     // Lấy số lượng bản ghi hiện có trong bảng useraccount

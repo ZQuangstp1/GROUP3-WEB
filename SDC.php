@@ -80,15 +80,7 @@
                                 </div>
 
                                 <!-- Trường nhập liệu cho quận -->
-                                <div class="div-13">
-                                    <div class="div-14">
-                                        <label for="quan">Quận(Huyện) <span
-                                                style="color: rgba(235, 87, 87, 1);">*</span></label>
-                                        <select class="div-15" id ="districtDropdown" name="quan" style="margin-left: 16px;" required>
-                                        
-                                        </select>
-                                    </div>
-                                </div>
+
 
                                 <!-- Trường nhập liệu cho thành phố -->
                                 <div class="div-13">
@@ -112,7 +104,15 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="div-13">
+                                    <div class="div-14">
+                                        <label for="quan">Quận(Huyện) <span
+                                                style="color: rgba(235, 87, 87, 1);">*</span></label>
+                                        <select class="div-15" id ="districtDropdown" name="quan" style="margin-left: 16px;" required>
+                                        <option value="" selected disabled>Chọn Quận(Huyện)</option>
+                                        </select>
+                                    </div>
+                                </div>
                             <!-- Thông tin liên lạc -->
 
 

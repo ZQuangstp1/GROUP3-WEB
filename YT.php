@@ -78,6 +78,7 @@ giaiPhongBoNho ( $link, $result )
 
 
 
+
           </div>
           </div>
 </div>
@@ -106,7 +107,7 @@ giaiPhongBoNho ( $link, $result )
               text-align: center;
               align-self: stretch;
               width: 100%;
-              font: 500 14px/68px Poppins, sans-serif;
+              font: 500 14px/68px Barlow, sans-serif;
             }
             @media (max-width: 991px) {
               .div-2 {

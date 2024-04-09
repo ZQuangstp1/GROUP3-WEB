@@ -3,18 +3,12 @@
 require_once ("db_module.php");
 require_once ("users_module.php");
 
-// Đảm bảo rằng customerID có trong session
-if (!isset($_SESSION['customerID'])) {
-  // Xử lý trường hợp không tìm thấy customerID, ví dụ chuyển hướng đến trang đăng nhập
-  header('Location: dangnhap.php');
-  exit();
-}
-
 function hienthiQuan()
 {
     $link = null;
     taoKetNoi($link);
-    $selectedCity = $_POST['tp'];
+    if(isset($_POST['submit'])) {
+      $selectedCity = $_POST['tp'];
     $sql = "SELECT district FROM district 
             LEFT JOIN province ON province.provinceID = district.provinceID 
             WHERE province.province = '$selectedCity'";
@@ -28,7 +22,14 @@ function hienthiQuan()
         echo "Không có dữ liệu";
     }
 }
+}
 
+// Đảm bảo rằng customerID có trong session
+if (!isset($_SESSION['customerID'])) {
+  // Xử lý trường hợp không tìm thấy customerID, ví dụ chuyển hướng đến trang đăng nhập
+  header('Location: dangnhap.php');
+  exit();
+}
 
 
 
@@ -99,7 +100,7 @@ function view_DC()
 {global $customerID;
   $link = null;
   taoKetNoi($link);
-  $result = chayTruyVanTraVeDL($link, "SELECT CONCAT(location.address, ', ', d.district, ', ', province.province) AS address
+  $result = chayTruyVanTraVeDL($link, "SELECT CONCAT(customer.lastName, ' ', customer.firstName) AS customerName,phone,CONCAT(location.address, ', ', d.district, ', ', province.province) AS address
  FROM customer
  LEFT JOIN location ON customer.locationID = location.locationID
  LEFT JOIN district d ON location.districtID = d.districtID
@@ -108,29 +109,16 @@ function view_DC()
     // Nếu có dòng dữ liệu trả về, tức là người dùng đã đặt địa chỉ giao hàng mặc định
     $row = mysqli_fetch_assoc($result);
     // Hiển thị thông tin địa chỉ giao hàng mặc định
+    echo "<div class='div-21'>" . $row['customerName'] . "</div>";
+    echo "<div class='div-21'>" . $row['phone'] . "</div>";
     echo "<div class='div-21'>" . $row['address'] . "</div>";
+    
   } else {
     // Nếu không có dòng dữ liệu trả về, tức là người dùng chưa đặt địa chỉ giao hàng mặc định
     echo "<div class='div-21'>Bạn chưa đặt địa chỉ giao hàng mặc định</div>";
   }
 }
-function view_TTLL()
-{
-  $link = null;
-  taoKetNoi($link);
-  $result = chayTruyVanTraVeDL($link, "SELECT CONCAT(customer.lastName, ' ', customer.firstName) AS customerName,phone FROM customer
- WHERE customerID = '" . $_SESSION['customerID'] . "'");
-  if (mysqli_num_rows($result) > 0) {
-    // Nếu có dòng dữ liệu trả về, tức là người dùng đã đặt địa chỉ giao hàng mặc định
-    $row = mysqli_fetch_assoc($result);
-    // Hiển thị thông tin địa chỉ giao hàng mặc định
-    echo "<div class='div-21'>" . $row['customerName'] . "</div>";
-    echo "<div class='div-21'>" . $row['phone'] . "</div>";
-  } else {
-    // Nếu không có dòng dữ liệu trả về, tức là người dùng chưa đặt địa chỉ giao hàng mặc định
-    echo "<div class='div-21'>Bạn chưa đặt thông tin liên lạc mặc định</div>";
-  }
-}
+
 
 function view_SDC()
 {
