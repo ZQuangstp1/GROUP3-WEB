@@ -35,12 +35,13 @@ if(isset($_SESSION['customerID'])) {
     // Lấy customerID từ session
     $customerID = $_SESSION['customerID'];
 // Truy vấn để lấy thông tin các đơn hàng từ bảng order
-$query = "SELECT orders.status, date.Date, product.image, product.productName, orderdetail.quantity, product.size
+$query = "SELECT product.productID, orders.status, date.Date, product.image, product.productName, orderdetail.quantity, product.size
 FROM orders 
 LEFT JOIN date ON orders.DateID = date.DateID 
 LEFT JOIN orderdetail ON orders.orderID = orderdetail.orderID
 LEFT JOIN product ON orderdetail.productID = product.productID
 WHERE customerID = '" . $_SESSION['customerID']  . "'";
+echo $query;
 $result = mysqli_query($link, $query);
 } else {
  header("Location: dangnhap.php");
@@ -68,9 +69,9 @@ if (mysqli_num_rows($result) > 0) {
                         <div class="div-26"><?php echo $row['productName']; ?></div>
                         <div class="div-27">Số lượng : <?php echo $row['quantity']; ?></div>
                     </div>
-                    <a href="trangchu.php">
+                    <a href="product.php?product_id=<?php echo $row['productID']; ?>">
     <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/d8adc9a448bed35517b7db4d2624b818bcca6fc979b827778bf76cc287dd7267?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" class="img-5" />
-</a>
+              </a>
                 </div>
                 <div class="div-28">Size: <?php echo $row['size']; ?></div>
             </div>
