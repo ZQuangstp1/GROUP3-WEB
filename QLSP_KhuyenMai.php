@@ -55,6 +55,7 @@
         }
 
         #footer {
+            font-size: 11px;
             width: 100%;
             position: absolute;
             bottom: 0;
@@ -89,7 +90,7 @@
         ?>
 
     <div id="footer">
-        <p>© 2024 Jewelry Store. All rights reserved.</p>
+        <p>© 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo.</p>
     </div>
 
 </body>
