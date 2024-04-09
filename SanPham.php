@@ -195,9 +195,6 @@ function add_SP()
 
         }
 
-
-
-
 }
 
 function edit_SP()
@@ -224,10 +221,10 @@ function edit_SP()
                     <form name="formSP" action="?opt=update_SP" method="post" enctype="multipart/form-data">
                         Mã sản phẩm: <input type="text" name="masp" readonly value="<?php echo $row["productID"]; ?>"><br>
                         Tên sản phẩm: <input type="text" name="tensp" value="<?php echo $row["productName"]; ?>"><br>
-                        Số lượng: <input type="number" name="soluong" min="1" value="<?php echo $row["quantityAvailable"]; ?>"><br>>
+                        Số lượng: <input type="number" name="soluong" min="1" value="<?php echo $row["quantityAvailable"]; ?>"><br>
                         Mô tả: <input type="text" name="mota" value="<?php echo $row["description"]; ?>"><br>
-                        Giá sản phẩm: <input type="number" name="giatien" min="0" value="<?php echo $row["unitPrice"]; ?>"><br>>
-                        Phân loại phụ:
+                        Giá sản phẩm: <input type="number" name="giatien" min="0" value="<?php echo $row["unitPrice"]; ?>"><br>
+                        Phân loại:
                         <select name="subct">
                             <?php
                             if ($result_sct) {
