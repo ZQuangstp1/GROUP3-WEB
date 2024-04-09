@@ -37,7 +37,7 @@ function view_SP()
     taoKetNoi($link);
 
     // Số lượng sản phẩm trên mỗi trang
-    $rows_per_page = 3;
+    $rows_per_page = 2;
 
     // Trang hiện tại, mặc định là trang 1
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -104,13 +104,14 @@ function view_SP()
     giaiPhongBoNho($link, $result);
 
     // Hiển thị nút chuyển trang
-    echo "<div id='pagination'>";
-    for ($i = 1; $i <= $total_pages; $i++) {
-        // Kiểm tra trang hiện tại để áp dụng CSS tương ứng
-        $active_class = ($i == $current_page) ? 'active' : '';
-        echo "<a href='?opt=view_SP&page=$i'><button class='$active_class'>$i</button></a>";
+    if ($current_page > 1) {
+        echo "<a href='?page=".($current_page - 1)."'><button><</button></a>"; // Nút chuyển đến trang trước đó
     }
-    echo "</div>";
+
+    if ($current_page < $total_pages) {
+        echo "<a href='?page=".($current_page + 1)."'><button>></button></a>"; // Nút chuyển đến trang tiếp theo
+    }
+
 }
 function add_SP()
 {
