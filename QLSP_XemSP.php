@@ -7,12 +7,13 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: -10px;
         }
         th, td {
             border: 1px solid black;
             text-align: center;
-            padding: 5px 1px;
-            font-size: 14px; /* Giảm kích thước chữ */
+            padding: 5px 7px;
+            font-size: 12.5px; /* Giảm kích thước chữ */
         }
         input[type="text"] {
             padding: 8px;
@@ -67,51 +68,72 @@
             background-color: #FFC0CB; /* Màu hồng */
         }
         .pagination {
-    text-align: center;
-}
+            text-align: center;
+        }
 
-.pagination-button {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: 8px 16px;
-    background-color: #DF8A8A;
-    border: none;
-    cursor: pointer;
-    margin: 0 5px; /* Khoảng cách giữa các button */
-}
+        .pagination-button {
+            font-family: Barlow, sans-serif;
+            padding: 8px 16px;
+            background-color: #DF8A8A;
+            border: none;
+            cursor: pointer;
+            margin: 0 5px; /* Khoảng cách giữa các button */
+        }
 
-.pagination-button:hover {
-    background-color: #6a4141;
-}
+        .pagination-button:hover {
+            background-color: #6a4141;
+        }
 
-.product-name,
-.product-description {
-    text-align: justify;
-}
+        .product-name,
+        .product-description {
+            text-align: left;
+        }
 
-.form-container input[type="text"],
-.form-container input[type="number"],
-.form-container select {
-    font-size: 12px;
-    width: calc(100% - 4px); /* Chiều dài của input/select */
-    margin-bottom: 5px; /* Khoảng cách giữa các dòng */
-    padding: 2px; /* Khoảng cách bên trong input/select */
-    box-sizing: border-box; /* Tính cả padding và border vào chiều rộng và chiều cao */
-}
-.form-container input[type="submit"]:hover,
-.form-container input[type="reset"]:hover,
-.form-container button:hover {
-    background-color: #6a4141;
-}
-.form-container button,
-.form-container input[type="submit"],
-.form-container input[type="reset"] {
-    font-family: 'Barlow, sans-serif';
-    padding: 6px 10px; /* Giảm kích thước button */
-    background-color: #DF8A8A;
-    border: none;
-    cursor: pointer;
-    margin-right: 5px; /* Giảm khoảng cách giữa các button */
-}
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container select {
+            font-size: 12px;
+            width: calc(100% - 4px); /* Chiều dài của input/select */
+            margin-bottom: 5px; /* Khoảng cách giữa các dòng */
+            padding: 2px; /* Khoảng cách bên trong input/select */
+            box-sizing: border-box; /* Tính cả padding và border vào chiều rộng và chiều cao */
+        }
+        .form-container input[type="submit"]:hover,
+        .form-container input[type="reset"]:hover,
+        .form-container button:hover {
+            background-color: #6a4141;
+        }
+        .form-container button,
+        .form-container input[type="submit"],
+        .form-container input[type="reset"] {
+            font-family: 'Barlow, sans-serif';
+            padding: 6px 10px; /* Giảm kích thước button */
+            background-color: #DF8A8A;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px; /* Giảm khoảng cách giữa các button */
+        }
+        <style>
+    .form-container {
+        text-align: center;
+    }
+
+    .form-container form {
+        display: inline-block;
+        text-align: center;
+        margin-top: -15px;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="number"],
+    .form-container select {
+        width: 100%;
+        padding: 1px;
+        margin-bottom: 20px;
+    }
+    
+</style>
+
     </style>
 </head>
 
