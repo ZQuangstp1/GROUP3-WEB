@@ -46,10 +46,6 @@
             margin-right: 10px; 
             margin-top: 8px; 
         }
-        #pagination {
-            margin-top: 10px;
-            text-align: center;
-        }
         /* CSS mới để cố định footer ở dưới trang */
         html, body {
             height: 100%;
@@ -70,6 +66,23 @@
         .pink-row th {
             background-color: #FFC0CB; /* Màu hồng */
         }
+        .pagination {
+    text-align: center;
+}
+
+.pagination-button {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 8px 16px;
+    background-color: #DF8A8A;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px; /* Khoảng cách giữa các button */
+}
+
+.pagination-button:hover {
+    background-color: #6a4141;
+}
+
     </style>
 </head>
 
