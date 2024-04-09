@@ -5,11 +5,13 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: -10px;
         }
         th, td {
             border: 1px solid black;
             text-align: center;
-            padding: 15px 1px;
+            padding: 12px 1px;
+            font-size: 13px;
         }
         input[type="text"] {
             padding: 8px;
@@ -18,7 +20,7 @@
         }
 
         button {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-family: Barlow, sans-serif;
             padding: 8px 16px;
             background-color: #DF8A8A;
             border: none;
@@ -105,7 +107,7 @@
 require_once("db_module.php");
 
 // Hàm hiển thị Sổ giao hàng với phân trang và tìm kiếm
-function show_delivery_book($page = 1, $rows_per_page = 5) {
+function show_delivery_book($page = 1, $rows_per_page = 7) {
     $link = null;
     taoKetNoi($link);
 
