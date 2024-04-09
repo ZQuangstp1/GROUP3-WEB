@@ -127,15 +127,35 @@
             <div class="add-to-wishlist">
               <div class="wishlist-icon">
                   <img src="./public/heartoutline.svg" alt="Heart icon" />
-                  <form action="yeuthich.php" method="post">
+                  <form id="addToWishlistForm" method="post">
                       <input type="hidden" name="idofpro" value="<?php echo $product; ?>">
-                      <button type="submit" name="addtolikebag" class="wishlist-icon-button">
+                      <button type="button" onclick="addToWishlist()" class="wishlist-icon-button">
                           <span class="wishlist-text">THÍCH</span>
                       </button>
                   </form>
               </div>
             </div>
         </div>
+        <script>
+            function addToWishlist() {
+                var formData = new FormData(document.getElementById('addToWishlistForm'));
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            // Request was successful, handle response here
+                            var response = xhr.responseText;
+                            alert('Thêm sản phẩm yêu thích thành công'); // You can display response in any way you want
+                        } else {
+                            // Request failed
+                            alert('Có lỗi xảy ra, không thể thêm sản phẩm yêu thích');
+                        }
+                    }
+                };
+                xhr.open('POST', 'yeuthich.php', true);
+                xhr.send(formData);
+            }
+        </script>
 
 <!--Icon phí vận chuyển và chính sách đổi trả-->  
       <section class="shipping-info">
@@ -272,22 +292,51 @@
         <div class="wrapper">
           <p class="actor-name">Hãy chia sẻ trải nghiệm của bạn khi dùng sản phẩm</p>
           <div class="star-wrapper" id="star-rating-cmt">
-            <div class="star-rating-cmt">
-              <div class="star-cmt" data-value="1"></div>
-              <div class="star-cmt" data-value="2"></div>
-              <div class="star-cmt" data-value="3"></div>
-              <div class="star-cmt" data-value="4"></div>
-              <div class="star-cmt" data-value="5"></div>
-            </div>
+          <select id="star-dropdown">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+            <div class="star"></div>
           </div>
         </div>
         <div class="comment-container">
           <textarea class="great-products" id="comment-section"></textarea>
           <button id="comment-button">Bình luận</button>
-        </div>      
+        </div>    
+        <form id="review-form" method="post">
+            <input type="hidden" id="product-id" name="idofpro" value="<?php echo $product; ?>">
+          </form> 
       </section>
     </div>
 
+
+    <script>
+      document.getElementById('comment-button').addEventListener('click', function() {
+        // Get values from input fields
+        const comment = document.getElementById('comment-section').value;
+        const rating = document.getElementById('star-dropdown').value;
+        const productId = document.getElementById('product-id').value;
+        
+        // Add values to the form
+        const form = document.getElementById('review-form');
+        const commentInput = document.createElement('input');
+        commentInput.type = 'hidden';
+        commentInput.name = 'comment';
+        commentInput.value = comment;
+        form.appendChild(commentInput);
+        
+        const ratingInput = document.createElement('input');
+        ratingInput.type = 'hidden';
+        ratingInput.name = 'rating';
+        ratingInput.value = rating;
+        form.appendChild(ratingInput);
+        // Submit the form
+        form.submit();
+      });
+      </script>
 <!--Sản phẩm tương tự-->
     <div class="bestseller-template"  id="animate-on-scroll">SẢN PHẨM TƯƠNG TỰ</div>
       <br>

@@ -159,3 +159,52 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 });
+
+
+// Function to generate star icons based on rating
+function generateStars(rating) {
+  const starWrapper = document.getElementById('star-rating');
+  starWrapper.innerHTML = ''; // Clear previous stars
+  
+  for (let i = 0; i < 5; i++) {
+    const star = document.createElement('span');
+    star.classList.add('fa', 'fa-star', 'star');
+    if (i < rating) {
+      star.classList.add('checked');
+    }
+    starWrapper.appendChild(star);
+  }
+}
+
+// Event listener for dropdown change
+document.getElementById('star-dropdown').addEventListener('change', function() {
+  const selectedRating = parseInt(this.value);
+  generateStars(selectedRating);
+});
+
+
+
+
+//Nút Bình luận 
+document.getElementById('comment-button').addEventListener('click', function() {
+  // Get values from input fields
+  const comment = document.getElementById('comment-section').value;
+  const rating = document.getElementById('star-dropdown').value;
+  const productId = document.getElementById('product-id').value;
+  
+  // Add values to the form
+  const form = document.getElementById('review-form');
+  const commentInput = document.createElement('input');
+  commentInput.type = 'hidden';
+  commentInput.name = 'comment';
+  commentInput.value = comment;
+  form.appendChild(commentInput);
+  
+  const ratingInput = document.createElement('input');
+  ratingInput.type = 'hidden';
+  ratingInput.name = 'rating';
+  ratingInput.value = rating;
+  form.appendChild(ratingInput);
+  // Submit the form
+  form.submit();
+});

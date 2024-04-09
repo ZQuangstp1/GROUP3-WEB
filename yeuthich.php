@@ -13,16 +13,14 @@ if (!empty($_POST)) {
 
     // Prepare SQL statement to insert data into database
     $sql = "INSERT INTO favProduct (productID) VALUES ('$productID')";
+    //$sql = "INSERT INTO favProduct (accountID) VALUES ('$accountID')";
 
     // Run the query
     $result = chayTruyVanKhongTraVeDL($link, $sql);
 
     if ($result) {
-        echo "Record added successfully";
         echo "<script>alert('Thêm sản phẩm yêu thích thành công');</script>";
-        echo "<script>window.location.href='QLNV_XemNV.php?opt=add_NV';</script>";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($link);
         echo "<script>alert('Có lỗi xảy ra, không thể thêm sản phẩm yêu thích');</script>";
 
     }
@@ -30,7 +28,6 @@ if (!empty($_POST)) {
 // Close connection to the database
 giaiPhongBoNho($link, $result);
 
-header('Location: index.php');
 ?>
 
 
