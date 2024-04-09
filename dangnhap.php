@@ -1,31 +1,47 @@
-<?php
-
+<?php 
 require_once "db_module.php";
 require_once "users_module.php";
 
-    if (isset($_POST)) {
-        if (isset($_POST["username"]) && isset($_POST["password"])) {
-            $_username = $_POST["username"];
-            $_password = $_POST["password"];
-    
-            $link = null;
-            taoKetNoi($link);
-    
-            // Giả sử hàm dangnhap() đã được cập nhật để trả về customerID
-            $customerID = dangnhap($link, $_username, $_password);
-    
-            if ($customerID) { // Nếu có customerID, tức là đăng nhập thành công
-                giaiPhongBoNho($link, true);
-                header("Location: TTKH.php");
-                exit(); // Thoát để ngăn code phía sau chạy khi đã chuyển hướng
-            } else {
-                giaiPhongBoNho($link, true);
-                $_SESSION['error_message'] = "Tên đăng nhập hoặc mật khẩu không chính xác";
-            }
-        }
-    }
 
+
+if (isset($_POST)) {
+    if (isset($_POST["username"]) && isset($_POST["password"])) {
+        $_username = $_POST["username"];
+        $_password = $_POST["password"];
+
+        $link = null;
+        taoKetNoi($link);
+
+        $customerID= dangnhap($link, $_username, $_password);
+    
+        if ($customerID ) { 
+            $_SESSION['customerID'] = $customerID;
+           
+            giaiPhongBoNho($link, true);
+            header("Location: TTKH.php");
+            exit(); // Thoát để ngăn code phía sau chạy khi đã chuyển hướng
+        } else {
+            giaiPhongBoNho($link, true);
+            $_SESSION['error_message'] = "Tên đăng nhập hoặc mật khẩu không chính xác";
+        }
+
+        /* Này lấy cả 2 biến mà k đc 
+         list($customerID, $accountID = dangnhap($link, $_username, $_password);
+    
+        if ($customerID && $accountID) { // Nếu có cả customerID và accountID, tức là đăng nhập thành công
+            $_SESSION['customerID'] = $customerID;
+            $_SESSION['accountID'] = $accountID;
+            giaiPhongBoNho($link, true);
+            header("Location: TTKH.php");
+            exit(); // Thoát để ngăn code phía sau chạy khi đã chuyển hướng
+        } else {
+            giaiPhongBoNho($link, true);
+            $_SESSION['error_message'] = "Tên đăng nhập hoặc mật khẩu không chính xác";
+        }*/
+    }
+}
 ?>
+
 <html>
 
 <head>
@@ -102,12 +118,7 @@ require_once "users_module.php";
             letter-spacing: 1.35px;
         }
 
-        .forgot-password {
-            text-align: center;
-            margin-top: 25px;
-            font: 15px Poppins, sans-serif;
-            color: #3766e8;
-        }
+       
     </style>
 </head>
 
@@ -136,10 +147,7 @@ require_once "users_module.php";
         </form>
 
 
-        <div class="forgot-password" onclick="window.location.href='QMK1.html'" style="cursor: pointer;">
-            Quên mật khẩu ?
-        </div>
-
+        
     </div>
 
     <script>

@@ -1,11 +1,23 @@
 <html>
 
 <head>
+            <!-- Thêm thư viện jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-</head>
+<!-- Script JavaScript -->
+<script>
+        function updateDistricts(selectedCity) {
+            $.ajax({
+                type: "POST",
+                url: "get_districts.php", // Đường dẫn tới file xử lý yêu cầu AJAX
+                data: { tp: selectedCity },
+                success: function(response) {
+                    // Cập nhật dropdown quận
+                    $("#districtDropdown").html(response);
+                }
+            });
+        }
 
-<body>
-    <script>
         var diaChiVisible = false;
 
         function toggleDiaChi() {
@@ -18,13 +30,17 @@
                 diaChiVisible = true;
             }
         }
-
-
     </script>
-    <div class="div" id="SDC" style="width :80%; margin: 0 auto; ">
+</head>
 
-        <div class="div-2">Trang chủ / Trang khách hàng</div>
-        <div class="div-3" style="font-weight : bold;">Sổ địa chỉ</div>
+<body>
+    
+
+
+    <div class="div" id="SDC" style="width :100%; margin: 0 auto; ">
+
+        <div class="div-2"></div>
+        <div class="div-3" style=" font-weight : bold;font-size : 35px;">Sổ địa chỉ</div>
         <div class="div-4">
             <div class="div-5">
                 <div class="column">
@@ -40,7 +56,7 @@
                     </div>
                 </div>
                 <div class="column-2">
-                    <div class="div-12" style="font-weight: bold;">Địa chỉ của Bạn</div>
+                    <div class="div-12" style="font-weight: bold;">Địa chỉ của bạn</div>
                     <?php
                     require_once ("view_TTKH.php");
                     view_SDC();
@@ -48,7 +64,6 @@
                     <button class="button" style="width: 180px; margin-left: 0px;" onclick="toggleDiaChi()">+ Thêm địa
                         chỉ</button>
 
-                    <!-- Form để gửi dữ liệu -->
                     <form action="update_SDC.php" method="POST">
                         <!-- Địa chỉ giao hàng -->
                         <div class="div-11" id="diaChiContainer" style="display: none;">
@@ -60,7 +75,7 @@
                                     <div class="div-14">
                                         <label for="diachi">Địa chỉ <span
                                                 style="color: rgba(235, 87, 87, 1);">*</span></label>
-                                        <input type="text" class="div-15" name="diachi">
+                                        <input type="text" class="div-15" name="diachi" required>
                                     </div>
                                 </div>
 
@@ -69,34 +84,9 @@
                                     <div class="div-14">
                                         <label for="quan">Quận(Huyện) <span
                                                 style="color: rgba(235, 87, 87, 1);">*</span></label>
-                                                <select class="div-15" name="quan" style="margin-left: 16px;">
-                                                <option value="" selected disabled>Chọn Quận(Huyện)</option>
-                                                <option value="Hải Châu" >Hải Châu</option>
-    <option value="Thanh Khê">Thanh Khê</option>
-    <option value="Sơn Trà">Sơn Trà</option>
-    <option value="Ngũ Hành Sơn">Ngũ Hành Sơn</option>
-    <option value="Cẩm Lệ">Cẩm Lệ</option>
-    <option value="Liên Chiểu">Liên Chiểu</option>
-    <option value="Ngũ Hành Sơn">Ngũ Hành Sơn</option>
-    <option value="Hòa Vang">Hòa Vang</option>
-    <option value="Hoàng Sa">Hoàng Sa</option>
-    <option value="Ba Đình">Ba Đình</option>
-    <option value="Hoàn Kiếm">Hoàn Kiếm</option>
-    <option value="Hai Bà Trưng">Hai Bà Trưng</option>
-    <option value="Đống Đa">Đống Đa</option>
-    <option value="Tây Hồ">Tây Hồ</option>
-    <option value="Nam Từ Liêm">Nam Từ Liêm</option>
-    <option value="Cầu Giấy">Cầu Giấy</option>
-    <option value="Thanh Xuân">Thanh Xuân</option>
-    <option value="Hoàng Mai">Hoàng Mai</option>
-    <option value="Long Biên">Long Biên</option>
-    <option value="Quận 1">Quận 1</option>
-    <option value="Quận 2">Quận 2</option>
-    <option value="Quận 3">Quận 3</option>
-    <option value="Quận 4">Quận 4</option>
-    <option value="Quận 5">Quận 5</option>
-</select>
-
+                                        <select class="div-15" id ="districtDropdown" name="quan" style="margin-left: 16px;" required>
+                                        
+                                        </select>
                                     </div>
                                 </div>
 
@@ -105,8 +95,9 @@
                                     <div class="div-14">
                                         <label for="tp">Thành phố <span
                                                 style="color: rgba(235, 87, 87, 1);">*</span></label>
-                                                <select class="div-15" name="tp" style="margin-left: 35px;">
-    <option value="" selected disabled>Chọn Tỉnh(Thành phố)</option>
+                                        <select class="div-15" name="tp" style="margin-left: 35px;" onchange="updateDistricts(this.value)" required>
+                                            <option value="" selected disabled>Chọn Tỉnh(Thành phố)</option>
+                                           
     <option value="Bình Dương">Bình Dương</option>
     <option value="Cần Thơ">Cần Thơ</option>
     <option value="Đà Nẵng">Đà Nẵng</option>
@@ -117,17 +108,14 @@
     <option value="Hải Phòng">Hải Phòng</option>
     <option value="Huế">Huế</option>
     <option value="Quảng Nam">Quảng Nam</option>
-</select>
-
-</select>
-
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
-
                             <!-- Thông tin liên lạc -->
-                           
+
+
                             <!-- Thanh toán -->
                             <div class="PTTT">
                                 <div class="div-12" style="font-weight: bold;">Thanh toán</div>
@@ -137,7 +125,7 @@
                                     <div class="div-14">
                                         <label for="pttt">Phương thức <span
                                                 style="color: rgba(235, 87, 87, 1);">*</span></label>
-                                        <select class="div-15" name="pttt" style="margin-left: 13px;">
+                                        <select class="div-15" name="pttt" style="margin-left: 13px;" required>
                                             <option value="Tiền mặt">Tiền mặt</option>
                                             <option value="MoMo">Momo</option>
                                             <option value="Mobile Banking">Mobile Banking</option>
@@ -150,12 +138,25 @@
                             <button type="submit" class="button" name="submit">Thêm</button>
                     </form>
                 </div>
+               
             </div>
+    </div>
+    </div>
+    </div>
+    <?php require 'footer.php'; ?>
 
-
-
-
-            <style>
+<style>
+ body {
+  margin :0;
+  padding :0;
+ }
+                 .div-7:hover,
+.div-8:hover,
+.div-9:hover,
+.div-10:hover {
+  box-shadow: 0 0 5px 0 #fb6f92; /* Hiệu ứng nổi lên nhẹ màu hồng */
+  transform: translateY(-3px); /* Nổi lên full ô */
+}
                 .div {
                     display: flex;
                     flex-direction: column;
@@ -180,12 +181,16 @@
                     }
                 }
 
-                .div-3 {
-                    color: #000;
+                .div-3 { 
+          color: #fb6f92;
+          text-align: center;
+          white-space: nowrap;
+          margin-top : 100px;
+          
                     text-align: center;
                     white-space: nowrap;
                     font: 400 48px Barlow, sans-serif;
-                    ;
+                    
                 }
 
                 @media (max-width: 991px) {

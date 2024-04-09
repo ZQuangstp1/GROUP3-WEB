@@ -1,9 +1,9 @@
 <html>
     <head></head>
     <body> 
-        <div class="div" id ="YT" style ="width : 80%; margin: 0 auto;">
-            <div class="div-2">Trang chủ / Trang khách hàng</div>
-            <div class="div-3" style ="font-weight :bold">Yêu thích</div>
+        <div class="div" id ="YT" style ="width : 100%; margin: 0 auto;">
+            <div class="div-2"></div>
+            <div class="div-3" style=" font-weight : bold;font-size : 35px;">Yêu thích</div>
             <div class="div-4">
               <div class="div-5">
                 <div class="column">
@@ -16,17 +16,19 @@
                 </div>
 </br>
 <?php
-// Kết nối đến cơ sở dữ liệu
 require_once "db_module.php";
+require_once "users_module.php";
 $link = null;
 taoKetNoi($link);
-session_start();
 
-// Kiểm tra xem customerID có tồn tại trong session không
-if(isset($_SESSION['customerID'])) {
-    // Lấy customerID từ session
+
+// Kiểm tra xem cả customerID và accountID có tồn tại trong session không
+if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
+    // Lấy customerID và accountID từ session
     $customerID = $_SESSION['customerID'];
-    // Truy vấn để lấy thông tin các sản phẩm yêu thích từ bảng product
+    $accountID = $_SESSION['accountID'];
+    
+    // Tiếp tục truy vấn để lấy thông tin các sản phẩm yêu thích từ bảng product
     $query = "SELECT product.image, product.discountID, product.productName, subcategory.subcategoryName, product.unitPrice 
     FROM product 
     LEFT JOIN orderdetail 
@@ -35,7 +37,11 @@ if(isset($_SESSION['customerID'])) {
     ON orderdetail.orderID = `orders`.orderID 
     LEFT JOIN `subcategory` 
     ON product.subcategoryID = `subcategory`.subcategoryID
-WHERE customerID = '" . $_SESSION['customerID']  . "'";
+    LEFT JOIN `customer`
+    ON `orders`.customerID = `customer`.customerID
+    LEFT JOIN `useraccount` 
+    ON `customer`.customerID = `useraccount`.customerID
+    WHERE useraccount.accountID = '$accountID'";
     $result = mysqli_query($link, $query);
     // Kiểm tra xem truy vấn có thành công hay không
     if($result) {
@@ -46,7 +52,6 @@ WHERE customerID = '" . $_SESSION['customerID']  . "'";
 ?>
             <div class="product-item">
                 <img loading="lazy" srcset="<?php echo $row['image']; ?>" class="img" />
-
                 <?php if ($row['discountID'] !== 'NONE')  { ?>
                 <div class="discount-tag"><?php echo $row['discountID']; ?></div>
             <?php } ?>
@@ -63,8 +68,11 @@ WHERE customerID = '" . $_SESSION['customerID']  . "'";
         } else {
             echo "Không có sản phẩm yêu thích nào được tìm thấy.";
         }
-    } else {
-        echo "Đã xảy ra lỗi trong quá trình truy vấn cơ sở dữ liệu.";
+    } else { ?>
+      <div style="font-family: Barlow, sans-serif;">
+      <?php echo "Không có sản phẩm yêu thích nào được tìm thấy."; ?>
+    </div>
+    <?php
     }
 } else {
     header("Location: dangnhap.php");
@@ -75,8 +83,25 @@ WHERE customerID = '" . $_SESSION['customerID']  . "'";
 mysqli_close($link);
 ?>
 
+
+
           </div>
-          <style>
+          </div>
+</div>
+<?php require 'footer.php'; ?>
+
+      <style>
+       body {
+        margin :0;
+        padding :0;
+       }
+             .div-7:hover,
+.div-8:hover,
+.div-9:hover,
+.div-10:hover {
+  box-shadow: 0 0 5px 0 #fb6f92; /* Hiệu ứng nổi lên nhẹ màu hồng */
+  transform: translateY(-3px); /* Nổi lên full ô */
+}
             .div {
               display: flex;
               flex-direction: column;
@@ -96,10 +121,14 @@ mysqli_close($link);
               }
             }
             .div-3 {
-              color: #000;
-              text-align: center;
-              white-space: nowrap;
-              font: 400 48px Oswald, sans-serif;
+              color: #fb6f92;
+          text-align: center;
+          white-space: nowrap;
+          margin-top : 100px;
+          
+                    text-align: center;
+                    white-space: nowrap;
+                    font: 400 48px Barlow, sans-serif;
             }
             @media (max-width: 991px) {
               .div-3 {
@@ -203,7 +232,6 @@ mysqli_close($link);
   width: calc(33.33% - 20px); /* Adjusted to 33.33% for 3 products in a row */
   margin-right: 20px; /* Added margin-right for spacing between products */
   margin-bottom: 20px;
-  border: 2px solid #000000;
   padding: 15px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   background-color: #fff;
@@ -237,28 +265,34 @@ mysqli_close($link);
 
 .product-info {
   margin-top: 10px;
-  justify-content: center;
   align-items: center;
   text-align: center; 
   display: flex;
   flex-direction: column;
   color: #212121;
   font-weight: 700;
-  padding: 10px 33px;
+  white-space: nowrap; /* Ngăn chặn việc ngắt dòng */
+  overflow: hidden; /* Ẩn phần vượt quá kích thước */
+  text-overflow: ellipsis; /* Hiển thị ba dấu chấm (...) */
+ 
+ 
 }
 
 .product-name {
-  
-  align-self: stretch;
+  text-transform: capitalize;
+  text-align: center; 
   font: 17px Barlow, sans-serif;
-
+  padding: 10px 25px;
+ 
 }
 
 .product-category {
   color: #777;
-  
+  text-transform: capitalize;
   margin-top: 6px;
   font: 400 14px Barlow, sans-serif;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .product-price {
@@ -266,7 +300,6 @@ mysqli_close($link);
   text-align: center;
   margin-top: 6px;
   font: 18px/135% Barlow, sans-serif;
-  font-weight : bold;
 }
 .trash {
   aspect-ratio: 1;
