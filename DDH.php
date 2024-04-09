@@ -20,8 +20,6 @@
                   <div class="div-12">
                     <div class="div-13">
                       <div class="div-14" style ="font-weight : bold;">Đơn hàng</div>
-                     
-                          
                     </div>
                     <?php
 // Kết nối đến cơ sở dữ liệu
@@ -220,17 +218,10 @@ mysqli_close($link);
             @media (max-width: 991px) {
               .column-2 {
                 width: 100%;
+                margin-left: 0;
               }
             }
-            .div-12 {
-              align-self: stretch;
-              background-color: #fff;
-              display: flex;
-              flex-grow: 1;
-              flex-direction: column;
-              width: 100%;
-              padding: 41px 40px;
-            }
+      
             @media (max-width: 991px) {
               .div-12 {
                 max-width: 100%;
@@ -257,7 +248,11 @@ mysqli_close($link);
               font: 24px/283% Oswald, sans-serif;
             }
            
-         
+            @media (max-width: 991px) {
+              .div-14 {
+               text-align: center;
+              }
+            }
             .div-17 {
               font-family: Poppins, sans-serif;
               flex-grow: 1;
@@ -307,28 +302,26 @@ mysqli_close($link);
               margin-top: 18px;
               justify-content: space-between;
               gap: 14px;
-              padding: 10px 33px 10px 12px;
+              padding: 10px   10px 10px 12px;
               overflow: hidden; 
             }
             @media (max-width: 991px) {
               .div-22 {
                 max-width: 100%;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
                 padding-right: 20px;
               }
             }
             .div-22 .div-26 {
-        color: #000;
-        white-space: nowrap;
-        font: 500 16px Oswald, sans-serif;
-        overflow: hidden; /* Ẩn văn bản khi vượt quá kích thước của ô */
-        text-overflow: ellipsis; /* Hiển thị dấu chấm ba (...) cho văn bản dài */
-    }
+                  color: #000;
+                  white-space: nowrap;
+                  font: 500 16px Oswald, sans-serif;
+              }
             .img-4 {
               aspect-ratio: 1; /* Đảm bảo tỉ lệ khung hình không bị biến đổi */
-        object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
-        height: 100%; 
-        width : 90px;
+              object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+              height: 100%; 
+              width : 90px;
             }
             .div-23 {
               display: flex;
@@ -337,11 +330,7 @@ mysqli_close($link);
               flex-direction: column;
               margin: auto 0;
             }
-            @media (max-width: 991px) {
-              .div-23 {
-                max-width: 100%;
-              }
-            }
+      
             .div-24 {
               display: flex;
               padding-right: 80px;
@@ -357,7 +346,10 @@ mysqli_close($link);
             }
             .div-25 {
               display: flex;
+              flex-grow: 1;
               flex-direction: column;
+              white-space: nowrap;
+              text-overflow: ellipsis;  
             }
             .div-26 {
               color: #000;
@@ -395,9 +387,13 @@ mysqli_close($link);
               .div-28 {
                 max-width: 100%;
               }
+
+              .img-5 {
+                align-self: flex-start; 
+                 margin-top: 0; 
+              }
             }
             
           </style>
-          
     </body>
 </html>
