@@ -170,10 +170,15 @@ show_delivery_book($current_page);
         $total_pages = ceil($total_rows / 6); // Số trang là tổng số hàng dữ liệu chia cho số hàng trên mỗi trang
 
         // Hiển thị nút chuyển trang
-        for ($i = 1; $i <= $total_pages; $i++) {
-            echo "<a href='?page=$i'><button>$i</button></a>";
-        }
-        ?>
+    if ($current_page > 1) {
+        echo "<a href='?page=".($current_page - 1)."'><button><</button></a>"; // Nút chuyển đến trang trước đó
+    }
+
+    if ($current_page < $total_pages) {
+        echo "<a href='?page=".($current_page + 1)."'><button>></button></a>"; // Nút chuyển đến trang tiếp theo
+    }
+    
+    ?>
     </div>
 
     <div id="footer">
