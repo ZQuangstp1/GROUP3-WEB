@@ -352,10 +352,10 @@
           }
             .img-4 {
               aspect-ratio: 1; /* Đảm bảo tỉ lệ khung hình không bị biến đổi */
-        object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
-        height: 100%; 
-        width : 90px;
-            }
+              object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+              height: 100%; 
+              width : 90px;
+                  }
             .div-23 {
               display: flex;
               flex-grow: 1;
