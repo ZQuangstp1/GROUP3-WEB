@@ -189,11 +189,14 @@
             echo "<div id='pagination'>";
             $total_rows = mysqli_num_rows(chayTruyVanTraVeDL($link, "SELECT * FROM financialreport"));
             $total_pages = ceil($total_rows / $rows_per_page);
-            for ($i = 1; $i <= $total_pages; $i++) {
-                echo "<a href='?opt=view_BaoCao&page=$i'><button>$i</button></a>";
+            if ($current_page > 1) {
+                echo "<a href='?page=".($current_page - 1)."'><button><</button></a>"; // Nút chuyển đến trang trước đó
             }
-            echo "</div>";
-
+        
+            if ($current_page < $total_pages) {
+                echo "<a href='?page=".($current_page + 1)."'><button>></button></a>"; // Nút chuyển đến trang tiếp theo
+            }
+            
             giaiPhongBoNho($link, $result);
         }
 
