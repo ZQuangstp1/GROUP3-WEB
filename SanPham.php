@@ -37,7 +37,7 @@ function view_SP()
     taoKetNoi($link);
 
     // Số lượng sản phẩm trên mỗi trang
-    $rows_per_page = 2;
+    $rows_per_page = 3;
 
     // Trang hiện tại, mặc định là trang 1
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -94,7 +94,24 @@ function view_SP()
         echo "<td class='product-description'>" . $row["description"] . "</td>"; 
         echo "<td>" . number_format($row["unitPrice"], 0, ',', '.') . "</td>";
         echo "<td>" . $row["status"] . "</td>";
-        echo "<td>" . $row["discountID"] . "</td>";
+        // Replace the existing line that displays discountID with the following code:
+
+        $discountID = $row["discountID"];
+        $discountPercentage = ""; // Initialize discount percentage variable
+
+        // Check the discountID and assign the corresponding percentage
+        if ($discountID === NULL) {
+            $discountPercentage = "0%";
+        } elseif ($discountID === "DC001") {
+            $discountPercentage = "15%";
+        } elseif ($discountID === "DC002") {
+            $discountPercentage = "50%";
+        } else {
+            // Handle other cases if necessary
+            // For example, if there are other discount IDs
+        }
+
+        echo "<td>" . $discountPercentage . "</td>";
         echo "<td><a href='?opt=edit_SP&productID=" . $row["productID"] . "'><img src='Picture/Icon Sua.png' alt='Sửa' style='width: 20px; height: 20px;'></a>
                 <a href='?opt=del_SP&productID=" . $row["productID"] . "' onclick='return confirmDel()'><img src='Picture/Icon Xoa.png' alt='Xóa' style='width: 20px; height: 20px;'></a></td>";
         echo "</tr>";
