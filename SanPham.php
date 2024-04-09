@@ -104,14 +104,15 @@ function view_SP()
     giaiPhongBoNho($link, $result);
 
     // Hiển thị nút chuyển trang
-    if ($current_page > 1) {
-        echo "<a href='?page=".($current_page - 1)."'><button><</button></a>"; // Nút chuyển đến trang trước đó
-    }
+        echo "<div class='pagination'>";
+        if ($current_page > 1) {
+            echo "<a href='?page=".($current_page - 1)."'><button class='pagination-button'><</button></a>"; // Nút chuyển đến trang trước đó
+        }
 
-    if ($current_page < $total_pages) {
-        echo "<a href='?page=".($current_page + 1)."'><button>></button></a>"; // Nút chuyển đến trang tiếp theo
-    }
-
+        if ($current_page < $total_pages) {
+            echo "<a href='?page=".($current_page + 1)."'><button class='pagination-button'>></button></a>"; // Nút chuyển đến trang tiếp theo
+        }
+        echo "</div>";
 }
 function add_SP()
 {
