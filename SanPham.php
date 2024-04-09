@@ -89,10 +89,10 @@ function view_SP()
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
         echo "<td>" . $row["productID"] . "</td>";
-        echo "<td>" . $row["productName"] . "</td>";
+        echo "<td class='product-name'>" . $row["productName"] . "</td>"; 
         echo "<td>" . $row["quantityAvailable"] . "</td>";
-        echo "<td>" . $row["description"] . "</td>";
-        echo "<td>" . $row["unitPrice"] . "</td>";
+        echo "<td class='product-description'>" . $row["description"] . "</td>"; 
+        echo "<td>" . number_format($row["unitPrice"], 0, ',', '.') . "</td>";
         echo "<td>" . $row["status"] . "</td>";
         echo "<td>" . $row["discountID"] . "</td>";
         echo "<td><a href='?opt=edit_SP&productID=" . $row["productID"] . "'><img src='Picture/Icon Sua.png' alt='Sửa' style='width: 20px; height: 20px;'></a>
@@ -248,7 +248,7 @@ function edit_SP()
                             }
                             ?>
                         </select>
-                        <div class="form-buttons">
+                        <div class="form-buttons"> 
                             <input type="submit" value="Lưu">
                             <input type="reset" value="Nhập lại">
                             <button type="button" onclick="window.location.href='QLSP_XemSP.php?opt=view_SP';">Quay lại</button>
