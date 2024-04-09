@@ -41,7 +41,6 @@ LEFT JOIN date ON orders.DateID = date.DateID
 LEFT JOIN orderdetail ON orders.orderID = orderdetail.orderID
 LEFT JOIN product ON orderdetail.productID = product.productID
 WHERE customerID = '" . $_SESSION['customerID']  . "'";
-echo $query;
 $result = mysqli_query($link, $query);
 } else {
  header("Location: dangnhap.php");
