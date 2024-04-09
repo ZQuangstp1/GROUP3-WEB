@@ -13,7 +13,7 @@
             border: 1px solid black;
             text-align: center;
             padding: 5px 1px;
-            font-size: 15px; /* Giảm kích thước chữ */
+            font-size: 14px; /* Giảm kích thước chữ */
         }
         input[type="text"] {
             padding: 8px;
@@ -21,7 +21,7 @@
             width: 200px;
         }
         button {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-family: Barlow, sans-serif; 
             padding: 8px 12px; /* Giảm kích thước button */
             background-color: #DF8A8A;
             border: none;
@@ -135,7 +135,7 @@
             taoKetNoi($link);
 
             // Số dòng dữ liệu trên mỗi trang
-            $rows_per_page = 11;
+            $rows_per_page = 12;
             // Trang hiện tại, mặc định là trang 1
             $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
             // Tính toán vị trí bắt đầu lấy dữ liệu từ CSDL
