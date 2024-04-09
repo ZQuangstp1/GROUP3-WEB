@@ -20,7 +20,7 @@
             width: 200px;
         }
         button {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-family: 'Barlow, sans-serif';
             padding: 6px 10px; /* Giảm kích thước button */
             background-color: #DF8A8A;
             border: none;
@@ -83,6 +83,35 @@
     background-color: #6a4141;
 }
 
+.product-name,
+.product-description {
+    text-align: justify;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container select {
+    font-size: 12px;
+    width: calc(100% - 4px); /* Chiều dài của input/select */
+    margin-bottom: 5px; /* Khoảng cách giữa các dòng */
+    padding: 2px; /* Khoảng cách bên trong input/select */
+    box-sizing: border-box; /* Tính cả padding và border vào chiều rộng và chiều cao */
+}
+.form-container input[type="submit"]:hover,
+.form-container input[type="reset"]:hover,
+.form-container button:hover {
+    background-color: #6a4141;
+}
+.form-container button,
+.form-container input[type="submit"],
+.form-container input[type="reset"] {
+    font-family: 'Barlow, sans-serif';
+    padding: 6px 10px; /* Giảm kích thước button */
+    background-color: #DF8A8A;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px; /* Giảm khoảng cách giữa các button */
+}
     </style>
 </head>
 
