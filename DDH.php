@@ -121,7 +121,7 @@
               width: 100%;
               font: 500 14px/68px Poppins, sans-serif;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-2 {
                 max-width: 100%;
               }
@@ -135,7 +135,7 @@
                     white-space: nowrap;
                     font: 300 40px Barlow, sans-serif;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-3 {
                 font-size: 40px;
                 white-space: initial;
@@ -146,7 +146,7 @@
               width: 100%;
               max-width: 1263px;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-4 {
                 max-width: 100%;
               }
@@ -155,7 +155,7 @@
               gap: 20px;
               display: flex;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-5 {
                 flex-direction: column;
                 align-items: stretch;
@@ -169,7 +169,7 @@
               width: 23%;
               margin-left: 0px;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .column {
                 width: 100%;
               }
@@ -189,7 +189,7 @@
       align-items: start;
       padding: 14px 60px 14px 13px;
     }
-    @media (max-width: 991px) {
+    @media (max-width: 1105px) {
       .div-7 {
         padding-right: 20px;
       }
@@ -201,7 +201,7 @@
       align-items: start;
       padding: 14px 60px 14px 13px;
     }
-    @media (max-width: 991px) {
+    @media (max-width: 1105px) {
       .div-8 {
         padding-right: 20px;
       }
@@ -215,7 +215,7 @@
       font-weight: 400;
       padding: 15px 60px 15px 13px;
     }
-    @media (max-width: 991px) {
+    @media (max-width: 1105px) {
       .div-9 {
         padding-right: 20px;
       }
@@ -227,7 +227,7 @@
       align-items: start;
       padding: 16px 60px 16px 13px;
     }
-    @media (max-width: 991px) {
+    @media (max-width: 1105px) {
       .div-10 {
         padding-right: 20px;
       }
@@ -237,9 +237,9 @@
               flex-direction: column;
               line-height: normal;
               width: 77%;
-              margin-left: 20px;
+              margin-left: 0px;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .column-2 {
                 width: 100%;
               }
@@ -253,7 +253,7 @@
               width: 100%;
               padding: 41px 40px;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-12 {
                 max-width: 100%;
                 padding: 0 20px;
@@ -265,7 +265,7 @@
               gap: 20px;
               font-weight: 400;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-13 {
                 max-width: 100%;
                 flex-wrap: wrap;
@@ -279,6 +279,11 @@
               font: 24px/283% Oswald, sans-serif;
             }
            
+            @media (max-width: 1105px) {
+              .div-14 {
+               text-align: center;
+              }
+            }
          
             .div-17 {
               font-family: Poppins, sans-serif;
@@ -317,7 +322,7 @@
               font: 400 13px Poppins, sans-serif;
               
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-21 {
                 white-space: initial;
               }
@@ -329,23 +334,22 @@
               margin-top: 18px;
               justify-content: space-between;
               gap: 14px;
-              padding: 10px 33px 10px 12px;
+              padding: 10px 10px 10px 12px;
               overflow: hidden; 
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-22 {
                 max-width: 100%;
                 flex-wrap: wrap;
-                padding-right: 20px;
               }
             }
             .div-22 .div-26 {
-        color: #000;
-        white-space: nowrap;
-        font: 500 16px Oswald, sans-serif;
-        overflow: hidden; /* Ẩn văn bản khi vượt quá kích thước của ô */
-        text-overflow: ellipsis; /* Hiển thị dấu chấm ba (...) cho văn bản dài */
-    }
+              color: #000;
+              white-space: nowrap;
+              font: 500 16px Oswald, sans-serif;
+              overflow: hidden; /* Ẩn văn bản khi vượt quá kích thước của ô */
+              text-overflow: ellipsis; /* Hiển thị dấu chấm ba (...) cho văn bản dài */
+          }
             .img-4 {
               aspect-ratio: 1; /* Đảm bảo tỉ lệ khung hình không bị biến đổi */
         object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
@@ -359,7 +363,7 @@
               flex-direction: column;
               margin: auto 0;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-23 {
                 max-width: 100%;
               }
@@ -370,7 +374,7 @@
               justify-content: space-between;
               gap: 20px;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-24 {
                 max-width: 100%;
                 flex-wrap: wrap;
@@ -380,13 +384,15 @@
             .div-25 {
               display: flex;
               flex-direction: column;
+              white-space: nowrap;
+              text-overflow: ellipsis; 
             }
             .div-26 {
               color: #000;
               white-space: nowrap;
               font: 500 16px Oswald, sans-serif;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-26 {
                 white-space: initial;
               }
@@ -413,7 +419,7 @@
               margin-top: 6px;
               font: 400 13px/131% Poppins, sans-serif;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1105px) {
               .div-28 {
                 max-width: 100%;
               }
