@@ -16,6 +16,7 @@
                     <div class="div-10" onclick="window.location.href='YT.php'" style="cursor: pointer;">Yêu thích</div>
                   </div>
                 </div>
+                
 </br>
 <?php
 require_once "db_module.php";
@@ -43,6 +44,8 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
             // Hiển thị thông tin sản phẩm yêu thích
             while ($row = mysqli_fetch_assoc($result)) {
 ?>
+
+
             <div class="product-item">
             <a href="product.php?product_id=<?php echo $row['productID']; ?>">
                 <img loading="lazy" srcset="<?php echo $row['image']; ?>" class="img" />
@@ -57,6 +60,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                 </div>
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b92a98a450a77c4e2c9857a326b6a5d33a717d4c5870690f94eef140a2a49c80?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" class="trash" />
             </div>
+            
             </a>
 <?php
             }
@@ -77,13 +81,10 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
 giaiPhongBoNho($link, $result);
 ?>
 
-
-
-
-
-          </div>
-          </div>
 </div>
+          </div>
+          </div>
+
 <?php require 'footer.php'; ?>
 
       <style>
@@ -166,66 +167,92 @@ giaiPhongBoNho($link, $result);
               }
             }
             .div-6 {
-              display: flex;
-              flex-direction: column;
-              font-size: 16px;
-              color: #000;
-              font-weight: 500;
-              line-height: 144%;
-            }
-              .div-7 {
-                font-family: Barlow, sans-serif;
-      background-color: #fff;
-      justify-content: center;
-      align-items: start;
-      padding: 14px 60px 14px 13px;
-    }
-    @media (max-width: 991px) {
-      .div-7 {
-        padding-right: 20px;
-      }
-    }
-    .div-8 {
-      font-family: Barlow, sans-serif;
-      background-color: #fff;
-      justify-content: center;
-      align-items: start;
-      padding: 14px 60px 14px 13px;
-    }
-    @media (max-width: 991px) {
-      .div-8 {
-        padding-right: 20px;
-      }
-    }
-    .div-9 {
-        font-family: Barlow, sans-serif;
-      background-color: #fff;
-      justify-content: center;
-      align-items: start;
-      padding: 14px 60px 14px 13px;
-    }
-    @media (max-width: 991px) {
-      .div-9 {
-        padding-right: 20px;
-      }
-    }
-    .div-10 {
-        font-family: Barlow, sans-serif;
-      background-color: #fb6f92;
-      justify-content: center;
-      align-items: start;
-      color: #fff;
-      font-weight: 400;
-      padding: 15px 60px 15px 13px;
-    }
-    @media (max-width: 991px) {
-      .div-10 {
-        padding-right: 20px;
-      }
-    }
-          
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 16px;
+                    color: #000;
+                    font-weight: 500;
+                    line-height: 144%;
+                }
+
+                .div-7 {
+                    font-family: Barlow, sans-serif;
+                    ;
+                    background-color: #fff;
+                    justify-content: center;
+                    align-items: start;
+                    font-weight: 400;
+                    padding: 14px 60px 14px 13px;
+                }
+
+                @media (max-width: 991px) {
+                    .div-7 {
+                        padding-right: 20px;
+                    }
+                }
+
+                .div-8 {
+                    font-family: Barlow, sans-serif;
+                  color : black;
+                    background-color: #fff;
+                    justify-content: center;
+                    align-items: start;
+                    
+                    padding: 14px 60px 14px 13px;
+                }
+
+                @media (max-width: 991px) {
+                    .div-8 {
+                        padding-right: 20px;
+                    }
+                }
+
+                .div-9 {
+                    font-family: Barlow, sans-serif;
+                    ;
+                    background-color: #fff;
+                    justify-content: center;
+                    align-items: start;
+                    padding: 14px 60px 14px 13px;
+                }
+
+                @media (max-width: 991px) {
+                    .div-9 {
+                        padding-right: 20px;
+                    }
+                }
+
+                .div-10 {
+                    font-family: Barlow, sans-serif;
+                    ;
+                    background-color: #fb6f92;
+                    color: #fff;
+                    justify-content: center;
+                    align-items: start;
+                    padding: 16px 60px 16px 13px;
+                }
+
+                @media (max-width: 991px) {
+                    .div-10 {
+                        padding-right: 20px;
+                    }
+                }
+
+                .column-2 {
+                    display: flex;
+                    flex-direction: column;
+                    line-height: normal;
+                    width: 77%;
+                    margin-left: 20px;
+                }
+
+                @media (max-width: 991px) {
+                    .column-2 {
+                        width: 100%;
+                    }
+                }
     .product-item {
-  width: calc(33.33% - 20px); /* Adjusted to 33.33% for 3 products in a row */
+      width: calc(20% - 20px); /* Adjusted to 33.33% for 3 products in a row */
   margin-right: 20px; /* Added margin-right for spacing between products */
   margin-bottom: 20px;
   padding: 15px;
@@ -242,8 +269,8 @@ giaiPhongBoNho($link, $result);
 
 .img {
   width: 100%;
-  height: auto;
- 
+    height: auto;
+   
 
 }
 
@@ -270,7 +297,6 @@ giaiPhongBoNho($link, $result);
   white-space: nowrap; /* Ngăn chặn việc ngắt dòng */
   overflow: hidden; /* Ẩn phần vượt quá kích thước */
   text-overflow: ellipsis; /* Hiển thị ba dấu chấm (...) */
- 
  
 }
 
@@ -306,7 +332,22 @@ giaiPhongBoNho($link, $result);
   bottom: 10;
   right: 0;
 }
-
+@media (max-width: 769px) {
+    .column-2 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Các sản phẩm sẽ căn giữa trên hàng */
+    }
+    .product-item {
+      
+     
+      justify-content: center;
+      width: 230px; 
+      height: 60%; 
+      margin-bottom: 20px; /* Khoảng cách giữa các dòng */
+      box-sizing: border-box;
+      padding: 0 5px; /* Khoảng cách giữa các sản phẩm */
+    }
 
 
 
