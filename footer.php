@@ -2,7 +2,7 @@
 <head>
   <style>
   a {
-    text-decoration: none; /* Loại bỏ gạch chân */
+    text-decoration: none;
     color: inherit; 
   }
   .footer {
@@ -289,7 +289,7 @@
         </ul>
       <div class="contact-title">Liên hệ</div>
       <div class="contact-details">
-            <li><a href="https://maps.app.goo.gl/rnHXeAdWpGF2gv7y5"><img loading="lazy" src="https://cdn-icons-png.freepik.com/512/3678/3678566.png" class="contact-icon"> 279 Nguyễn Tri Phương, Phường 5, Quận 10</a></li>
+            <a href="https://maps.app.goo.gl/rnHXeAdWpGF2gv7y5"><li><img loading="lazy" src="https://cdn-icons-png.freepik.com/512/3678/3678566.png" class="contact-icon"> 279 Nguyễn Tri Phương, Phường 5, Quận 10</li></a>
             <li><img loading="lazy" src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/pink-phone-icon.png" class="contact-icon"> 0931104291</li>
             <li><img loading="lazy" src="https://logodix.com/logo/689225.png" class="contact-icon"> info@flamingo.com</li>
           </ul>
