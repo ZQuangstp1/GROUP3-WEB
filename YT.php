@@ -18,6 +18,7 @@
                 </div>
                 
 </br>
+<div class="likeprod"  id="animate-on-scroll">
 <?php
 require_once "db_module.php";
 require_once "users_module.php";
@@ -29,9 +30,8 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
     // Lấy customerID và accountID từ session
     $customerID = $_SESSION['customerID'];
     $accountID = $_SESSION['accountID'];
-    
     // Tiếp tục truy vấn để lấy thông tin các sản phẩm yêu thích từ bảng product
-    $query = "SELECT product.image,product.productID, product.discountID, product.productName, subcategory.subcategoryName, product.unitPrice, favproduct.accountID 
+    $query = "SELECT product.image,product.productID, product.discountID, product.productName, subcategory.subcategoryName, CONCAT(FORMAT(product.unitPrice, 0), ' VNĐ') AS formattedUnitPrice , favproduct.accountID 
     FROM product LEFT JOIN `subcategory` ON product.subcategoryID = `subcategory`.subcategoryID 
     LEFT JOIN `favproduct` ON product.productID = favproduct.productID 
     JOIN useraccount u ON u.accountID = favproduct.accountID WHERE u.accountID = '$accountID'";
@@ -43,7 +43,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
         if (mysqli_num_rows($result) > 0) {
             // Hiển thị thông tin sản phẩm yêu thích
             while ($row = mysqli_fetch_assoc($result)) {
-?>
+        ?>
 
 
             <div class="product-item">
@@ -51,39 +51,39 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                 <img loading="lazy" srcset="<?php echo $row['image']; ?>" class="img" />
                 <?php if ($row['discountID'] !== 'NONE')  { ?>
                 <div class="discount-tag"><?php echo $row['discountID']; ?></div>
-            <?php } ?>
+               <?php } ?>
                 </br>
                 <div class="product-info">
                     <div class="product-name"><?php echo $row['productName']; ?></div>
                     <div class="product-category"><?php echo $row['subcategoryName']; ?></div>
-                    <div class="product-price"><?php echo $row['unitPrice']; ?></div>
+                    <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
                 </div>
+                </a>
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b92a98a450a77c4e2c9857a326b6a5d33a717d4c5870690f94eef140a2a49c80?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" class="trash" />
             </div>
-            
-            </a>
-<?php
+      <?php
             }
         } else {
             echo "Không có sản phẩm yêu thích nào được tìm thấy.";
         }
-    } else {
-        // Hiển thị thông báo nếu có lỗi trong quá trình truy vấn
-        echo "<div style='font-family: Barlow, sans-serif;'>Không có sản phẩm yêu thích nào được tìm thấy.</div>";
-    }
-} else {
-    // Nếu không có session, chuyển hướng người dùng đến trang đăng nhập
-    header("Location: dangnhap.php");
-    exit(); // Kết thúc chương trình để ngăn mã tiếp tục thực thi
-}
+              } else {
+                  // Hiển thị thông báo nếu có lỗi trong quá trình truy vấn
+                  echo "<div style='font-family: Barlow, sans-serif;'>Không có sản phẩm yêu thích nào được tìm thấy.</div>";
+              }
+          } else {
+              // Nếu không có session, chuyển hướng người dùng đến trang đăng nhập
+              header("Location: dangnhap.php");
+              exit(); // Kết thúc chương trình để ngăn mã tiếp tục thực thi
+          }
 
-// Đóng kết nối
-giaiPhongBoNho($link, $result);
-?>
-
-</div>
-          </div>
-          </div>
+          // Đóng kết nối
+          giaiPhongBoNho($link, $result);
+              ?>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <?php require 'footer.php'; ?>
 
@@ -252,106 +252,102 @@ giaiPhongBoNho($link, $result);
                     }
                 }
     .product-item {
-      width: calc(20% - 20px); /* Adjusted to 33.33% for 3 products in a row */
-  margin-right: 20px; /* Added margin-right for spacing between products */
-  margin-bottom: 20px;
-  padding: 15px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  position: relative;
-  box-sizing: border-box; /* Include padding and border in the width calculation */
-}
-
-.product-item:last-child {
-  margin-right: 0; /* Remove margin-right for the last product in the row */
-}
-
-
-.img {
-  width: 100%;
-    height: auto;
-   
-
-}
-
-.discount-tag {
-  background-color: #fb6f92;
-  color: #fff;
-  font-family: 'Barlow', sans-serif;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 5px;
-  position: absolute;
-  top: 17;
-  left: 0;
-}
-
-.product-info {
-  margin-top: 10px;
-  align-items: center;
-  text-align: center; 
-  display: flex;
-  flex-direction: column;
-  color: #212121;
-  font-weight: 700;
-  white-space: nowrap; /* Ngăn chặn việc ngắt dòng */
-  overflow: hidden; /* Ẩn phần vượt quá kích thước */
-  text-overflow: ellipsis; /* Hiển thị ba dấu chấm (...) */
- 
-}
-
-.product-name {
-  text-transform: capitalize;
-  text-align: center; 
-  font: 17px Barlow, sans-serif;
-  padding: 10px 25px;
- 
-}
-
-.product-category {
-  color: #777;
-  text-transform: capitalize;
-  margin-top: 6px;
-  font: 400 14px Barlow, sans-serif;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.product-price {
-  color: #fb6f92;
-  text-align: center;
-  margin-top: 6px;
-  font: 18px/135% Barlow, sans-serif;
-}
-.trash {
-  aspect-ratio: 1;
-  object-fit: auto;
-  width: 30px;
-  padding: 5px;
-  position: absolute;
-  bottom: 10;
-  right: 0;
-}
-@media (max-width: 769px) {
-    .column-2 {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center; /* Các sản phẩm sẽ căn giữa trên hàng */
+      margin-right: 20px;
+      margin-bottom: 20px;
+      padding: 15px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      position: relative;
+      box-sizing: border-box; 
+      flex: 0 1 240px;
     }
-    .product-item {
+
+    .product-item:last-child {
+      margin-right: 0; 
+    }
+
+
+    .img {
+      width: 100%;
+        height: auto;
       
-     
-      justify-content: center;
-      width: 230px; 
-      height: 60%; 
-      margin-bottom: 20px; /* Khoảng cách giữa các dòng */
-      box-sizing: border-box;
-      padding: 0 5px; /* Khoảng cách giữa các sản phẩm */
+
     }
 
+    .discount-tag {
+      background-color: #fb6f92;
+      color: #fff;
+      font-family: 'Barlow', sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+      padding: 5px;
+      position: absolute;
+      top: 17;
+      left: 0;
+    }
 
+    .product-info {
+      margin-top: 10px;
+      justify-content: center;
+      align-items: center;
+      text-align: center; 
+      display: flex;
+      flex-direction: column;
+      color: #212121;
+      padding: 10px 33px;
+    }
 
-  
+    .product-name {
+      align-self: stretch;
+      font-family: Barlow, sans-serif;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2; /* Số dòng tối đa */
+      overflow: hidden; /* Ẩn phần văn bản ra khỏi phần tử cha */
+      text-overflow: ellipsis; /* Hiển thị dấu "..." khi văn bản bị ẩn */
+    }
+
+    .product-category {
+      color: #777;
+      text-transform: capitalize;
+      margin-top: 6px;
+      font: 400 14px Barlow, sans-serif;
+      display: -webkit-box;
+      -webkit-line-clamp: 1; 
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-price {
+      color: #fb6f92;
+      text-align: center;
+      margin-top: 6px;
+      font: 18px/135% Barlow, sans-serif;
+    }
+    .trash {
+      aspect-ratio: 1;
+      object-fit: auto;
+      width: 30px;
+      padding: 5px;
+      position: absolute;
+      bottom: 10;
+      right: 0;
+    }
+    .likeprod {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    @media (max-width: 984px) {
+        .product-item {
+          justify-content: center;
+          height: 60%; 
+          margin-bottom: 20px; /* Khoảng cách giữa các dòng */
+          box-sizing: border-box;
+          padding: 0 5px; /* Khoảng cách giữa các sản phẩm */
+          flex: 0 1 220px;
+        }
+      }
 
 
           </style>
