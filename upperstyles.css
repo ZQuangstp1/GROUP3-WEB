@@ -479,14 +479,12 @@ body{
     display: flex;
     flex-direction: column;
     color: #212121;
-    font-weight: 700;
     padding: 10px 33px;
   }
   
   .bestsellerproduct-name {
-    text-transform: capitalize;
     align-self: stretch;
-    font-family: 'Barlow', sans-serif;
+    font-family: Barlow, sans-serif;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2; /* Số dòng tối đa */
