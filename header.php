@@ -11,6 +11,7 @@
     margin: 0px;
     padding: 0;
     padding-bottom: 15px;
+    background-color: #f9f2e6 ;
   }
   @media (max-width: 991px) {
     .header-container {
@@ -106,14 +107,13 @@
     max-width: 100%;;
     height: auto;
     display: block;
-    margin-left: 50px;
 }
 
     @media (max-width: 991px) {
       
         .logo-img {
             margin-left: auto;
-            max-width: auto; /* Adjusting width for smaller screens */
+            max-width: auto;
         }   
     }
   .three-logos-container {
@@ -158,15 +158,15 @@
 
   @media screen and (max-width: 991px) {
   .content-header {
-    flex-direction: column; /* Chuyển hướng layout thành dọc */
-    align-items: center; /* Canh giữa nội dung */
+    flex-direction: column; 
+    align-items: center;
   }
 
   .logo-container {
-    justify-content: center; /* Center the logo */
-    margin: 10px auto; /* Adjust margin */
-    max-width: 50%; /* Adjusting width for smaller screens */
-    padding-top: 0; /* Remove top padding */
+    justify-content: center; 
+    margin: 10px auto;
+    max-width: 50%;
+    padding-top: 0; 
     padding-left: 10px;
     order: 1;
     /* background: red; */
@@ -175,10 +175,10 @@
   }
 
   .searchbar-container {
-    margin: 0; /* Center the search bar */
-    text-align: left; /* Center the contents */
-    padding-left: 0; /* Remove left padding */
-    padding-top: 10px; /* Add top padding */
+    margin: 0;
+    text-align: left; 
+    padding-left: 0; 
+    padding-top: 10px; 
     max-width: 100%;
     order: 2
   }
@@ -189,32 +189,32 @@
   }
 
   #searchInput{
-    max-width: 200%; /* Adjust max width of search input */
-    font-size: 14px; /* Adjust font size of search input */
-    margin-left: 2px; /* Add margin to the left of search input */
+    max-width: 200%; 
+    font-size: 14px; 
+    margin-left: 2px; 
   }
 
   .three-logos-container {
     order: 3;
-    justify-content: center; /* Center the logos */
-    margin: 0 auto; /* Center the container */
-    max-width: 100%; /* Adjusting width for smaller screens */
-    padding-right: 0; /* Remove right padding */
-    padding-top: 10px; /* Add top padding */
+    justify-content: center;
+    margin: 0 auto; 
+    max-width: 100%; 
+    padding-right: 0; 
+    padding-top: 10px; 
     margin-right: 5px
   }
 
   .three-logos-content {
     display: flex;
-    flex-direction: row; /* Align logos in a row */
-    gap: 10px; /* Add gap between logos */
-    align-items: center; /* Center the logos vertically */
+    flex-direction: row; 
+    gap: 10px; 
+    align-items: center;
   }
 
   .user,
   .fav,
   .cart {
-    width: 18px; /* Adjust width of icons */
+    width: 18px;
     padding-top: 70px;
   }
 }
@@ -222,51 +222,108 @@
 .searchbutton{
   display:none
 }
-    </style>
-</head>
-<body>
-<div class="header-container">
-        <div class="content-header">
-          <div class="searchbar-container">
-          <form action="search.php" method="get">
-          <div id="searchbar">
-            <!-- Note: Added method="get" to ensure data is sent via URL parameters -->
-            <img src="img/Search.png" alt="" class="kinhlup">
-            <input type="text" id="searchInput" name="searchInput" placeholder="Tìm sản phẩm" size="13px">
-            <!-- Note: Added name attribute -->
-            <input class = "searchbutton" type="submit" value="Tìm kiếm"></div>
-          </form>
-            <!-- <div id = "searchbar">
-              <img src="img/Search.png" alt="" class="kinhlup" >
-              <input type="text" id="searchInput" placeholder="Tìm sản phẩm" onkeypress="searchOnEnter(event)" size="13px">
-              <button id="searchButton" onclick="search()"></button>
-          </div> -->
-          </div>
-          <div class="logo-container">
-            <a href="index.php">
-                <img loading="lazy" src="img/img3.png" class="logo-img" />
-            </a>
-        </div>
 
-        </div>
-        <div class="three-logos-container">
-          <div class="three-logos-content">
+  .three-logos-content .drop_menu {
+    position: absolute;
+    top: 65px;
+    width: 180px;
+    line-height: 45px;
+    background-color: #f9f2e6;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    list-style: none;
+    border: 1px solid #dcceb5
+  }
+
+  .three-logos-content:hover .drop_menu {
+    top: 65px;
+    opacity: 1;
+    visibility: visible;
+    z-index: 9999;
+
+  }
+
+  .three-logos-content .drop_menu li a {
+    width: 100%;
+    display: block;
+    padding: 0 0 0 15px;
+    font-weight: 400;
+    border-radius: 0px;
+    list-style: none;
+  }
+
+  .drop_menu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+      </style>
+  </head>
+
+
+  <body>
+
+  <!-- HEADER -->
+  <div class="header-container">
+          <div class="content-header">
+            <!-- THANH TÌM KIẾM -->
+            <div class="searchbar-container">
+            <form action="search.php" method="get">
+            <div id="searchbar">
+              <img src="img/Search.png" alt="" class="kinhlup">
+              <input type="text" id="searchInput" name="searchInput" placeholder="Tìm sản phẩm" size="13px">
+              <input class = "searchbutton" type="submit" value="Tìm kiếm"></div>
+            </form>
+            </div>
+            <!-- LOGO -->
+            <div class="logo-container">
+              <a href="index.php">
+                  <img loading="lazy" src="img/img3.png" class="logo-img" />
+              </a>
+          </div>
+
+          <!-- BA LOGO ĐIỀU HƯỚNG -->
+          </div>
+          <div class="three-logos-container">
+            <div class="three-logos-content">
+
+              <a href="#" class="desktop_item">
+              <img
+                loading="lazy"
+                src="img/login.png"
+                class="user"
+              />
+              </a>
+              <!-- <ul class="drop_menu">
+                <li><a href="dangnhap.php">Đăng nhập</a></li>
+                <li><a href="dangki.php">Đăng ký</a></li>
+                <li><a href="dangxuat.php">Đăng xuất</a></li>
+              </ul> -->
+              <ul class="drop_menu">
+    <?php if (isset($_SESSION['username'])): ?>
+        <li><a href="TTKH.php"><?php echo $_SESSION['username']; ?></a></li>
+        <li><a href="dangxuat.php">Đăng xuất</a></li>
+    <?php else: ?>
+        <li><a href="dangnhap.php">Đăng nhập</a></li>
+        <li><a href="dangki.php">Đăng ký</a></li>
+    <?php endif; ?>
+</ul>
+              
+            </div>
             <img
               loading="lazy"
-              src="img/login.png"
-              class="user"
+              src="img/love.png"
+              class="fav"
+            />
+            <img
+              loading="lazy"
+              src="img/cart.png"
+              class="cart"
             />
           </div>
-          <img
-            loading="lazy"
-            src="img/love.png"
-            class="fav"
-          />
-          <img
-            loading="lazy"
-            src="img/cart.png"
-            class="cart"
-          />
         </div>
-      </div>
-</body>
+  </body>

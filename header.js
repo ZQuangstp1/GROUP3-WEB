@@ -29,3 +29,4 @@ $(document).ready(function(){
 //       window.location.href = "product-list.php?keyword=" + keyword; // Chuyển hướng đến trang product-list.php với từ khóa đã nhập
 //   }
 // }
+
