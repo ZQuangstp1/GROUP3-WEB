@@ -59,6 +59,7 @@
               $productName = $row['productName'];
               $image = $row['image'];
               $catID = $row['categoryID'];
+              $subcat = $row['subcategoryName'];
           //giaiPhongBoNho($link, $result);
         } else {
             echo "Không có ID sản phẩm được cung cấp!";
@@ -81,7 +82,7 @@
        <div class="product-info">
         <div class="product-header">
           <div class="brand-info">
-              <div class="brand-name">FLAMINGO</div>
+              <div class="brand-name"><?php echo $subcat; ?></div>
               <div class="rating-stars">
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/268ecdae2f05065984d2e0d5ffcfbcb78794bcd076d2c9ff2514144993bbb60a?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e0a1850b5fb05b8f0795cae26f547fe534f781ab97da6559ea8504149b26b255?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
