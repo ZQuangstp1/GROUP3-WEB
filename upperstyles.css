@@ -486,12 +486,12 @@ body{
   .bestsellerproduct-name {
     text-transform: capitalize;
     align-self: stretch;
-    font: 17px Barlow, sans-serif;
+    font-family: 'Barlow', sans-serif;
     display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /* Số dòng tối đa */
-  overflow: hidden; /* Ẩn phần văn bản ra khỏi phần tử cha */
-  text-overflow: ellipsis; /* Hiển thị dấu "..." khi văn bản bị ẩn */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Số dòng tối đa */
+    overflow: hidden; /* Ẩn phần văn bản ra khỏi phần tử cha */
+    text-overflow: ellipsis; /* Hiển thị dấu "..." khi văn bản bị ẩn */
   }
   
   .bestsellerproduct-category {
