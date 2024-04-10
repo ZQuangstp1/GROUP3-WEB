@@ -3,26 +3,6 @@
 require_once ("db_module.php");
 require_once ("users_module.php");
 
-function hienthiQuan()
-{
-    $link = null;
-    taoKetNoi($link);
-    if(isset($_POST['submit'])) {
-      $selectedCity = $_POST['tp'];
-    $sql = "SELECT district FROM district 
-            LEFT JOIN province ON province.provinceID = district.provinceID 
-            WHERE province.province = '$selectedCity'";
-    $result = chayTruyVanTraVeDL($link, $sql);
-    if ($result->num_rows > 0) {
-        // Hiển thị các quận dựa trên dữ liệu từ cơ sở dữ liệu
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value='" . $row["district"] . "'>" . $row["district"] . "</option>";
-        }
-    } else {
-        echo "Không có dữ liệu";
-    }
-}
-}
 
 // Đảm bảo rằng customerID có trong session
 if (!isset($_SESSION['customerID'])) {
@@ -36,6 +16,7 @@ if (!isset($_SESSION['customerID'])) {
 function view_TTKH()
 {
   global $customerID;
+  $customerID = $_SESSION['customerID'];
   $link = null;
   taoKetNoi($link);
 

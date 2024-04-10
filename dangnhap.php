@@ -1,7 +1,7 @@
 <?php 
 require_once "db_module.php";
 require_once "users_module.php";
-
+session_start();
 
 
 if (isset($_POST)) {
@@ -15,8 +15,8 @@ if (isset($_POST)) {
         $customerID= dangnhap($link, $_username, $_password);
     
         if ($customerID ) { 
-            $_SESSION['customerID'] = $customerID;
-            $_SESSION['accountID'] = $_accountID;
+            //$_SESSION['customerID'] = $customerID;
+            //$_SESSION['accountID'] = $_accountID;
             giaiPhongBoNho($link, true);
             header("Location: TTKH.php");
             exit(); // Thoát để ngăn code phía sau chạy khi đã chuyển hướng

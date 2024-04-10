@@ -23,8 +23,7 @@ require_once "users_module.php";
 $link = null;
 taoKetNoi($link);
 
-
-// Kiểm tra xem cả customerID và accountID có tồn tại trong session không
+// Kiểm tra xem có session customerID và accountID không
 if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
     // Lấy customerID và accountID từ session
     $customerID = $_SESSION['customerID'];
@@ -36,7 +35,8 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
     LEFT JOIN `favproduct` ON product.productID = favproduct.productID 
     JOIN useraccount u ON u.accountID = favproduct.accountID WHERE u.accountID = '$accountID'";
     $result = chayTruyVanKhongTraVeDL($link, $query);
-    // Kiểm tra xem truy vấn có thành công hay không
+    
+    // Kiểm tra kết quả truy vấn
     if($result) {
         // Kiểm tra xem có dữ liệu không
         if (mysqli_num_rows($result) > 0) {
@@ -61,20 +61,20 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
         } else {
             echo "Không có sản phẩm yêu thích nào được tìm thấy.";
         }
-    } else { ?>
-      <div style="font-family: Barlow, sans-serif;">
-      <?php echo "Không có sản phẩm yêu thích nào được tìm thấy."; ?>
-    </div>
-    <?php
+    } else {
+        // Hiển thị thông báo nếu có lỗi trong quá trình truy vấn
+        echo "<div style='font-family: Barlow, sans-serif;'>Không có sản phẩm yêu thích nào được tìm thấy.</div>";
     }
 } else {
+    // Nếu không có session, chuyển hướng người dùng đến trang đăng nhập
     header("Location: dangnhap.php");
-    // hoặc echo "Vui lòng đăng nhập để xem sản phẩm yêu thích.";
+    exit(); // Kết thúc chương trình để ngăn mã tiếp tục thực thi
 }
 
 // Đóng kết nối
-giaiPhongBoNho ( $link, $result )
+giaiPhongBoNho($link, $result);
 ?>
+
 
 
 

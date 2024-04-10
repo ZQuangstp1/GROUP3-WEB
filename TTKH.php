@@ -4,6 +4,7 @@
 
 <body>
 <script>
+  
   // JavaScript để mở modal Đổi Mật Khẩu và Thông tin cá nhân
   document.addEventListener("DOMContentLoaded", function () {
     // Lấy nút mở modal Đổi Mật Khẩu
@@ -55,7 +56,8 @@
     }
   });
 </script>
-
+<?php include 'header.php'; ?>
+<?php include 'menu.php'; ?>
   <div class="div" id="TTKH" style="width :100%; margin: 0 auto;">
     <div class ="div-2"></div>
     <div class="div-3" style=" font-weight : bold;font-size : 35px;">Thông tin khách hàng</div>
@@ -92,8 +94,8 @@
                 <form action="update_info.php" method="POST">
     <input type="text" name="lastName" placeholder="Họ" class="input-field" required>
     <input type="text" name="firstName" placeholder="Tên" class="input-field" required>
-    <input type="tel" name="phone" placeholder="Số điện thoại" class="input-field" required>
-    <input type="email" name="email" placeholder="Địa chỉ Email" class="input-field" required>
+    <input type="tel" name="phone" placeholder="Số điện thoại" class="input-field" pattern="[0-9]{10,12}" title="Số điện thoại phải có từ 10 đến 12 chữ số" required>
+    <input type="email" name="email" placeholder="Địa chỉ Email" class="input-field" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Vui lòng nhập địa chỉ email hợp lệ" required>
     <select name="gender" class="input-field" required>
         <option value="" disabled selected>Giới tính</option>
         <option value="male">Nam</option>
