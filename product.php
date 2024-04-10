@@ -43,7 +43,11 @@
         if(isset($_GET['product_id'])) {
             // Kết nối đến cơ sở dữ liệu và thực hiện truy vấn
             $productId = $_GET['product_id'];
-            $sql = "SELECT * FROM product WHERE productID = '$productId'"; 
+            $sql = "SELECT *   
+                  FROM product p 
+                  LEFT JOIN subcategory sc ON p.subcategoryID = sc.subcategoryID
+                  LEFT JOIN category c ON sc.categoryID = c.categoryID
+                  WHERE productID = '$productId'"; 
             $result = chayTruyVanTraVeDL($link, $sql);
             if ($result->num_rows > 0) {
               // Lấy dữ liệu từ kết quả truy vấn
@@ -54,6 +58,7 @@
               $description = $row['description'];
               $productName = $row['productName'];
               $image = $row['image'];
+              $catID = $row['categoryID'];
           //giaiPhongBoNho($link, $result);
         } else {
             echo "Không có ID sản phẩm được cung cấp!";
@@ -84,7 +89,7 @@
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e68aec3960d65efa39c086621cd53a098cffc6475460464574257b5dc06e33e?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9a10058a869dd7acdd4a3ee287c08764a73e2812ee8e5a6335ca12c1f722c37c?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
               </div>
-              <a href="#" class="review-link">Xem Đánh giá</a> 
+              <a href="#review" class="review-link">Xem Đánh giá</a> 
           </div>
           <div class="product-name"><?php echo $productName; ?></div>
 
@@ -207,7 +212,7 @@
       <section class="shipping-container">
         <h2 class="product-title">VẬN CHUYỂN</h2>
         <p class="shipping-description">
-          Flamingo cung cấp Miễn phí Giao hàng Tiêu chuẩn cho tất cả các đơn hàng trị giá trên 1,000,000 VNĐ. Giá trị đơn hàng tối thiểu phải là 1,000,000V NĐ trước thuế, phí vận chuyển và xử lý. Phí vận chuyển không được hoàn lại
+          Flamingo cung cấp Miễn phí Giao hàng Tiêu chuẩn cho tất cả các đơn hàng trị giá trên 1,000,000 VNĐ. Giá trị đơn hàng tối thiểu phải là 1,000,000 VNĐ trước thuế, phí vận chuyển và xử lý. Phí vận chuyển không được hoàn lại
         </p>
         <p class="shipping-description-shipping-info2">
            Vui lòng cho đến tối đa 2 ngày làm việc (loại trừ cuối tuần, ngày lễ và ngày bán hàng) để xử lý đơn hàng của bạn.
@@ -220,17 +225,13 @@
 <!--Đánh gía sản phẩm-->
         <section class="description-container">
               <div class="description-title-container">
-                <h2 class="description-title">Đánh giá</h2>
+              <a name="review"> <h2 class="description-title">Đánh giá</h2></a>
                 <div class="description-title-underline"></div>
               </div>
               <div class="description-underline"></div>
         </section>
 
         <?php
-          require_once "db_module.php";
-          $link = null;
-          taoKetNoi($link);
-
           $sql = "SELECT 
                       c.lastname, c.firstname, r.rating, r.comment
                   FROM 
@@ -263,7 +264,7 @@
                               ?>
                           </div>
                       </div>
-                      <article class="comment-container">
+                     <article class="comment-container">
                           <p class="comment-text">
                               <?php echo $row['comment']; ?>
                           </p>
@@ -287,56 +288,83 @@
         ?>
     <br>
     <br>
-      <section class="review-section">
-      <h2 class="review-title">Viết Đánh giá</h2>
-        <div class="wrapper">
-          <p class="actor-name">Hãy chia sẻ trải nghiệm của bạn khi dùng sản phẩm</p>
-          <div class="star-wrapper" id="star-rating-cmt">
-          <select id="star-dropdown">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+        <section class="review-section">
+        <h2 class="review-title">Viết Đánh giá</h2>
+        <div class="wrapper1">
+            <p class="actor-name">Hãy chia sẻ trải nghiệm của bạn khi dùng sản phẩm</p>
+            <div class="star-wrapper" id="star-rating-cmt">
+                <form method="post">
+                    <select name="rating" id="star-dropdown" style="background-color: transparent; color: #fb6f92; border: NONE; font-size: 16px;">
+                        <option value=" "> </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+            </div>
             <div class="star"></div>
-          </div>
         </div>
-        <div class="comment-container">
-          <textarea class="great-products" id="comment-section"></textarea>
-          <button id="comment-button">Bình luận</button>
-        </div>    
-        <form id="review-form" method="post">
-            <input type="hidden" id="product-id" name="idofpro" value="<?php echo $product; ?>">
-          </form> 
-      </section>
-    </div>
+        <div class="comment-container1">
+            <textarea class="great-products" name="comment" id="comment-section"></textarea>
+            <input type="hidden" name="product_id" value="<?php echo $product; ?>">
+            <input type="submit" id = "comment-button" name="submit" value="Bình luận">
+            </form>
+        </div>
+    </section>
 
+    <?php
+// Kiểm tra xem người dùng đã nhấn nút "Bình luận" chưa
+      if(isset($_POST['submit'])){
+        $link = null;
+        taoKetNoi($link);
+          // Lấy dữ liệu từ biểu mẫu
+          $comment = $_POST['comment'];
+          $rating = $_POST['rating'];
+          $productID = $_POST['product_id'];
+          // Tạo reviewID
+          $query = "SELECT COUNT(*) as count FROM Review";
+          $rs = chayTruyVanTraVeDL($link, $query);
+          $row = mysqli_fetch_assoc($rs);
+          $num_records = $row['count'];
 
-    <script>
-      document.getElementById('comment-button').addEventListener('click', function() {
-        // Get values from input fields
-        const comment = document.getElementById('comment-section').value;
-        const rating = document.getElementById('star-dropdown').value;
-        const productId = document.getElementById('product-id').value;
-        
-        // Add values to the form
-        const form = document.getElementById('review-form');
-        const commentInput = document.createElement('input');
-        commentInput.type = 'hidden';
-        commentInput.name = 'comment';
-        commentInput.value = comment;
-        form.appendChild(commentInput);
-        
-        const ratingInput = document.createElement('input');
-        ratingInput.type = 'hidden';
-        ratingInput.name = 'rating';
-        ratingInput.value = rating;
-        form.appendChild(ratingInput);
-        // Submit the form
-        form.submit();
-      });
-      </script>
+          $new_review_id = 'R' . str_pad($num_records + 1, 5, '0', STR_PAD_LEFT);
+          //Khi nào ghép xong được cái trang đăng nhập thì sẽ uncomment nó 
+          //session_start();
+          // if (isset($_SESSION['account_id'])) {
+          //     $accountID = $_SESSION['account_id'];
+          // } else {
+          //     // Xử lý khi không có thông tin accountID trong session
+          // }
+          $accountID ='A000001';
+          // Thêm dữ liệu vào bảng Review
+          $sql = "INSERT INTO Review (reviewID, rating, comment, accountID, productID)
+                        VALUES ('$new_review_id', '$rating', '$comment', '$accountID', '$productID')";
+          $result = chayTruyVanKhongTraVeDL($link, $sql);
+          if ($result) {
+            ?>
+            <div id="popup-container" class="popup-container">
+                <div class="popup">
+                    <span class="close-btn" onclick="closePopup()">&times;</span>
+                    <img src="https://static-00.iconduck.com/assets.00/checkmark-icon-512x426-8re0u9li.png" alt="Check icon" class="check-icon">
+                    <p>Đánh giá thành công!</p>
+                </div>
+            </div>
+            <?php
+            giaiPhongBoNho($link, $result);
+          } else {
+            ?>
+            <div id="popup-container" class="popup-container">
+                <div class="popup">
+                    <span class="close-btn" onclick="closePopup()">&times;</span>
+                    <img src="https://www.svgrepo.com/show/93424/exclamation-mark-inside-a-circle.svg" alt="Check icon" class="check-icon">
+                    <p>Vui lòng nhập đánh giá!</p>
+                </div>
+            </div>
+            <?php
+          }   
+        }
+      ?>
 <!--Sản phẩm tương tự-->
     <div class="bestseller-template"  id="animate-on-scroll">SẢN PHẨM TƯƠNG TỰ</div>
       <br>
@@ -361,11 +389,8 @@
                   LEFT JOIN orderdetail od ON p.productID = od.productID
                   LEFT JOIN orders o ON o.orderID = od.orderID
                   LEFT JOIN discount d ON p.discountID = d.discountID
-                  GROUP BY p.productName, formattedUnitPrice, p.image, discountPercentage, c.categoryName, sc.subcategoryName -- Grouping by all selected columns
-                  ORDER BY SUM(od.quantity) DESC
-                  LIMIT 5;
-                  ";
-
+                  WHERE c.categoryID = '$catID'
+                  LIMIT 5;";
           $result = chayTruyVanTraVeDL($link, $sql);
           if ($result->num_rows > 0) {
             // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
@@ -394,7 +419,19 @@
                 ?>
     </div>
 <!--FOOTER-->
-    <?php  require_once "footer.php"; ?>
+    <?php  require "footer.php"; ?>
+<script>
 
+function showPopup() {
+  document.getElementById("popup-container").style.display = "block";
+}
+
+function closePopup() {
+  document.getElementById("popup-container").style.display = "none";
+}
+window.onload = function() {
+  showPopup();
+};
+</script>
 </body>
 </html>
