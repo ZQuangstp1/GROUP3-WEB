@@ -1,4 +1,6 @@
-<script>
+<head>
+    <link rel="stylesheet" type="text/css" href="form.css" />
+    <script>
     function confirmDel() {
         if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này này?')) {
             return true;
@@ -19,12 +21,12 @@
 </script>
 
 <div id="search">
-<h3>Tra cứu</h3>
+    <h3>Tra cứu</h3>
     <input type="text" id="searchInput" placeholder="Nhập từ khóa...">
     <button onclick="Search()">Tìm khuyến mãi</button>
-    <a href="?opt=add_KM"><button>Thêm khuyến mãi</button></a>    
+    <a href="?opt=add_KM"><button>Thêm khuyến mãi</button></a>
 </div>
-
+</head>
 <?php
 require_once("db_module.php");
 
@@ -51,7 +53,7 @@ function view_KM()
                 <a href='?opt=del_KM&discountID=" . $row["discountID"] . "' onclick='return confirmDel()'><img src='Picture/Icon Xoa.png' alt='Xóa' style='width: 20px; height: 20px;'></a>
               </td>";
         echo "</tr>";
-    }     
+    }
     echo "</table>";
 
     giaiPhongBoNho($link, $result);
@@ -71,7 +73,43 @@ function add_KM()
         $_ngaybatdau = $_POST["ngaybatdau"];
         $_ngayketthuc = $_POST["ngayketthuc"];
 
-        // Validation can be added here
+        // Kiểm tra các điều kiện
+        if (empty($_discountID) || empty($_tenkm) || empty($_giamgia) || empty($_trangthai) || empty($_ngaybatdau) || empty($_ngayketthuc)) {
+            echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
+            return;
+        }
+
+        // Kiểm tra ID khuyến mãi theo định dạng DCXXX
+        if (!preg_match('/^DC\d{3}$/i', $_discountID)) {
+            echo "<script>alert('ID khuyến mãi không hợp lệ.');</script>";
+            return;
+        }
+
+        // Kiểm tra giảm giá không được để trống
+        if (empty($_giamgia)) {
+            echo "<script>alert('Vui lòng nhập giảm giá.');</script>";
+            return;
+        }
+
+        // Kiểm tra trạng thái không được để trống
+        if (empty($_trangthai)) {
+            echo "<script>alert('Vui lòng nhập trạng thái.');</script>";
+            return;
+        }
+
+        // Kiểm tra ngày bắt đầu không được để trống
+        if (empty($_ngaybatdau)) {
+            echo "<script>alert('Vui lòng chọn ngày bắt đầu.');</script>";
+            return;
+        }
+
+        // Kiểm tra ngày kết thúc không được để trống
+        if (empty($_ngayketthuc)) {
+            echo "<script>alert('Vui lòng chọn ngày kết thúc.');</script>";
+            return;
+        }
+
+        // Tiếp tục kiểm tra các điều kiện khác...
 
         $sql = "INSERT INTO discount (discountID, voucherCode, discountAmount, status, startDate, endDate) 
                 VALUES ('$_discountID', '$_tenkm', '$_giamgia', '$_trangthai', '$_ngaybatdau', '$_ngayketthuc')";
@@ -86,21 +124,24 @@ function add_KM()
         }
     }
 
-    // Display add form
-    echo "<form method='post'>";
-    echo "ID khuyến mãi: <input type='text' name='discountID'><br>";
-    echo "Chương trình khuyến mãi: <input type='text' name='tenkm'><br>";
-    echo "Giảm giá: <input type='text' name='giamgia'><br>";
-    echo "Trạng thái: <input type='text' name='trangthai'><br>";
-    echo "Ngày bắt đầu: <input type='date' name='ngaybatdau'><br>";
-    echo "Ngày kết thúc: <input type='date' name='ngayketthuc'><br>";
-    echo "<input type='submit' value='Thêm chương trình khuyến mãi'>";
-    echo "</form>";
+     // Display add form
+     echo "<div class='form-container'>"; // Bắt đầu div form-container
+     echo "<form method='post'>";
+     echo "ID khuyến mãi: <input type='text' name='discountID'><br>";
+     echo "Chương trình khuyến mãi: <input type='text' name='tenkm'><br>";
+     echo "Giảm giá: <input type='text' name='giamgia'><br>";
+     echo "Trạng thái: <input type='text' name='trangthai'><br>";
+     echo "Ngày bắt đầu: <input type='date' name='ngaybatdau'><br>";
+     echo "Ngày kết thúc: <input type='date' name='ngayketthuc'><br>";
+     echo "<input type='submit' value='Thêm mới'>";
+     echo "</form>";
+     echo "</div>"; // Kết thúc div form-container
 
     $query = "SELECT * FROM discount";
     $result = chayTruyVanTraVeDL($link, $query);
     giaiPhongBoNho($link, $result);
 }
+
 function edit_KM()
 {
     $link = null;
@@ -113,15 +154,17 @@ function edit_KM()
         $row = mysqli_fetch_assoc($result);
 
         // Display edit form
+        echo "<div class='form-container'>"; // Bắt đầu div form-container
         echo "<form method='post'>";
-        echo "ID khuyến mãi: <input type='text' name='discountID' value='" . $row["discountID"] . "' disabled><br>"; // Disabled to prevent modification
+        echo "ID khuyến mãi: <input type='text' name='discountID' value='" . $row["discountID"] . "' disabled><br>";
         echo "Chương trình khuyến mãi: <input type='text' name='tenkm' value='" . $row["voucherCode"] . "'><br>";
         echo "Giảm giá: <input type='text' name='giamgia' value='" . $row["discountAmount"] . "'><br>";
         echo "Trạng thái: <input type='text' name='trangthai' value='" . $row["status"] . "'><br>";
         echo "Ngày bắt đầu: <input type='date' name='ngaybatdau' value='" . $row["startDate"] . "'><br>";
         echo "Ngày kết thúc: <input type='date' name='ngayketthuc' value='" . $row["endDate"] . "'><br>";
-        echo "<input type='submit' value='Cập nhật khuyến mãi'>";
+        echo "<input type='submit' value='Cập nhật'>";
         echo "</form>";
+        echo "</div>"; // Kết thúc div form-container
     }
 
     giaiPhongBoNho($link, $result);
