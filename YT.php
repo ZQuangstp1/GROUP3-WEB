@@ -89,17 +89,17 @@ giaiPhongBoNho($link, $result);
 
       <style>
        body {
-        margin :0;
-        padding :0;
-       }
-             .div-7:hover,
-.div-8:hover,
-.div-9:hover,
-.div-10:hover {
-  box-shadow: 0 0 5px 0 #fb6f92; /* Hiệu ứng nổi lên nhẹ màu hồng */
-  transform: translateY(-3px); /* Nổi lên full ô */
-}
-            .div {
+            margin :0;
+            padding :0;
+          }
+          .div-7:hover,
+          .div-8:hover,
+          .div-9:hover,
+          .div-10:hover {
+            box-shadow: 0 0 5px 0 #fb6f92; /* Hiệu ứng nổi lên nhẹ màu hồng */
+            transform: translateY(-3px); /* Nổi lên full ô */
+          }
+              .div {
               display: flex;
               flex-direction: column;
               align-items: center;
