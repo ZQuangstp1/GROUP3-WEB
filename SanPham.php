@@ -140,9 +140,6 @@ function add_SP()
     $km = "SELECT discountID, discountAmount FROM discount";
     $result_km = chayTruyVanTraVeDL($link, $km);
 
-    $sct = "SELECT subcategoryID , subcategoryName FROM subcategory";
-    $result_sct = chayTruyVanTraVeDL($link, $sct);
-
     ?>
     <div class="form-container" id="ThemSP">
     <form action="?opt=add_SP" method="post" enctype="multipart/form-data">
@@ -185,18 +182,18 @@ function add_SP()
         $_soluong = isset($_POST["soluong"]) ? trim($_POST["soluong"]) : '';
         $_mota = isset($_POST["mota"]) ? trim($_POST["mota"]) : '';
         $_giatien = isset($_POST["giatien"]) ? trim($_POST["giatien"]) : '';
-        $_khuyenmai = isset($_POST["khuyenmai"]) ? trim($_POST["khuyenmai"]) : '';
+        $_km = isset($_POST["khuyenmai"]) ? trim($_POST["khuyenmai"]) : '';
         $_trangthai = isset($_POST["trangthai"]) ? trim($_POST["trangthai"]) : '';
 
         // Kiểm tra xem tất cả các trường đã được nhập chưa
-        if (empty($_masp) || empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai) || empty($_trangthai)) {
+        if (empty($_masp) || empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_km) || empty($_trangthai)) {
             echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
             return; // Dừng xử lý nếu có trường nào đó bỏ trống
         }
 
         $_status = intval($_soluong) > 0 ? "Còn hàng" : "Hết hàng";
         $sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID)
-    VALUES ('$_tensp', '$_masp', '$_mota', '$_giatien', '$_soluong', '$_trangthai', '$_khuyenmai')";
+    VALUES ('$_tensp', '$_masp', '$_mota', '$_giatien', '$_soluong', '$_trangthai', '$_km')";
 
         $rs = chayTruyVanKhongTraVeDL($link, $sql);
 
@@ -219,12 +216,12 @@ function add_SP()
             $_soluong = isset($_POST["soluong"]) ? trim($_POST["soluong"]) : '';
             $_mota = isset($_POST["mota"]) ? trim($_POST["mota"]) : '';
             $_giatien = isset($_POST["giatien"]) ? trim($_POST["giatien"]) : '';
-            $_khuyenmai = isset($_POST["khuyenmai"]) ? trim($_POST["khuyenmai"]) : '';
-            $_subct = isset($_POST["subct"]) ? trim($_POST["subct"]) : '';
+            $_km = isset($_POST["khuyenmai"]) ? trim($_POST["khuyenmai"]) : '';
+            $_trangthai = isset($_POST["trangthai"]) ? trim($_POST["trangthai"]) : '';
 
 
             // Kiểm tra xem tất cả các trường đã được nhập chưa
-if (empty($_masp) || empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai) || empty($_trangthai)) {
+if (empty($_masp) || empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_km) || empty($_trangthai)) {
     echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
     return; // Dừng xử lý nếu có trường nào đó bỏ trống
 }
@@ -266,8 +263,8 @@ if (empty($_trangthai)) {
 }
 
 // Nếu tất cả các điều kiện kiểm tra đều được thoả mãn, tiến hành thêm sản phẩm
-$sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID, subcategoryID)
-VALUES ('$_tensp', '$_masp', '$_mota', '$_giatien', '$_soluong', '$_trangthai', '$_khuyenmai', '$_subct')";
+$sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID)
+VALUES ('$_tensp', '$_masp', '$_mota', '$_giatien', '$_soluong', '$_trangthai', '$_km')";
 
 $rs = chayTruyVanKhongTraVeDL($link, $sql);
 
@@ -280,8 +277,8 @@ if ($rs) {
 }
 
             $_status = intval($_soluong) > 0 ? "Còn hàng" : "Hết hàng";
-            $sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID, subcategoryID)
-        VALUES ('$_tensp', '$_masp', '$_mota', '$_giatien', '$_soluong', '$_status', '$_khuyenmai', '$_subct')";
+            $sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID)
+        VALUES ('$_tensp', '$_masp', '$_mota', '$_giatien', '$_soluong', '$_status', '$_km')";
 
 
             $rs = chayTruyVanKhongTraVeDL($link, $sql);
@@ -363,12 +360,12 @@ function update_SP()
         $_soluong = $_POST["soluong"];
         $_mota = $_POST["mota"];
         $_gia = $_POST["giatien"];
-        $_subct = $_POST["subct"];
+        $_trangthai = $_POST["trangthai"];
         $_km = $_POST["khuyenmai"];
 
 
-        $sql = "UPDATE product SET productName = '$_tensp', quantityAvailable = '$_soluong', description = '$_mota',
-             unitPrice = '$_gia',subcategoryID='$_subct' ,discountID = '$_km' WHERE productID = '$_masp' ";
+        $sql = "UPDATE product SET productName = '$_tensp', quantityAvailable = '$_soluong', description = '$_mota', status = '$_trangthai',
+             unitPrice = '$_gia',discountID = '$_km' WHERE productID = '$_masp' ";
 
         //echo $sql;
         if ($_masp != "") {
