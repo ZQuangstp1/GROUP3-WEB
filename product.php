@@ -375,7 +375,7 @@
           $link = null;
           taoKetNoi($link);
 
-          $sql = "SELECT 
+          $sql = "SELECT Distinct
                       p.productName, 
                       p.productID,
                       CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice, 
@@ -390,6 +390,7 @@
                   LEFT JOIN orders o ON o.orderID = od.orderID
                   LEFT JOIN discount d ON p.discountID = d.discountID
                   WHERE c.categoryID = '$catID'
+                  AND p.productID <> '$productId'
                   LIMIT 5;";
           $result = chayTruyVanTraVeDL($link, $sql);
           if ($result->num_rows > 0) {
