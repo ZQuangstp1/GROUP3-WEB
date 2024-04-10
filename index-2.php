@@ -124,27 +124,30 @@ giaiPhongBoNho($link, $result);
         $result = chayTruyVanTraVeDL($link, $sql);
 
         if ($result->num_rows > 0) {
-            // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
-            while ($row = $result->fetch_assoc()) {
-                ?>
-                <div class="product-item">
+          // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
+          while ($row = $result->fetch_assoc()) {
+              ?>
+                <div class="bestsellerproduct-item">
                 <a href="product.php?product_id=<?php echo $row['productID']; ?>">
-                    <img src="<?php echo $row['image']; ?>" class="img">
-                    <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
-                    <div class="product-info">
-                        <div class="product-name"><?php echo $row['productName']; ?></div>
-                        <div class="product-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
-                        <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
-                    </div>
+                    <img src="<?php echo $row['image']; ?>" class="img">     
+                    <?php if ($row['discountPercentage'] !== null) { ?>
+                        <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
+                    <?php } ?>        
+                    <div class="bestsellerproduct-info">
+                        <div class="bestsellerproduct-name"><?php echo $row['productName']; ?></div>
+                        <div class="bestsellerproduct-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
+                        <div class="bestsellerproduct-price"><?php echo $row['formattedUnitPrice']; ?></div>
+                  </div>
                   </a>
                 </div>
-            <?php
-            }
-        } else {
-            echo "0 kết quả";
-        }
-        giaiPhongBoNho($link, $result);
-        ?>
+          
+              <?php
+                  }
+              } else {
+                  echo "0 kết quả";
+              }
+              giaiPhongBoNho($link, $result);
+              ?>
     </div>
     <div class="button-container">
     <a href="product-list.php?discount=TRUE"><button class="SeeAll">Xem tất cả</button></a>
