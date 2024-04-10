@@ -399,10 +399,10 @@
                 ?>
                   <div class="bestsellerproduct-item">
                   <a href="product.php?product_id=<?php echo $row['productID']; ?>">
-                      <img src="<?php echo $row['image']; ?>" class="img">     
-                      <?php if ($row['discountPercentage'] !== null) { ?>
+                       <?php if ($row['discountPercentage'] !== null) { ?>
                           <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
                       <?php } ?>        
+                      <img src="<?php echo $row['image']; ?>" class="img">     
                       <div class="bestsellerproduct-info">
                           <div class="bestsellerproduct-name"><?php echo $row['productName']; ?></div>
                           <div class="bestsellerproduct-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>

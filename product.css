@@ -350,7 +350,7 @@ body{
 }
 .shipping-description {
   color: #3f3f3f;
-  font: 17px Oswald, sans-serif;
+  font: 17px Barlow, sans-serif;
 }
 .shipping-description-shipping-info2{
   color: #3f3f3f;
@@ -461,6 +461,7 @@ body{
 .description-title {
   font-family: Oswald, sans-serif;
   font-weight: 400;
+  margin-left: 20px;
   }
 
 @media (max-width: 991px) {
@@ -479,6 +480,7 @@ body{
 .description-title-underline {
   background-color: #fb6f92;
   height: 2px;
+  margin-left: 20px;
 }
 
 @media (max-width: 640px) {
@@ -499,6 +501,9 @@ body{
 .product-description, 
 .shipping-container {
   margin-left: 70px;
+}
+.product-description{
+  margin-top: 30px;
 }
 
 .product-summary {
@@ -752,7 +757,7 @@ body{
     flex-direction: column;
     color: #1d2939;
     font-weight: 500;
-    margin-left: 50px;
+    margin-left: 30px;
   }
 
   .review-title {
@@ -808,7 +813,6 @@ body{
     flex-direction: column;
     align-items: start;
     max-width: 100%;
-    width: 820px;
     padding-left: 20px;
     font-size: 15px;
     font-weight: 400;
@@ -1122,6 +1126,9 @@ a {
   position: relative;
   box-sizing: border-box;
 }
+.bestsellerproduct-item:hover  {
+  border-color: #fb6f92; 
+}
 
 .bestsellerproduct-item:last-child {
   margin-right: 0; 
@@ -1161,8 +1168,12 @@ a {
 .bestsellerproduct-name {
   text-transform: capitalize;
   align-self: stretch;
-  font: 17px Barlow, sans-serif;
-
+  font-family: 'Barlow', sans-serif;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* Số dòng tối đa */
+  overflow: hidden; /* Ẩn phần văn bản ra khỏi phần tử cha */
+  text-overflow: ellipsis; /* Hiển thị dấu "..." khi văn bản bị ẩn */
 }
 
 .bestsellerproduct-category {
@@ -1170,6 +1181,10 @@ a {
   text-transform: capitalize;
   margin-top: 6px;
   font: 400 14px Barlow, sans-serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .bestsellerproduct-price {
@@ -1188,6 +1203,21 @@ a {
   white-space: nowrap;
   font: 400 40px/81% Barlow, sans-serif;
   word-spacing: 5px;
+}
+
+@media (max-width: 769px) {
+  .best-seller {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Các sản phẩm sẽ căn giữa trên hàng */
+  }
+  .bestsellerproduct-item {
+    width: 230px; 
+    height: 60%; 
+    margin-bottom: 20px; /* Khoảng cách giữa các dòng */
+    box-sizing: border-box;
+    padding: 0 5px; /* Khoảng cách giữa các sản phẩm */
+  }
 }
 @media (max-width: 991px) {
   .div {
