@@ -1,4 +1,6 @@
-<script>
+<head> 
+    <link rel="stylesheet" type="text/css" href="form.css" />
+    <script>
     function confirmDel() {
         if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này này?')) {
             return true;
@@ -25,7 +27,7 @@
     <a href="?opt=add_SP"><button>Thêm sản phẩm</button></a>   
 
 </div>
-
+</head>
 <?php
 // Kết nối vào CSDL
 require_once ("db_module.php");
@@ -143,41 +145,71 @@ function add_SP()
 
     ?>
     <div class="form-container" id="ThemSP">
-        <form action="?opt=add_SP" method="post" enctype="multipart/form-data">
-            Mã sản phẩm: <input type="text" name="masp"
-                value="<?php echo isset($_POST['masp']) ? htmlspecialchars($_POST['masp']) : ''; ?>">
-            Tên sản phẩm: <input type="text" name="tensp"
-                value="<?php echo isset($_POST['tensp']) ? htmlspecialchars($_POST['tensp']) : ''; ?>">
-            Số lượng: <input type="number" name="soluong" min="1">
-            Mô tả: <input type="text" name="mota"
-                value="<?php echo isset($_POST['mota']) ? htmlspecialchars($_POST['mota']) : ''; ?>">
-            Giá sản phẩm: <input type="number" name="giatien" min="0"
-                value="<?php echo isset($_POST['giatien']) ? htmlspecialchars($_POST['giatien']) : ''; ?>">
-            Phân loại phụ:
-            <select name="subct">
-                <?php
-                if ($result_sct) {
-                    while ($row = mysqli_fetch_assoc($result_sct)) {
-                        echo "<option value='{$row['subcategoryID']}'>{$row['subcategoryName']}</option>";
-                    }
+    <form action="?opt=add_SP" method="post" enctype="multipart/form-data">
+        Mã sản phẩm: <input type="text" name="masp"
+            value="<?php echo isset($_POST['masp']) ? htmlspecialchars($_POST['masp']) : ''; ?>">
+        Tên sản phẩm: <input type="text" name="tensp"
+            value="<?php echo isset($_POST['tensp']) ? htmlspecialchars($_POST['tensp']) : ''; ?>">
+        Số lượng: <input type="number" name="soluong" min="1">
+        Mô tả: <input type="text" name="mota"
+            value="<?php echo isset($_POST['mota']) ? htmlspecialchars($_POST['mota']) : ''; ?>">
+        Giá sản phẩm: <input type="number" name="giatien" min="0"
+            value="<?php echo isset($_POST['giatien']) ? htmlspecialchars($_POST['giatien']) : ''; ?>">
+        Khuyến mãi:
+        <select name="khuyenmai">
+            <?php
+            if ($result_km) {
+                while ($row = mysqli_fetch_assoc($result_km)) {
+                    echo "<option value='{$row['discountID']}'>{$row['discountAmount']}</option>";
                 }
-                ?>
-            </select>
-            Khuyến mãi:
-            <select name="khuyenmai">
-                <?php
-                if ($result_km) {
-                    while ($row = mysqli_fetch_assoc($result_km)) {
-                        echo "<option value='{$row['discountID']}'>{$row['discountAmount']}</option>";
-                    }
-                }
-                ?>
-            </select>
-            <div class="form-buttons">
-                <input type="submit" value="Lưu">
-                <input type="reset" value="Nhập lại">
-                <button type="button" onclick="window.location.href='QLSP_XemSP.php?opt=view_NV';">Quay lại</button>
-            </div>
+            }
+            ?>
+        </select>
+        Trạng thái:
+        <select name="trangthai">
+            <option value="Còn hàng">Còn hàng</option>
+            <option value="Hết hàng">Hết hàng</option>
+        </select>
+        <div class="form-buttons">
+            <input type="submit" value="Lưu">
+            <input type="reset" value="Nhập lại">
+            <button type="button" onclick="window.location.href='QLSP_XemSP.php?opt=view_NV';">Quay lại</button>
+        </div>
+    </form>
+    <?php
+    // Xử lý khi form được submit
+    if (!empty($_POST)) {
+        // Lấy và xử lý dữ liệu từ form
+        $_masp = isset($_POST["masp"]) ? trim($_POST["masp"]) : '';
+        $_tensp = isset($_POST["tensp"]) ? trim($_POST["tensp"]) : '';
+        $_soluong = isset($_POST["soluong"]) ? trim($_POST["soluong"]) : '';
+        $_mota = isset($_POST["mota"]) ? trim($_POST["mota"]) : '';
+        $_giatien = isset($_POST["giatien"]) ? trim($_POST["giatien"]) : '';
+        $_khuyenmai = isset($_POST["khuyenmai"]) ? trim($_POST["khuyenmai"]) : '';
+        $_trangthai = isset($_POST["trangthai"]) ? trim($_POST["trangthai"]) : '';
+
+        // Kiểm tra xem tất cả các trường đã được nhập chưa
+        if (empty($_masp) || empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai) || empty($_trangthai)) {
+            echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
+            return; // Dừng xử lý nếu có trường nào đó bỏ trống
+        }
+
+        $_status = intval($_soluong) > 0 ? "Còn hàng" : "Hết hàng";
+        $sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID)
+    VALUES ('$_tensp', '$_masp', '$_mota', '$_giatien', '$_soluong', '$_trangthai', '$_khuyenmai')";
+
+        $rs = chayTruyVanKhongTraVeDL($link, $sql);
+
+        if ($rs) {
+            echo "<script>alert('Thêm sản phẩm thành công');</script>";
+            echo "<script>window.location.href='QLSP_XemSP.php?opt=add_NV';</script>";
+        } else {
+            echo "<script>alert('Có lỗi xảy ra, không thể thêm sản phẩm');</script>";
+            return;
+        }
+    }
+    ?>
+</div>
         </form>
         <?php
         if (!empty($_POST)) {
@@ -192,10 +224,60 @@ function add_SP()
 
 
             // Kiểm tra xem tất cả các trường đã được nhập chưa
-            if (empty($_masp) || empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai)) {
-                echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
-                return; // Dừng xử lý nếu có trường nào đó bỏ trống
-            }
+if (empty($_masp) || empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai) || empty($_trangthai)) {
+    echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
+    return; // Dừng xử lý nếu có trường nào đó bỏ trống
+}
+
+// Kiểm tra mã sản phẩm theo định dạng PDXXX
+if (!preg_match('/^PD\d{3}$/i', $_masp)) {
+    echo "<script>alert('Mã sản phẩm không hợp lệ.');</script>";
+    return;
+}
+
+// Kiểm tra số lượng
+if ($_soluong <= 0) {
+    echo "<script>alert('Số lượng sản phẩm phải lớn hơn 0.');</script>";
+    return;
+}
+
+// Kiểm tra tên sản phẩm không được để trống
+if (empty($_tensp)) {
+    echo "<script>alert('Vui lòng nhập tên sản phẩm.');</script>";
+    return;
+}
+
+// Kiểm tra mô tả không được để trống
+if (empty($_mota)) {
+    echo "<script>alert('Vui lòng nhập mô tả sản phẩm.');</script>";
+    return;
+}
+
+// Kiểm tra giá sản phẩm không được để trống
+if (empty($_giatien)) {
+    echo "<script>alert('Vui lòng nhập giá sản phẩm.');</script>";
+    return;
+}
+
+// Kiểm tra tình trạng không được để trống
+if (empty($_trangthai)) {
+    echo "<script>alert('Vui lòng chọn tình trạng sản phẩm.');</script>";
+    return;
+}
+
+// Nếu tất cả các điều kiện kiểm tra đều được thoả mãn, tiến hành thêm sản phẩm
+$sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID, subcategoryID)
+VALUES ('$_tensp', '$_masp', '$_mota', '$_giatien', '$_soluong', '$_trangthai', '$_khuyenmai', '$_subct')";
+
+$rs = chayTruyVanKhongTraVeDL($link, $sql);
+
+if ($rs) {
+    echo "<script>alert('Thêm sản phẩm thành công');</script>";
+    echo "<script>window.location.href='QLSP_XemSP.php?opt=add_NV';</script>";
+} else {
+    echo "<script>alert('Có lỗi xảy ra, không thể thêm sản phẩm');</script>";
+    return;
+}
 
             $_status = intval($_soluong) > 0 ? "Còn hàng" : "Hết hàng";
             $sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID, subcategoryID)
@@ -224,9 +306,6 @@ function edit_SP()
     $km = "SELECT discountID, discountAmount FROM discount";
     $result_km = chayTruyVanTraVeDL($link, $km);
 
-    $sct = "SELECT subcategoryID , subcategoryName FROM subcategory";
-    $result_sct = chayTruyVanTraVeDL($link, $sct);
-
     if (isset($_GET["productID"])) {
         $_productID = $_GET["productID"];
 
@@ -236,43 +315,37 @@ function edit_SP()
         //Lấy dữ liệu từ trong db ra
         if ($row = mysqli_fetch_assoc($result)) {
             ?>
-                <div class="form-container">
-                    <form name="formSP" action="?opt=update_SP" method="post" enctype="multipart/form-data">
-                        Mã sản phẩm: <input type="text" name="masp" readonly value="<?php echo $row["productID"]; ?>"><br>
-                        Tên sản phẩm: <input type="text" name="tensp" value="<?php echo $row["productName"]; ?>"><br>
-                        Số lượng: <input type="number" name="soluong" min="1" value="<?php echo $row["quantityAvailable"]; ?>"><br>
-                        Mô tả: <input type="text" name="mota" value="<?php echo $row["description"]; ?>"><br>
-                        Giá sản phẩm: <input type="number" name="giatien" min="0" value="<?php echo $row["unitPrice"]; ?>"><br>
-                        Phân loại:
-                        <select name="subct">
-                            <?php
-                            if ($result_sct) {
-                                while ($row_sct = mysqli_fetch_assoc($result_sct)) {
-                                    $selected = $row_sct['subcategoryID'] == $row['subcategoryID'] ? 'selected' : '';
-                                    echo "<option value='{$row_sct['subcategoryID']}' $selected>{$row_sct['subcategoryName']}</option>";
-                                }
+            <div class="form-container">
+                <form name="formSP" action="?opt=update_SP" method="post" enctype="multipart/form-data">
+                    Mã sản phẩm: <input type="text" name="masp" readonly value="<?php echo $row["productID"]; ?>"><br>
+                    Tên sản phẩm: <input type="text" name="tensp" value="<?php echo $row["productName"]; ?>"><br>
+                    Số lượng: <input type="number" name="soluong" min="1" value="<?php echo $row["quantityAvailable"]; ?>"><br>
+                    Mô tả: <input type="text" name="mota" value="<?php echo $row["description"]; ?>"><br>
+                    Giá sản phẩm: <input type="number" name="giatien" min="0" value="<?php echo $row["unitPrice"]; ?>"><br>
+                    Trạng thái:
+                    <select name="trangthai">
+                        <option value="Còn hàng" <?php if ($row["status"] == "Còn hàng") echo "selected"; ?>>Còn hàng</option>
+                        <option value="Hết hàng" <?php if ($row["status"] == "Hết hàng") echo "selected"; ?>>Hết hàng</option>
+                    </select><br>
+                    Khuyến mãi:
+                    <select name="khuyenmai">
+                        <?php
+                        if ($result_km) {
+                            while ($row_km = mysqli_fetch_assoc($result_km)) {
+                                $selected = $row_km['discountID'] == $row['discountID'] ? 'selected' : '';
+                                echo "<option value='{$row_km['discountID']}' $selected>{$row_km['discountAmount']}</option>";
                             }
-                            ?>
-                        </select>
-                        Khuyến mãi:
-                        <select name="khuyenmai">
-                            <?php
-                            if ($result_km) {
-                                while ($row_km = mysqli_fetch_assoc($result_km)) {
-                                    $selected = $row_km['discountID'] == $row['discountID'] ? 'selected' : '';
-                                    echo "<option value='{$row_km['discountID']}' $selected>{$row_km['discountAmount']}</option>";
-                                }
-                            }
-                            ?>
-                        </select>
-                        <div class="form-buttons"> 
-                            <input type="submit" value="Lưu">
-                            <input type="reset" value="Nhập lại">
-                            <button type="button" onclick="window.location.href='QLSP_XemSP.php?opt=view_SP';">Quay lại</button>
-                        </div>
-                    </form>
-                </div>
-                <?php
+                        }
+                        ?>
+                    </select>
+                    <div class="form-buttons">
+                        <input type="submit" value="Lưu">
+                        <input type="reset" value="Nhập lại">
+                        <button type="button" onclick="window.location.href='QLSP_XemSP.php?opt=view_SP';">Quay lại</button>
+                    </div>
+                </form>
+            </div>
+        <?php
         }
     }
 }
