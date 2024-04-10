@@ -66,6 +66,7 @@ if (isset($_SESSION['cart'])) {
                 <div class="infor">
                     <!--Thông tin đăng nhập, nhấn đăng nhập sẽ điều hướng qua trang đăng nhập, ngược lại đã đăng nhập sẵn sẽ điều hướng qua bước hai-->
                     <div class="personal-infor">
+                    <form action="hoantat.php" method="POST"> 
                         <h2>Thông tin vận chuyển</h2>
                         <div class="row">
                             <div class="col-trai">
@@ -113,9 +114,21 @@ if (isset($_SESSION['cart'])) {
                         </div>
                         <br>
                         <h2>Phương thức thanh toán</h2>
+                        <div>
+                        <input type="radio" id="tienmat" value="Tiền mặt" name="exampleRadio">
+                        <label for="tienmat">Tiền mặt</label>
+                        </div>   
+                        <div>
+                            <input type="radio" id="banking" value="Moblie Banking" name="exampleRadio">
+                            <label for="banking">Moblie Banking</label>
+                        </div> 
+                    <div>
+                        <input type="radio" id="momo" value="Momo" name="exampleRadio">
+                        <label for="momo">Momo</label>
+                    </div>
                         <div class="row">
                             <div class="col-trai">
-                                <input type="submit" name="" id="trangtieptheo" value="Tiếp theo >>">
+                                <input type="submit" name="tieptheo" id="trangtieptheo" value="Tiếp theo >>">
                             </div>
                             <div class="col-phai">
                                 <button type="button" onclick="goback()"
@@ -159,7 +172,7 @@ if (isset($_SESSION['cart'])) {
                                     $thanhtien = $sp[4] * $sp[3];
                                     $tong += $thanhtien;
                                     echo '  <div class="col-trais" style="margin-top: 3%;">
-                                                <img src="' . $sp[1] . '" alt="" width="70%" height="10%" style="border: 1px solid black; margin-left: 10px;">
+                                                <img src="' . $sp[1] . '" alt="" width="70%" height="5%" style="border: 1px solid black; margin-left: 10px;">
                                             </div>
                                             <div class="col-giua">
                                                 <span style="float: left; font-size: 10px;">' . $sp[2] . '</span>

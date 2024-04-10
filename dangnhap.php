@@ -18,7 +18,7 @@ if (isset($_POST)) {
             // $_SESSION['customerID'] = $customerID;
             // $_SESSION['accountID'] = $_accountID;
             giaiPhongBoNho($link, true);
-            header("Location: vanchuyen.php");
+            header("Location: viewcart.php");
             exit(); // Thoát để ngăn code phía sau chạy khi đã chuyển hướng
         } else {
             giaiPhongBoNho($link, true);

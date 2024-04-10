@@ -7,8 +7,8 @@ taoKetNoi($link);
 
 if (!isset($_SESSION["customerID"])) {
     header("Location:dangnhap.php");
-}
-;
+};
+
 if (isset($_SESSION['cart'])) {
 
     $sql = "SELECT CONCAT(customer.lastName, ' ', customer.firstName) AS customerName,

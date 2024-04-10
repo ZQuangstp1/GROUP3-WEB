@@ -14,6 +14,7 @@ function dangki($link, $_username, $_password)
     $new_account_id = 'A' . str_pad($num_records + 1, 6, '0', STR_PAD_LEFT);
     $new_cus_id = 'CS' . str_pad($num_records + 1, 5, '0', STR_PAD_LEFT);
 
+
     // Chèn dữ liệu vào bảng useraccount
     $insert_query = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$_username', '$_password', '$new_cus_id')";
     $rs = chayTruyVanKhongTraVeDL($link, $insert_query);

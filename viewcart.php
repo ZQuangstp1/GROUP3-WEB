@@ -58,7 +58,7 @@
         </table>
         <p><a href="index.php">Tiếp tục đặt hàng</a></p>
         <p><a href="delcart.php">Xoá giỏ hàng</a></p>
-        <p><a href="vanchuyen.php" onclick="taoSanPham()">Thanh toán</a></p> 
+        <p><a href="vanchuyen.php" onclick="taoSanPham()">Thanh toán</a></p>
     </body>
     </html>
     <?php   
