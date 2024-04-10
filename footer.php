@@ -394,7 +394,15 @@
                     giaiPhongBoNho($link, $result);
                   }
             } else {
-                echo "Vui lòng nhập email!";
+              ?>
+              <div id="popup-container" class="popup-container">
+                  <div class="popup">
+                      <span class="close-btn" onclick="closePopup()">&times;</span>
+                      <img src="https://www.svgrepo.com/show/93424/exclamation-mark-inside-a-circle.svg" alt="Check icon" class="check-icon">
+                      <p>Vui lòng nhập email!</p>
+                  </div>
+              </div>
+              <?php
             }
         }
     ?>
