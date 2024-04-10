@@ -7,7 +7,7 @@
         $hinh = $_POST['img'];
         $tensp = $_POST['tensp'];
         $sl = (int)$_POST['soluong'];
-        $totalCash = $_POST['tongtien'];
+        $totalCash = (int)$_POST['tongtien'];
 
         //tạo mảng chứa cái đống dữ liệu này
         if ($sl == 0) {
