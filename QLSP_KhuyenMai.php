@@ -66,30 +66,6 @@
         .pink-row {
         background-color: pink; /* Định nghĩa màu hồng cho dòng */
     }
-    /* Đảm bảo các trường nhập liệu có chiều rộng như nhau */
-    form input[type="text"],
-    form input[type="date"],
-    form input[type="submit"] {
-        width: calc(100% - 12px); /* Trừ điều chỉnh của padding */
-        padding: 6px; /* Điều chỉnh padding để tạo khoảng cách */
-        margin-bottom: 2px; /* Tạo khoảng cách giữa các dòng */
-    }
-
-    /* Điều chỉnh kích thước nút thêm chương trình khuyến mãi */
-    form input[type="submit"] {
-        width: auto; /* Điều chỉnh chiều rộng tự động */
-        margin-top: 10px; /* Tạo khoảng cách từ trường nhập liệu cuối cùng */
-        font-family: 'Barlow, sans-serif';
-            padding: 6px 10px; /* Giảm kích thước button */
-            background-color: #DF8A8A;
-            border: none;
-            cursor: pointer;
-            margin-right: 5px; /* Giảm khoảng cách giữa các button */
-    }
-
-    form input[type="submit"]:hover {
-        background-color: #6a4141;
-    }
     </style>
 </head>
 <body>
