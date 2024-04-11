@@ -12,8 +12,57 @@
         <script type="text/javascript" src="vanchuyen.js" language="JavaScript"></script>
     </head>
     <body>
-        <h2>Đơn hàng của bạn</h2>
-        <table style="border-collapse: collapse;">
+        <?php
+            include 'head.php';
+        ?>
+    <style>
+    table {
+        margin: 5%;
+        border-collapse: collapse;
+        width: 90%;
+    }
+
+    th, td {
+        border: 2px solid black;
+        padding: 8px;
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    /* Thiết lập độ rộng của cột dựa trên nội dung */
+    th, td {
+        width: auto;
+    }
+    a.button {
+        /*display: inline-block; */
+        padding: 10px 20px;
+        background-color: #ff678d; /* Màu nền */
+        color: white; /* Màu chữ */
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px; /* Bo tròn viền */
+        cursor: pointer; /* Biểu tượng chuột khi di chuột qua */
+        transition: background-color 0.3s; /* Hiệu ứng khi hover */
+        float: left;
+        margin-right: 2%;
+
+}
+
+a.button:hover {
+  background-color: #45a049; /* Màu nền khi hover */
+}
+
+    /* Hoặc sử dụng width: fit-content */
+    /* th, td {
+        width: fit-content;
+    } */
+</style>
+        <h2 style="text-align: center; margin-top:5%">Đơn hàng của bạn</h2>
+        <table >
             <tr>
                 <th>Số thứ tự</th>
                 <th>ID sản phẩm</th>
@@ -51,15 +100,18 @@
                 }
             ?>
             <tr>
-                <td>Tong don hang</td>
-                <td style="background-color: #ccc;"><?=$tong; ?></td>
+                <td colspan="6" style="font-weight: bold;">Tổng đơn hàng</td>
+                <td style="background-color: #ccc; font-weight: bold;"><?=$tong; ?></td>
                 <td></td>
             </tr>
         </table>
-        <p><a href="index.php">Tiếp tục đặt hàng</a></p>
-        <p><a href="delcart.php">Xoá giỏ hàng</a></p>
-        <p><a href="vanchuyen.php" onclick="taoSanPham()">Thanh toán</a></p>
+        <p><a href="index.php" class="button" style="margin-left: 5%;">Tiếp tục đặt hàng</a></p>
+        <p><a href="delcart.php" class="button">Xoá giỏ hàng</a></p>
+        <p><a href="vanchuyen.php" onclick="taoSanPham()" class="button">Thanh toán</a></p>
     </body>
+    <?php
+        include 'footer.php';
+    ?>      
     </html>
     <?php   
         } //Cái ngoặc này của thằng if phía trên á

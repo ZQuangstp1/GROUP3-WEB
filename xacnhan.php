@@ -126,6 +126,7 @@ if (isset($_SESSION['cart'])) {
                         <input type="radio" id="momo" value="Momo" name="exampleRadio">
                         <label for="momo">Momo</label>
                     </div>
+
                         <div class="row">
                             <div class="col-trai">
                                 <input type="submit" name="tieptheo" id="trangtieptheo" value="Tiếp theo >>">
@@ -137,6 +138,14 @@ if (isset($_SESSION['cart'])) {
                             </div>
                         </div>
                         </form>
+                    <!--thanh toán bằng momo-->
+                    <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
+                          action="xulythanhtoanmomo.php">
+                        <input type="submit" name="momo" value="Thanh toán momo QR code" class="btn btn-danger">
+                    </form>
+                    <form action="xulythanhtoanmomoatm.php" class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded">
+                        <input type="submit" name="momo" value="Thanh toán momo ATM" class="btn btn-danger">
+                    </form>                  
                     </div>
                     <div class="img-order">
                         <div class="order-items">

@@ -1,3 +1,4 @@
+/*
 function saveData() {
     var hoten = document.getElementById("name").value;
     var congty = document.getElementById("cty").value;
@@ -22,3 +23,5 @@ function saveData() {
   }
   
   window.onload = init;
+
+*/
