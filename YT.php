@@ -166,7 +166,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
               display: flex;
               flex-direction: column;
               line-height: normal;
-              width: 50%;
+              width: 23%;
               margin-left: 0px;
             }
             @media (max-width: 991px) {
@@ -250,7 +250,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                     display: flex;
                     flex-direction: column;
                     line-height: normal;
-                    width: 50%;
+                    width: 77%;
                     margin-left: 20px;
                 }
 

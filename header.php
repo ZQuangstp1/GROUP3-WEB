@@ -304,13 +304,40 @@
                 <li><a href="dangxuat.php">Đăng xuất</a></li>
               </ul> -->
               <ul class="drop_menu">
-    <?php if (isset($_SESSION['username'])): ?>
-        <li><a href="TTKH.php"><?php echo $_SESSION['username']; ?></a></li>
-        <li><a href="dangxuat.php">Đăng xuất</a></li>
-    <?php else: ?>
-        <li><a href="dangnhap.php">Đăng nhập</a></li>
-        <li><a href="dangki.php">Đăng ký</a></li>
-    <?php endif; ?>
+              <?php if (isset($_SESSION['username'])):
+                require_once "db_module.php";
+                require_once "users_module.php";
+                $link = null;
+                taoKetNoi($link);
+              
+                $username = $_SESSION['username'];
+                // Truy vấn lấy thông tin từ cơ sở dữ liệu
+                $query = "SELECT
+                            c.customerID,
+                            ua.username,
+                            c.lastName,
+                            c.firstName,
+                            CONCAT(c.lastName, ' ', c.firstName) AS FullName
+                          FROM
+                            Customer AS c
+                            INNER JOIN UserAccount AS ua ON c.customerID = ua.customerID
+                          WHERE ua.username = '$username'";
+                
+                // Thực hiện truy vấn và lấy kết quả
+                $result = chayTruyVanTraVeDL($link, $query);
+                
+                // Kiểm tra xem truy vấn có trả về dữ liệu không
+                if ($result && $row = mysqli_fetch_assoc($result)) {
+                    // In thông tin FullName
+                    echo '<li><a href="TTKH.php">' . $row['FullName'] . '</a></li>';
+                    giaiPhongBoNho ( $link, $result );
+                }
+                ?>
+            <li><a href="dangxuat.php">Đăng xuất</a></li>
+            <?php else: ?>
+            <li><a href="dangnhap.php">Đăng nhập</a></li>
+            <li><a href="dangki.php">Đăng ký</a></li>
+        <?php endif; ?>
 </ul>
               
             </div>
