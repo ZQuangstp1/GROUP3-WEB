@@ -408,12 +408,14 @@ body {
   width: 100%;
 }
 
-.image-2 {
-  aspect-ratio: 0.96;
-  object-fit: auto;
-  object-position: center;
-  width: 100%;
+@media (max-width: 991px) {
+  .image {
+    width: 225px;
+    height: 225px;
+    flex-grow: 0 1 100px;
+  }
 }
+
 /*----------------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins&display=swap");
 

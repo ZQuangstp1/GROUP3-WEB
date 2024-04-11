@@ -65,6 +65,8 @@
     background: none; 
     font-size: 14px; 
     margin-right: 5px; 
+    background-color: transparent;  
+    color: #fb6f92;
 }
 #searchButton { 
     background: none; 
