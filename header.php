@@ -94,6 +94,7 @@
     margin-right: 50px;
     max-width: 20%;
     padding-top: 5px;
+    margin-left: 50px;
 }
     @media (max-width: 991px) {
     .logo-container {
