@@ -31,8 +31,9 @@
   </head>
 
 <body>
-<?php  require_once "header.php"; ?>
-<?php  require_once "menu.php"; ?>
+<!--HEADER + MENU -->
+  <?php  require_once "header.php"; ?>
+  <?php  require_once "menu.php"; ?>
 <!--PRODUCT DETAIL -->
   <?php
         require_once "db_module.php";
@@ -66,18 +67,19 @@
         }
       }
  ?>  
-<!--Nội dung của sản phẩm -->
-    <div class="breadcrumb">
-        <div>Home / <?php echo $productName; ?></div>
-    </div>
+
+<!--Nội dung tiêu đề của sản phẩm -->
+  <div class="breadcrumb">
+    <div>Home / <?php echo $productName; ?></div>
+  </div>
   <div class="product-details">
-  <div class="product-layout">
-    <div class="image-container">
+    <div class="product-layout">
+   
+      <div class="image-container">
         <img class="image-4-icon" alt="" src="<?php echo $image; ?>" />
         <img class="image-8-icon" alt="" src="<?php echo $image; ?>" />
-            <img class="zoom-image-icon" alt="Zoom Image" src="./public/zoom-image.svg" />
-        
       </div>
+
     <br>
        <div class="product-info">
         <div class="product-header">
@@ -99,21 +101,20 @@
             <div class="price-labels">
               <div>SỐ LƯỢNG</div>
             </div>
-
-          <div class="price-details">
-            <div class="quantitybtn">
-
-                <div class="input-group">
-                  <button id="decrement" onclick="totalClick(-1)">-</button> 
-                  <div class ="input-number">
-                  <span id ="number"> 1</span>               
-                  </div> 
-                  <button id="increment" onclick="totalClick(1)">+</button>
-                </div>
+            <div class="price-details">
+              <div class="quantitybtn">
+                  <div class="input-group">
+                    <button id="decrement" onclick="totalClick(-1)">-</button> 
+                    <div class ="input-number">
+                    <span id ="number"> 1</span>               
+                    </div> 
+                    <button id="increment" onclick="totalClick(1)">+</button>
+                  </div>
+              </div>
+              <div class="total-price"><?php echo $formattedPrice;?> VNĐ</div>
             </div>
-            <div class="total-price"><?php echo $formattedPrice;?> VNĐ</div>
-          </div>
         </div>
+
 <!--Button Thêm vào giỏ hàng-->
         <div class="product-actions">
             <div class="add-to-cart">
@@ -126,8 +127,6 @@
                 <input type="submit" name="addtocart" value="THÊM VÀO GIỎ HÀNG" class="add-to-bag">
               </form>
             </div>
-
-
 
 <!--Button Thích-->       
             <div class="add-to-wishlist">
@@ -200,7 +199,6 @@
             <h2 class="description-title">MÔ TẢ</h2>
             <div class="description-title-underline"></div>
           </div>
-          <div class="description-underline"></div>
         </section>
 
       <section class="product-description">
@@ -216,7 +214,7 @@
           Flamingo cung cấp Miễn phí Giao hàng Tiêu chuẩn cho tất cả các đơn hàng trị giá trên 1,000,000 VNĐ. Giá trị đơn hàng tối thiểu phải là 1,000,000 VNĐ trước thuế, phí vận chuyển và xử lý. Phí vận chuyển không được hoàn lại
         </p>
         <p class="shipping-description-shipping-info2">
-           Vui lòng cho đến tối đa 2 ngày làm việc (loại trừ cuối tuần, ngày lễ và ngày bán hàng) để xử lý đơn hàng của bạn.
+           Vui lòng cho đến tối đa 2 ngày làm việc (ngoại trừ cuối tuần, ngày lễ và ngày bán hàng) để xử lý đơn hàng của bạn.
         </p>
         <p class="shipping-description-shipping-info2">
         Thời gian xử lý + Thời gian vận chuyển = Thời gian giao hàng
@@ -226,10 +224,9 @@
 <!--Đánh gía sản phẩm-->
         <section class="description-container">
               <div class="description-title-container">
-              <a name="review"> <h2 class="description-title">Đánh giá</h2></a>
+                <a name="review"> <h2 class="description-title">ĐÁNH GIÁ</h2></a>
                 <div class="description-title-underline"></div>
               </div>
-              <div class="description-underline"></div>
         </section>
 
         <?php
@@ -284,7 +281,6 @@
           } else {
               echo "Lỗi trong quá trình truy vấn.";
           }
-
           giaiPhongBoNho($link, $result);
         ?>
     <br>
@@ -315,7 +311,7 @@
     </section>
 
     <?php
-// Kiểm tra xem người dùng đã nhấn nút "Bình luận" chưa
+      // Kiểm tra xem người dùng đã nhấn nút "Bình luận" chưa
       if(isset($_POST['submit'])){
         $link = null;
         taoKetNoi($link);
@@ -422,18 +418,18 @@
     </div>
 <!--FOOTER-->
     <?php  require "footer.php"; ?>
-<script>
 
-function showPopup() {
-  document.getElementById("popup-container").style.display = "block";
-}
+    <script>
+    function showPopup() {
+      document.getElementById("popup-container").style.display = "block";
+    }
 
-function closePopup() {
-  document.getElementById("popup-container").style.display = "none";
-}
-window.onload = function() {
-  showPopup();
-};
-</script>
+    function closePopup() {
+      document.getElementById("popup-container").style.display = "none";
+    }
+    window.onload = function() {
+      showPopup();
+    };
+    </script>
 </body>
 </html>

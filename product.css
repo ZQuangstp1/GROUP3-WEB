@@ -28,16 +28,16 @@ body{
   }
 }
 
-
 .breadcrumb {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  font-size: 13px;
+  font-size: 11px; /* Adjusted font size */
   color: #fb6f92;
   font-weight: 400;
   line-height: 292%;
   font-family: Barlow, sans-serif;
+  white-space: nowrap;
 }
 
 @media (max-width: 991px) {
@@ -46,6 +46,7 @@ body{
     margin-top: 40px;
   }
 }
+
 .product-info {
   display: flex;
   flex-direction: column;
@@ -90,35 +91,48 @@ body{
   white-space: nowrap;
   text-transform: uppercase;
   justify-content: center;
-  padding: 10px;
-  font: 500 18px Oswald, sans-serif;
+  padding: 5px; /* Reduced padding */
+  font: 400 16px Oswald, sans-serif; /* Adjusted font size and weight */
+  display: flex;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 991px) and (min-width: 768px) {
   .brand-name {
     white-space: initial;
+    font-size: 14px; /* Reduced font size for smaller screens */
+    padding: 5px; /* Adjusted padding */
+    margin-left: 0px; /* Set margin-left to 0px for iPad size */
+  }
+}
+
+@media (max-width: 767px) {
+  .brand-name {
+    white-space: initial;
+    font-size: 14px; /* Reduced font size for smaller screens */
+    padding: 5px; /* Adjusted padding */
+    margin-left: -20px; /* Set margin-left to -20px for smartphone size */
   }
 }
 
 .rating-stars {
   align-self: stretch;
   display: flex;
-  gap: 4px;
-  padding-top: 10px;
+  gap: 2px; /* Reduced gap */
+  padding-top: 2px; /* Reduced padding */
 }
 
 .star-icon {
   aspect-ratio: 1;
   object-fit: auto;
   object-position: center;
-  width: 16px;
+  width: 14px; /* Adjusted width */
 }
 
 .review-link {
   color: #6c6c6c;
   text-decoration: underline;
   margin: auto 0;
-  font: 400 12px/233% Baloo Bhaina 2, -apple-system, Roboto, Helvetica, sans-serif;
+  font: 300 11px/150% Baloo Bhaina 2, -apple-system, Roboto, Helvetica, sans-serif; /* Adjusted font size and weight */
 }
 
 .product-name {
@@ -127,13 +141,21 @@ body{
   -webkit-text-stroke-width: 1;
   -webkit-text-stroke-color: #000;
   font: 500 45px/56px Lora, sans-serif;
+  font-size: 40px;
+  line-height: 55px;
+  margin-right: 130px;
 }
 
 @media (max-width: 991px) {
   .product-name {
     max-width: 100%;
-    font-size: 40px;
-    line-height: 55px;
+    font-size: 35px;
+  }
+}
+@media (max-width: 671px) {
+  .product-name {
+    max-width: 100%;
+    font-size: 30px;
   }
 }
 
@@ -199,6 +221,20 @@ body{
   font: 500 40px Oswald, sans-serif;
 }
 
+/* Media Query for smaller screens */
+@media only screen and (max-width: 768px) {
+  .total-price {
+    font-size: 30px; /* Adjust the font size as needed for smaller screens */
+  }
+}
+
+/* Media Query for even smaller screens */
+@media only screen and (max-width: 480px) {
+  .total-price {
+    font-size: 25px; /* Adjust the font size further for even smaller screens */
+  }
+}
+
 .product-actions {
   display: flex;
   justify-content: flex-start;
@@ -210,13 +246,14 @@ body{
 @media (max-width: 991px) {
   .product-actions {
     flex-direction: column; /* Đảo ngược thành kiểu cột khi màn hình nhỏ hơn */
-    align-items: center; /* Căn giữa các phần tử khi ở chế độ cột */
+    align-items: left; /* Căn giữa các phần tử khi ở chế độ cột */
   }
 }
 
 .add-to-cart {
   display: flex;
-  align-items: center;
+  align-items: left;
+  justify-content:flex-start;
   margin-right: 20px;
 }
 
@@ -431,10 +468,10 @@ body{
 .description-container {
   align-self: center;
   display: flex;
-  width: 100%;
+  max-width: 100%;
   max-width: 1279px;
   gap: 0;
-  font-size: 18px;
+  font-size: 15px;
   color: #fb6f92;
 }
 
@@ -446,12 +483,6 @@ body{
   }
 }
 
-@media (max-width: 640px) {
-  .description-container {
-    padding-bottom: 100px;
-    margin: -45px 0 -69px;
-  }
-}
 
 .description-title-container {
   display: flex;
@@ -462,6 +493,7 @@ body{
   font-family: Oswald, sans-serif;
   font-weight: 400;
   margin-left: 20px;
+  white-space: nowrap;
   }
 
 @media (max-width: 991px) {
@@ -470,24 +502,22 @@ body{
   }
 }
 
-@media (max-width: 640px) {
-  .description-title {
-    padding-top: 68px;
-    margin-left: 118px;
-  }
-}
+
 
 .description-title-underline {
   background-color: #fb6f92;
   height: 2px;
   margin-left: 20px;
-}
+  width: calc(100% - 20px);
 
-@media (max-width: 640px) {
+}
+@media (max-width: 991px) {
   .description-title-underline {
-    margin-right: 200px;
+    margin-left: 10px;
   }
 }
+
+
 
 .description-underline {
   background-color: rgba(251, 111, 146, 0.1);
@@ -775,7 +805,7 @@ body{
   .wrapper {
     display: flex;
     align-items: center;
-    margin-left: 50px;
+    margin-left: 70px;
   }
   
   .wrapper1{
@@ -784,15 +814,15 @@ body{
     margin-left: 20px;
   }
 
-    .star{
-        width: 20px;
-        height: 20px;
-        background-color: gold;
-        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-        margin-right: 5px; /* Khoảng cách giữa các ngôi sao */
-        display: inline-block;
-        margin-top: 2px;
-    }
+  .star{
+    width: 20px;
+    height: 20px;
+    background-color: gold;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    margin-right: 5px; /* Khoảng cách giữa các ngôi sao */
+    display: inline-block;
+    margin-top: 2px;
+  }
 
 
   .comment-container {
@@ -821,7 +851,7 @@ body{
 
   @media (max-width: 991px) {
     .comment-container {
-      padding-left: 20px;
+      padding-left: 80px;
     }
   }
 
@@ -1017,15 +1047,14 @@ body{
 }
 .image-container {
   position: relative;
-  display: block;
+  flex-wrap: wrap;
+  display: flex;
 }
 
 .image-4-icon {
   position: relative;
-}
-.image-4-icon {
   left: 100px;
-  width: 605px;
+  max-width: 605px;
   height: 690px;
   object-fit: cover;
 } 
@@ -1039,12 +1068,24 @@ body{
   border: 1px solid black;
 
 }
-.zoom-image-icon {
-  position: absolute;
-  top: 660px;
-  left: 672px;
-  width: 33.5px;
-  height: 29.7px;
+/* Media query for iPad and iPhone */
+@media (max-width: 1024px) {
+  .image-8-icon {
+    display: none; /* Hide image-8-icon for iPad */
+  }
+  .image-4-icon {
+    max-width: 100%; /* Reduce the max-width of image-4-icon for iPad */
+  }
+}
+
+/* Media query for iPhone */
+@media (max-width: 768px) {
+  .image-8-icon {
+    display: none; /* Hide image-8-icon for iPhone */
+  }
+  .image-4-icon {
+    max-width: 100%; /* Reset max-width for smaller screens (iPhone) */
+  }
 }
 
 input-group {
