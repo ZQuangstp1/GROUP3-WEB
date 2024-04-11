@@ -80,6 +80,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin-left: 2%; 
             margin-top: 3%;
         }
+        @media screen and (max-width: 768px) {
+            body {
+                justify-content: center; /* Căn giữa khung đăng nhập */
+                margin-left: 0; /* Để khung đăng nhập căn giữa */
+                background-size: 200% 100%; /* Phủ nền toàn màn hình */
+                background-position: left; 
+            }
+        }
 
         .registration-container {
             background-color: #fff; /* Khung trắng bao quanh */
@@ -150,34 +158,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
        
         .msg.success {
-    font-size: bigger;
-    padding: 10px;
-    margin-bottom: 0px;
-    border-radius: 5px;
-    text-align: center;
-    background-color: #dff0d8; /* Màu nền cho thông báo thành công */
-    color: #3c763d; /* Màu chữ cho thông báo thành công */
-    font-weight : bold;
-}
-
-.msg.error {
-    font-size: bigger;
-    padding: 10px;
-    margin-bottom: 0px;
-    border-radius: 5px;
-    text-align: center;
-    background-color: #f2dede; /* Màu nền cho thông báo lỗi */
-    color: #a94442; /* Màu chữ cho thông báo lỗi */
-    font-weight : bold;
-}
-
-
-.cctk {
+            font-size: bigger;
+            padding: 10px;
+            margin-bottom: 0px;
+            border-radius: 5px;
             text-align: center;
-            margin-top: 15px;          
-            font: 400 15px Barlow, sans-serif;
-            color: #fb6f92;
+            background-color: #dff0d8; /* Màu nền cho thông báo thành công */
+            color: #3c763d; /* Màu chữ cho thông báo thành công */
+            font-weight : bold;
+            font-family: Barlow, sans-serif;
         }
+
+        .msg.error {
+            font-size: bigger;
+            padding: 10px;
+            margin-bottom: 0px;
+            border-radius: 5px;
+            text-align: center;
+            background-color: #f2dede; /* Màu nền cho thông báo lỗi */
+            color: #a94442; /* Màu chữ cho thông báo lỗi */
+            font-weight : bold;
+            font-family: Barlow, sans-serif;
+
+        }
+
+
+        .cctk {
+                    text-align: center;
+                    margin-top: 15px;          
+                    font: 400 15px Barlow, sans-serif;
+                    color: #fb6f92;
+                }
+
+  
 
     </style>
 </head>

@@ -57,6 +57,15 @@ if (isset($_POST)) {
             margin-left: 7%; /* Di chuyển khung đến giữa và lệch trái */
             margin-top: 3%;
         }
+        @media screen and (max-width: 768px) {
+            body {
+                justify-content: center; /* Căn giữa khung đăng nhập */
+                margin-left: 0; /* Để khung đăng nhập căn giữa */
+                background-size: 200% 100%; /* Phủ nền toàn màn hình */
+                background-position: left; 
+            }
+        }
+
          .login-container {
             background-color: #fff; 
             padding: 28px 33px 50px;
@@ -69,7 +78,7 @@ if (isset($_POST)) {
             /* CSS cho thông báo lỗi */
             font-size: bigger;
             padding: 10px;
-
+            font-family: Barlow, sans-serif;
             margin-top: 15px;
             border-radius: 5px;
             text-align: center;
