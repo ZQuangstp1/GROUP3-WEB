@@ -50,15 +50,19 @@ function view_KM()
         echo "<tr>";
         echo "<td>" . $row["discountID"] . "</td>";
         echo "<td>" . $row["voucherCode"] . "</td>";
-        echo "<td>" . $row["discountAmount"] . "</td>";
+        echo "<td>" . intval($row["discountAmount"] * 1) . "%</td>"; 
         echo "<td>" . $row["status"] . "</td>";
-        echo "<td>" . $row["startDate"] . "</td>";
-        echo "<td>" . $row["endDate"] . "</td>";
-        echo "<td><a href='?opt=edit_KM&discountID=" . $row["discountID"] . "'><img src='Picture/Icon Sua.png' alt='Sửa' style='width: 20px; height: 20px;'></a>
-                <a href='?opt=del_KM&discountID=" . $row["discountID"] . "' onclick='return confirmDel()'><img src='Picture/Icon Xoa.png' alt='Xóa' style='width: 20px; height: 20px;'></a></td>";
+        // Format start date as "dd-mm-yyyy"
+        echo "<td>" . date("d-m-Y", strtotime($row["startDate"])) . "</td>";
+        // Format end date as "dd-mm-yyyy"
+        echo "<td>" . date("d-m-Y", strtotime($row["endDate"])) . "</td>";
+        echo "<td>
+                <a href='?opt=edit_KM&discountID=" . $row["discountID"] . "'><img src='Picture/Icon Sua.png' alt='Sửa' style='width: 20px; height: 20px;'></a> 
+                <a href='?opt=del_KM&discountID=" . $row["discountID"] . "' onclick='return confirmDel()'><img src='Picture/Icon Xoa.png' alt='Xóa' style='width: 20px; height: 20px;'></a>
+              </td>";
         echo "</tr>";
     }
-
+    
     echo "</table>";
     giaiPhongBoNho($link, $result);
 }
@@ -84,7 +88,7 @@ function add_KM()
         <div class="form-buttons">
             <input type="submit" value="Lưu">
             <input type="reset" value="Nhập lại">
-            <button type="button" onclick="window.location.href='QLSP_XemSP.php?opt=view_KM';">Quay lại</button>
+            <button type="button" onclick="window.location.href='QLSP_KhuyenMai.php?opt=view_KM';">Quay lại</button>
         </div>
     </form>
     <?php
@@ -110,7 +114,7 @@ function add_KM()
 
         if ($rs) {
             echo "<script>alert('Thêm chương trình khuyến mãi thành công');</script>";
-            echo "<script>window.location.href='QLSP_XemSP.php?opt=add_KM';</script>";
+            echo "<script>window.location.href='QLSP_KhuyenMai.php?opt=add_KM';</script>";
         } else {
             echo "<script>alert('Có lỗi xảy ra, không thể thêm chương trình khuyến mãi');</script>";
             return;
@@ -147,7 +151,7 @@ function edit_KM()
                     <div class="form-buttons"> 
                         <input type="submit" value="Lưu">
                         <input type="reset" value="Nhập lại">
-                        <button type="button" onclick="window.location.href='QLSP_XemSP.php?opt=view_KM';">Quay lại</button>
+                        <button type="button" onclick="window.location.href='QLSP_KhuyenMai.php.php?opt=view_KM';">Quay lại</button>
                     </div>
                 </form>
             </div>
@@ -203,10 +207,10 @@ function del_KM()
 
         if ($result) {
             echo "<script>alert('Xóa thành công');</script>";
-            echo "<script>window.location.href='QLSP_XemSP.php?opt=view_KM';</script>";
+            echo "<script>window.location.href='QLSP_KhuyenMai.php?opt=view_KM';</script>";
         } else {
             echo "<script>alert('Xóa thất bại');</script>";
-            echo "<script>window.location.href='QLSP_XemSP.php?opt=view_KM';</script>";
+            echo "<script>window.location.href='QLSP_KhuyenMai.php?opt=view_KM';</script>";
         }
     }
 }
