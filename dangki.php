@@ -71,20 +71,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Đăng Ký</title>
     <style>
         body {
+            background-image: url("img/LoginBG.png");
+            background-size: cover; 
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; 
             align-items: center;
             height: 100vh;
-            background-color: #f9f2e6;
+            margin-left: 2%; 
+            margin-top: 3%;
         }
 
         .registration-container {
-            background-color: #f9f2e6;
+            background-color: #fff; /* Khung trắng bao quanh */
             padding: 28px 33px 50px;
             max-width: 584px;
-            width: 100%;
-            
+            width: 100%;    
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng khung trắng */
         }
         .registration-container img {
             display: block;

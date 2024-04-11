@@ -48,6 +48,23 @@ if (isset($_POST)) {
 <head>
     <title>Đăng Nhập</title>
     <style>
+         body {
+            background-image: url("img/LoginBG.png");
+            background-size: cover; /* Làm ảnh nền phù hợp với kích thước màn hình */
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            margin-left: 7%; /* Di chuyển khung đến giữa và lệch trái */
+            margin-top: 3%;
+        }
+         .login-container {
+            background-color: #fff; 
+            padding: 28px 33px 50px;
+            max-width: 400px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng khung trắng */
+        }
         .error-message {
             /* CSS cho thông báo lỗi */
             font-size: bigger;
@@ -61,23 +78,6 @@ if (isset($_POST)) {
             color: #a94442;
             /* Màu chữ cho thông báo lỗi */
             font-weight: bold;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f9f2e6;
-        }
-
-        .login-container {
-            background-color: #f9f2e6;
-            padding: 28px 33px 50px;
-            max-width: 584px;
-            width: 100%;
-            margin: 0 auto;
-            border-radius: 8px;
         }
 
         .logo {
@@ -130,34 +130,24 @@ if (isset($_POST)) {
 </head>
 
 <body>
-
-
-    
     <div class="login-container">
-        
         <div class="login-title">Đăng Nhập</div>
 
         <form id="loginForm" action="dangnhap.php" method="post" enctype="multipart/form-data">
             <input type="text" class="input-field" id="username" name="username" placeholder="Tên đăng nhập" required>
             <input type="password" class="input-field" id="password" name="password" placeholder="Mật khẩu" required>
 
-
             <?php if (isset($_SESSION['error_message'])): ?>
                 <div class="error-message">
                     <?php echo $_SESSION['error_message']; ?>
                 </div>
-                <?php unset($_SESSION['error_message']); ?> <!-- Xóa session để không hiển thị lại -->
+                <?php unset($_SESSION['error_message']); ?>
             <?php endif; ?>
-           
+
             <button type="submit" class="login-button">Đăng nhập</button>
             <div class="cctk">Chưa có tài khoản? <a href="dangki.php">Đăng ký ngay</a></div>
-
         </form>
-
-        </div>
-        
-     
-   
+    </div>
 </body>
 
 </html>
