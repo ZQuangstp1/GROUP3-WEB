@@ -12,6 +12,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            font-family: 'Barlow, sans-serif';
         }
 
         .chart-row1 {
@@ -43,6 +44,7 @@
     position: absolute;
     top: 100px;
     right: 10px;
+    font-family: 'Barlow, sans-serif';
 }
 
 .view-report-btn:hover {
