@@ -13,7 +13,8 @@
             border: 1px solid black;
             text-align: center;
             padding: 5px 7px;
-            font-size: 12.5px; /* Giảm kích thước chữ */
+            font-size: 13.5px; /* Giảm kích thước chữ */
+            font-family: 'Barlow, sans-serif';
         }
         input[type="text"] {
             padding: 8px;
