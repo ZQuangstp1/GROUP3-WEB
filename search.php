@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 // Include file config.php and db_module.php
 include_once 'config.php';
 include_once 'db_module.php';

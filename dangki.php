@@ -75,15 +75,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #fff;
+            background-color: #f9f2e6;
         }
+
         .registration-container {
-            background-color: #fff;
             background-color: #f9f2e6;
             padding: 28px 33px 50px;
             max-width: 584px;
             width: 100%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            
             border-radius: 8px;
         }
         .registration-container img {
@@ -169,7 +169,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-
+.cctk {
+            text-align: center;
+            margin-top: 15px;          
+            font: 400 15px Barlow, sans-serif;
+            color: #fb6f92;
+        }
 
     </style>
 </head>
@@ -177,11 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <div class="registration-container">
-    <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/bff76e7a0f61b29d67db96d5f3e28b42ecb980fbac692db94fd8d0a0645b269b?apiKey=eb23b2963eda46448725d8ef1c3cf67d&"
-        alt="Logo"
-    />
+    
     <div class="registration-title">Đăng Ký</div>
     <form action="dangki.php" method="POST" enctype="multipart/form-data">
         <input type="text" class="input-field" name="username" placeholder="Tên Đăng Nhập" required>
@@ -192,6 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php unset($_SESSION['error']); ?> <!-- Đảm bảo thông báo lỗi chỉ hiển thị một lần -->
     <?php endif; ?>
         <button type="submit" class="registration-button">Đăng Ký</button>
+        <div class="cctk">Đã có tài khoản? <a href="dangnhap.php">Đăng nhập ngay</a></div>
     </form>
    
 </div>
