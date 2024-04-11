@@ -1,7 +1,6 @@
 body {
   background: #f9f2e6;
   font-family: Barlow, sans-serif;
-
 }
 
 .back-to-top-btn {
@@ -45,7 +44,6 @@ button {
   font-size: 80%; 
   max-width: 250px;
   min-width: 180px; 
-  margin-left: 10px;
 }
 
 .head-content__sidebar div {
