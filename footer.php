@@ -2,7 +2,7 @@
 <head>
   <style>
   a {
-    text-decoration: none; /* Loại bỏ gạch chân */
+    text-decoration: none;
     color: inherit; 
   }
   .footer {
@@ -158,7 +158,7 @@
   text-align: center;
   margin-top: 20px;
   padding-top: 10px;
-  border-top: 1px solid white;
+  border-top: 2px solid white;
 }
 
 .Noti {
@@ -226,7 +226,7 @@
 .footer-line {
   border: none; 
   border-top: 2px solid #fb6f92; 
-  margin: 280px 0 20px 0; 
+  margin: 280px 0 0px 0; 
 }
 
   @media only screen and (max-width: 768px) {
@@ -289,7 +289,7 @@
         </ul>
       <div class="contact-title">Liên hệ</div>
       <div class="contact-details">
-            <li><a href="https://maps.app.goo.gl/rnHXeAdWpGF2gv7y5"><img loading="lazy" src="https://cdn-icons-png.freepik.com/512/3678/3678566.png" class="contact-icon"> 279 Nguyễn Tri Phương, Phường 5, Quận 10</a></li>
+            <a href="https://maps.app.goo.gl/rnHXeAdWpGF2gv7y5"><li><img loading="lazy" src="https://cdn-icons-png.freepik.com/512/3678/3678566.png" class="contact-icon"> 279 Nguyễn Tri Phương, Phường 5, Quận 10</li></a>
             <li><img loading="lazy" src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/pink-phone-icon.png" class="contact-icon"> 0931104291</li>
             <li><img loading="lazy" src="https://logodix.com/logo/689225.png" class="contact-icon"> info@flamingo.com</li>
           </ul>
@@ -394,14 +394,22 @@
                     giaiPhongBoNho($link, $result);
                   }
             } else {
-                echo "Vui lòng nhập email!";
+              ?>
+              <div id="popup-container" class="popup-container">
+                  <div class="popup">
+                      <span class="close-btn" onclick="closePopup()">&times;</span>
+                      <img src="https://www.svgrepo.com/show/93424/exclamation-mark-inside-a-circle.svg" alt="Check icon" class="check-icon">
+                      <p>Vui lòng nhập email!</p>
+                  </div>
+              </div>
+              <?php
             }
         }
     ?>
     </div>
-    </div>
     <div class="copyright-section">
       © 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo
+    </div>
     </div>
   </div>
   <script>

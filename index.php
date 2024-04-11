@@ -1,14 +1,9 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   <link rel="stylesheet" href="upperstyles.css">
-  <link rel="stylesheet" href="banner-slider.css">
-
-
   <!-- <link rel="stylesheet" href="stylemenu.css"> -->
-  <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <!-- <script type="text/javascript" src="responsivemenu.js" language="JavaScript"> -->
   
   <!-- // <script type="text/javascript" src="script.js" language="JavaScript"> -->
@@ -18,39 +13,45 @@
 </head>
 
 <body>  
-    <!-- HEADER -->
+  <!-- <script>
+    $(document).ready(function(){
+      $('#toggle').click(function(){
+        $('nav').slideToggle();
+      });
+
+      // Thêm sự kiện toggle sub-menu khi click vào tiêu đề của menu
+      $('#main-menu li').click(function(){
+          $(this).children('ul.sub-menu').slideToggle();
+      });
+
+    //   $('#main-menu li').click(function(event) {
+    //     if ($(this).hasClass('product')) {
+    //         event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+    //         $(this).toggleClass('submenu-active').siblings().removeClass('submenu-active');
+    //     }
+    // });
+    })
+  </script> -->
+  <div class="main-container">
+    <div class="content-container">
+      <!-- HEADER -->
     <?php include "header.php"; ?> 
     <!-- MENU -->
     <?php include "menu.php"; ?>
-  <div class="main-container">
-    <div class="content-container">
         <!-- BANNER -->
-    <div class="banner-container" id="animate-on-scroll">
-    <div class="slider">
+      <div class="banner-container" id="animate-on-scroll">
         <img
-          id="img-1"
+          loading="lazy"
           src="img/img4.png"
-          alt="Image 1"
+          class="banner"
         />
-        <img
-          id="img-2"
-          src="img/img5.jpg"
-          alt="Image 2"
-        />
-        <img
-          id="img-3"
-          src="img/img9.jpg"
-          alt="Image 3"
-        />
-      </div>
-      <div class="navigation-button">
-        <span class="dot active" onclick="changeSlide(0)"></span>
-        <span class="dot" onclick="changeSlide(1)"></span>
-        <span class="dot" onclick="changeSlide(2)"></span>
-      </div>
-      <script src="banner-slider.js"></script>
         <div class="content-on-banner">
           <div class="text-on-banner">
+            <!-- <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/cfb03300b34e95312e28d266a73cd7b4ec2028d5bea759722f61b49f33907171?"
+              class="golden-frame"
+            /> -->
             <div class="banner-text">
               <div class="banner-text1">50%</div>
               <div class="banner-text2"></div>
@@ -68,18 +69,18 @@
               Từ 8/3/2024 đến hết 31/3/2024
             </div>
           </div>
-          <!-- <div class="whitelines-on-banner">
+          <div class="whitelines-on-banner">
             <div class="whitelines-banner">
               <div class="whiteline1"></div>
               <div class="whiteline2"><div class="whiteline3"></div></div>
               <div class="whiteline4"></div>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
       <br>
       <br>
-      <!-- Danh mục sản phẩm -->
+      <!-- LIST PRODUCT -->
       <div class = "listproduct-container"  id="animate-on-scroll">
         <a href="product-list.php?category=C001">
           <div class = "prod1">
@@ -127,17 +128,17 @@
       <br>
       <br>
       <br>
-      <!-- Sản phẩm bán chạy -->
-      <div class="trend" id="animate-on-scroll">
-        <h5>SẢN PHẨM BÁN CHẠY</h5></div>
-<div class="menu-container4" id="animate-on-scroll">
-    <div class="best-products">
+      <!-- BEST SELLER -->
+      <div class="bestseller-template"  id="animate-on-scroll">SẢN PHẨM BÁN CHẠY</div>
+      <br>
+      <br>
+      <div class="best-seller"  id="animate-on-scroll">
         <?php
-        require_once "db_module.php";
-        $link = null;
-        taoKetNoi($link);
+          require_once "db_module.php";
+          $link = null;
+          taoKetNoi($link);
 
-        $sql = "SELECT 
+          $sql = "SELECT 
                       p.productName, 
                       p.productID,
                       CONCAT(FORMAT(p.unitPrice, 0), ' VNĐ') AS formattedUnitPrice, 
@@ -151,38 +152,39 @@
                   LEFT JOIN orderdetail od ON p.productID = od.productID
                   LEFT JOIN orders o ON o.orderID = od.orderID
                   LEFT JOIN discount d ON p.discountID = d.discountID
-                  GROUP BY p.productName, formattedUnitPrice, p.image, discountPercentage, c.categoryName, sc.subcategoryName 
+                  GROUP BY p.productName, formattedUnitPrice, p.image, discountPercentage, c.categoryName, sc.subcategoryName -- Grouping by all selected columns
                   ORDER BY SUM(od.quantity) DESC
                   LIMIT 5;
                   ";
 
-        $result = chayTruyVanTraVeDL($link, $sql);
-
-        if ($result->num_rows > 0) {
+          $result = chayTruyVanTraVeDL($link, $sql);
+          if ($result->num_rows > 0) {
             // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
             while ($row = $result->fetch_assoc()) {
                 ?>
-                <div class="product-item">
-                <a href="product.php?product_id=<?php echo $row['productID']; ?>">
-                    <img src="<?php echo $row['image']; ?>" class="img">
-                    <?php if ($row['discountPercentage'] !== null) { ?>
+                  <div class="bestsellerproduct-item">
+                  <a href="product.php?product_id=<?php echo $row['productID']; ?>">
+                      <img src="<?php echo $row['image']; ?>" class="img">     
+                      <?php if ($row['discountPercentage'] !== null) { ?>
                           <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
-                      <?php } ?>                      <div class="product-info">
-                        <div class="product-name"><?php echo $row['productName']; ?></div>
-                        <div class="product-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
-                        <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
+                      <?php } ?>        
+                      <div class="bestsellerproduct-info">
+                          <div class="bestsellerproduct-name"><?php echo $row['productName']; ?></div>
+                          <div class="bestsellerproduct-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
+                          <div class="bestsellerproduct-price"><?php echo $row['formattedUnitPrice']; ?></div>
                     </div>
-                  </a>
-                </div>
-            <?php
-            }
-        } else {
-            echo "0 kết quả";
-        }
-        giaiPhongBoNho($link, $result);
-        ?>
+                    </a>
+                  </div>
+            
+                <?php
+                    }
+                } else {
+                    echo "0 kết quả";
+                }
+                giaiPhongBoNho($link, $result);
+                ?>
     </div>
-    <!-- Chèn file index2 của Quang dưới này  -->
+    <!-- INCLUDE QUANG'S PHP FILE BELOW HERE  -->
     <?php include "index-2.php"; ?>
   </div>
   </body>

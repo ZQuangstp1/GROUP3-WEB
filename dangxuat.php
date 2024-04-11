@@ -1,13 +1,19 @@
-<?php 
-session_start ();
+<?php
+session_start();
 require_once "db_module.php";
 require_once "users_module.php";
 
 $link = NULL;
-taoKetNoi ($link);
+taoKetNoi($link);
+
 if (dangxuat()) {
-    giaiPhongBoNho ($link,true);
-    header("Location : dangki.php");
-} else {giaiPhongBoNho($kink,true);
-header ("Content-type : text/html; charset=utf8");
-echo "Không thể đăng xuất!";} ?>
+    unset($_SESSION['username']); // Xóa thông tin về tên người dùng khỏi session
+    giaiPhongBoNho($link, true);
+    header("Location: index.php");
+    exit();
+} else {
+    giaiPhongBoNho($link, true);
+    header("Content-type: text/html; charset=utf8");
+    echo "Không thể đăng xuất!";
+}
+?>

@@ -59,8 +59,12 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                     <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
                 </div>
                 </a>
-                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b92a98a450a77c4e2c9857a326b6a5d33a717d4c5870690f94eef140a2a49c80?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" class="trash" />
-            </div>
+                <form action="del_YT.php" method="post" id="deleteForm">
+    <input type="hidden" name="favID" value="<?php echo $row['favID']; ?>">
+    <button type="submit" class="trash">
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b92a98a450a77c4e2c9857a326b6a5d33a717d4c5870690f94eef140a2a49c80?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" />
+    </button>
+</form>
       <?php
             }
         } else {

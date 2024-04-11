@@ -8,7 +8,6 @@ function toggleFilter(filterId) {
 }
 
 // Hàm tăng giảm số lượng 
-/*
 document.addEventListener("DOMContentLoaded", function() {
   const btnMinus = document.querySelector(".btn-minus");
   const btnPlus = document.querySelector(".btn-plus");
@@ -26,10 +25,8 @@ document.addEventListener("DOMContentLoaded", function() {
     inputQuantity.value = currentValue + 1;
   });
 });
-*/
 
 //Hàm pop-up Thêm giỏ hàng thành công 
-/*
 document.addEventListener("DOMContentLoaded", function() {
   const addToCartBtn = document.getElementById("add-to-cart-btn");
   const popup = document.getElementById("popup");
@@ -42,40 +39,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 2000); // 2 seconds
   });
 });
-*/
-
-function totalClick(click) {
-  const sum = document.getElementById('number');
-  const sumValue = parseInt(sum.innerText) + click;
-  console.log(sumValue + click);
 
 
-  a = document.getElementById('number');
-  console.log(a);
-
-  sum.innerText = sumValue;
-
-  //để số dương chứ không phải không âm
-  if(sumValue <=1) {
-    sum.innerText = 1;
-
-    document.getElementById('input-quantity').value = 1;
-  }
-  else document.getElementById('input-quantity').value = sum.innerText;
-
-}
-
-const likeButton = document.getElementById("likeButton");
-const likeBtn = document.getElementById("likeBtn");
-
-let isLiked = false;
-
-likeBtn.addEventListener("click", function() {
-  if (!isLiked) {
-    likeButton.style.backgroundColor = "pink";
-    isLiked = true;
-  } else {
-    likeButton.style.backgroundColor = "transparent";
-    isLiked = false;
-  }
-});

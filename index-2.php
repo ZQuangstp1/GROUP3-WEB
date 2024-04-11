@@ -93,8 +93,7 @@ if ($result->num_rows > 0) {
 giaiPhongBoNho($link, $result);
 ?>
 
-<div class="trend" id="animate-on-scroll">
-  <h5>SẢN PHẨM GIẢM GIÁ</h5></div>
+<div class="trend" id="animate-on-scroll">SẢN PHẨM GIẢM GIÁ</div>
 <div class="menu-container2" id="animate-on-scroll">
     <div class="top-products">
         <?php
@@ -112,11 +111,11 @@ giaiPhongBoNho($link, $result);
             sc.subcategoryName
         FROM 
             product p
-        JOIN
+            LEFT JOIN
             subcategory sc ON p.subcategoryID = sc.subcategoryID
-        JOIN
+            LEFT JOIN
             category c ON sc.categoryID = c.categoryID
-        JOIN
+            LEFT JOIN
             discount d ON p.discountID = d.discountID
         WHERE 
             d.discountID IS NOT NULL
@@ -125,27 +124,30 @@ giaiPhongBoNho($link, $result);
         $result = chayTruyVanTraVeDL($link, $sql);
 
         if ($result->num_rows > 0) {
-            // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
-            while ($row = $result->fetch_assoc()) {
-                ?>
-                <div class="product-item">
+          // Duyệt qua các hàng kết quả và hiển thị dữ liệu trong HTML
+          while ($row = $result->fetch_assoc()) {
+              ?>
+                <div class="bestsellerproduct-item">
                 <a href="product.php?product_id=<?php echo $row['productID']; ?>">
-                    <img src="<?php echo $row['image']; ?>" class="img">
-                    <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
-                    <div class="product-info">
-                        <div class="product-name"><?php echo $row['productName']; ?></div>
-                        <div class="product-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
-                        <div class="product-price"><?php echo $row['formattedUnitPrice']; ?></div>
-                    </div>
+                    <img src="<?php echo $row['image']; ?>" class="img">     
+                    <?php if ($row['discountPercentage'] !== null) { ?>
+                        <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
+                    <?php } ?>        
+                    <div class="bestsellerproduct-info">
+                        <div class="bestsellerproduct-name"><?php echo $row['productName']; ?></div>
+                        <div class="bestsellerproduct-category"><?php echo $row['categoryName']; ?> | <?php echo $row['subcategoryName']; ?></div>
+                        <div class="bestsellerproduct-price"><?php echo $row['formattedUnitPrice']; ?></div>
+                  </div>
                   </a>
                 </div>
-            <?php
-            }
-        } else {
-            echo "0 results";
-        }
-        giaiPhongBoNho($link, $result);
-        ?>
+          
+              <?php
+                  }
+              } else {
+                  echo "0 kết quả";
+              }
+              giaiPhongBoNho($link, $result);
+              ?>
     </div>
     <div class="button-container">
     <a href="product-list.php?discount=TRUE"><button class="SeeAll">Xem tất cả</button></a>

@@ -1,19 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-  /* box-sizing: border-box; */
-  font-family: Barlow, sans-serif;
-}
 body {
   background: #f9f2e6;
-  margin: 0;
-  padding: 0;
+  font-family: Barlow, sans-serif;
 
 }
 
-.container{
-  width: 100%;
-}
 .back-to-top-btn {
   position: fixed;
   bottom: 20px;
@@ -48,7 +38,6 @@ button {
 .head-content {
   margin-bottom: 50px;
   display: flex;
-  
 }
 
 .head-content__sidebar {
@@ -118,7 +107,7 @@ button {
 .head-content__product-list {
   padding-left: 30px;
   padding-top: 10px;
-  width: calc(100% - 5%); 
+  width: calc(100% - 20%); 
   margin-left: 30px;
 }
 

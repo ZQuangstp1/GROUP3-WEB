@@ -1,7 +1,7 @@
 <html>
 
 <head>
-            <!-- Thêm thư viện jQuery -->
+            <!-- Thêm thưs viện jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- Script JavaScript -->

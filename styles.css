@@ -99,6 +99,7 @@ body {
   border-right: 1px solid #fff;
 }
 
+
 @media (max-width: 991px) {
   .feature-item,
   .service-item {
@@ -116,10 +117,21 @@ body {
 .feature-item:nth-child(1),
 .feature-item:nth-child(2) {
     margin-top: 20px; 
+  }
 }
 
-}
+@media (max-width: 991px) {
+  .feature-item:not(:last-child),
+  .service-item:not(:last-child) {
+    border-right: none; /* Bỏ border-right cho tất cả các item */
+  }
 
+  /* Áp dụng border-right cho item 1 và item 3 */
+  .feature-item:nth-child(odd),
+  .service-item:nth-child(odd) {
+    border-right: 1px solid #fff;
+  }
+}
 
 .feature-text,
 .service-text {
@@ -284,75 +296,6 @@ body {
   flex-wrap: wrap;
 }
 
-.product-item {
-  width: calc(20% - 20px); 
-  margin-right: 20px; 
-  margin-bottom: 20px;
-  border: 2px solid #000000;
-  padding: 15px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  position: relative;
-  box-sizing: border-box; 
-}
-
-.product-item:last-child {
-  margin-right: 0; 
-}
-
-.product-item img {
-  width: 100%;
-  height: 200px;  
-  border-bottom: 2px solid #000000;  
-}
-
-.discount-tag {
-  background-color: #fb6f92;
-  color: #fff;
-  font-family: 'Barlow', sans-serif;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 5px;
-  position: absolute;
-  top: 17;
-  left: 0;
-}
-
-.product-info {
-  margin-top: 10px;
-  align-items: center;
-  text-align: center; 
-  display: flex;
-  flex-direction: column;
-  color: #212121;
-  font-weight: 700;
-}
-
-.product-name {
-  text-transform: capitalize;
-  text-align: center; 
-  font: 17px Barlow, sans-serif;
-  padding: 10px 25px;
-
-}
-
-.product-category {
-  color: #777;
-  text-transform: capitalize;
-  margin-top: 6px;
-  font: 400 14px Barlow, sans-serif;
-  padding-left: 20px;
-  padding-right: 20px;
-
-}
-
-.product-price {
-  color: #fb6f92;
-  text-align: center;
-  margin-top: 6px;
-  font: 18px/135% Barlow, sans-serif;
-}
-
 .button-container {
   display: flex;
   justify-content: center;
@@ -372,11 +315,6 @@ body {
   border: none;
   cursor: pointer; 
 }
-.trend h5{
-  font-size: 60px;
-  text-decoration: none;
-  margin-bottom: 15px;
-}
 
 /* Hiển thị chỉ 1 sản phẩm trên mỗi hàng khi kích thước màn hình nhỏ hơn 769px */
 @media (max-width: 769px) {
@@ -385,13 +323,8 @@ body {
     flex-wrap: wrap;
     justify-content: center; /* Các sản phẩm sẽ căn giữa trên hàng */
   }
-  .trend h5{
-    font-size: 40px;
-    text-decoration: none;
-    margin-bottom: 15px;
-  }
   .product-item {
-    width: 80%;   
+    width: 210px; 
     height: 60%; 
     margin-bottom: 20px; /* Khoảng cách giữa các dòng */
     box-sizing: border-box;
@@ -407,7 +340,6 @@ body {
   align-self: stretch;
   background-color: #fff;
   display: flex;
-  margin-top: 40px;
   max-width: 100%;
   justify-content: center;
   padding: 0px 40px 60px 60px;
@@ -418,15 +350,14 @@ body {
 @media (max-width: 991px) {
   .Insta {
     max-width: 100%;
-    margin-top: 40px;
-    padding: 0 20px;
+    margin-top: 0;
+    padding: 0px 10px 10px 10px;
   }
 }
 
 .header {
   color: #282828;
   text-align: center;
-  letter-spacing: -1px;
   align-self: center;
   white-space: nowrap;
   font: 400 30px/160% Lora, sans-serif;
@@ -435,6 +366,8 @@ body {
 @media (max-width: 991px) {
   .header {
     white-space: initial;
+    font: 400 20px Lora, sans-serif;
+
   }
 }
 
@@ -448,7 +381,14 @@ body {
   .image-wrapper {
     max-width: 100%;
     flex-wrap: wrap;
+    margin-top: 20px;
   }
+}
+
+@media (max-width: 438px) {
+
+.image-wrapper {
+  flex-wrap: wrap;
 }
 
 .link {
@@ -457,6 +397,8 @@ body {
   flex-grow: 1;
   flex-basis: 0%;
   flex-direction: column;
+  flex-basis: calc(33.33% - 20px);
+  }
 }
 
 .image {
@@ -583,10 +525,7 @@ body {
 }
 
 
-.swiper-button-prev {
-  color: #fb6f92 !important;
-}
-
+.swiper-button-prev,
 .swiper-button-next {
   color: #fb6f92 !important;
 }
@@ -595,15 +534,13 @@ body {
   background-color: #fb6f92 !important;
 }
 
-@media (max-height: 400px) {
+
+@media (max-width: 400px) {
   .header {
     margin: 40px 0 0 0;
   }
-  .name {
-    font-size: 12px;
-  }
-  .title {
-    font-size: 10px;
+  .name, .title, .quote {
+    font-size: 16px;
   }
   .quote-container {
     padding: 5px 20px 20px 20px;

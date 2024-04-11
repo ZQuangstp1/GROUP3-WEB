@@ -399,7 +399,7 @@
           display: flex;
           flex-direction: column;
           line-height: normal;
-          width: 60%;
+          width: 50%;
           margin-left: 20px;
         }
 
@@ -481,7 +481,7 @@
           text-align: center;
           padding: 5px 10px;
           font: 14px/143% Barlow, sans-serif;
-          width: 35%
+          width: 50%
         }
 
         .button:hover {
@@ -495,7 +495,7 @@
           display: flex;
           flex-direction: column;
           line-height: normal;
-          width: 30%;
+          width: 40%;
           margin-left: 20px;
         }
 
