@@ -164,9 +164,8 @@
 .Noti {
   width: 100%;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 10px auto;
   font-family: Lora, sans-serif;
-
 }
 .button {
   background-color:#fb6f92;
@@ -179,6 +178,7 @@
 }
 
 .title {
+  margin-bottom: 10px;
   font-size: 24px;
 }
 
@@ -190,6 +190,7 @@
   background-color: #f9f2e6;
   transition: border-color 0.3s;
   outline: none;
+  margin-top: 10px;
 }
 .email:focus {
   border: 1px solid #fb6f92;
@@ -226,7 +227,7 @@
 .footer-line {
   border: none; 
   border-top: 2px solid #fb6f92; 
-  margin: 280px 0 0px 0; 
+  margin: 0 0 0px 0; 
 }
 
   @media only screen and (max-width: 768px) {
