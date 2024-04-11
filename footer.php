@@ -226,7 +226,7 @@
 .footer-line {
   border: none; 
   border-top: 2px solid #fb6f92; 
-  margin: 280px 0 0px 0; 
+  margin: 0px 0 0px 0; 
 }
 
   @media only screen and (max-width: 768px) {
@@ -358,6 +358,7 @@
     </div>
   
     <div class="Noti">
+      <br>
     <h1 class="title">JOIN US</h1>
     <p>NHẬN THÔNG TIN KHUYẾN MÃI HẤP DẪN</p>
     <form action="" method="post" enctype="multipart/form-data">

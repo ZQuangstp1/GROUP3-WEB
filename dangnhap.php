@@ -48,17 +48,15 @@ if (isset($_POST)) {
 <head>
     <title>Đăng Nhập</title>
     <style>
-         body {
+         .login {
             background-image: url("img/LoginBG.png");
             background-size: cover; /* Làm ảnh nền phù hợp với kích thước màn hình */
             display: flex;
             align-items: center;
             height: 100vh;
-            margin-left: 7%; /* Di chuyển khung đến giữa và lệch trái */
-            margin-top: 3%;
-        }
+               }
         @media screen and (max-width: 768px) {
-            body {
+            .login {
                 justify-content: center; /* Căn giữa khung đăng nhập */
                 margin-left: 0; /* Để khung đăng nhập căn giữa */
                 background-size: 200% 100%; /* Phủ nền toàn màn hình */
@@ -73,6 +71,13 @@ if (isset($_POST)) {
             width: 100%;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng khung trắng */
+            margin-left: 10%; 
+        }
+
+        @media screen and (max-width: 768px) {
+            .login-container {
+                margin-left: 2%; 
+            }
         }
         .error-message {
             /* CSS cho thông báo lỗi */
@@ -133,12 +138,17 @@ if (isset($_POST)) {
             font-family: Oswald, sans-serif;
             letter-spacing: 1.35px;
         }
-
-       
+        .cctk a {
+            color: purple; 
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body>
+<?php require "header.php"; ?>
+<?php require "menu.php"; ?>
+    <div class="login">
     <div class="login-container">
         <div class="login-title">Đăng Nhập</div>
 
@@ -156,7 +166,8 @@ if (isset($_POST)) {
             <button type="submit" class="login-button">Đăng nhập</button>
             <div class="cctk">Chưa có tài khoản? <a href="dangki.php">Đăng ký ngay</a></div>
         </form>
+        </div>
     </div>
+    <?php require "footer.php"; ?>
 </body>
-
 </html>

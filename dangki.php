@@ -70,18 +70,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Đăng Ký</title>
     <style>
-        body {
+        .signup {
             background-image: url("img/LoginBG.png");
             background-size: cover; 
             display: flex;
             justify-content: flex-start; 
             align-items: center;
             height: 100vh;
-            margin-left: 2%; 
-            margin-top: 3%;
         }
         @media screen and (max-width: 768px) {
-            body {
+            .signup {
                 justify-content: center; /* Căn giữa khung đăng nhập */
                 margin-left: 0; /* Để khung đăng nhập căn giữa */
                 background-size: 200% 100%; /* Phủ nền toàn màn hình */
@@ -96,6 +94,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: 100%;    
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng khung trắng */
+            margin-left: 5%;
+        }
+
+        @media screen and (max-width: 768px) {
+            . .registration-container {
+                margin-left: 0; 
+            }
         }
         .registration-container img {
             display: block;
@@ -112,18 +117,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         .input-field {
             font-family: Barlow, sans-serif;
-    width: 100%; /* Hoặc một giá trị cụ thể khác để giảm chiều rộng và cho phép căn giữa */
-    padding: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px; 
-    border: 1px solid rgba(212, 213, 217, 1);
-    box-sizing: border-box; 
-    display: block; 
-    margin-left: auto; 
-    margin-right: auto;
-       
-          
-        }
+            width: 100%; /* Hoặc một giá trị cụ thể khác để giảm chiều rộng và cho phép căn giữa */
+            padding: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px; 
+            border: 1px solid rgba(212, 213, 217, 1);
+            box-sizing: border-box; 
+            display: block; 
+            margin-left: auto; 
+            margin-right: auto;
+         }
+
         .name-fields {
             display: flex;
             width: 100%;
@@ -182,7 +186,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         }
 
-
         .cctk {
                     text-align: center;
                     margin-top: 15px;          
@@ -190,30 +193,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     color: #fb6f92;
                 }
 
-  
+        .cctk a {
+                color: purple; /* Màu tím */
+                text-decoration: underline; /* Gạch chân */
+            }
 
     </style>
 </head>
 <body>
-
-
-<div class="registration-container">
-    
-    <div class="registration-title">Đăng Ký</div>
-    <form action="dangki.php" method="POST" enctype="multipart/form-data">
-        <input type="text" class="input-field" name="username" placeholder="Tên Đăng Nhập" required>
-        <input type="password" class="input-field" placeholder="Mật khẩu" name="password" required>
-        <input type="password" class="input-field" placeholder="Nhập lại mật khẩu" name="password2" required>
-        <?php if(isset($_SESSION['error'])): ?>
-        <div class="msg error"><?php echo $_SESSION['error']; ?></div>
-        <?php unset($_SESSION['error']); ?> <!-- Đảm bảo thông báo lỗi chỉ hiển thị một lần -->
-    <?php endif; ?>
-        <button type="submit" class="registration-button">Đăng Ký</button>
-        <div class="cctk">Đã có tài khoản? <a href="dangnhap.php">Đăng nhập ngay</a></div>
-    </form>
-   
-</div>
-
-
+<?php require "header.php"; ?>
+<?php require "menu.php"; ?>
+<div class="signup"> 
+    <div class="registration-container"> 
+        <div class="registration-title">Đăng Ký</div>
+        <form action="dangki.php" method="POST" enctype="multipart/form-data">
+            <input type="text" class="input-field" name="username" placeholder="Tên Đăng Nhập" required>
+            <input type="password" class="input-field" placeholder="Mật khẩu" name="password" required>
+            <input type="password" class="input-field" placeholder="Nhập lại mật khẩu" name="password2" required>
+            <?php if(isset($_SESSION['error'])): ?>
+            <div class="msg error"><?php echo $_SESSION['error']; ?></div>
+            <?php unset($_SESSION['error']); ?> <!-- Đảm bảo thông báo lỗi chỉ hiển thị một lần -->
+        <?php endif; ?>
+            <button type="submit" class="registration-button">Đăng Ký</button>
+            <div class="cctk">Đã có tài khoản? <a href="dangnhap.php">Đăng nhập ngay</a></div>
+        </form>
+        </div>
+    </div>
+    <?php require "footer.php"; ?>
 </body>
 </html>
