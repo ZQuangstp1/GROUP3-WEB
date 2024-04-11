@@ -94,7 +94,7 @@
     align-items: center;
     margin-top: 3px;
     margin-right: 50px;
-    margin-left: 50px;
+    margin-left: 90px;
     max-width: 20%;
     padding-top: 5px;
 }

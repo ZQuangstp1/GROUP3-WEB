@@ -422,6 +422,7 @@ body {
 .container {
   width: 99vw;
   height: 100vh;
+  margin-bottom: 200px;
 }
 .card {
   background-color: #f9fafe;
