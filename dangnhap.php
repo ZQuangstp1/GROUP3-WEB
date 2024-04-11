@@ -17,9 +17,8 @@ if (isset($_POST)) {
         if ($customerID ) { 
             //$_SESSION['customerID'] = $customerID;
             //$_SESSION['accountID'] = $_accountID;
-            $_SESSION['username'] = $_username;
             giaiPhongBoNho($link, true);
-            header("Location: index.php");
+            header("Location: TTKH.php");
             exit(); // Thoát để ngăn code phía sau chạy khi đã chuyển hướng
         } else {
             giaiPhongBoNho($link, true);
@@ -68,7 +67,7 @@ if (isset($_POST)) {
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f9f2e6;
+            background-color: #fff;
         }
 
         .login-container {
@@ -76,7 +75,7 @@ if (isset($_POST)) {
             padding: 28px 33px 50px;
             max-width: 584px;
             width: 100%;
-            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
 
@@ -93,12 +92,6 @@ if (isset($_POST)) {
             margin-bottom: 20px;
             font: 600 30px Barlow, sans-serif;
             color: #333;
-        }
-        .cctk {
-            text-align: center;
-            margin-top: 15px;          
-            font: 400 15px Barlow, sans-serif;
-            color: #fb6f92;
         }
 
         .input-field {
@@ -132,9 +125,10 @@ if (isset($_POST)) {
 <body>
 
 
-    
     <div class="login-container">
-        
+        <img loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/616c9d301410ca581dfc86f37ec6202edb3d0cefd2cbbcf217383b2388515c5f?apiKey=eb23b2963eda46448725d8ef1c3cf67d&"
+            class="logo" onclick="CloseTab()" style="cursor: pointer;" />
         <div class="login-title">Đăng Nhập</div>
 
         <form id="loginForm" action="dangnhap.php" method="post" enctype="multipart/form-data">
@@ -148,16 +142,20 @@ if (isset($_POST)) {
                 </div>
                 <?php unset($_SESSION['error_message']); ?> <!-- Xóa session để không hiển thị lại -->
             <?php endif; ?>
-           
-            <button type="submit" class="login-button">Đăng nhập</button>
-            <div class="cctk">Chưa có tài khoản? <a href="dangki.php">Đăng ký ngay</a></div>
 
+            <button type="submit" class="login-button">Đăng nhập</button>
         </form>
 
-        </div>
+
         
-     
-   
+    </div>
+
+    <script>
+        function CloseTab() {
+            window.location.href = 'admin.php';
+        }
+    </script>
+
 </body>
 
 </html>
