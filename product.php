@@ -55,6 +55,8 @@
               $row = $result->fetch_assoc();
               $product = $row['productID']; 
               $unitPrice = $row['unitPrice'];
+              $color = $row['color'];
+              $size = $row['size'];
               $formattedPrice = number_format($unitPrice, 0, ',', ',');
               $description = $row['description'];
               $productName = $row['productName'];
@@ -206,12 +208,21 @@
         <p class="product-summary">
             <?php echo $description; ?>
         </p>
+        <p class="product-summary">
+            Màu sắc: <?php echo $color; ?>
+        </p>
+        <p class="product-summary">
+            Size: <?php echo $size; ?>
+        </p>
       </section>
 
       <section class="shipping-container">
         <h2 class="product-title">VẬN CHUYỂN</h2>
         <p class="shipping-description">
-          Flamingo cung cấp Miễn phí Giao hàng Tiêu chuẩn cho tất cả các đơn hàng trị giá trên 1,000,000 VNĐ. Giá trị đơn hàng tối thiểu phải là 1,000,000 VNĐ trước thuế, phí vận chuyển và xử lý. Phí vận chuyển không được hoàn lại
+          Flamingo cung cấp Miễn phí Giao hàng Tiêu chuẩn cho tất cả các đơn hàng trị giá trên 1,000,000 VNĐ. Giá trị đơn hàng tối thiểu phải là 1,000,000 VNĐ trước thuế, phí vận chuyển và xử lý.
+        </p>
+        <p class="shipping-description">
+          Phí vận chuyển không được hoàn lại.
         </p>
         <p class="shipping-description-shipping-info2">
            Vui lòng cho đến tối đa 2 ngày làm việc (ngoại trừ cuối tuần, ngày lễ và ngày bán hàng) để xử lý đơn hàng của bạn.
