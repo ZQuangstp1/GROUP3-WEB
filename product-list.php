@@ -64,11 +64,11 @@
         $link = null;
         taoKetNoi($link);
     ?>
-    <a name="top"> <div class="container"></a>
+    <a name="top"></a>
          <!-- HEADER -->
-         <?php require "header.php"; ?>
+         <?php include "header.php"; ?>
         <!-- MENU -->
-        <?php require "menu.php"; ?>
+        <?php include "menu.php"; ?>
         <form action="?opt=applyFilters" method="POST">
         <div class="head-content">
             <!-- Sidebar -->
