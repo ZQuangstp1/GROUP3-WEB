@@ -31,10 +31,13 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
     $customerID = $_SESSION['customerID'];
     $accountID = $_SESSION['accountID'];
     // Tiếp tục truy vấn để lấy thông tin các sản phẩm yêu thích từ bảng product
-    $query = "SELECT favID,product.image,product.productID, product.discountID, product.productName, subcategory.subcategoryName, CONCAT(FORMAT(product.unitPrice, 0), ' VNĐ') AS formattedUnitPrice , favproduct.accountID 
-    FROM product LEFT JOIN `subcategory` ON product.subcategoryID = `subcategory`.subcategoryID 
-    LEFT JOIN `favproduct` ON product.productID = favproduct.productID 
-    JOIN useraccount u ON u.accountID = favproduct.accountID WHERE u.accountID = '$accountID'";
+    $query = "SELECT favID,product.image,product.productID, product.discountID, 
+              product.productName, subcategory.subcategoryName, CONCAT(FORMAT(product.unitPrice, 0), ' VNĐ') AS formattedUnitPrice , 
+              favproduct.accountID, CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage
+    FROM product JOIN `subcategory` ON product.subcategoryID = `subcategory`.subcategoryID 
+    JOIN `favproduct` ON product.productID = favproduct.productID 
+    JOIN useraccount u ON u.accountID = favproduct.accountID
+    JOIN discount d ON product.discountID = d.discountID WHERE u.accountID = '$accountID'";
     $result = chayTruyVanKhongTraVeDL($link, $query);
     
     // Kiểm tra kết quả truy vấn
@@ -50,7 +53,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
             <a href="product.php?product_id=<?php echo $row['productID']; ?>">
                 <img loading="lazy" srcset="<?php echo $row['image']; ?>" class="img" />
                 <?php if ($row['discountID'] !== 'NONE')  { ?>
-                <div class="discount-tag"><?php echo $row['discountID']; ?></div>
+                <div class="discount-tag"><?php echo $row['discountPercentage']; ?></div>
                <?php } ?>
                 </br>
                 <div class="product-info">
@@ -60,10 +63,11 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                 </div>
                 </a>
                 <form action="del_YT.php" method="post" id="deleteForm">
-    <input type="hidden" name="favID" value="<?php echo $row['favID']; ?>">
-    <button type="submit" >
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b92a98a450a77c4e2c9857a326b6a5d33a717d4c5870690f94eef140a2a49c80?apiKey=eb23b2963eda46448725d8ef1c3cf67d&"class="trash" />
-    </button>
+                  <input type="hidden" name="favID" value="<?php echo $row['favID']; ?>">
+                  <button type="submit" >
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b92a98a450a77c4e2c9857a326b6a5d33a717d4c5870690f94eef140a2a49c80?apiKey=eb23b2963eda46448725d8ef1c3cf67d&"class="trash" />
+                </button>
+    </div>
 </form>
       <?php
             }
@@ -162,7 +166,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
               display: flex;
               flex-direction: column;
               line-height: normal;
-              width: 23%;
+              width: 50%;
               margin-left: 0px;
             }
             @media (max-width: 991px) {
@@ -246,7 +250,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                     display: flex;
                     flex-direction: column;
                     line-height: normal;
-                    width: 77%;
+                    width: 50%;
                     margin-left: 20px;
                 }
 
@@ -349,7 +353,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
           margin-bottom: 20px; /* Khoảng cách giữa các dòng */
           box-sizing: border-box;
           padding: 0 5px; /* Khoảng cách giữa các sản phẩm */
-          flex: 0 1 220px;
+          flex: 0 1 200px;
         }
       }
 
