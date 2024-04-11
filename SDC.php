@@ -61,7 +61,7 @@
                     require_once ("view_TTKH.php");
                     view_SDC();
                     ?>
-                    <button class="button" style="width: 180px; margin-left: 0px;" onclick="toggleDiaChi()">+ Thêm địa
+                    <button class="button" style="width: 180px; margin-left: 0px;" onclick="toggleDiaChi()">+ Địa
                         chỉ</button>
 
                     <form action="update_SDC.php" method="POST">

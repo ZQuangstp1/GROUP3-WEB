@@ -31,7 +31,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
     $customerID = $_SESSION['customerID'];
     $accountID = $_SESSION['accountID'];
     // Tiếp tục truy vấn để lấy thông tin các sản phẩm yêu thích từ bảng product
-    $query = "SELECT product.image,product.productID, product.discountID, product.productName, subcategory.subcategoryName, CONCAT(FORMAT(product.unitPrice, 0), ' VNĐ') AS formattedUnitPrice , favproduct.accountID 
+    $query = "SELECT favID,product.image,product.productID, product.discountID, product.productName, subcategory.subcategoryName, CONCAT(FORMAT(product.unitPrice, 0), ' VNĐ') AS formattedUnitPrice , favproduct.accountID 
     FROM product LEFT JOIN `subcategory` ON product.subcategoryID = `subcategory`.subcategoryID 
     LEFT JOIN `favproduct` ON product.productID = favproduct.productID 
     JOIN useraccount u ON u.accountID = favproduct.accountID WHERE u.accountID = '$accountID'";
@@ -61,8 +61,8 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                 </a>
                 <form action="del_YT.php" method="post" id="deleteForm">
     <input type="hidden" name="favID" value="<?php echo $row['favID']; ?>">
-    <button type="submit" class="trash">
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b92a98a450a77c4e2c9857a326b6a5d33a717d4c5870690f94eef140a2a49c80?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" />
+    <button type="submit" >
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b92a98a450a77c4e2c9857a326b6a5d33a717d4c5870690f94eef140a2a49c80?apiKey=eb23b2963eda46448725d8ef1c3cf67d&"class="trash" />
     </button>
 </form>
       <?php
