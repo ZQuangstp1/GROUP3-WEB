@@ -1,43 +1,18 @@
 
 // Gọi hàm adjustProductLayout khi trang được tải
-
 function toggleFilter(filterId) {
   const filterContent = document.getElementById(filterId);
   filterContent.classList.toggle('collapsed');
 
 }
 
-// Hàm tăng giảm số lượng 
-/*
-document.addEventListener("DOMContentLoaded", function() {
-  const btnMinus = document.querySelector(".btn-minus");
-  const btnPlus = document.querySelector(".btn-plus");
-  const inputQuantity = document.querySelector(".input-quantity");
 
-  btnMinus.addEventListener("click", function() {
-    let currentValue = parseInt(inputQuantity.value);
-    if (currentValue > 1) {
-      inputQuantity.value = currentValue - 1;
-    }
-  });
-
-  btnPlus.addEventListener("click", function() {
-    let currentValue = parseInt(inputQuantity.value);
-    inputQuantity.value = currentValue + 1;
-  });
-});
-*/
 
 //Hàm pop-up Thêm giỏ hàng thành công 
 /*
 function addToCart() {
-  // Prevent the default form submission
   event.preventDefault();
-  
-  // Show the popup message
   alert("Thêm giỏ hàng thành công");
-  
-  // Submit the form
   document.getElementById("add-to-cart-form").submit();
 }
 */
@@ -63,7 +38,8 @@ function totalClick(click) {
   else document.getElementById('input-quantity').value = sum.innerText;
 
 }
-//Button Like 
+
+//Button Thích 
 const likeButton = document.getElementById("likeButton");
 const likeBtn = document.getElementById("likeBtn");
 
@@ -92,9 +68,7 @@ document.getElementById("likeButtonComment").addEventListener("click", function(
   }
 });
 
-
-//Đánh giá 
-
+/*
 // Function to create star rating
 function createStarRating(maxRating) {
   const starWrapper = document.getElementById('star-rating');
@@ -131,8 +105,9 @@ function createCommentBox() {
   });
   commentSection.appendChild(sendButton);
 }
+*/
 
-// Call the functions to create star rating and comment box
+// Hàm tạo star rating and comment box
 createStarRating(5); // You can pass the maximum rating as an argument
 createCommentBox();
 
@@ -161,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-// Function to generate star icons based on rating
+// Hàm tạo số lượng star icons dựa trên rating
 function generateStars(rating) {
   const starWrapper = document.getElementById('star-rating');
   starWrapper.innerHTML = ''; // Clear previous stars
@@ -176,23 +151,20 @@ function generateStars(rating) {
   }
 }
 
-// Event listener for dropdown change
+// Event để dropdown change
 document.getElementById('star-dropdown').addEventListener('change', function() {
   const selectedRating = parseInt(this.value);
   generateStars(selectedRating);
 });
 
 
-
-
 //Nút Bình luận 
 document.getElementById('comment-button').addEventListener('click', function() {
-  // Get values from input fields
+  // Lấy dữ liệu từ input 
   const comment = document.getElementById('comment-section').value;
   const rating = document.getElementById('star-dropdown').value;
   const productId = document.getElementById('product-id').value;
-  
-  // Add values to the form
+  // Thêm giá trị vào dữ liệu trong form
   const form = document.getElementById('review-form');
   const commentInput = document.createElement('input');
   commentInput.type = 'hidden';

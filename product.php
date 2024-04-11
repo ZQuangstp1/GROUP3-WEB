@@ -148,11 +148,11 @@
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         if (xhr.status === 200) {
-                            // Request was successful, handle response here
+                            // Yêu cầu xử lý thành công 
                             var response = xhr.responseText;
-                            alert('Thêm sản phẩm yêu thích thành công'); // You can display response in any way you want
+                            alert('Thêm sản phẩm yêu thích thành công'); 
                         } else {
-                            // Request failed
+                            // Yêu cầu gặp lỗi 
                             alert('Có lỗi xảy ra, không thể thêm sản phẩm yêu thích');
                         }
                     }
@@ -285,6 +285,7 @@
         ?>
     <br>
     <br>
+<!--Khách hàng viết đánh giá-->
         <section class="review-section">
         <h2 class="review-title">Viết Đánh giá</h2>
         <div class="wrapper1">
@@ -371,7 +372,7 @@
           require_once "db_module.php";
           $link = null;
           taoKetNoi($link);
-
+          // Lấy dữ liệu từ database
           $sql = "SELECT Distinct
                       p.productName, 
                       p.productID,

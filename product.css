@@ -32,7 +32,7 @@ body{
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  font-size: 11px; /* Adjusted font size */
+  font-size: 11px; /* Điều chỉnh font size */
   color: #fb6f92;
   font-weight: 400;
   line-height: 292%;
@@ -91,41 +91,41 @@ body{
   white-space: nowrap;
   text-transform: uppercase;
   justify-content: center;
-  padding: 5px; /* Reduced padding */
-  font: 400 16px Oswald, sans-serif; /* Adjusted font size and weight */
+  padding: 5px; 
+  font: 400 16px Oswald, sans-serif; 
   display: flex;
 }
 
 @media (max-width: 991px) and (min-width: 768px) {
   .brand-name {
     white-space: initial;
-    font-size: 14px; /* Reduced font size for smaller screens */
-    padding: 5px; /* Adjusted padding */
-    margin-left: 0px; /* Set margin-left to 0px for iPad size */
+    font-size: 14px; /* Giảm font size cho màn hình nhỏ hơn */
+    padding: 5px; 
+    margin-left: 0px; /* Đặt margin-left cho iPad size */
   }
 }
 
 @media (max-width: 767px) {
   .brand-name {
     white-space: initial;
-    font-size: 14px; /* Reduced font size for smaller screens */
-    padding: 5px; /* Adjusted padding */
-    margin-left: -20px; /* Set margin-left to -20px for smartphone size */
+    font-size: 14px; 
+    padding: 5px; 
+    margin-left: -20px; /* Đặt margin-left cho smartphone size */
   }
 }
 
 .rating-stars {
   align-self: stretch;
   display: flex;
-  gap: 2px; /* Reduced gap */
-  padding-top: 2px; /* Reduced padding */
+  gap: 2px;
+  padding-top: 2px; 
 }
 
 .star-icon {
   aspect-ratio: 1;
   object-fit: auto;
   object-position: center;
-  width: 14px; /* Adjusted width */
+  width: 14px;
 }
 
 .review-link {
@@ -221,17 +221,15 @@ body{
   font: 500 40px Oswald, sans-serif;
 }
 
-/* Media Query for smaller screens */
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .total-price {
-    font-size: 30px; /* Adjust the font size as needed for smaller screens */
+    font-size: 30px;
   }
 }
 
-/* Media Query for even smaller screens */
-@media only screen and (max-width: 480px) {
+@media (max-width: 480px) {
   .total-price {
-    font-size: 25px; /* Adjust the font size further for even smaller screens */
+    font-size: 25px; 
   }
 }
 
@@ -307,16 +305,15 @@ body{
   }
 }
 .wishlist-icon button {
-  /* Add styles to make button look like text */
+  /* Thêm styles cho button như text */
   border: none;
   background: none;
   padding: 0;
   font: inherit;
   cursor: pointer;
-  /* Ensure the button takes up the entire space */
+  /* Đảm bảo button nằm trong block */
   display: inline-block;
   width: auto;
-  /* Add any other styles you want to maintain */
 }
 .wishlist-icon img {
   aspect-ratio: 1;
@@ -1068,23 +1065,22 @@ body{
   border: 1px solid black;
 
 }
-/* Media query for iPad and iPhone */
+
 @media (max-width: 1024px) {
   .image-8-icon {
-    display: none; /* Hide image-8-icon for iPad */
+    display: none; /* Ẩn image-8-icon cho iPad */
   }
   .image-4-icon {
-    max-width: 100%; /* Reduce the max-width of image-4-icon for iPad */
+    max-width: 100%;
   }
 }
 
-/* Media query for iPhone */
 @media (max-width: 768px) {
   .image-8-icon {
-    display: none; /* Hide image-8-icon for iPhone */
+    display: none; 
   }
   .image-4-icon {
-    max-width: 100%; /* Reset max-width for smaller screens (iPhone) */
+    max-width: 100%;
   }
 }
 

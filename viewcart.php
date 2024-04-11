@@ -62,7 +62,7 @@
 </body>
 </html>
 <?php   
-    } //Cái ngoặc này của thằng if phía trên á
+    } 
     else {
         echo '<br>Giỏ hàng rỗng. Bạn <a href="index.php">đặt hàng</a> không?';
     }

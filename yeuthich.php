@@ -1,21 +1,18 @@
 <?php
 require_once "config.php";
 require_once "db_module.php";
-
-// Establish connection to the database
+// Kết nối database
 $link = null;
 taoKetNoi($link);
 
-// Check if form is submitted
+
 if (!empty($_POST)) {
-    // Retrieve form data
     $productID = $_POST['idofpro'];
 
-    // Prepare SQL statement to insert data into database
+    // Truy vấn đề thêm dữ liệu vào database
     $sql = "INSERT INTO favProduct (productID) VALUES ('$productID')";
     //$sql = "INSERT INTO favProduct (accountID) VALUES ('$accountID')";
 
-    // Run the query
     $result = chayTruyVanKhongTraVeDL($link, $sql);
 
     if ($result) {
@@ -25,9 +22,7 @@ if (!empty($_POST)) {
 
     }
 }
-// Close connection to the database
 giaiPhongBoNho($link, $result);
-
 ?>
 
 
