@@ -315,7 +315,7 @@
                     display: flex;
                     flex-direction: column;
                     line-height: normal;
-                    width: 77%;
+                    width: 50%;
                     margin-left: 20px;
                 }
 
