@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             
                             $insertQuery = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$password', '$new_cus_id')";
                             if (chayTruyVanKhongTraVeDL($link, $insertQuery)) {
-                                echo "<script>alert('Đăng nhập thành công');</script>";
+                                echo "<script>alert('Đăng kí thành công');</script>";
                                 echo "<script>window.location.href='dangnhap.php';</script>";
                                
                                 exit();
