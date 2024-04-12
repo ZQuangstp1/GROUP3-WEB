@@ -7,17 +7,6 @@
             /* Loại bỏ khoảng cách giữa các border của cell */
         }
 
-        #toolbar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            margin-top: 3%;
-
-        }
-    
         th, td {
             border: 1px solid black;
             text-align: center;
@@ -40,6 +29,7 @@
             width: 100%;
             max-width: 200px;
             justify-content: flex-start;
+            
         }
 
         .form-group label {
@@ -55,56 +45,29 @@
             box-sizing: border-box;
             /* Đảm bảo padding không làm thay đổi kích thước tổng thể */
         }
+        #toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            margin-top: 70px;
 
+        }
         #toolbar button {
             background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
+
         }
 
         #toolbar button:hover {
             background-color: #0056b3;
         }
-
-        @media screen and (max-width: 480px) {
-            #toolbar {
-                padding: 10px;
-                gap: 5px;
-            }
-
-            .form-group {
-                width: 100%;
-                max-width: none;
-            }
-
-            #toolbar button {
-                width: 100%;
-                /* Đặt nút tìm kiếm chiếm toàn bộ chiều rộng */
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            #toolbar {
-                padding: 10px;
-                gap: 5px;
-                margin-top: 10%;
-                margin-bottom: 10%;
-                margin-left: 10%;
-                /* toolbar căn giữa */
-                margin-right: auto;
-            }
-
-            .form-group {
-                width: 100%;
-                max-width: none;
-            }
-
-            #toolbar button {
-                width: 100%;
-            }
-        }
+        
     </style>
     <script type=text/JavaScript>
 
@@ -181,17 +144,6 @@
                 <input id="searchInput" type="text" placeholder="Nhập thông tin" />
             </div>
 
-            <!-- Nhóm chọn phương thức thanh toán -->
-            <div class="form-group">
-                <label for="ptttSearch">PT thanh toán</label>
-                <select id="ptttSearch">
-                    <option value="">Chọn phương thức thanh toán</option> <!-- Tùy chọn mặc định -->
-                    <option value="Tiền mặt">Tiền mặt</option>
-                    <option value="Momo">Momo</option>
-                    <option value="Mobile Banking">Mobile Banking</option>
-                </select>
-            </div>
-
             <!-- Nhóm chọn tình trạng đơn -->
             <div class="form-group">
                 <label for="statusSearch">Tình trạng đơn</label>
@@ -215,10 +167,20 @@
                 <label for="toDate">Đến ngày</label>
                 <input id="toDate" type="date">
             </div>
-
+            
+            <!-- Nhóm chọn phương thức thanh toán -->
+            <div class="form-group">
+                <label for="ptttSearch">PT thanh toán</label>
+                <select id="ptttSearch">
+                    <option value="">Chọn phương thức thanh toán</option> <!-- Tùy chọn mặc định -->
+                    <option value="Tiền mặt">Tiền mặt</option>
+                    <option value="Momo">Momo</option>
+                    <option value="Mobile Banking">Mobile Banking</option>
+                </select>
+            </div>
             <!-- Nhóm nút tìm kiếm -->
             <div class="form-group">
-                <button onclick="Search()" style="padding: 10px;margin-top: 13%;">Tìm kiếm</button>
+                <button onclick="Search()" style="padding: 10px;margin-top: 13%; background-color: #DF8A8A;color:black;">Tìm kiếm</button>
             </div>
         </div>
 
