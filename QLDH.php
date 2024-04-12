@@ -24,8 +24,8 @@
             <ul>
             <li><a href="Overview.php">Overview</a></li>
             <li><a href="QLSP.php">Quản lý sản phẩm</a></li>
-            <li><a href="QLNV.php">Quản lý nhân viên</li>
-            <li><a href="QLDH.php">Quản lý đơn hàng</li>
+            <li><a href="QLNV.php">Quản lý nhân viên</a></li>
+            <li><a href="QLDH.php">Quản lý đơn hàng</a></li>
         </div>
 
         <div id="header" >
