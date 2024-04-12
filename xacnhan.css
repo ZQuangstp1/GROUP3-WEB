@@ -155,7 +155,7 @@ footer {
     flex: 55%;
     padding: 2%;
 }
-#tienmat, #banking, #momo, select, textarea {
+select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
