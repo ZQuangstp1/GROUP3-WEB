@@ -14,7 +14,7 @@
             text-align: center;
             padding: 5px 1px;
             font-size: 14px; /* Giảm kích thước chữ */
-            font-family: 'Barlow, sans-serif';
+            font-family: 'Barlow', sans-serif;
         }
         input[type="text"] {
             padding: 8px;
@@ -26,6 +26,7 @@
             padding: 8px 12px; /* Giảm kích thước button */
             background-color: #DF8A8A;
             border: none;
+            border-radius: 7px;
             cursor: pointer;
             margin-right: 5px; /* Giảm khoảng cách giữa các button */
         }
