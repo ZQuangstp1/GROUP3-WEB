@@ -77,7 +77,7 @@
     <div class="image-container">
       <div class="image-wrapper">
         <img class="image-4-icon" alt="" src="<?php echo $image; ?>" />
-        <img class="zoom-image-icon" alt="Zoom Image" src="./public/zoom-image.svg" />
+        <img class="zoom-image-icon" alt="Zoom Image" src="./img/zoom-image.svg" />
         <div class="zoom-frame">
           <img class="zoomed-image" alt="" src="<?php echo $image; ?>" />
         </div>
@@ -129,7 +129,7 @@
 <!--Button Thích-->       
             <div class="add-to-wishlist" onclick="addToWishlist()">
               <div class="wishlist-icon">
-                  <img src="./public/heartoutline.svg" alt="Heart icon" />
+                  <img src="./img/heartoutline.svg" alt="Heart icon" />
                   <form id="addToWishlistForm" method="post">
                       <input type="hidden" name="idofpro" value="<?php echo $product; ?>">
                       <button type="button" class="wishlist-icon-button">
