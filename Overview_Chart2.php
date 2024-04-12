@@ -63,8 +63,8 @@
         <ul>
         <li><a href="Overview.php">Overview</a></li>
             <li><a href="QLSP.php">Quản lý sản phẩm</a></li>
-            <li><a href="QLNV.php">Quản lý nhân viên</li>
-            <li><a href="QLDH.php">Quản lý đơn hàng</li>
+            <li><a href="">Quản lý nhân viên</li>
+            <li><a href="">Quản lý đơn hàng</li>
         </ul>
     </div>
 
@@ -73,7 +73,7 @@
         <div id="header">
             <p>ADMIN / QUẢN LÝ SẢN PHẨM / THỐNG KÊ </p>
         </div>
-        <button class="view-report-btn" onclick="window.location.href='Overview_Chart.php';">Thống kê</button>
+        <button class="view-report-btn" onclick="window.location.href='Overview_Chart1.php';">Thống kê</button>
         <div id="main-content">
             <h2>Thống kê doanh thu và đơn hàng năm 2022</h2>
             <?php
