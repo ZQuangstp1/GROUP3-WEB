@@ -13,7 +13,7 @@
             text-align: center;
             padding: 5px 1px;
             font-size: 15px; /* Giảm kích thước chữ */
-            font-family: 'Barlow, sans-serif';
+            font-family: 'Barlow', sans-serif;
         }
         input[type="text"] {
             padding: 8px;
@@ -27,6 +27,7 @@
             border: none;
             cursor: pointer;
             margin-right: 5px; /* Giảm khoảng cách giữa các button */
+            border-radius: 7px;
         }
         button:hover {
             background-color: #6a4141;
