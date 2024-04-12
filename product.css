@@ -1,6 +1,10 @@
 body{
   background: #f9f2e6;
+<<<<<<< HEAD
     font-family: Barlow, sans-serif;
+=======
+  font-family: 'Barlow', sans-serif;
+>>>>>>> a27f27f2549b2b56aceb9439532761dabe5d4e5e
   margin-left: 20px;
 }
 
@@ -398,7 +402,6 @@ body{
 
 .return-policy-row {
   display: flex;
-  margin-top: 18px;
   gap: 14px;
 }
 
@@ -529,6 +532,10 @@ body{
 .shipping-container {
   margin-left: 70px;
 }
+.shipping-container p {
+  margin-bottom: 15px; 
+}
+
 .product-description{
   margin-top: 30px;
 }
@@ -1265,6 +1272,14 @@ a {
 
 .star-rating-cmt {
   display: inline-block;
+  margin-top: 20px;
+}
+
+.star-wrapper{
+  margin-top: 20px;
+}
+#star-dropdown{
+  margin-bottom: 6px;
 }
 
 .star-cmt {

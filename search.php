@@ -3,7 +3,6 @@ if (session_status() === PHP_SESSION_NONE) {
     // Phiên chưa được kích hoạt, bắt đầu một phiên mới
     session_start();
 }
-// Thêm file config.php and db_module.php
 include_once 'config.php';
 include_once 'db_module.php';
 
