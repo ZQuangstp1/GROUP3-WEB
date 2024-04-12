@@ -35,14 +35,9 @@ function view_SP()
 {
     $link = null;
     taoKetNoi($link);
-    $rows_per_page = 3;
-    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $start_from = ($current_page - 1) * $rows_per_page;
     // Thực hiện truy vấn SQL để lấy số lượng sản phẩm trong CSDL
     $total_rows_query = chayTruyVanTraVeDL($link, "SELECT COUNT(*) AS total_rows FROM product");
     $total_rows_data = mysqli_fetch_assoc($total_rows_query);
-    $total_rows = $total_rows_data['total_rows'];
-    $total_pages = ceil($total_rows / $rows_per_page);
     $search = isset($_GET['search']) ? $_GET['search'] : '';
     $query = "SELECT * FROM product WHERE 1";
     $search = isset($_GET['search']) ? $_GET['search'] : '';
@@ -55,7 +50,6 @@ function view_SP()
                           status LIKE '%$search%' OR 
                           discountID LIKE '%$search%')";
     }
-    $query .= " LIMIT $start_from, $rows_per_page";
     // Thực thi câu truy vấn SQL cập nhật
     $result = chayTruyVanTraVeDL($link, $query);
     echo "<table id='productTable' width='100%' border='1' style='margin-bottom: 2%;'>";
@@ -94,17 +88,6 @@ function view_SP()
     }
     echo "</table>";
     giaiPhongBoNho($link, $result);
-
-    // Hiển thị nút chuyển trang
-        echo "<div class='pagination'>";
-        if ($current_page > 1) {
-            echo "<a href='?page=".($current_page - 1)."'><button class='pagination-button'><</button></a>"; // Nút chuyển đến trang trước đó
-        }
-
-        if ($current_page < $total_pages) {
-            echo "<a href='?page=".($current_page + 1)."'><button class='pagination-button'>></button></a>"; // Nút chuyển đến trang tiếp theo
-        }
-        echo "</div>";
 }
 function add_SP()
 {
