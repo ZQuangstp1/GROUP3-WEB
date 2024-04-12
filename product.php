@@ -140,32 +140,6 @@
             </div>
         </div>
         <script>
-          document.addEventListener('DOMContentLoaded', function () {
-            var addToWishlistDiv = document.querySelector('.add-to-wishlist');
-            var productId = "<?php echo $product; ?>";
-            // Function to check if the product is in the user's favorites list
-            function checkFavoritesAndUpdateButton() {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        if (xhr.status === 200) {
-                            var response = xhr.responseText;
-                            if (response === 'exists') {
-                                // Product is in favorites list, apply the active class and pink background color
-                                addToWishlistDiv.classList.add('active');
-                                addToWishlistDiv.style.backgroundColor = 'rgba(251, 111, 146, 1)';
-                            }
-                        }
-                    }
-                };
-                xhr.open('GET', 'check_favorites.php?idofpro=' + productId, true);
-                xhr.send();
-            }
-
-            // Call the function to check favorites and update button on page load
-            checkFavoritesAndUpdateButton();
-        });
-
           function addToWishlist() {
             var addToWishlistDiv = document.querySelector('.add-to-wishlist');
             var formData = new FormData(document.getElementById('addToWishlistForm'));
@@ -175,14 +149,14 @@
                     if (xhr.status === 200) {
                         var response = xhr.responseText;
                         if (response === 'added') {
-                            // Product was added to favorites list
+                            // Sản phẩm được thêm vào danh sách yêu thích
                             addToWishlistDiv.classList.add('active');
                             addToWishlistDiv.style.backgroundColor = 'rgba(251, 111, 146, 1)';
                             alert('Thêm sản phẩm yêu thích thành công');
                         } else if (response === 'removed') {
-                            // Product was removed from favorites list
+                            // Sản phẩm được xoá khỏi danh sách yêu thích
                             addToWishlistDiv.classList.remove('active');
-                            addToWishlistDiv.style.backgroundColor = ''; // Remove inline background color
+                            addToWishlistDiv.style.backgroundColor = ''; // Xoá background color
                             alert('Bạn đã hủy thích sản phẩm');
                         }
                     } else {
@@ -499,6 +473,32 @@
     window.onload = function() {
       showPopup();
     };
+
+    document.addEventListener('DOMContentLoaded', function () {
+            var addToWishlistDiv = document.querySelector('.add-to-wishlist');
+            var productId = "<?php echo $product; ?>";
+            // Function to check if the product is in the user's favorites list
+            function checkFavoritesAndUpdateButton() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            var response = xhr.responseText;
+                            if (response === 'exists') {
+                                // Product is in favorites list, apply the active class and pink background color
+                                addToWishlistDiv.classList.add('active');
+                                addToWishlistDiv.style.backgroundColor = 'rgba(251, 111, 146, 1)';
+                            }
+                        }
+                    }
+                };
+                xhr.open('GET', 'check_favorites.php?idofpro=' + productId, true);
+                xhr.send();
+            }
+
+            // Call the function to check favorites and update button on page load
+            checkFavoritesAndUpdateButton();
+        });
     </script>
 </body>
 </html>
