@@ -22,6 +22,7 @@
             height: 100%;
             background-color: #F9F2E6; /* Màu nền của sidebar */
         }
+
     </style>
 
 </head>
