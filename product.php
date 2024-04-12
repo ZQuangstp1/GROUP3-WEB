@@ -74,11 +74,16 @@
   </div>
   <div class="product-details">
     <div class="product-layout">
-   
-      <div class="image-container">
+    <div class="image-container">
+      <div class="image-wrapper">
         <img class="image-4-icon" alt="" src="<?php echo $image; ?>" />
-        <img class="image-8-icon" alt="" src="<?php echo $image; ?>" />
+        <img class="zoom-image-icon" alt="Zoom Image" src="./public/zoom-image.svg" />
+        <div class="zoom-frame">
+          <img class="zoomed-image" alt="" src="<?php echo $image; ?>" />
+        </div>
       </div>
+      <img class="image-8-icon" alt="" src="<?php echo $image; ?>" />
+    </div>
 
     <br>
        <div class="product-info">
@@ -122,12 +127,12 @@
             </div>
 
 <!--Button Thích-->       
-            <div class="add-to-wishlist">
+            <div class="add-to-wishlist" onclick="addToWishlist()">
               <div class="wishlist-icon">
                   <img src="./public/heartoutline.svg" alt="Heart icon" />
                   <form id="addToWishlistForm" method="post">
                       <input type="hidden" name="idofpro" value="<?php echo $product; ?>">
-                      <button type="button" onclick="addToWishlist()" class="wishlist-icon-button">
+                      <button type="button" class="wishlist-icon-button">
                           <span class="wishlist-text">THÍCH</span>
                       </button>
                   </form>
@@ -135,24 +140,38 @@
             </div>
         </div>
         <script>
-            function addToWishlist() {
-                var formData = new FormData(document.getElementById('addToWishlistForm'));
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        if (xhr.status === 200) {
-                            // Yêu cầu xử lý thành công 
-                            var response = xhr.responseText;
-                            alert('Thêm sản phẩm yêu thích thành công'); 
-                        } else {
-                            // Yêu cầu gặp lỗi 
-                            alert('Có lỗi xảy ra, không thể thêm sản phẩm yêu thích');
-                        }
-                    }
-                };
-                xhr.open('POST', 'yeuthich.php', true);
-                xhr.send(formData);
-            }
+          function addToWishlist() {
+              var addToWishlistDiv = document.querySelector('.add-to-wishlist');
+              var wishlistButton = addToWishlistDiv.querySelector('.wishlist-icon-button');
+              var formData = new FormData(document.getElementById('addToWishlistForm'));
+              var xhr = new XMLHttpRequest();
+              xhr.onreadystatechange = function () {
+                  if (xhr.readyState === XMLHttpRequest.DONE) {
+                      if (xhr.status === 200) {
+                          var response = xhr.responseText;
+                          if (!addToWishlistDiv.classList.contains('active')) {
+                              // Sản phẩm hiện tại chưa thích, click nút Thích 
+                              addToWishlistDiv.classList.add('active');
+                              wishlistButton.innerHTML = '<span class="wishlist-text">THÍCH</span>';
+                              alert('Thêm sản phẩm yêu thích thành công');
+                          } else {
+                              // Sản phẩm hiện tại đã thích, click nút Thích để bỏ Thích
+                              addToWishlistDiv.classList.remove('active');
+                              wishlistButton.innerHTML = '<span class="wishlist-text">THÍCH</span>';
+                              alert('Bạn đã hủy thích sản phẩm');
+                          }
+                      } else {
+                          alert('Có lỗi xảy ra, không thể thêm/xóa sản phẩm yêu thích');
+                      }
+                  }
+              };
+              var method = addToWishlistDiv.classList.contains('active') ? 'DELETE' : 'POST';
+              var url = 'yeuthich.php';
+              xhr.open(method, url, true);
+              xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+              var params = 'idofpro=' + encodeURIComponent(formData.get('idofpro'));
+              xhr.send(params);
+          }
         </script>
 
 <!--Icon phí vận chuyển và chính sách đổi trả-->  
