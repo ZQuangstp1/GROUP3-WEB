@@ -17,6 +17,22 @@
             margin-top: 3%;
 
         }
+    
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 5px 7px;
+            font-size: 12.5px; /* Giảm kích thước chữ */
+            font-family: 'Barlow', sans-serif;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+        .pink-row th {
+            background-color: #FFC0CB; /* Màu hồng */
+        }
 
         .form-group {
             display: flex;
@@ -243,7 +259,7 @@
             $result = chayTruyVanTraVeDL($link, $sql);
 
             echo "<table width='100%' cellspacing='5' cellpadding='5' border='1' style='margin-bottom: 3%;margin-top: 2%' >";
-            echo "<tr>";
+            echo "<tr class='pink-row'>"; 
             echo "<th>Mã đơn</th>";
             echo "<th>Khách hàng</th>";
             echo "<th>SDT</th>";
@@ -255,6 +271,7 @@
             echo "<th>Tình trạng</th>";
             echo "<th>Địa chỉ</th>";
             echo "<th>Ngày đặt</th>";
+            echo "<th>Thao tác</th>";
             echo "</tr>";
 
             while ($row = mysqli_fetch_assoc($result)) {

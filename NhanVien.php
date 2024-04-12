@@ -223,6 +223,7 @@
             echo "<th>Giới tính</th>";
             echo "<th>Vị trí</th>";
             echo "<th>Ca làm việc</th>";
+            echo "<th>Thao tác</th>";
             echo "</tr>";
 
             while ($row = mysqli_fetch_assoc($result)) {
