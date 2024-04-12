@@ -3,10 +3,6 @@
 require_once "db_module.php";
 require_once "users_module.php";
 require_once "validate_module.php";
-if (session_status() === PHP_SESSION_NONE) {
-    // Phiên chưa được kích hoạt, bắt đầu một phiên mới
-    session_start();
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["password2"])) {

@@ -411,7 +411,6 @@
     <div class="copyright-section">
       © 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo
     </div>
-
     </div>
   </div>
   <script>

@@ -3,17 +3,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="upperstyles.css">
   <link rel="stylesheet" href="banner-slider.css">
+  <!-- <link rel="stylesheet" href="stylemenu.css"> -->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <!-- <script type="text/javascript" src="responsivemenu.js" language="JavaScript"> -->
+  
+  <!-- // <script type="text/javascript" src="script.js" language="JavaScript"> -->
+  <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'>  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
   <title>Trang sức Flamingo</title>
 </head>
 
-
 <body>  
+  <!-- <script>
+    $(document).ready(function(){
+      $('#toggle').click(function(){
+        $('nav').slideToggle();
+      });
+
+      // Thêm sự kiện toggle sub-menu khi click vào tiêu đề của menu
+      $('#main-menu li').click(function(){
+          $(this).children('ul.sub-menu').slideToggle();
+      });
+
+    //   $('#main-menu li').click(function(event) {
+    //     if ($(this).hasClass('product')) {
+    //         event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+    //         $(this).toggleClass('submenu-active').siblings().removeClass('submenu-active');
+    //     }
+    // });
+    })
+  </script> -->
   <div class="main-container">
     <div class="content-container">
       <!-- HEADER -->
@@ -47,6 +66,11 @@
       <script src="banner-slider.js"></script>
         <div class="content-on-banner">
           <div class="text-on-banner">
+            <!-- <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/cfb03300b34e95312e28d266a73cd7b4ec2028d5bea759722f61b49f33907171?"
+              class="golden-frame"
+            /> -->
             <div class="banner-text">
               <div class="banner-text1">50%</div>
               <div class="banner-text2"></div>
@@ -147,7 +171,7 @@
                   LEFT JOIN orderdetail od ON p.productID = od.productID
                   LEFT JOIN orders o ON o.orderID = od.orderID
                   LEFT JOIN discount d ON p.discountID = d.discountID
-                  GROUP BY p.productName, formattedUnitPrice, p.image, discountPercentage, c.categoryName, sc.subcategoryName 
+                  GROUP BY p.productName, formattedUnitPrice, p.image, discountPercentage, c.categoryName, sc.subcategoryName -- Grouping by all selected columns
                   ORDER BY SUM(od.quantity) DESC
                   LIMIT 5;
                   ";
@@ -179,11 +203,8 @@
                 giaiPhongBoNho($link, $result);
                 ?>
     </div>
-
+    <!-- INCLUDE QUANG'S PHP FILE BELOW HERE  -->
     <?php include "index-2.php"; ?>
-
-
   </div>
-  <a name="contact"></a>
   </body>
 </html>

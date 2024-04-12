@@ -10,10 +10,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <nav>
@@ -25,7 +23,7 @@
           <li>
             <a href="product-list.php" class="desktop_item">Sản phẩm</a>
             <input type="checkbox" id="showMega" />
-            <label for="showMega" class="mobile_item" href="product-list.php">Sản phẩm</label>
+            <label for="showMega" class="mobile_item">Sản phẩm</label>
             <div class="mega_box">
               <div class="content">
                 <div class="row">
@@ -86,7 +84,7 @@
               </div>
             </div>
           </li>
-          <li><a href="index.php#contact">Liên hệ</a></li>
+          <li><a href="#">Quà tặng</a></li>
           <li><a href="#">Thông tin chung</a></li>
         </ul>
         <label for="menu_btn" class="btn menu_btn">

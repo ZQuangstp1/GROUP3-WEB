@@ -93,7 +93,7 @@ if ($result->num_rows > 0) {
 giaiPhongBoNho($link, $result);
 ?>
 
-<div class="bestseller-template" id="animate-on-scroll">SẢN PHẨM GIẢM GIÁ</div>
+<div class="trend" id="animate-on-scroll">SẢN PHẨM GIẢM GIÁ</div>
 <div class="menu-container2" id="animate-on-scroll">
     <div class="top-products">
         <?php
