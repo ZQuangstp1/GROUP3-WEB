@@ -3,17 +3,16 @@
 <head>
     <link rel="stylesheet" type="text/css" href="Khung.css">    
     <style> 
-        /* CSS hiện tại của bạn */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 30px; /* Đẩy bảng lên trên 20px */
+            margin-top: 30px; 
         }
         th, td {
             border: 1px solid black;
             text-align: center;
             padding: 5px 1px;
-            font-size: 14px; /* Giảm kích thước chữ */
+            font-size: 14px; 
             font-family: 'Barlow', sans-serif;
         }
         input[type="text"] {
