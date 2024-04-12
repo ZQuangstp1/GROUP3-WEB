@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
@@ -13,7 +12,17 @@
     </script>
 
 <link rel="stylesheet" type="text/css" href="Khung.css">    
-
+<style>
+            
+            #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px; /* Điều chỉnh độ rộng của sidebar theo mong muốn */
+            height: 100%;
+            background-color: #F9F2E6; /* Màu nền của sidebar */
+        }
+    </style>
 
 </head>
 
