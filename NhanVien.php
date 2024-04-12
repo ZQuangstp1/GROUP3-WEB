@@ -151,7 +151,7 @@
             <!-- Khối chứa tra cứu và thêm nhân viên -->
             <div id="search">
             <input type="text" id="searchInput" placeholder="Nhập từ khóa...">
-            <button onclick="Search()">Tìm sản phẩm</button>
+            <button onclick="Search()">Tìm nhân viên</button>
             <button onclick="window.location.href='?opt=add_NV'">
                 <p class="add-nv-text">Thêm nhân viên</p>
             </button>
