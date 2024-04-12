@@ -408,6 +408,7 @@
                     display: block;
                     margin-top: 50px;
                     margin-left: 200px;
+                    margin-bottom : 50px;
                 }
 
                 .button:hover {

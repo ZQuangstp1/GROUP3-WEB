@@ -15,13 +15,9 @@ if (isset($_POST['submit'])) {
     $dateOfBirth = $_POST['dateOfBirth'];
     // Biến $gender là giới tính cần cập nhật
 // Giới tính Nam sẽ được lưu là 'M', Nữ là 'F', và Khác là 'unknown'
-    if ($gender == "Nam") {
-        $gender_code = "M";
-    } elseif ($gender == "Nữ") {
-        $gender_code = "F";
-    }
+
     // Câu lệnh SQL để cập nhật dữ liệu với giới tính đã được chuyển đổi
-    $sql = "UPDATE customer SET lastName='$lastName', firstName='$firstName', phone='$phone', email='$email', gender='$gender_code', dateOfBirth='$dateOfBirth' WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
+    $sql = "UPDATE customer SET lastName='$lastName', firstName='$firstName', phone='$phone', email='$email', gender='$gender', dateOfBirth='$dateOfBirth' WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
 
     // Thực thi truy vấn
     $result = chayTruyVanKhongTraVeDL($link, $sql);
@@ -35,5 +31,6 @@ if (isset($_POST['submit'])) {
     }
 }
 
-giaiPhongBoNho($link,$result);
+
+giaiPhongBoNho($link, $result);
 ?>

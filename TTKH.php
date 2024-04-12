@@ -89,22 +89,32 @@
               <div class="modal-content">
                 <span class="close">&times;</span>
                 <div class="title">Sửa Thông Tin Cá Nhân</div>
+          <?php
 
+            require_once ("db_module.php");
+            $link = null;
+            taoKetNoi($link);
+
+            $sql= "Select * FROM customer WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
+
+            $result = chayTruyVanKhongTraVeDL($link, $sql);
+            $row = mysqli_fetch_assoc($result)
+          ?>    
                 <!-- Form sửa thông tin cá nhân -->
                 <form action="update_info.php" method="POST">
-    <input type="text" name="lastName" placeholder="Họ" class="input-field" required>
-    <input type="text" name="firstName" placeholder="Tên" class="input-field" required>
-    <input type="tel" name="phone" placeholder="Số điện thoại" class="input-field" pattern="[0-9]{10,12}" title="Số điện thoại phải có từ 10 đến 12 chữ số" required>
-    <input type="email" name="email" placeholder="Địa chỉ Email" class="input-field" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Vui lòng nhập địa chỉ email hợp lệ" required>
-    <select name="gender" class="input-field" required>
-        <option value="" disabled selected>Giới tính</option>
-        <option value="male">Nam</option>
-        <option value="female">Nữ</option>
-    </select>
-    <input type="date" name="dateOfBirth" placeholder="Ngày sinh" class="input-field" required>
+                    <input type="text" name="lastName" placeholder="Họ" class="input-field" value="<?php echo $row["lastName"]; ?>" required>
+                    <input type="text" name="firstName" placeholder="Tên" class="input-field" value="<?php echo $row["firstName"]; ?>" required>
+                    <input type="tel" name="phone" placeholder="Số điện thoại" class="input-field" value="<?php echo $row["phone"]; ?>" title="Số điện thoại phải có từ 10 đến 12 chữ số" required>
+                    <input type="email" name="email" placeholder="Địa chỉ Email" class="input-field" value="<?php echo $row["email"]; ?>" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Vui lòng nhập địa chỉ email hợp lệ" required>
+                    <select name="gender" class="input-field" value="<?php echo $row["gender"]; ?>" required>
+                        
+                        <option value="M" <?php echo ($row["gender"] == "M" ? "selected" : ""); ?>>Nam</option>
+                                <option value="F" <?php echo ($row["gender"] == "F" ? "selected" : ""); ?>>Nữ</option>
+                    </select>
+                    <input type="date" name="dateOfBirth" value="<?php echo $row["dateOfBirth"]; ?>"placeholder="Ngày sinh" class="input-field" required>
 
-    <button type="submit" name="submit" class="submit-button">Lưu Thay Đổi</button>
-</form>
+                    <button type="submit" name="submit" class="submit-button">Lưu Thay Đổi</button>
+                </form>
 
               </div>
 
@@ -471,6 +481,7 @@
           border-radius: 5px;
           cursor: pointer;
           width: 100%;
+          margin-bottom : 50px;
         }
 
         #tdc {
@@ -497,6 +508,7 @@
           line-height: normal;
           width: 40%;
           margin-left: 20px;
+          margin-bottom : 20px;
         }
 
         @media (max-width: 991px) {

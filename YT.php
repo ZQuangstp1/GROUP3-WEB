@@ -112,6 +112,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
               flex-direction: column;
               align-items: center;
               padding: 0 20px;
+              
             }
             .div-2 {
               color: var(--Gray-1, #828282);
@@ -166,8 +167,9 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
               display: flex;
               flex-direction: column;
               line-height: normal;
-              width: 50%;
+              width: 23%;
               margin-left: 0px;
+              margin-bottom : 100px;
             }
             @media (max-width: 991px) {
               .column {
@@ -250,8 +252,9 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                     display: flex;
                     flex-direction: column;
                     line-height: normal;
-                    width: 50%;
+                    width: 77%;
                     margin-left: 20px;
+                    margin-bottom : 100px;
                 }
 
                 @media (max-width: 991px) {
