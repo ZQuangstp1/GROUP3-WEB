@@ -1,9 +1,7 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thống kê doanh thu và đơn hàng</title>
     <link rel="stylesheet" type="text/css" href="Khung.css">    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -12,7 +10,8 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            font-family: 'Barlow, sans-serif';
+            font-family: 'Barlow', sans-serif;
+            margin-top:7px;
         }
 
         .chart-row1 {
@@ -23,7 +22,7 @@
         }
 
         .chart-container {
-            width: 100%;
+            width: 105%;
             margin-right: 53px; /* Add space between charts */
             margin-left: 43px; /* Add space between charts */
 
@@ -35,22 +34,29 @@
         }
 
         .view-report-btn {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 8px 12px; /* Giảm kích thước button */
     background-color: #DF8A8A;
+    border-radius: 7px;
     border: none;
     cursor: pointer;
     margin-right: 5px; /* Giảm khoảng cách giữa các button */
     position: absolute;
     top: 100px;
     right: 10px;
-    font-family: 'Barlow, sans-serif';
+    font-family: 'Barlow', sans-serif;
 }
 
 .view-report-btn:hover {
     background-color: #6a4141;
 }
-
+#footer {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: #FFE5EC; /* Màu nền của footer */
+            padding-top: 5px; /* Khoảng cách từ chữ trong footer đến đỉnh của footer */
+        }
     </style>
 </head>
 <body>
@@ -68,7 +74,7 @@
         <div id="header">
             <p>ADMIN / QUẢN LÝ SẢN PHẨM / THỐNG KÊ </p>
         </div>
-        <button class="view-report-btn" onclick="window.location.href='Overview_BaoCaoBanHang.php';">Xem báo cáo</button>
+        <button class="view-report-btn" onclick="window.location.href='Overview_Chart2.php';">Doanh thu</button>
         <div id="main-content">
             <h2>Thống kê doanh thu và đơn hàng năm 2022</h2>
             <?php
@@ -88,9 +94,12 @@
             while ($row = mysqli_fetch_assoc($result)) {
                 $productSalesData[$row['productID']] = $row['total_quantity'];
             }
+            $result = chayTruyVanTraVeDL($link, "SELECT productID, COUNT(*) AS product_count FROM favproduct GROUP BY productID ORDER BY product_count DESC LIMIT 10");
+            $productPopularityData = array();
+            while ($row = mysqli_fetch_assoc($result)) {
+                $productPopularityData[$row['productID']] = $row['product_count'];}
             ?>
             <!-- First row of charts -->
-            <p><strong>Tổng doanh thu năm 2022: </strong> <?php echo number_format($totalProfit, 0, ',', '.') . ' VND'; ?></p>
             <div class="chart-row1">
                 <div class="chart-container">
                     <canvas id="orderSalesChart" class="chart-canvas"></canvas>
@@ -101,13 +110,11 @@
             </div>
 
             <!-- Second row of charts -->
-            <div class="chart-row2">
-                <div class="chart-container">
-                    <canvas id="revenueChart" class="chart-canvas"></canvas>
-                </div>
-            </div>
-        </div>
+<div class="chart-row2">
+    <div class="chart-container">
+        <canvas id="productPopularityChart" class="chart-canvas"></canvas>
     </div>
+</div>
 
     <div id="footer">
         <p>© 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo.</p>
@@ -162,38 +169,29 @@
             }
         });
 
-        var ctxRevenue = document.getElementById('revenueChart').getContext('2d');
-        var revenueChart = new Chart(ctxRevenue, {
-            type: 'line',
-            data: {
-                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-                datasets: [{
-                    label: 'Biến động về doanh thu năm 2022',
-                    data: [
-                        <?php
-                        for ($i = 1; $i <= 12; $i++) {
-                            $result = chayTruyVanTraVeDL($link, "SELECT SUM(profit) AS monthly_profit FROM financialreport WHERE YEAR(DateID) = 2022 AND MONTH(DateID) = $i");
-                            $row = mysqli_fetch_assoc($result);
-                            echo $row['monthly_profit'] ? $row['monthly_profit'] : 0;
-                            echo ",";
-                        }
-                        ?>
-                    ],
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
+        var ctxProductPopularity = document.getElementById('productPopularityChart').getContext('2d');
+    var productPopularityChart = new Chart(ctxProductPopularity, {
+        type: 'bar',
+        data: {
+            labels: [<?= "'" . implode("', '", array_keys($productPopularityData)) . "'"; ?>],
+            datasets: [{
+                label: 'Sản phẩm được yêu thích',
+                data: [<?= implode(', ', $productPopularityData); ?>],
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
                 }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
             }
-        });
+        }
+    });
     </script>
 </body>
 </html>
