@@ -8,15 +8,6 @@ function toggleFilter(filterId) {
 
 
 
-//Hàm pop-up Thêm giỏ hàng thành công 
-/*
-function addToCart() {
-  event.preventDefault();
-  alert("Thêm giỏ hàng thành công");
-  document.getElementById("add-to-cart-form").submit();
-}
-*/
-
 // Button số lượng
 function totalClick(click) {
   const sum = document.getElementById('number');
@@ -68,47 +59,10 @@ document.getElementById("likeButtonComment").addEventListener("click", function(
   }
 });
 
-/*
-// Function to create star rating
-function createStarRating(maxRating) {
-  const starWrapper = document.getElementById('star-rating');
-  starWrapper.innerHTML = ''; // Clear previous content
 
-  for (let i = 1; i <= maxRating; i++) {
-    const star = document.createElement('img');
-    star.src = 'https://example.com/star-filled.png'; // URL to your filled star image
-    star.alt = 'Star';
-    star.classList.add('star');
-    starWrapper.appendChild(star);
-  }
-}
-
-// Function to create comment textbox and button
-function createCommentBox() {
-  const commentSection = document.getElementById('comment-section');
-  commentSection.innerHTML = ''; // Clear previous content
-
-  const commentTextbox = document.createElement('textarea');
-  commentTextbox.placeholder = 'Add your comment here...';
-  commentSection.appendChild(commentTextbox);
-
-  const sendButton = document.createElement('button');
-  sendButton.textContent = 'Send';
-  sendButton.addEventListener('click', function() {
-    const comment = commentTextbox.value;
-    // Handle sending comment data here
-    console.log('Comment:', comment);
-    // You can send the comment data to your server using AJAX or any other method
-    // For demonstration, I'm just logging the comment to the console
-    // Reset the textarea after sending
-    commentTextbox.value = '';
-  });
-  commentSection.appendChild(sendButton);
-}
-*/
 
 // Hàm tạo star rating and comment box
-createStarRating(5); // You can pass the maximum rating as an argument
+createStarRating(5); 
 createCommentBox();
 
 document.addEventListener("DOMContentLoaded", function() {
