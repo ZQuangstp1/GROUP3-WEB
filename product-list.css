@@ -21,6 +21,11 @@ body {
   transition: background-color 0.3s;
 }
 
+@media only screen and (max-width: 768px) {
+  .back-to-top-btn {
+    margin-right: 65px;}
+  }
+
 .back-to-top-btn:hover {
   color: black;
 }
@@ -171,6 +176,12 @@ button {
 }
 
 
+
+@media only screen and (max-width: 768px) {
+  .product-info img {
+  height: 150px;}
+}
+
 .product-content {
   padding-top: 10px;
   border-top: 1px solid #000000;
@@ -257,10 +268,10 @@ button {
 @media only screen and (max-width: 430px) {
   /* Khi màn hình có kích thước nhỏ hơn hoặc bằng 576px */
   .product-info {
-    max-width: calc(50% - 20px); /* Hiển thị 2 sản phẩm trên mỗi dòng */
+    max-width: calc(50% - 60px); /* Hiển thị 2 sản phẩm trên mỗi dòng */
   }
   .product-title{
-    font-size: 10px;
+    font-size: 20px;
     padding-bottom: 10px;
   }
   .product-desc{

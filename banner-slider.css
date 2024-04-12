@@ -14,8 +14,12 @@
   }
 
   @media screen and (max-width: 991px) {
+
+    .slider{
+      width: 100%;
+    }
     .slider img {
-      height: 150px;
+      height: 450px;
       width: 100%;
       max-width: 100%;
       margin: 0;

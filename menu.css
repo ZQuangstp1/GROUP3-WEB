@@ -1,8 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Barlow, sans-serif;
+    font-family: 'Barlow', sans-serif;
   }
   
   nav {
@@ -14,6 +13,7 @@
     height: 65px;
     line-height: 65px;
     position: relative;
+
   }
   
   nav .wrapper {
@@ -32,6 +32,7 @@
   .nav_links li a {
     color: #ff678d;
     text-decoration: none;
+    
   }
   
   .nav_links li a {
@@ -131,7 +132,7 @@
     cursor: pointer;
     display: none;
     margin-top: 10px;
-    margin-left: -10px
+    margin-left: -70px
   }
   .wrapper .btn.cancel_btn {
     position: absolute;
