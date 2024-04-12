@@ -181,8 +181,6 @@
     </div>
 
     <?php include "index-2.php"; ?>
-
-
   </div>
   <a name="contact"></a>
   </body>
