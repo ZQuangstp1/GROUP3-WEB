@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Barlow, sans-serif';
+    font-family: 'Barlow', sans-serif;
 }
 
 a {
@@ -20,6 +20,7 @@ a:hover {
     color: #fff;
     float: left;
     border-right: 2px solid #DF8A8A; 
+
 }
 
 #sidebar ul {
@@ -44,7 +45,7 @@ a:hover {
 #content {
     margin-left: 250px;
     padding: 20px;
-    font-family: 'Barlow, sans-serif';
+    font-family: 'Barlow', sans-serif;
 }
 
 #header {
@@ -62,7 +63,7 @@ a:hover {
 }
 
 #footer {
-    font-family: 'Barlow, sans-serif';
+    font-family: 'Barlow', sans-serif;
     font-size: x-small;
     background: #FFE5EC;
     color: #10090d81;
@@ -74,6 +75,7 @@ a:hover {
 }
 
 #sidebar h2 {
+    font-family: 'Barlow', sans-serif;
     text-align: center;
     margin-top: -25px;
 }
