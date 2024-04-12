@@ -4,7 +4,6 @@
     table {
             width: 100%;
             border-collapse: collapse;
-            /* Loại bỏ khoảng cách giữa các border của cell */
         }
             #toolbar {
             display: flex;
@@ -13,6 +12,7 @@
             padding: 10px;
             margin: 2% 0;
             flex-wrap: wrap;
+            margin-top: 20px;
         }
           /* Thêm CSS cho dòng đầu tiên */
           .pink-row th {
@@ -30,13 +30,6 @@
             margin-bottom: 10px;
             width: 200px;
         }
- 
-    #searchInput {
-        padding: 8px 10px;
-        margin-right: 10px; 
-        flex-grow: 1; 
-    }
-
     button, .add-nv-container {
         height: 40px; 
         display: flex;
@@ -65,22 +58,15 @@
         margin-right: 5px; /* Khoảng cách giữa ảnh và chữ */
     }
 
-    .add-nv-text {
-        color: black; 
-        margin: 0; 
-    }
-
-    @media (max-width: 768px) {
-        #toolbar {
-            flex-direction: column;
-            align-items: stretch;
+        #search {
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            padding: 20px;
+            margin-top: 50px; 
+            text-align: center;
+            margin-top: 60px;
         }
-
-        #searchInput, button, .add-nv-container {
-            width: calc(100% - 20px); 
-            margin: 5px 0; 
-        }
-    }
     </style>
     <script type=text/JavaScript>
     function confirmDel() {
@@ -160,15 +146,13 @@
     <div id="content">
         <div id="toolbar">
             <!-- Khối chứa tra cứu và thêm nhân viên -->
+            <div id="search">
+            <input type="text" id="searchInput" placeholder="Nhập từ khóa...">
+            <button onclick="Search()">Tìm sản phẩm</button>
+            <button onclick="window.location.href='?opt=add_NV'">
+                <p class="add-nv-text">Thêm nhân viên</p>
+            </button>
 
-            <input id="searchInput" type="text" placeholder="Nhập thông tin"/>
-            <button onclick="Search()">Tìm kiếm</button>
-
-            <div class="add-nv-container">
-                <a href="?opt=add_NV" style="text-decoration: none; display: flex; align-items: center;">
-                    <img src="Picture/Vector.png" alt="ThemNV">
-                    <p class="add-nv-text">Thêm nhân viên</p>
-                </a>
             </div>
         </div>
 
@@ -237,7 +221,7 @@
                 echo "<td>" . $row["gender"] . "</td>";
                 echo "<td>" . $row["position"] . "</td>";
                 echo "<td>" . $row["shiftTime"] . "</td>";
-                echo "<td><a href='?opt=edit_NV&employeeID=" . $row["employeeID"] . "'><img src='Picture/Group 17.png' alt='Sửa' style='width: 20px; height: 20px;'></a> | <a href='?opt=del_NV&employeeID=" . $row["employeeID"] . "' onclick='return confirmDel()'><img src='Picture/Group 18.png' alt='Xóa' style='width: 20px; height: 20px;'></a></td>";
+                echo "<td><a href='?opt=edit_NV&employeeID=" . $row["employeeID"] . "'><img src='Picture/Group 17.png' alt='Sửa' style='width: 20px; height: 20px;'></a> <a href='?opt=del_NV&employeeID=" . $row["employeeID"] . "' onclick='return confirmDel()'><img src='Picture/Group 18.png' alt='Xóa' style='width: 20px; height: 20px;'></a></td>";
                 echo "</tr>";
             }
 
@@ -509,6 +493,8 @@
         if (in_array($_opt, ["add_NV", "edit_NV"])) {
             echo "<script>hideToolBar();</script>";
         }
+
+        
         ?>
     </div>
 </body>
