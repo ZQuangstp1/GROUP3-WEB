@@ -217,7 +217,9 @@
       </section>
 
       <section class="shipping-container">
+        <br>
         <h2 class="product-title">VẬN CHUYỂN</h2>
+        <br>
         <p class="shipping-description">
           Flamingo cung cấp Miễn phí Giao hàng Tiêu chuẩn cho tất cả các đơn hàng trị giá trên 1,000,000 VNĐ. Giá trị đơn hàng tối thiểu phải là 1,000,000 VNĐ trước thuế, phí vận chuyển và xử lý.
         </p>
