@@ -72,11 +72,12 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
       <?php
             }
         } else {
-            echo "Không có sản phẩm yêu thích nào được tìm thấy.";
+          echo '<div class="tb" style="text-align: center; vertical-align: top;">Không có sản phẩm yêu thích nào được tìm thấy.</div>';
         }
               } else {
                   // Hiển thị thông báo nếu có lỗi trong quá trình truy vấn
-                  echo "<div style='font-family: Barlow, sans-serif;'>Không có sản phẩm yêu thích nào được tìm thấy.</div>";
+                  echo "Không có sản phẩm yêu thích nào được tìm thấy.";
+
               }
           } else {
               // Nếu không có session, chuyển hướng người dùng đến trang đăng nhập
@@ -96,6 +97,11 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
 <?php require 'footer.php'; ?>
 
       <style>
+        .tb {
+          font-family: Barlow, sans-serif;
+          margin-top : 0px;
+          margin-bottom : 30px;
+        }
        body {
             margin :0;
             padding :0;
@@ -164,18 +170,23 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
               }
             }
             .column {
-              display: flex;
-              flex-direction: column;
-              line-height: normal;
-              width: 23%;
-              margin-left: 0px;
-              margin-bottom : 100px;
-            }
-            @media (max-width: 991px) {
-              .column {
-                width: 100%;
-              }
-            }
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 25%;
+    margin-left: 0px;
+    margin-bottom: 100px; /* Thêm khoảng cách dưới cùng cho cột */
+}
+
+/* Media query cho màn hình có chiều rộng nhỏ hơn hoặc bằng 991px */
+@media (max-width: 991px) {
+    .column {
+        width: 100%; /* Chiều rộng của cột trở thành 100% khi màn hình nhỏ hơn hoặc bằng 991px */
+        margin-bottom: 30px;
+        
+    }
+}
+
             .div-6 {
                     display: flex;
                     flex-direction: column;
@@ -252,14 +263,17 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                     display: flex;
                     flex-direction: column;
                     line-height: normal;
-                    width: 77%;
+                    width: 75%;
                     margin-left: 20px;
-                    margin-bottom : 100px;
+                  
+                    
                 }
 
                 @media (max-width: 991px) {
                     .column-2 {
                         width: 100%;
+                      
+                      
                     }
                 }
     .product-item {

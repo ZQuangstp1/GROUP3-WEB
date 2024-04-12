@@ -406,18 +406,21 @@
         }
 
         .column-2 {
-          display: flex;
-          flex-direction: column;
-          line-height: normal;
-          width: 50%;
-          margin-left: 20px;
-        }
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 50%; /* Đảm bảo chiếm 50% chiều rộng của màn hình */
+  margin-left: 20px;
+}
 
-        @media (max-width: 991px) {
-          .column-2 {
-            width: 100%;
-          }
-        }
+@media only screen and (max-width: 926px) {
+  /* Đây là kích thước tương ứng với màn hình của iPhone 14 Pro Max */
+  .column-2 {
+    width: 100%; /* Chiếm toàn bộ chiều rộng của màn hình */
+    margin-left: 0px; /* Xóa khoảng cách bên trái */
+   
+  }
+}
 
         .div-11 {
          
@@ -503,19 +506,22 @@
         
 
         .column-3 {
-          display: flex;
-          flex-direction: column;
-          line-height: normal;
-          width: 40%;
-          margin-left: 20px;
-          margin-bottom : 20px;
-        }
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 50%; /* Chiếm 50% chiều rộng của màn hình */
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
 
-        @media (max-width: 991px) {
-          .column-3 {
-            width: 100%;
-          }
-        }
+@media only screen and (max-width: 926px) {s
+  /* Điều chỉnh kích thước cho màn hình tương ứng với iPhone 14 Pro Max */
+  .column-3 {
+    width: 100%; /* Chiếm toàn bộ chiều rộng của màn hình */
+    margin-left: 0; /* Xóa khoảng cách bên trái */
+    margin-bottom: 20px; /* Duy trì khoảng cách dưới cố định */
+  }
+}
 
         .div-19 {
           align-items: start;

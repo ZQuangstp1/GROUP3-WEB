@@ -24,83 +24,83 @@
                             <div class="div-14" style="font-weight: bold;">Đơn hàng</div>
                         </div>
                         <?php
-                        // Kết nối đến cơ sở dữ liệu
-                        require_once "db_module.php";
-                        $link = null;
-                        taoKetNoi($link);
-                       
+// Kết nối đến cơ sở dữ liệu
+require_once "db_module.php";
+$link = null;
+taoKetNoi($link);
 
-                        // Kiểm tra xem customerID có tồn tại trong session không
-                        if (isset($_SESSION['customerID'])) {
-                            // Lấy customerID từ session
-                            $customerID = $_SESSION['customerID'];
-                            // Truy vấn để lấy thông tin các đơn hàng từ bảng order
-                            $query = "SELECT product.productID, orders.orderID, orders.status, date.Date, product.image, product.productName, orderdetail.quantity, product.size
-                                      FROM orders 
-                                      LEFT JOIN date ON orders.DateID = date.DateID 
-                                      LEFT JOIN orderdetail ON orders.orderID = orderdetail.orderID
-                                      LEFT JOIN product ON orderdetail.productID = product.productID
-                                      WHERE customerID = '" . $_SESSION['customerID'] . "'";
-                            $result = mysqli_query($link, $query);
+// Kiểm tra xem customerID có tồn tại trong session không
+if (isset($_SESSION['customerID'])) {
+    // Lấy customerID từ session
+    $customerID = $_SESSION['customerID'];
+    // Truy vấn để lấy thông tin các đơn hàng từ bảng order
+    $query = "SELECT product.productID, orders.orderID, orders.status, date.Date, product.image, product.productName, orderdetail.quantity, product.size
+              FROM orders 
+              LEFT JOIN date ON orders.DateID = date.DateID 
+              LEFT JOIN orderdetail ON orders.orderID = orderdetail.orderID
+              LEFT JOIN product ON orderdetail.productID = product.productID
+              WHERE customerID = '" . $_SESSION['customerID'] . "'";
+    $result = mysqli_query($link, $query);
 
-                            // Khai báo một biến để lưu trữ orderID trước đó
-                            $prevOrderID = null;
+    // Khai báo một biến để lưu trữ orderID trước đó
+    $prevOrderID = null;
 
-                            // Kiểm tra xem có dữ liệu không
-                            if (mysqli_num_rows($result) > 0) {
-                                // Hiển thị thông tin đơn hàng
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    // Kiểm tra nếu orderID khác với orderID trước đó
-                                    if ($row['orderID'] !== $prevOrderID) {
-                                        ?>
-                                        <div class="div-18">
-                                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/190006a3d3439101c0ee4b84999b823b25c34e81bb0ba5d245c81a2b54260f4a?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" class="img-3" />
-                                            
-                                            <div class="div-19">
-                                                <div class="div-20"><?php echo $row['status']; ?></div>
-                                                <div class="div-21"><?php echo $row['Date']; ?></div>
-                                            </div>
+    // Kiểm tra xem có dữ liệu không
+    if (mysqli_num_rows($result) > 0) {
+        // Hiển thị thông tin đơn hàng
+        while ($row = mysqli_fetch_assoc($result)) {
+            // Kiểm tra nếu orderID khác với orderID trước đó
+            if ($row['orderID'] !== $prevOrderID) {
+                ?>
+                <div class="div-18">
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/190006a3d3439101c0ee4b84999b823b25c34e81bb0ba5d245c81a2b54260f4a?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" class="img-3" />
+                    
+                    <div class="div-19">
+                        <div class="div-20"><?php echo $row['status']; ?></div>
+                        <div class="div-21"><?php echo $row['Date']; ?></div>
+                    </div>
 
-                                          <?php if ($row['status'] !== 'Hủy bỏ') { ?>
-                            <form action="del_DDH.php" method="post" id="deleteForm">
-                                <input type="hidden" name="orderID" value="<?php echo $row['orderID']; ?>">
-                                <button class="img-3" id ="button" >Hủy đơn hàng</button>
-                            </form>
-                        <?php } ?>
-                                        </div>
-                                    <?php
-                                    }
-                                    ?>
-                                    <div class="div-22">
-                                        <img loading="lazy" srcset="<?php echo $row['image']; ?>" class="img-4" />
-                                        <div class="div-23">
-                                            <div class="div-24">
-                                                <div class="div-25">
-                                                    <div class="div-26"><?php echo $row['productName']; ?></div>
-                                                    <div class="div-27">Số lượng : <?php echo $row['quantity']; ?></div>
-                                                </div>
-                                                <a href="product.php?product_id=<?php echo $row['productID']; ?>">
-                                                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/d8adc9a448bed35517b7db4d2624b818bcca6fc979b827778bf76cc287dd7267?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" class="img-5" />
-                                                </a>
-                                            </div>
-                                            <div class="div-28">Size: <?php echo $row['size']; ?></div>
-                                        </div>
-                                    </div>
-                            
-                                    <?php
-                                    // Lưu trữ orderID hiện tại để sử dụng trong lần lặp tiếp theo
-                                    $prevOrderID = $row['orderID'];
-                                }  
-                            } else {
-                                echo "Không có đơn hàng nào được tìm thấy.";
-                            }
-                        } else {
-                            header("Location: dangnhap.php");
-                            // hoặc echo "Vui lòng đăng nhập để xem đơn đặt hàng.";
-                        }
-                        // Đóng kết nối
-                        mysqli_close($link);
-                        ?>
+                    <?php if ($row['status'] !== 'Hủy bỏ') { ?>
+                        <form action="del_DDH.php" method="post" id="deleteForm">
+                            <input type="hidden" name="orderID" value="<?php echo $row['orderID']; ?>">
+                            <button class="img-3" id="button">Hủy đơn hàng</button>
+                        </form>
+                    <?php } ?>
+                </div>
+            <?php
+            }
+            ?>
+            <div class="div-22">
+                <img loading="lazy" srcset="<?php echo $row['image']; ?>" class="img-4" />
+                <div class="div-23">
+                    <div class="div-24">
+                        <div class="div-25">
+                            <div class="div-26"><?php echo $row['productName']; ?></div>
+                            <div class="div-27">Số lượng : <?php echo $row['quantity']; ?></div>
+                        </div>
+                        <a href="product.php?product_id=<?php echo $row['productID']; ?>">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/d8adc9a448bed35517b7db4d2624b818bcca6fc979b827778bf76cc287dd7267?apiKey=eb23b2963eda46448725d8ef1c3cf67d&" class="img-5" />
+                        </a>
+                    </div>
+                    <div class="div-28">Size: <?php echo $row['size']; ?></div>
+                </div>
+            </div>
+
+            <?php
+            // Lưu trữ orderID hiện tại để sử dụng trong lần lặp tiếp theo
+            $prevOrderID = $row['orderID'];
+        }  
+    } else {
+        echo "Không có đơn hàng nào được tìm thấy.";
+    }
+} else {
+    header("Location: dangnhap.php");
+    // hoặc echo "Vui lòng đăng nhập để xem đơn đặt hàng.";
+}
+// Đóng kết nối
+mysqli_close($link);
+?>
+
                     </div>
                     
                 </div>
@@ -251,7 +251,7 @@
               width: 77%;
               margin-left: 0px;
             }
-            @media (max-width: 1105px) {
+            @media (max-width: 991px) {
               .column-2 {
                 width: 100%;
               }
@@ -265,7 +265,7 @@
               width: 100%;
               padding: 41px 40px;
             }
-            @media (max-width: 1105px) {
+            @media (max-width: 991px) {
               .div-12 {
                 max-width: 100%;
                 padding: 0 20px;
@@ -277,7 +277,7 @@
               gap: 20px;
               font-weight: 400;
             }
-            @media (max-width: 1105px) {
+            @media (max-width: 991px) {
               .div-13 {
                 max-width: 100%;
                 flex-wrap: wrap;
@@ -291,7 +291,7 @@
               font: 24px/283% Oswald, sans-serif;
             }
            
-            @media (max-width: 1105px) {
+            @media (max-width: 991px) {
               .div-14 {
                text-align: center;
               }

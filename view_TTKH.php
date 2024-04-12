@@ -1,3 +1,4 @@
+
 <?php
 
 require_once ("db_module.php");
@@ -44,32 +45,32 @@ function view_TTKH()
   if ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
     echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Tên đầy đủ</td>";
-    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["customerName"] . "</td>";
+    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 100px;'>" . $row["customerName"] . "</td>";
     echo "</tr>";
 
     echo "<tr>";
     echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Số điện thoại</td>";
-    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["phone"] . "</td>";
+    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 100px;'>" . $row["phone"] . "</td>";
     echo "</tr>";
 
     echo "<tr>";
     echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Địa chỉ Email</span></td>";
-    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["email"] . "</td>";
+    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 100px;'>" . $row["email"] . "</td>";
     echo "</tr>";
 
     echo "<tr>";
     echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Giới tính</span></td>";
-    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["gender"] . "</td>";
+    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 100px;'>" . $row["gender"] . "</td>";
     echo "</tr>";
 
     echo "<tr>";
     echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Ngày sinh</span></td>";
-    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["dateOfBirth"] . "</td>";
+    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 100px;'>" . $row["dateOfBirth"] . "</td>";
     echo "</tr>";
 
     echo "<tr>";
     echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Địa chỉ</span></td>";
-    echo "<td colspan='2' style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["address"] . "</td>";
+    echo "<td colspan='2' style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 100px;'>" . $row["address"] . "</td>";
     echo "</tr>";
   }
 
@@ -121,22 +122,22 @@ function view_SDC()
   if ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
     echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Tên đầy đủ</td>";
-    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["customerName"] . "</td>";
+    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 100px;'>" . $row["customerName"] . "</td>";
     echo "</tr>";
 
     echo "<tr>";
     echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Số điện thoại</td>";
-    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["phone"] . "</td>";
+    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 100px;'>" . $row["phone"] . "</td>";
     echo "</tr>";
 
     echo "<tr>";
     echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Địa chỉ Email</span></td>";
-    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["email"] . "</td>";
+    echo "<td style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 100px;'>" . $row["email"] . "</td>";
     echo "</tr>";
 
     echo "<tr>";
     echo "<td colspan='2' style='line-height: 2; font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; white-space: nowrap;'>Địa chỉ</span></td>";
-    echo "<td colspan='2' style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 160px;'>" . $row["address"] . "</td>";
+    echo "<td colspan='2' style='font-family: Barlow, -apple-system, Roboto, Helvetica, sans-serif; font-weight: bold; padding-left: 100px;'>" . $row["address"] . "</td>";
     echo "</tr>";
   }
 

@@ -315,7 +315,7 @@
                     display: flex;
                     flex-direction: column;
                     line-height: normal;
-                    width: 50%;
+                    width: 77%;
                     margin-left: 20px;
                 }
 
@@ -335,7 +335,8 @@
                     font-size: 16px;
                     font-weight: 400;
                     width: 100%;
-                    padding: 45px 80px 45px 40px;
+                    padding: 30px 80px 45px 40px;
+                    
                 }
 
                 @media (max-width: 991px) {
@@ -371,6 +372,7 @@
                 @media (max-width: 991px) {
                     .div-13 {
                         flex-wrap: wrap;
+                        
                     }
                 }
 
@@ -387,7 +389,12 @@
                     max-width: 100%;
                     height: 44px;
                     margin-left: 63px;
-                }
+                }@media (max-width: 991px) {
+    /* Thực hiện thay đổi khi độ rộng màn hình là 926px hoặc nhỏ hơn (tương ứng với iPhone 14 Pro Max) */
+    .div-15 {
+       width : 200px;
+    }
+}
 
 
 
@@ -408,7 +415,7 @@
                     display: block;
                     margin-top: 50px;
                     margin-left: 200px;
-                    margin-bottom : 50px;
+                    margin-bottom :100px;
                 }
 
                 .button:hover {
