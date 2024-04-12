@@ -70,6 +70,7 @@
         .pagination {
             text-align: center;
         }
+        
     </style>
         <script>
             function ConfirmDel() {
