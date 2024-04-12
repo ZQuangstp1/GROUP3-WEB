@@ -5,7 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: linear-gradient(to right, #FB9AD1 0%, #FFCDEA 100%);
+    background-image: linear-gradient(to right, #f9f2e6 0%, #f9f2e6 100%);
 }
 
 .login-form {
@@ -50,7 +50,7 @@ body {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #ff8fab;
     color: white;
     border: none;
     border-radius: 5px;
@@ -59,7 +59,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #fb6f92;
 }
 
 ::placeholder { 
