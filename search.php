@@ -1,6 +1,8 @@
 <?php
-session_start();
-// Include file config.php and db_module.php
+if (session_status() === PHP_SESSION_NONE) {
+    // Phiên chưa được kích hoạt, bắt đầu một phiên mới
+    session_start();
+}
 include_once 'config.php';
 include_once 'db_module.php';
 
