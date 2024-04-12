@@ -97,7 +97,7 @@
             </div>
         
             <div id="header">
-                <h2>ADMIN/QUẢN LÝ NHÂN VIÊN</h2> 
+                <h2>ADMIN / QUẢN LÝ NHÂN VIÊN</h2> 
             </div id="content">
                 <?php include "NhanVien.php"; ?>
             </div>
