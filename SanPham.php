@@ -31,36 +31,20 @@
 <?php
 // Kết nối vào CSDL
 require_once ("db_module.php");
-
-// Hàm hiển thị sản phẩm
 function view_SP()
 {
     $link = null;
     taoKetNoi($link);
-
-    // Số lượng sản phẩm trên mỗi trang
     $rows_per_page = 3;
-
-    // Trang hiện tại, mặc định là trang 1
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-
-    // Tính toán vị trí bắt đầu lấy dữ liệu từ CSDL
     $start_from = ($current_page - 1) * $rows_per_page;
-
     // Thực hiện truy vấn SQL để lấy số lượng sản phẩm trong CSDL
     $total_rows_query = chayTruyVanTraVeDL($link, "SELECT COUNT(*) AS total_rows FROM product");
     $total_rows_data = mysqli_fetch_assoc($total_rows_query);
     $total_rows = $total_rows_data['total_rows'];
-
-    // Tính toán tổng số trang dựa trên số lượng sản phẩm và số sản phẩm trên mỗi trang
     $total_pages = ceil($total_rows / $rows_per_page);
-
-    
-    // Cập nhật câu truy vấn SQL để lấy dữ liệu từ vị trí bắt đầu mới này
     $search = isset($_GET['search']) ? $_GET['search'] : '';
     $query = "SELECT * FROM product WHERE 1";
-
-    // Check if a search term is provided and append the condition accordingly
     $search = isset($_GET['search']) ? $_GET['search'] : '';
     if (!empty($search)) {
         $query .= " AND (productID LIKE '%$search%' OR 
@@ -74,7 +58,6 @@ function view_SP()
     $query .= " LIMIT $start_from, $rows_per_page";
     // Thực thi câu truy vấn SQL cập nhật
     $result = chayTruyVanTraVeDL($link, $query);
-
     echo "<table id='productTable' width='100%' border='1' style='margin-bottom: 2%;'>";
     echo "<tr class='pink-row'>"; 
     echo "<th>Mã sản phẩm</th>";
@@ -85,9 +68,7 @@ function view_SP()
     echo "<th>Tình trạng</th>";
     echo "<th>Khuyến mãi</th>";
     echo "<th>Thao tác</th>";
-
     echo "</tr>";
-
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
         echo "<td>" . $row["productID"] . "</td>";
@@ -96,12 +77,8 @@ function view_SP()
         echo "<td class='product-description'>" . $row["description"] . "</td>"; 
         echo "<td>" . number_format($row["unitPrice"], 0, ',', '.') . "</td>";
         echo "<td>" . $row["status"] . "</td>";
-        // Replace the existing line that displays discountID with the following code:
-
         $discountID = $row["discountID"];
-        $discountPercentage = ""; // Initialize discount percentage variable
-
-        // Check the discountID and assign the corresponding percentage
+        $discountPercentage = ""; 
         if ($discountID === NULL) {
             $discountPercentage = "0%";
         } elseif ($discountID === "DC001") {
@@ -109,16 +86,12 @@ function view_SP()
         } elseif ($discountID === "DC002") {
             $discountPercentage = "50%";
         } else {
-            // Handle other cases if necessary
-            // For example, if there are other discount IDs
         }
-
         echo "<td>" . $discountPercentage . "</td>";
         echo "<td><a href='?opt=edit_SP&productID=" . $row["productID"] . "'><img src='Picture/Icon Sua.png' alt='Sửa' style='width: 20px; height: 20px;'></a>
                 <a href='?opt=del_SP&productID=" . $row["productID"] . "' onclick='return confirmDel()'><img src='Picture/Icon Xoa.png' alt='Xóa' style='width: 20px; height: 20px;'></a></td>";
         echo "</tr>";
     }
-
     echo "</table>";
     giaiPhongBoNho($link, $result);
 
@@ -139,10 +112,8 @@ function add_SP()
     taoKetNoi($link);
     $km = "SELECT discountID, discountAmount FROM discount";
     $result_km = chayTruyVanTraVeDL($link, $km);
-
     $sct = "SELECT subcategoryID , subcategoryName FROM subcategory";
     $result_sct = chayTruyVanTraVeDL($link, $sct);
-
     ?>
     <div class="form-container" id="ThemSP">
         <form action="?opt=add_SP" method="post" enctype="multipart/form-data">
@@ -191,14 +162,11 @@ function add_SP()
             $_giatien = isset($_POST["giatien"]) ? trim($_POST["giatien"]) : '';
             $_khuyenmai = isset($_POST["khuyenmai"]) ? trim($_POST["khuyenmai"]) : '';
             $_subct = isset($_POST["subct"]) ? trim($_POST["subct"]) : '';
-
-
             // Kiểm tra xem tất cả các trường đã được nhập chưa
             if (empty($_masp) || empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai)) {
                 echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
                 return; // Dừng xử lý nếu có trường nào đó bỏ trống
             }
-
             $_status = intval($_soluong) > 0 ? "Còn hàng" : "Hết hàng";
             $sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID, subcategoryID)
         VALUES ('$_tensp', '$_masp', '$_mota', '$_giatien', '$_soluong', '$_status', '$_khuyenmai', '$_subct')";
