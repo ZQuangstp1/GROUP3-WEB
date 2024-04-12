@@ -1,35 +1,25 @@
 <?php
 session_start();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Thu thập dữ liệu từ form
+    $name = isset($_POST['name']) ? $_POST['name'] : '';
+    $address = isset($_POST['street-address']) ? $_POST['street-address'] : '';
+    $district = isset($_POST['district']) ? $_POST['district'] : '';
+    $city = isset($_POST['city']) ? $_POST['city'] : '';
 
-require_once "db_module.php";
-$link = null;
-taoKetNoi($link);
-
-if (!isset($_SESSION["customerID"])) {
-    header("Location:dangnhap.php");
-};
-
+     // Lưu dữ liệu vào session
+     $_SESSION['name'] = $name;
+     $_SESSION['address'] = $address;
+     $_SESSION['district'] = $district;
+     $_SESSION['city'] = $city;
+}
 if (isset($_SESSION['cart'])) {
 
-    $sql = "SELECT CONCAT(customer.lastName, ' ', customer.firstName) AS customerName,
-    customer.phone,
-    customer.email,
-    CONCAT(location.address, ', ', d.district, ', ', province.province) AS address
-FROM customer
-LEFT JOIN location ON customer.locationID = location.locationID
-LEFT JOIN district d ON location.districtID = d.districtID
-LEFT JOIN province ON d.provinceID = province.provinceID
-WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
-
-    $result = chayTruyVanTraVeDL($link, $sql);
-    if (mysqli_num_rows($result) > 0) {
-        // Nếu có dòng dữ liệu trả về, tức là người dùng đã đặt địa chỉ giao hàng mặc định
-        $row = mysqli_fetch_assoc($result);
-    }
     ?>
     <html>
 
     <head>
+        
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,26 +33,26 @@ WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
             href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
             rel="stylesheet">
 
-        <link rel="stylesheet" href="vanchuyen.css">
-        <script type="text/javascript" src="vanchuyen.js" language="javascript"></script>
+        <link rel="stylesheet" href="xacnhan.css">
+        <script type="text/javascript" src="xacnhan.js" language="javascript"></script>
     </head>
-    <body>
-     <!-- HEADER -->
-     <?php include "header.php"; ?>
 
+    <body>
+    <?php include "header.php"; ?>
         <div id="container">
             <div class="content">
                 <div class = "navigate"><a href="">Trang chủ</a> / <a href="">Tạo đơn hàng</a></div>
+                <p><strong>Xác nhận thông tin</strong></p>
                 <div class="navigation-bar">
                     <section class="step-wizard">
                         <ul class="step-wizard-list">
-                            <li class="step-wizard-item current-item">
+                            <li class="step-wizard-item">
                                 <!--Nếu chưa đăng nhập mà mua hàng thì bắt buộc người dùng phải đăng nhập-->
                                 <span class="progress-count">1</span>
                                 <span class="progress-label">Vận chuyển</span>
                             </li>
                             <!--Nếu đăng nhập hoàn tất thì nhảy xuống bước này-->
-                            <li class="step-wizard-item">
+                            <li class="step-wizard-item current-item">
                                 <span class="progress-count">2</span>
                                 <span class="progress-label">Thanh Toán</span>
                             </li>
@@ -75,65 +65,88 @@ WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
                 </div>
                 <div class="infor">
                     <!--Thông tin đăng nhập, nhấn đăng nhập sẽ điều hướng qua trang đăng nhập, ngược lại đã đăng nhập sẵn sẽ điều hướng qua bước hai-->
-
                     <div class="personal-infor">
-                        <h3>Địa chỉ vận chuyển</h3>
-                        <form action="xacnhan.php" id="dangnhapForm" method="POST">
-                            <!--thông tin vận chuyển-->
-                            <div class="row">
-                                <div class="col-trai">
-                                    <label for="name">Họ và tên</label>
-                                </div>
-                                <div class="col-phai">
-                                    <!-- Fill in the value attribute with PHP code -->
-                                    <input type="text" id="name" name="name" placeholder="Nhập họ và tên" required
-                                        value="<?php echo htmlspecialchars($row['customerName']); ?>">
-                                </div>
+                    <form action="hoantat.php" method="POST"> 
+                        <h2>Thông tin vận chuyển</h2>
+                        <div class="row">
+                            <div class="col-trai">
+                                <label for="name">Họ và tên: </label>
                             </div>
-                            <!-- Other fields can be filled similarly -->
-                            <div class="row">
-                                <div class="col-trai">
-                                    <label for="address">Địa chỉ</label>
-                                </div>
-                                <div class="col-phai">
-                                    <input type="text" id="address" name="street-address" placeholder="Nhập tên đường"
-                                        required value="<?php echo htmlspecialchars($row['address']); ?>">
-                                </div>
+                            <div class="col-phai">
+                                <!-- Display user name from session -->
+                                <span id="hovaten">
+                                    <?php echo htmlspecialchars($_SESSION['name']); ?>
+                                </span>
                             </div>
-                            <div class="row">
-                                <div class="col-trai">
-                                    <label for="address">Quận</label>
-                                </div>
-                                <div class="col-phai">
-                                    <input type="text" id="address-con" name="district" placeholder="Nhập quận"
-                                    value="<?php echo htmlspecialchars(explode(', ', $row['address'])[1]); ?>">
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-trai">
+                                <label for="address">Địa chỉ: </label>
                             </div>
-                            <div class="row">
-                                <div class="col-trai">
-                                    <label for="city">Thành phố</label>
-                                </div>
-                                <div class="col-phai">
-                                    <!-- Assuming you have a separate city field in the result -->
-                                    <input type="text" id="city" name="city" placeholder="Nhập thành phố" required
-                                        value="<?php echo htmlspecialchars(explode(', ', $row['address'])[2]); ?>">
-                                </div>
+                            <div class="col-phai">
+                                <!-- Display user address from session -->
+                                <span id="diachi">
+                                    <?php echo htmlspecialchars($_SESSION['address']); ?>
+                                </span>
                             </div>
-
-                            <br>
-                            <div class="row">
-                                <div class="col-trai">
-                                    <input type="submit" class = "submit" value="Tiếp >>">
-                                </div>
-                                <div class="col-phai">
-                                    <button type="button" onclick="goback()"
-                                        style="float: right; border: none; background-color: white; cursor: pointer;">Quay
-                                        lại</button>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-trai">
+                                <label for="district">Quận:</label>
                             </div>
-                        </form>
+                            <div class="col-phai">
+                                <!-- Display district from session -->
+                                <span id="quan">
+                                    <?php echo htmlspecialchars($_SESSION['district']); ?>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-trai">
+                                <label for="city">Thành phố:</label>
+                            </div>
+                            <div class="col-phai">
+                                <!-- Display city from session -->
+                                <span id="thanhpho">
+                                    <?php echo htmlspecialchars($_SESSION['city']); ?>
+                                </span>
+                            </div>
+                        </div>
+                        <br>
+                        <h2>Phương thức thanh toán</h2>
+                        <div>
+                        <input type="radio" id="tienmat" value="Tiền mặt" name="exampleRadio">
+                        <label for="tienmat">Tiền mặt</label>
+                        </div>   
+                        <div>
+                            <input type="radio" id="banking" value="Moblie Banking" name="exampleRadio">
+                            <label for="banking">Moblie Banking</label>
+                        </div> 
+                    <div>
+                        <input type="radio" id="momo" value="Momo" name="exampleRadio">
+                        <label for="momo">Momo</label>
                     </div>
 
+                        <div class="row">
+                            <div class="col-trai">
+                                <input type="submit" name="tieptheo" id="trangtieptheo" value="Tiếp theo >>">
+                            </div>
+                            <div class="col-phai">
+                                <button type="button" onclick="goback()"
+                                    style="float: right; border: none; background-color: white; cursor: pointer;">Quay
+                                    lại</button>
+                            </div>
+                        </div>
+                        </form>
+                    <!--thanh toán bằng momo-->
+                    <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
+                          action="xulythanhtoanmomo.php">
+                        <input type="submit" name="momo" value="Thanh toán momo QR code" class="btn btn-danger">
+                    </form>
+                    <form action="xulythanhtoanmomoatm.php" class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded">
+                        <input type="submit" name="momo" value="Thanh toán momo ATM" class="btn btn-danger">
+                    </form>                  
+                    </div>
                     <div class="img-order">
                         <div class="order-items">
                             <h3 style="padding-left: 15px;">ĐƠN HÀNG</h3>
@@ -168,7 +181,7 @@ WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
                                     $thanhtien = $sp[4] * $sp[3];
                                     $tong += $thanhtien;
                                     echo '  <div class="col-trais" style="margin-top: 3%;">
-                                                <img src="' . $sp[1] . '" alt="" width="70%" height="10%" style="border: 1px solid black; margin-left: 10px;">
+                                                <img src="' . $sp[1] . '" alt="" width="70%" height="5%" style="border: 1px solid black; margin-left: 10px;">
                                             </div>
                                             <div class="col-giua">
                                                 <span style="float: left; font-size: 10px;">' . $sp[2] . '</span>
@@ -190,9 +203,8 @@ WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
         </div>
         </div>
     </body>
-    <?php
-    include 'footer.php';
-    ?>
+    <?php include "footer.php"; ?>
+
 
     </html>
     <?php

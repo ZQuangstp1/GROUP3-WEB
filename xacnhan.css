@@ -35,7 +35,7 @@ footer {
     color: black;
     cursor: pointer;
 }
-.navigate{
+.navigate {
     margin: 0;
     text-align: center;
     padding-top: 3%;
@@ -155,7 +155,7 @@ footer {
     flex: 55%;
     padding: 2%;
 }
-#name, #address, #address-con, #city, select, textarea {
+#tienmat, #banking, #momo, select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -166,7 +166,7 @@ label {
     padding: 12px 12px 12px 0;
     display: inline-block;
 }
-.submit {
+input[type=submit] {
     background-color: #FB6F92;
     color: white;
     padding: 12px 20px;
@@ -175,7 +175,7 @@ label {
     cursor: pointer;
     float: left;
 }
-.submit[type=submit]:hover {
+input[type=submit]:hover {
     background-color: #FB6F92;
 }
 .col-trai {
@@ -212,7 +212,7 @@ label {
 .img-order {
     flex: 45%;
     height: auto;
-    padding: 5%;
+    padding: 2%;
 }
 .order-items {
     padding: 10px;
