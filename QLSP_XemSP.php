@@ -13,8 +13,8 @@
             border: 1px solid black;
             text-align: center;
             padding: 5px 7px;
-            font-size: 13.5px; /* Giảm kích thước chữ */
-            font-family: 'Barlow, sans-serif';
+            font-size: 12.3px; /* Giảm kích thước chữ */
+            font-family: 'Barlow', sans-serif;
         }
         input[type="text"] {
             padding: 8px;
@@ -22,11 +22,12 @@
             width: 200px;
         }
         button {
-            font-family: 'Barlow, sans-serif';
+            font-family: 'Barlow', sans-serif;
             padding: 6px 10px; /* Giảm kích thước button */
             background-color: #DF8A8A;
             border: none;
             cursor: pointer;
+            border-radius: 7px;
             margin-right: 5px; /* Giảm khoảng cách giữa các button */
         }
         button:hover {
