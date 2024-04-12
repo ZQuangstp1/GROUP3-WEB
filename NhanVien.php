@@ -52,6 +52,9 @@
         border-radius: 5px; /* Bo tròn góc */
         text-decoration: none; /* Xóa gạch chân của liên kết */
     }
+    .form-container{
+        margin-top: 10%;
+    }
 
     .add-nv-container img {
         height: 20px; /* Điều chỉnh kích thước ảnh */
