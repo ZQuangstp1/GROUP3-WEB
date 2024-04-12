@@ -140,38 +140,63 @@
             </div>
         </div>
         <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var addToWishlistDiv = document.querySelector('.add-to-wishlist');
+            var productId = "<?php echo $product; ?>";
+            // Function to check if the product is in the user's favorites list
+            function checkFavoritesAndUpdateButton() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            var response = xhr.responseText;
+                            if (response === 'exists') {
+                                // Product is in favorites list, apply the active class and pink background color
+                                addToWishlistDiv.classList.add('active');
+                                addToWishlistDiv.style.backgroundColor = 'rgba(251, 111, 146, 1)';
+                            }
+                        }
+                    }
+                };
+                xhr.open('GET', 'check_favorites.php?idofpro=' + productId, true);
+                xhr.send();
+            }
+
+            // Call the function to check favorites and update button on page load
+            checkFavoritesAndUpdateButton();
+        });
+
           function addToWishlist() {
-              var addToWishlistDiv = document.querySelector('.add-to-wishlist');
-              var wishlistButton = addToWishlistDiv.querySelector('.wishlist-icon-button');
-              var formData = new FormData(document.getElementById('addToWishlistForm'));
-              var xhr = new XMLHttpRequest();
-              xhr.onreadystatechange = function () {
-                  if (xhr.readyState === XMLHttpRequest.DONE) {
-                      if (xhr.status === 200) {
-                          var response = xhr.responseText;
-                          if (!addToWishlistDiv.classList.contains('active')) {
-                              // Sản phẩm hiện tại chưa thích, click nút Thích 
-                              addToWishlistDiv.classList.add('active');
-                              wishlistButton.innerHTML = '<span class="wishlist-text">THÍCH</span>';
-                              alert('Thêm sản phẩm yêu thích thành công');
-                          } else {
-                              // Sản phẩm hiện tại đã thích, click nút Thích để bỏ Thích
-                              addToWishlistDiv.classList.remove('active');
-                              wishlistButton.innerHTML = '<span class="wishlist-text">THÍCH</span>';
-                              alert('Bạn đã hủy thích sản phẩm');
-                          }
-                      } else {
-                          alert('Có lỗi xảy ra, không thể thêm/xóa sản phẩm yêu thích');
-                      }
-                  }
-              };
-              var method = addToWishlistDiv.classList.contains('active') ? 'DELETE' : 'POST';
-              var url = 'yeuthich.php';
-              xhr.open(method, url, true);
-              xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-              var params = 'idofpro=' + encodeURIComponent(formData.get('idofpro'));
-              xhr.send(params);
-          }
+            var addToWishlistDiv = document.querySelector('.add-to-wishlist');
+            var formData = new FormData(document.getElementById('addToWishlistForm'));
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = xhr.responseText;
+                        if (response === 'added') {
+                            // Product was added to favorites list
+                            addToWishlistDiv.classList.add('active');
+                            addToWishlistDiv.style.backgroundColor = 'rgba(251, 111, 146, 1)';
+                            alert('Thêm sản phẩm yêu thích thành công');
+                        } else if (response === 'removed') {
+                            // Product was removed from favorites list
+                            addToWishlistDiv.classList.remove('active');
+                            addToWishlistDiv.style.backgroundColor = ''; // Remove inline background color
+                            alert('Bạn đã hủy thích sản phẩm');
+                        }
+                    } else {
+                        alert('Có lỗi xảy ra, không thể thêm/xóa sản phẩm yêu thích');
+                    }
+                }
+            };
+            var method = addToWishlistDiv.classList.contains('active') ? 'DELETE' : 'POST';
+            var url = 'yeuthich.php';
+            xhr.open(method, url, true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            var params = 'idofpro=' + encodeURIComponent(formData.get('idofpro'));
+            xhr.send(params);
+        }
         </script>
 
 <!--Icon phí vận chuyển và chính sách đổi trả-->  
