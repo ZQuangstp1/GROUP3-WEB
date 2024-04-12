@@ -66,7 +66,7 @@ if (isset($_SESSION['cart'])) {
                 <div class="infor">
                     <!--Thông tin đăng nhập, nhấn đăng nhập sẽ điều hướng qua trang đăng nhập, ngược lại đã đăng nhập sẵn sẽ điều hướng qua bước hai-->
                     <div class="personal-infor">
-                    <form action="hoantat.php" method="POST"> 
+                    <form id="mainForm" action="hoantat.php" method="POST"> 
                         <h2>Thông tin vận chuyển</h2>
                         <div class="row">
                             <div class="col-trai">
@@ -114,22 +114,27 @@ if (isset($_SESSION['cart'])) {
                         </div>
                         <br>
                         <h2>Phương thức thanh toán</h2>
-                        <div>
-                        <input type="radio" id="tienmat" value="Tiền mặt" name="exampleRadio">
-                        <label for="tienmat">Tiền mặt</label>
-                        </div>   
-                        <div>
-                            <input type="radio" id="banking" value="Moblie Banking" name="exampleRadio">
-                            <label for="banking">Moblie Banking</label>
-                        </div> 
                     <div>
-                        <input type="radio" id="momo" value="Momo" name="exampleRadio">
-                        <label for="momo">Momo</label>
+                            
+                        <input type="radio" id="tienmat" value="Tiền mặt" name="paymentMethod">
+                        <label for="tienmat">Tiền mặt</label>
+                    </div>   
+                    <div>
+                        <input type="radio" id="banking" value="xulythanhtoanmomo.php" name="paymentMethod">
+                         <label for="banking">Momo QR Code</label>
+                           <!-- Input ẩn để lưu giá trị của label -->
+                         <input type="hidden" id="labelValue" name="labelValue" value ="Momo QR Code">
+                    </div> 
+                    <div>
+                        <input type="radio" id="momo" value="xulythanhtoanmomoatm.php" name="paymentMethod" >
+                         <label for="momo">Momo Banking</label>
+                           <!-- Input ẩn để lưu giá trị của label -->
+                         <input type="hidden" id="labelValue" name="labelValue" value ="Momo Banking">
                     </div>
-
+               
                         <div class="row">
                             <div class="col-trai">
-                                <input type="submit" name="tieptheo" id="trangtieptheo" value="Tiếp theo >>">
+                            <input type="submit" name="tieptheo" value="Tiếp theo >>>" class="btn btn-danger" onclick="handleSubmit(event)">
                             </div>
                             <div class="col-phai">
                                 <button type="button" onclick="goback()"
@@ -137,15 +142,8 @@ if (isset($_SESSION['cart'])) {
                                     lại</button>
                             </div>
                         </div>
-                        </form>
-                    <!--thanh toán bằng momo-->
-                    <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
-                          action="xulythanhtoanmomo.php">
-                        <input type="submit" name="momo" value="Thanh toán momo QR code" class="btn btn-danger">
-                    </form>
-                    <form action="xulythanhtoanmomoatm.php" class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded">
-                        <input type="submit" name="momo" value="Thanh toán momo ATM" class="btn btn-danger">
-                    </form>                  
+                </form>
+                
                     </div>
                     <div class="img-order">
                         <div class="order-items">
@@ -160,21 +158,6 @@ if (isset($_SESSION['cart'])) {
                             </select>
                             <hr width="95%">
                             <div class="row">
-                                <!--
-                            <div class="col-trais" style="margin-top: 3%;">
-                                <img src="" alt="" width="70%" height="10%" style="border: 1px solid black; margin-left: 10px;">
-                            </div>
-                            <div class="col-giua">
-                                <span style="float: left; font-size: 10px;">Tên của sản phẩm</span>
-                                <br>
-                                <span style="float: left; font-size: 10px;">Số lượng: <span>...</span></span>
-                                <br>
-                                <span style="float: left; font-size: 10px;">Xem chi tiết</span>
-                            </div>
-                            <div class="col-phais">
-                                <span style="float: right; font-size: 10px;">Số Tiền</span>
-                            </div>
-                            -->
 
                                 <?php
                                 foreach ($_SESSION['cart'] as $sp) {
@@ -202,6 +185,28 @@ if (isset($_SESSION['cart'])) {
             </div>
         </div>
         </div>
+        <script>
+        function handleSubmit(event) {
+            // Ngăn chặn form gửi đi ngay lập tức
+            event.preventDefault();
+
+            // Lấy form chính
+            var mainForm = document.getElementById('mainForm');
+
+            // Gửi form chính tới "hoantat.php"
+            mainForm.submit();
+
+            // Lấy lựa chọn radio button cho phương thức thanh toán
+            var selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+            // Điều hướng đến trang thanh toán Momo dựa trên lựa chọn của người dùng
+            if (selectedPaymentMethod) {
+                window.open(selectedPaymentMethod, '_blank');
+            }
+        }
+
+
+    </script>
     </body>
     <?php include "footer.php"; ?>
 

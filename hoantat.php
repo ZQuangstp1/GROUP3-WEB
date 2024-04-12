@@ -7,9 +7,7 @@ ob_start();
 require_once "db_module.php";
 $link = null;
 taoKetNoi($link);
-if (isset($_POST['tieptheo']) && ($_POST['tieptheo'])) {
-    $ptthanhtoan = $_POST['exampleRadio'];
-}
+    $ptthanhtoan = $_POST['labelValue'];
 
 // Lấy số lượng bản ghi hiện có trong bảng Order
 $query = "SELECT COUNT(*) AS num_records FROM orders";
@@ -33,15 +31,7 @@ foreach ($_SESSION['cart'] as $sp) {
 $insert_query = "INSERT INTO orders (orderID, totalAmount, status, paymentMethod,DateID,TimeAltKey, customerID) 
                         VALUES('$new_order_id', '$tong', 'Đã xác nhận' ,'$ptthanhtoan','20220106', '73000' ,'" . $_SESSION['customerID'] . "')";
 $rs = chayTruyVanKhongTraVeDL($link, $insert_query);
-/*
-if ($rs) {
-    echo "<script>alert('Đặt hàng thành công');</script>";
-    header("Location:done.php");
-} else {
-    echo "<script>alert('Cập nhật thất bại');</script>";
-    header("Location:vanchuyen.php");
-}
-*/
+
 
 //OrderDetail
 // Lấy số lượng bản ghi hiện có trong bảng Order
