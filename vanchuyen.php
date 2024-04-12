@@ -1,34 +1,4 @@
-<?php
-session_start();
-
-require_once "db_module.php";
-$link = null;
-taoKetNoi($link);
-
-if (!isset($_SESSION["customerID"])) {
-    header("Location:dangnhap.php");
-};
-
-if (isset($_SESSION['cart'])) {
-
-    $sql = "SELECT CONCAT(customer.lastName, ' ', customer.firstName) AS customerName,
-    customer.phone,
-    customer.email,
-    CONCAT(location.address, ', ', d.district, ', ', province.province) AS address
-FROM customer
-LEFT JOIN location ON customer.locationID = location.locationID
-LEFT JOIN district d ON location.districtID = d.districtID
-LEFT JOIN province ON d.provinceID = province.provinceID
-WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
-
-    $result = chayTruyVanTraVeDL($link, $sql);
-    if (mysqli_num_rows($result) > 0) {
-        // Nếu có dòng dữ liệu trả về, tức là người dùng đã đặt địa chỉ giao hàng mặc định
-        $row = mysqli_fetch_assoc($result);
-    }
-    ?>
     <html>
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,12 +14,39 @@ WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
             rel="stylesheet">
 
         <link rel="stylesheet" href="vanchuyen.css">
-        <script type="text/javascript" src="vanchuyen.js" language="javascript"></script>
     </head>
     <body>
-     <!-- HEADER -->
-     <?php include "header.php"; ?>
+    <?php include "header.php"; ?>
+    <?php
+        session_start();
 
+        require_once "db_module.php";
+        $link = null;
+        taoKetNoi($link);
+
+        if (!isset($_SESSION["customerID"])) {
+            header("Location:dangnhap.php");
+        };
+
+        if (isset($_SESSION['cart'])) {
+
+            $sql = "SELECT CONCAT(customer.lastName, ' ', customer.firstName) AS customerName,
+            customer.phone,
+            customer.email,
+            CONCAT(location.address, ', ', d.district, ', ', province.province) AS address
+            FROM customer
+            LEFT JOIN location ON customer.locationID = location.locationID
+            LEFT JOIN district d ON location.districtID = d.districtID
+            LEFT JOIN province ON d.provinceID = province.provinceID
+            WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
+
+            $rs = chayTruyVanTraVeDL($link, $sql);
+            if (mysqli_num_rows($rs) > 0) {
+                // Nếu có dòng dữ liệu trả về, tức là người dùng đã đặt địa chỉ giao hàng mặc định
+                $row = mysqli_fetch_assoc($rs);
+            }
+    ?>
+     <!-- HEADER -->
         <div id="container">
             <div class="content">
                 <div class = "navigate"><a href="">Trang chủ</a> / <a href="">Tạo đơn hàng</a></div>
@@ -85,12 +82,10 @@ WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
                                     <label for="name">Họ và tên</label>
                                 </div>
                                 <div class="col-phai">
-                                    <!-- Fill in the value attribute with PHP code -->
                                     <input type="text" id="name" name="name" placeholder="Nhập họ và tên" required
                                         value="<?php echo htmlspecialchars($row['customerName']); ?>">
                                 </div>
                             </div>
-                            <!-- Other fields can be filled similarly -->
                             <div class="row">
                                 <div class="col-trai">
                                     <label for="address">Địa chỉ</label>
@@ -114,7 +109,6 @@ WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
                                     <label for="city">Thành phố</label>
                                 </div>
                                 <div class="col-phai">
-                                    <!-- Assuming you have a separate city field in the result -->
                                     <input type="text" id="city" name="city" placeholder="Nhập thành phố" required
                                         value="<?php echo htmlspecialchars(explode(', ', $row['address'])[2]); ?>">
                                 </div>
@@ -177,9 +171,7 @@ WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
     </body>
     <?php
     include 'footer.php';
+}
     ?>
 
     </html>
-    <?php
-}
-?>

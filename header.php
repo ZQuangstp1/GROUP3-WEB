@@ -337,6 +337,7 @@
             $displayName = isset($row['FullName']) ? $row['FullName'] : $row['username'];
             echo '<li><a href="TTKH.php">' . $displayName . '</a></li>';
         }
+        giaiPhongBoNho ($link, $result );
     ?>
     <li><a href="dangxuat.php">Đăng xuất</a></li>
     <?php else: ?>
