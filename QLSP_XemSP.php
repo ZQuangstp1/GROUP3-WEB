@@ -53,15 +53,7 @@
             padding: 0;
             position: relative;
         }
-
-        #footer {
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background-color: #FFE5EC; /* Màu nền của footer */
-            padding-top: 5px; /* Khoảng cách từ chữ trong footer đến đỉnh của footer */
-        }
+        
         /* Thêm CSS cho dòng đầu tiên */
         .pink-row th {
             background-color: #FFC0CB; /* Màu hồng */
@@ -86,6 +78,14 @@
         .product-name,
         .product-description {
             text-align: left;
+        }
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px; /* Điều chỉnh độ rộng của sidebar theo mong muốn */
+            height: 100%;
+            background-color: #F9F2E6; /* Màu nền của sidebar */
         }
 </style>
 
