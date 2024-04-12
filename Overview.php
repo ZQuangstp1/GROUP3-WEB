@@ -34,7 +34,6 @@
     </style>
 </head>
 <body>
-
     <div id="sidebar">
         <h2><img src="Picture/Logo.png" alt="Logo"></h2>
         <ul>
@@ -55,22 +54,19 @@
     <a href="Overview_Baocaobanhang.php">
         <button id="baocaobanhang">
             <img src="Picture/Icon Baocao.png" alt="Icon Báo cáo">
-            <br>
-            Báo cáo bán hàng
+            <br> Báo cáo bán hàng
         </button>
     </a>
     <a href="Overview_Chart.php">
         <button id="thongke">
             <img src="Picture/Icon Chart.png" alt="Icon Chart">
-            <br>
-            Thống kê
+            <br>Thống kê
         </button>
     </a>
     <a href="Overview_SoGiaoHang.php">
         <button id="sogiaohang">
             <img src="Picture/Icon Sogiaohang.png" alt="Icon Sổ giao hàng">
-            <br>
-            Sổ giao hàng
+            <br>Sổ giao hàng
         </button>
     </a>
     </div>
@@ -78,6 +74,5 @@
     <div id="footer">
         <p>© 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo.</p>
     </div>
-
 </body>
 </html>
