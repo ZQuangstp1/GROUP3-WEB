@@ -97,8 +97,8 @@
                             <td><img src="'.$sp[1].'" width="100"></td>
                             <td>'.$sp[2].'</td>
                             <td><span id="quantity-display">'.$sp[3].'</span></td>
-                            <td>'.$sp[4].'</td>
-                            <td>'.$thanhtien.'</td>
+                            <td>'.number_format($sp[4]).'</td>
+                            <td>'.number_format($thanhtien).'</td>
                             <td style="text-align: center; text-decoration: underline; color: #ff678d;  "><a href="viewcart.php?id='.$stt.'">Di chuyển</a></td>
                         </tr>';
                         $stt++;
@@ -106,7 +106,7 @@
             ?>
             <tr>
                 <td colspan="6" style="font-weight: bold;">Tổng đơn hàng</td>
-                <td style="background-color: #ccc; font-weight: bold;"><?=$tong; ?></td>
+                <td style="background-color: #ccc; font-weight: bold;"><?=number_format($tong); ?></td>
                 <td></td>
             </tr>
         </table>
