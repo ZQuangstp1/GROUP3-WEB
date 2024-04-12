@@ -72,6 +72,7 @@ if (isset($_POST)) {
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng khung trắng */
             margin-left: 10%; 
+            margin-top: 40px
         }
 
         @media screen and (max-width: 768px) {

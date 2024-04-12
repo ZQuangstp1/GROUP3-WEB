@@ -1,6 +1,10 @@
 body{
   background: #f9f2e6;
+<<<<<<< HEAD
+    font-family: Barlow, sans-serif;
+=======
   font-family: 'Barlow', sans-serif;
+>>>>>>> a27f27f2549b2b56aceb9439532761dabe5d4e5e
   margin-left: 20px;
 }
 
@@ -1208,7 +1212,7 @@ a {
 .bestsellerproduct-name {
   text-transform: capitalize;
   align-self: stretch;
-  font-family: 'Barlow', sans-serif;
+  /* font-family: 'Barlow', sans-serif; */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /* Số dòng tối đa */
