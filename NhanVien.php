@@ -6,15 +6,31 @@
             border-collapse: collapse;
             /* Loại bỏ khoảng cách giữa các border của cell */
         }
-    #toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    margin: 2% 0;
-    flex-wrap: wrap;
-}
-
+            #toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 2% 0;
+            flex-wrap: wrap;
+        }
+          /* Thêm CSS cho dòng đầu tiên */
+          .pink-row th {
+            background-color: #FFC0CB; /* Màu hồng */
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 5px 7px;
+            font-size: 12.5px; /* Giảm kích thước chữ */
+            font-family: 'Barlow', sans-serif;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+ 
     #searchInput {
         padding: 8px 10px;
         margin-right: 10px; 
@@ -197,7 +213,7 @@
             $result = chayTruyVanTraVeDL($link, $sql);
 
             echo "<table width='100%' cellspacing='5' cellpadding='5' border='1' style='margin-bottom: 3%;margin-top: 2%' >";
-            echo "<tr>";
+            echo "<tr class='pink-row'>"; 
             echo "<th>Mã nhân viên</th>";
             echo "<th>Họ tên</th>";
             echo "<th>Ngày sinh</th>";
