@@ -2,6 +2,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="upperstyles.css">
+  <link rel="stylesheet" href="banner-slider.css">
   <!-- <link rel="stylesheet" href="stylemenu.css"> -->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <!-- <script type="text/javascript" src="responsivemenu.js" language="JavaScript"> -->
@@ -39,12 +40,30 @@
     <!-- MENU -->
     <?php include "menu.php"; ?>
         <!-- BANNER -->
-      <div class="banner-container" id="animate-on-scroll">
+        <div class="banner-container" id="animate-on-scroll">
+    <div class="slider">
         <img
-          loading="lazy"
+          id="img-1"
           src="img/img4.png"
-          class="banner"
+          alt="Image 1"
         />
+        <img
+          id="img-2"
+          src="img/img5.jpg"
+          alt="Image 2"
+        />
+        <img
+          id="img-3"
+          src="img/img9.jpg"
+          alt="Image 3"
+        />
+      </div>
+      <div class="navigation-button">
+        <span class="dot active" onclick="changeSlide(0)"></span>
+        <span class="dot" onclick="changeSlide(1)"></span>
+        <span class="dot" onclick="changeSlide(2)"></span>
+      </div>
+      <script src="banner-slider.js"></script>
         <div class="content-on-banner">
           <div class="text-on-banner">
             <!-- <img
