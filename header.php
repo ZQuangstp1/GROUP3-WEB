@@ -331,7 +331,6 @@
                 if ($result && $row = mysqli_fetch_assoc($result)) {
                     // In thông tin FullName
                     echo '<li><a href="TTKH.php">' . $row['FullName'] . '</a></li>';
-                    giaiPhongBoNho ( $link, $result );
                 }
                 ?>
             <li><a href="dangxuat.php">Đăng xuất</a></li>
