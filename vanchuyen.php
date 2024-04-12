@@ -126,9 +126,8 @@ WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
                                     <input type="submit" class = "submit" value="Tiếp >>">
                                 </div>
                                 <div class="col-phai">
-                                    <button type="button" onclick="goback()"
-                                        style="float: right; border: none; background-color: white; cursor: pointer;">Quay
-                                        lại</button>
+                                    <button type="button" onclick="goback()" style="float: right; border: none; background-color: white; cursor: pointer;">
+                                    <a href="viewcart.php">Quay lại</a></button>
                                 </div>
                             </div>
                         </form>
@@ -147,21 +146,6 @@ WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
                             </select>
                             <hr width="95%">
                             <div class="row">
-                                <!--
-                            <div class="col-trais" style="margin-top: 3%;">
-                                <img src="" alt="" width="70%" height="10%" style="border: 1px solid black; margin-left: 10px;">
-                            </div>
-                            <div class="col-giua">
-                                <span style="float: left; font-size: 10px;">Tên của sản phẩm</span>
-                                <br>
-                                <span style="float: left; font-size: 10px;">Số lượng: <span>...</span></span>
-                                <br>
-                                <span style="float: left; font-size: 10px;">Xem chi tiết</span>
-                            </div>
-                            <div class="col-phais">
-                                <span style="float: right; font-size: 10px;">Số Tiền</span>
-                            </div>
-                            -->
 
                                 <?php
                                 foreach ($_SESSION['cart'] as $sp) {

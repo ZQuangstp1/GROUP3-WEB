@@ -399,7 +399,7 @@
                 <div class="popup">
                     <span class="close-btn" onclick="closePopup()">&times;</span>
                     <img src="https://www.svgrepo.com/show/93424/exclamation-mark-inside-a-circle.svg" alt="Check icon" class="check-icon">
-                    <p>Vui lòng nhập đánh giá!</p>
+                    <p>Vui lòng đăng nhập để đánh giá!</p>
                 </div>
             </div>
             <?php

@@ -45,13 +45,12 @@
         float: left;
         margin-right: 2%;
 
-}
-
-/* Phong cách cho button khi hover */
-.button:hover {
-    background-color: #ff678d; /* Nền màu #ff678d */
-    color: white; /* Màu chữ trắng */
-}
+        }
+            /* Phong cách cho button khi hover */
+            .button:hover {
+                background-color: #ff678d; /* Nền màu #ff678d */
+                color: white; /* Màu chữ trắng */
+            }
 
 
         a.button:hover {
@@ -121,9 +120,65 @@
 
       </body>
     </html>
-    <?php   
+    <?php       
         } else {
-            echo '<br>Giỏ hàng rỗng. Bạn <a href="index.php">đặt hàng</a> không?';
+            ?>
+            <html>
+                <head>
+                <style>
+                .popup-container {
+                    display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(255, 192, 203, 0.8);
+                padding: 20px;
+                border-radius: 10px;
+                }
+
+                .popup {
+                text-align: center;
+                }
+
+                .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                cursor: pointer;
+                }
+
+                .check-icon {
+                width: auto;
+                height: 50px;
+                margin-bottom: 10px;
+                }
+            </style>      
+        </head>
+        <body>         
+            <div id="popup-container" class="popup-container">
+                <div class="popup">
+                    <span class="close-btn" onclick="closePopup()">&times;</span>
+                    <img src="https://www.svgrepo.com/show/93424/exclamation-mark-inside-a-circle.svg" alt="Check icon" class="check-icon">
+                    <p><br>Giỏ hàng rỗng. Bạn <a href="index.php">đặt hàng</a> không?</p>
+                </div>
+            </div>
+            <?php
         }
     ?>
+   
+   <script>
+            function showPopup() {
+            document.getElementById("popup-container").style.display = "block";
+            }
 
+            function closePopup() {
+            document.getElementById("popup-container").style.display = "none";
+            }
+            window.onload = function() {
+            showPopup();
+            };
+    </script>
+      </body>
+</html>
