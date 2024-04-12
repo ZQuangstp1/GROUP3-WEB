@@ -69,8 +69,7 @@ session_start();
                                 return;
                             }
                     // Truy vấn để xóa dữ liệu khỏi database
-                    $sql = "DELETE FROM favProduct (productID, accountID) VALUES ('$productID', '$accountID')";
-                    //$sql = "DELETE FROM favProduct WHERE productID = '$productID'";
+                    $sql = "DELETE FROM favProduct WHERE productID = '$productID' AND accountID = '$accountID'";                    //$sql = "DELETE FROM favProduct WHERE productID = '$productID'";
                     $result = chayTruyVanKhongTraVeDL($link, $sql);
                     if ($result) {
                         echo "Xóa sản phẩm yêu thích thành công";

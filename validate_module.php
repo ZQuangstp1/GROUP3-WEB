@@ -20,6 +20,7 @@ function kiemTraMatKhau($password, $password2) {
         return false;
     }
 }
+
 ?>
 
 

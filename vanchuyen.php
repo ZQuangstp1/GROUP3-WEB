@@ -149,6 +149,7 @@ WHERE customer.customerID = '" . $_SESSION['customerID'] . "'";
 
                                 <?php
                                 foreach ($_SESSION['cart'] as $sp) {
+                                    $tong = 0;
                                     $thanhtien = $sp[4] * $sp[3];
                                     $tong += $thanhtien;
                                     echo '  <div class="col-trais" style="margin-top: 3%;">

@@ -31,7 +31,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
     $customerID = $_SESSION['customerID'];
     $accountID = $_SESSION['accountID'];
     // Tiếp tục truy vấn để lấy thông tin các sản phẩm yêu thích từ bảng product
-    $query = "SELECT favID,product.image,product.productID, product.discountID, 
+    $query = "SELECT DISTINCT favID,product.image,product.productID, product.discountID, 
               product.productName, subcategory.subcategoryName, CONCAT(FORMAT(product.unitPrice, 0), ' VNĐ') AS formattedUnitPrice , 
               favproduct.accountID, CONCAT(FORMAT(d.discountAmount * 100, 0), '%') AS discountPercentage
     FROM product JOIN `subcategory` ON product.subcategoryID = `subcategory`.subcategoryID 
