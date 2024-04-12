@@ -94,10 +94,8 @@
                 $productSalesData[$row['productID']] = $row['total_quantity'];
             }
             ?>
-            <!-- First row of charts -->
             <p><strong>Tổng doanh thu năm 2022: </strong> <?php echo number_format($totalProfit, 0, ',', '.') . ' VND'; ?></p>
 
-            <!-- Second row of charts -->
             <div class="chart-row2">
                 <div class="chart-container">
                     <canvas id="revenueChart" class="chart-canvas"></canvas>
