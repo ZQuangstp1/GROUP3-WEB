@@ -21,7 +21,6 @@
 </script>
 
 <div id="search">
-    <h3>Tra cứu</h3>
     <input type="text" id="searchInput" placeholder="Nhập từ khóa...">
     <button onclick="Search()">Tìm sản phẩm</button>
     <a href="?opt=add_SP"><button>Thêm sản phẩm</button></a>   
