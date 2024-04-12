@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>About Us - Công Ty Trang Sức XYZ</title>
-    <link rel="stylesheet" href="abUs.css">
+    <link rel="stylesheet" href="aboutUs.css">
 </head>
 <?php
 include ("header.php");
