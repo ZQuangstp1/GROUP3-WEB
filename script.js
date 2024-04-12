@@ -6,7 +6,45 @@ function toggleFilter(filterId) {
 
 }
 
+// Zoom ảnh
+document.addEventListener("DOMContentLoaded", function() {
+  const wrapper = document.querySelector(".image-wrapper");
+  const zoomFrame = document.querySelector(".zoom-frame");
+  const zoomedImage = document.querySelector(".zoomed-image");
+  const zoomRatio = 3; // Đặt tỉ lệ zoom là 1.5
 
+  const image4Icon = document.querySelector(".image-4-icon");
+
+  wrapper.addEventListener("mousemove", function(event) {
+    // Tính vị trí của mouse với ảnh image-4-icon
+    const offsetX = event.clientX - image4Icon.getBoundingClientRect().left;
+    const offsetY = event.clientY - image4Icon.getBoundingClientRect().top;
+
+    // Tính vị trí của hình ảnh zoom lên 
+    const zoomX = offsetX * zoomRatio;
+    const zoomY = offsetY * zoomRatio;
+
+    // Update vị trí zoomFrame 
+    const frameWidth = zoomFrame.offsetWidth;
+    const frameHeight = zoomFrame.offsetHeight;
+    const frameLeft = Math.min(Math.max(offsetX - frameWidth / 2, 0), image4Icon.width - frameWidth);
+    const frameTop = Math.min(Math.max(offsetY - frameHeight / 2, 0), image4Icon.height - frameHeight);
+    zoomFrame.style.left = `${frameLeft}px`;
+    zoomFrame.style.top = `${frameTop}px`;
+
+    // Update vị trí ảnh trong khung zoomFrame
+    zoomedImage.style.transform = `translate(-${zoomX}px, -${zoomY}px) scale(${zoomRatio})`;
+  });
+
+  wrapper.addEventListener("mouseenter", function() {
+    zoomFrame.style.display = "block";
+  });
+
+  wrapper.addEventListener("mouseleave", function() {
+    zoomFrame.style.display = "none";
+    zoomedImage.style.transform = "none";
+  });
+});
 
 // Button số lượng
 function totalClick(click) {
@@ -58,7 +96,6 @@ document.getElementById("likeButtonComment").addEventListener("click", function(
       likeText.style.color = ''; // Reset to default color
   }
 });
-
 
 
 // Hàm tạo star rating and comment box
