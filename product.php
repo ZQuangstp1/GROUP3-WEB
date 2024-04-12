@@ -3,10 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-
-    <script src="script.js"></script>
     </script>
-    <link rel="stylesheet" href="./global.css" />
     <link rel="stylesheet" href="./product.css" />
     <link
       rel="stylesheet"
@@ -68,6 +65,31 @@
             echo "Không có ID sản phẩm được cung cấp!";
         }
       }
+
+      if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+    
+            // Truy vấn SQL trực tiếp
+            $query = "SELECT accountID FROM UserAccount WHERE username = '$username'";
+            $result = mysqli_query($link, $query);
+    
+            if ($result && mysqli_num_rows($result) > 0) {
+                // Lấy accountID từ kết quả
+                $row = mysqli_fetch_assoc($result);
+                $accountID = $row['accountID'];
+            } else {
+                echo "<div class='popup-container'><div class='popup'><span class='close-btn' onclick='closePopup()'>&times;</span><img src='exclamation_mark.svg' alt='Error icon' class='check-icon'><p>Không tìm thấy thông tin tài khoản!</p></div></div>";
+                return;
+            }
+    
+            // Giải phóng kết quả
+            mysqli_free_result($result);
+
+    } else {
+        echo "<div class='popup-container'><div class='popup'><span class='close-btn' onclick='closePopup()'>&times;</span><img src='exclamation_mark.svg' alt='Error icon' class='check-icon'><p>Không tìm thấy thông tin đăng nhập!</p></div></div>";
+        return;
+    }
+      
  ?>  
 
 <!--Nội dung tiêu đề của sản phẩm -->
@@ -87,13 +109,6 @@
         <div class="product-header">
           <div class="brand-info">
               <div class="brand-name"><?php echo $subcat; ?></div>
-              <div class="rating-stars">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/268ecdae2f05065984d2e0d5ffcfbcb78794bcd076d2c9ff2514144993bbb60a?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e0a1850b5fb05b8f0795cae26f547fe534f781ab97da6559ea8504149b26b255?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e13f3b67020bfd57837f497625d0dea15b8266e0cd5e9bff00f5bb5fa9277dfb?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e68aec3960d65efa39c086621cd53a098cffc6475460464574257b5dc06e33e?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9a10058a869dd7acdd4a3ee287c08764a73e2812ee8e5a6335ca12c1f722c37c?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Star rating icon" class="star-icon" />
-              </div>
               <a href="#review" class="review-link">Xem Đánh giá</a> 
           </div>
           <div class="product-name"><?php echo $productName; ?></div>
@@ -313,13 +328,14 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-            </div>
-            <div class="star"></div>
-        </div>
-        <div class="comment-container1">
-            <textarea class="great-products" name="comment" id="comment-section"></textarea>
-            <input type="hidden" name="product_id" value="<?php echo $product; ?>">
-            <input type="submit" id = "comment-button" name="submit" value="Bình luận">
+                  
+                    <div class="star"></div>
+                    </div>
+                </div>
+                <div class="comment-container1">
+                    <textarea class="great-products" name="comment" id="comment-section"></textarea>
+                    <input type="hidden" name="product_id" value="<?php echo $product; ?>">
+                    <input type="submit" id = "comment-button" name="submit" value="Bình luận">
             </form>
         </div>
     </section>
@@ -340,14 +356,6 @@
           $num_records = $row['count'];
 
           $new_review_id = 'R' . str_pad($num_records + 1, 5, '0', STR_PAD_LEFT);
-          //Khi nào ghép xong được cái trang đăng nhập thì sẽ uncomment nó 
-          //session_start();
-          // if (isset($_SESSION['account_id'])) {
-          //     $accountID = $_SESSION['account_id'];
-          // } else {
-          //     // Xử lý khi không có thông tin accountID trong session
-          // }
-          $accountID ='A000001';
           // Thêm dữ liệu vào bảng Review
           $sql = "INSERT INTO Review (reviewID, rating, comment, accountID, productID)
                         VALUES ('$new_review_id', '$rating', '$comment', '$accountID', '$productID')";

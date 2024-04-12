@@ -1268,6 +1268,11 @@ a {
 
 .star-rating-cmt {
   display: inline-block;
+  margin-top: 20px;
+}
+
+.star-wrapper{
+  margin-top: 20px;
 }
 
 .star-cmt {
