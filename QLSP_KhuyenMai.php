@@ -33,15 +33,12 @@
             background-color: #6a4141;
         }
         #search {
-            display: flex;
+            display: block;
             justify-content: center; 
             align-items: center; 
             padding: 20px;
-            margin-top: 50px; 
+            margin-top: 60px; 
             text-align: center;
-        }
-        #search h3 {
-            margin-right: 10px; 
         }
         input[type="text"] {
             flex: 1; 
