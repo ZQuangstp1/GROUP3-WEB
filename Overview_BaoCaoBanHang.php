@@ -137,7 +137,7 @@
             taoKetNoi($link);
 
             // Số dòng dữ liệu trên mỗi trang
-            $rows_per_page = 11;
+            $rows_per_page = 12;
             // Trang hiện tại, mặc định là trang 1
             $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
             // Tính toán vị trí bắt đầu lấy dữ liệu từ CSDL
