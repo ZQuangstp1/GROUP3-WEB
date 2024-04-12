@@ -2,7 +2,6 @@
   <?php
   require_once "search.php";
   ?>
-<script type="text/javascript" src="header.js" language="JavaScript"></script>
     <style>
   .header-container {
     justify-content: space-between;
@@ -218,6 +217,7 @@
   .cart {
     width: 18px;
     padding-top: 70px;
+    margin-right:  10px
   }
 }
 
@@ -228,15 +228,23 @@
   .three-logos-content .drop_menu {
     position: absolute;
     top: 65px;
-    width: 180px;
+    width: 200px;
     line-height: 45px;
     background-color: #f9f2e6;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease-in-out;
     list-style: none;
-    border: 1px solid #dcceb5
+    border: 1px solid #dcceb5;
+    right: 50px;
   }
+  @media screen and (max-width: 991px) {
+    .three-logos-content .drop_menu {
+      right: 10px;
+      margin-top: 52px
+    }
+  }
+
 
   .three-logos-content:hover .drop_menu {
     top: 65px;
@@ -249,7 +257,7 @@
   .three-logos-content .drop_menu li a {
     width: 100%;
     display: block;
-    padding: 0 0 0 15px;
+    padding: 0 0 0 10px;
     font-weight: 400;
     border-radius: 0px;
     list-style: none;
@@ -300,57 +308,60 @@
                 class="user"
               />
               </a>
-              <!-- <ul class="drop_menu">
-                <li><a href="dangnhap.php">Đăng nhập</a></li>
-                <li><a href="dangki.php">Đăng ký</a></li>
-                <li><a href="dangxuat.php">Đăng xuất</a></li>
-              </ul> -->
               <ul class="drop_menu">
-              <?php if (isset($_SESSION['username'])):
-                require_once "db_module.php";
-                $link = null;
-                taoKetNoi($link);
-              
-                $username = $_SESSION['username'];
-                // Truy vấn lấy thông tin từ cơ sở dữ liệu
-                $query = "SELECT
-                            c.customerID,
-                            ua.username,
-                            c.lastName,
-                            c.firstName,
-                            CONCAT(c.lastName, ' ', c.firstName) AS FullName
-                          FROM
-                            Customer AS c
-                            INNER JOIN UserAccount AS ua ON c.customerID = ua.customerID
-                          WHERE ua.username = '$username'";
-                
-                // Thực hiện truy vấn và lấy kết quả
-                $result = chayTruyVanTraVeDL($link, $query);
-                
-                // Kiểm tra xem truy vấn có trả về dữ liệu không
-                if ($result && $row = mysqli_fetch_assoc($result)) {
-                    // In thông tin FullName
-                    echo '<li><a href="TTKH.php">' . $row['FullName'] . '</a></li>';
-                }
-                ?>
-            <li><a href="dangxuat.php">Đăng xuất</a></li>
-            <?php else: ?>
-            <li><a href="dangnhap.php">Đăng nhập</a></li>
-            <li><a href="dangki.php">Đăng ký</a></li>
-        <?php endif; ?>
+    <?php 
+    if (isset($_SESSION['username'])):
+        require_once "db_module.php";
+        $link = null;
+        taoKetNoi($link);
+      
+        $username = $_SESSION['username'];
+        // Truy vấn lấy thông tin từ cơ sở dữ liệu
+        $query = "SELECT
+                    c.customerID,
+                    ua.username,
+                    c.lastName,
+                    c.firstName,
+                    CONCAT(c.lastName, ' ', c.firstName) AS FullName
+                  FROM
+                    Customer AS c
+                    INNER JOIN UserAccount AS ua ON c.customerID = ua.customerID
+                  WHERE ua.username = '$username'";
+        
+        // Thực hiện truy vấn và lấy kết quả
+        $result = chayTruyVanTraVeDL($link, $query);
+        
+        // Kiểm tra xem truy vấn có trả về dữ liệu không
+        if ($result && $row = mysqli_fetch_assoc($result)) {
+            // Kiểm tra nếu fullName không tồn tại thì sử dụng username
+            $displayName = isset($row['FullName']) ? $row['FullName'] : $row['username'];
+            echo '<li><a href="TTKH.php">' . $displayName . '</a></li>';
+        }
+    ?>
+    <li><a href="dangxuat.php">Đăng xuất</a></li>
+    <?php else: ?>
+    <li><a href="dangnhap.php">Đăng nhập</a></li>
+    <li><a href="dangki.php">Đăng ký</a></li>
+    <?php endif; ?>
 </ul>
               
             </div>
+            <a href="YT.php">
             <img
               loading="lazy"
               src="img/love.png"
               class="fav"
             />
+            </a>
+
+            <a href="">
             <img
               loading="lazy"
               src="img/cart.png"
               class="cart"
             />
+            </a>
+
           </div>
         </div>
   </body>

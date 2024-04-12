@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Barlow, sans-serif;
+  font-family: 'Barlow', sans-serif;
 }
 
 body{
@@ -329,8 +329,13 @@ body{
       max-width: 100%;
       flex-wrap: wrap;
       display: block;
+      font-size: 15px;
     }
   }
+  
+  
+ 
+  
   
 /* Loại bỏ các hiệu ứng định dạng của thẻ a */
   a {
