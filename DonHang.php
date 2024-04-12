@@ -22,6 +22,9 @@
         .pink-row th {
             background-color: #FFC0CB; /* Màu hồng */
         }
+        .form-container{
+            margin-top: 10%;
+        }
 
         .form-group {
             display: flex;
