@@ -135,20 +135,13 @@
         {
             $link = null;
             taoKetNoi($link);
-
-            // Số dòng dữ liệu trên mỗi trang
             $rows_per_page = 12;
-            // Trang hiện tại, mặc định là trang 1
             $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-            // Tính toán vị trí bắt đầu lấy dữ liệu từ CSDL
             $start_from = ($current_page - 1) * $rows_per_page;
-
-            // Thực hiện truy vấn SQL để lấy dữ liệu từ bảng financialreport với số lượng dòng được giới hạn
             $result = chayTruyVanTraVeDL($link, "SELECT fr.DateID, fr.reportID, fr.orderID, fr.revenue, fr.cost, fr.discountAmount, fr.profit, fr.totalOrders, e.name 
                                         FROM financialreport fr
                                         INNER JOIN employee e ON fr.employeeID = e.employeeID
                                         LIMIT $start_from, $rows_per_page");
-
             echo "<table id='reportTable'>";
             echo "<tr>";
             echo "<th class='pink-header'>Ngày bán hàng</th>"; 
@@ -164,16 +157,12 @@
 
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                // Chuyển đổi định dạng ngày tháng từ 'yyyymmdd' thành 'dd-mm-yy'
                 $formatted_date = date_create_from_format('Ymd', $row["DateID"]);
                 if ($formatted_date !== false) {
-                    // Nếu có thể tạo đối tượng DateTime, chuyển đổi định dạng và hiển thị
                     echo "<td>" . date_format($formatted_date, 'd-m-Y') . "</td>";
                 } else {
-                    // Nếu không thể tạo đối tượng DateTime, hiển thị ngày gốc từ cột DateID
                     echo "<td>" . $row["DateID"] . "</td>";
                 }
-                // Tiếp tục hiển thị các cột khác
                 echo "<td>" . $row["reportID"] . "</td>";
                 echo "<td>" . $row["orderID"] . "</td>";
                 echo "<td>" . number_format($row["revenue"], 0, ',', '.') . "</td>";
@@ -184,39 +173,33 @@
                 echo "<td>" . $row["name"] . "</td>";
                 echo "</tr>";
             }                           
-
             echo "</table>";
 
-            // Hiển thị nút chuyển trang
             echo "<div id='pagination'>";
             $total_rows = mysqli_num_rows(chayTruyVanTraVeDL($link, "SELECT * FROM financialreport"));
             $total_pages = ceil($total_rows / $rows_per_page);
             if ($current_page > 1) {
-                echo "<a href='?page=".($current_page - 1)."'><button><</button></a>"; // Nút chuyển đến trang trước đó
+                echo "<a href='?page=".($current_page - 1)."'><button><</button></a>";
             }
         
             if ($current_page < $total_pages) {
-                echo "<a href='?page=".($current_page + 1)."'><button>></button></a>"; // Nút chuyển đến trang tiếp theo
+                echo "<a href='?page=".($current_page + 1)."'><button>></button></a>";
             }
             
             giaiPhongBoNho($link, $result);
         }
-
-        // Gọi hàm view_BaoCao() mặc định khi không có tham số opt được truyền
         if (isset($_GET["opt"])) {
             $_opt = $_GET["opt"];
         } else {
-            // Nếu 'opt' không được đặt, bạn có thể đặt một giá trị mặc định hoặc xử lý nó theo cách cụ thể
-            $_opt = ""; // Đặt giá trị mặc định là chuỗi rỗng
+           
+            $_opt = ""; 
         }
-
         switch ($_opt) {
             case "view_BaoCao":
                 view_BaoCao();
                 break;
-            //Thêm các trường hợp khác ở đây nếu cần
             default:
-                view_BaoCao(); // Mặc định hiển thị bảng Báo cáo
+                view_BaoCao();
         }
         ?>
     </div>
