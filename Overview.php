@@ -11,7 +11,7 @@
             margin: 10px; 
         }
 
-            #baocaobanhang, #sogiaohang {
+            #baocaobanhang, #sogiaohang, #thongke {
             background-color: #FFE5EC; 
             color: #832E43; 
             border: none; 
@@ -23,11 +23,11 @@
             height: 100px;
         }
 
-        #baocaobanhang img, #sogiaohang img {
+        #baocaobanhang img, #sogiaohang img, #thongke img {
             width: 70px;
         }
 
-        #baocaobanhang:hover, #sogiaohang:hover {
+        #baocaobanhang:hover, #sogiaohang:hover, #thongke:hover {
             background-color: #dea3a385; 
             color: #fff;
         }
@@ -52,11 +52,18 @@
     </div>
 
     <div id="Button">
-    <a href="Overview_Chart.php">
+    <a href="Overview_Baocaobanhang.php">
         <button id="baocaobanhang">
-            <img src="Picture/Icon Baocaobanhang.png" alt="Icon Báo cáo bán hàng">
+            <img src="Picture/Icon Baocao.png" alt="Icon Báo cáo">
             <br>
             Báo cáo bán hàng
+        </button>
+    </a>
+    <a href="Overview_Chart.php">
+        <button id="thongke">
+            <img src="Picture/Icon Chart.png" alt="Icon Chart">
+            <br>
+            Thống kê
         </button>
     </a>
     <a href="Overview_SoGiaoHang.php">
