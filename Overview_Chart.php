@@ -99,7 +99,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
                 $productPopularityData[$row['productID']] = $row['product_count'];}
             ?>
-            <!-- First row of charts -->
+
             <div class="chart-row1">
                 <div class="chart-container">
                     <canvas id="orderSalesChart" class="chart-canvas"></canvas>
@@ -109,89 +109,89 @@
                 </div>
             </div>
 
-            <!-- Second row of charts -->
-<div class="chart-row2">
-    <div class="chart-container">
-        <canvas id="productPopularityChart" class="chart-canvas"></canvas>
-    </div>
-</div>
 
-    <div id="footer">
-        <p>© 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo.</p>
-    </div>
+            <div class="chart-row2">
+                <div class="chart-container">
+                    <canvas id="productPopularityChart" class="chart-canvas"></canvas>
+                </div>
+            </div>
 
-    <script>
-        var ctxOrderSales = document.getElementById('orderSalesChart').getContext('2d');
-        var orderSalesChart = new Chart(ctxOrderSales, {
-            type: 'bar',
-            data: {
-                labels: ['Tháng 10', 'Tháng 11', 'Tháng 12'],
-                datasets: [{
-                    label: 'Tổng đơn hàng đã bán',
-                    data: [<?= isset($orderSalesData[10]) ? $orderSalesData[10] : 0; ?>, <?= isset($orderSalesData[11]) ? $orderSalesData[11] : 0; ?>, <?= isset($orderSalesData[12]) ? $orderSalesData[12] : 0; ?>],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
+                <div id="footer">
+                    <p>© 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo.</p>
+                </div>
+
+                <script>
+                    var ctxOrderSales = document.getElementById('orderSalesChart').getContext('2d');
+                    var orderSalesChart = new Chart(ctxOrderSales, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Tháng 10', 'Tháng 11', 'Tháng 12'],
+                            datasets: [{
+                                label: 'Tổng đơn hàng đã bán',
+                                data: [<?= isset($orderSalesData[10]) ? $orderSalesData[10] : 0; ?>, <?= isset($orderSalesData[11]) ? $orderSalesData[11] : 0; ?>, <?= isset($orderSalesData[12]) ? $orderSalesData[12] : 0; ?>],
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
                         }
-                    }]
-                }
-            }
-        });
+                    });
 
-        var ctxTopProducts = document.getElementById('topProductsChart').getContext('2d');
-        var topProductsChart = new Chart(ctxTopProducts, {
-            type: 'bar',
-            data: {
-                labels: [<?= "'" . implode("', '", array_keys($productSalesData)) . "'"; ?>],
-                datasets: [{
-                    label: 'Sản phẩm bán chạy',
-                    data: [<?= implode(', ', $productSalesData); ?>],
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
+                    var ctxTopProducts = document.getElementById('topProductsChart').getContext('2d');
+                    var topProductsChart = new Chart(ctxTopProducts, {
+                        type: 'bar',
+                        data: {
+                            labels: [<?= "'" . implode("', '", array_keys($productSalesData)) . "'"; ?>],
+                            datasets: [{
+                                label: 'Sản phẩm bán chạy',
+                                data: [<?= implode(', ', $productSalesData); ?>],
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
                         }
-                    }]
-                }
-            }
-        });
+                    });
 
-        var ctxProductPopularity = document.getElementById('productPopularityChart').getContext('2d');
-    var productPopularityChart = new Chart(ctxProductPopularity, {
-        type: 'bar',
-        data: {
-            labels: [<?= "'" . implode("', '", array_keys($productPopularityData)) . "'"; ?>],
-            datasets: [{
-                label: 'Sản phẩm được yêu thích',
-                data: [<?= implode(', ', $productPopularityData); ?>],
-                backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                borderColor: 'rgba(153, 102, 255, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
+                    var ctxProductPopularity = document.getElementById('productPopularityChart').getContext('2d');
+                var productPopularityChart = new Chart(ctxProductPopularity, {
+                    type: 'bar',
+                    data: {
+                        labels: [<?= "'" . implode("', '", array_keys($productPopularityData)) . "'"; ?>],
+                        datasets: [{
+                            label: 'Sản phẩm được yêu thích',
+                            data: [<?= implode(', ', $productPopularityData); ?>],
+                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
                     }
-                }]
-            }
-        }
-    });
+                });
     </script>
 </body>
 </html>
