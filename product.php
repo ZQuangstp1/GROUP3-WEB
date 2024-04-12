@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <script src="script.js"></script>
     </script>
     <link rel="stylesheet" href="./product.css" />
     <link
@@ -65,31 +66,6 @@
             echo "Không có ID sản phẩm được cung cấp!";
         }
       }
-
-      if (isset($_SESSION['username'])) {
-        $username = $_SESSION['username'];
-    
-            // Truy vấn SQL trực tiếp
-            $query = "SELECT accountID FROM UserAccount WHERE username = '$username'";
-            $result = mysqli_query($link, $query);
-    
-            if ($result && mysqli_num_rows($result) > 0) {
-                // Lấy accountID từ kết quả
-                $row = mysqli_fetch_assoc($result);
-                $accountID = $row['accountID'];
-            } else {
-                echo "<div class='popup-container'><div class='popup'><span class='close-btn' onclick='closePopup()'>&times;</span><img src='exclamation_mark.svg' alt='Error icon' class='check-icon'><p>Không tìm thấy thông tin tài khoản!</p></div></div>";
-                return;
-            }
-    
-            // Giải phóng kết quả
-            mysqli_free_result($result);
-
-    } else {
-        echo "<div class='popup-container'><div class='popup'><span class='close-btn' onclick='closePopup()'>&times;</span><img src='exclamation_mark.svg' alt='Error icon' class='check-icon'><p>Không tìm thấy thông tin đăng nhập!</p></div></div>";
-        return;
-    }
-      
  ?>  
 
 <!--Nội dung tiêu đề của sản phẩm -->
@@ -328,7 +304,6 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                  
                     <div class="star"></div>
                     </div>
                 </div>
@@ -345,32 +320,60 @@
       if(isset($_POST['submit'])){
         $link = null;
         taoKetNoi($link);
-          // Lấy dữ liệu từ biểu mẫu
-          $comment = $_POST['comment'];
-          $rating = $_POST['rating'];
-          $productID = $_POST['product_id'];
-          // Tạo reviewID
-          $query = "SELECT COUNT(*) as count FROM Review";
-          $rs = chayTruyVanTraVeDL($link, $query);
-          $row = mysqli_fetch_assoc($rs);
-          $num_records = $row['count'];
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+        
+                // Truy vấn SQL trực tiếp
+                $query = "SELECT accountID FROM UserAccount WHERE username = '$username'";
+                $result = mysqli_query($link, $query);
+        
+                if ($result && mysqli_num_rows($result) > 0) {
+                    // Lấy accountID từ kết quả
+                    $row = mysqli_fetch_assoc($result);
+                    $accountID = $row['accountID'];
+                } else {
+                    echo "<div class='popup-container'><div class='popup'><span class='close-btn' onclick='closePopup()'>&times;</span><img src='exclamation_mark.svg' alt='Error icon' class='check-icon'><p>Không tìm thấy thông tin tài khoản!</p></div></div>";
+                    return;
+                }
+                // Giải phóng kết quả
+              mysqli_free_result($result);
+                // Lấy dữ liệu từ biểu mẫu
+            $comment = $_POST['comment'];
+            $rating = $_POST['rating'];
+            $productID = $_POST['product_id'];
+            // Tạo reviewID
+            $query = "SELECT COUNT(*) as count FROM Review";
+            $rs = chayTruyVanTraVeDL($link, $query);
+            $row = mysqli_fetch_assoc($rs);
+            $num_records = $row['count'];
 
-          $new_review_id = 'R' . str_pad($num_records + 1, 5, '0', STR_PAD_LEFT);
-          // Thêm dữ liệu vào bảng Review
-          $sql = "INSERT INTO Review (reviewID, rating, comment, accountID, productID)
-                        VALUES ('$new_review_id', '$rating', '$comment', '$accountID', '$productID')";
-          $result = chayTruyVanKhongTraVeDL($link, $sql);
-          if ($result) {
-            ?>
-            <div id="popup-container" class="popup-container">
-                <div class="popup">
-                    <span class="close-btn" onclick="closePopup()">&times;</span>
-                    <img src="https://static-00.iconduck.com/assets.00/checkmark-icon-512x426-8re0u9li.png" alt="Check icon" class="check-icon">
-                    <p>Đánh giá thành công!</p>
-                </div>
-            </div>
-            <?php
-            giaiPhongBoNho($link, $result);
+            $new_review_id = 'R' . str_pad($num_records + 1, 5, '0', STR_PAD_LEFT);
+            // Thêm dữ liệu vào bảng Review
+            $sql = "INSERT INTO Review (reviewID, rating, comment, accountID, productID)
+                          VALUES ('$new_review_id', '$rating', '$comment', '$accountID', '$productID')";
+            $result = chayTruyVanKhongTraVeDL($link, $sql);
+            if ($result) {
+              ?>
+              <div id="popup-container" class="popup-container">
+                  <div class="popup">
+                      <span class="close-btn" onclick="closePopup()">&times;</span>
+                      <img src="https://static-00.iconduck.com/assets.00/checkmark-icon-512x426-8re0u9li.png" alt="Check icon" class="check-icon">
+                      <p>Đánh giá thành công!</p>
+                  </div>
+              </div>
+              <?php
+              giaiPhongBoNho($link, $result);
+            } else {
+              ?>
+              <div id="popup-container" class="popup-container">
+                  <div class="popup">
+                      <span class="close-btn" onclick="closePopup()">&times;</span>
+                      <img src="https://www.svgrepo.com/show/93424/exclamation-mark-inside-a-circle.svg" alt="Check icon" class="check-icon">
+                      <p>Vui lòng nhập đánh giá!</p>
+                  </div>
+              </div>
+              <?php
+            }   
           } else {
             ?>
             <div id="popup-container" class="popup-container">
@@ -381,7 +384,7 @@
                 </div>
             </div>
             <?php
-          }   
+          }
         }
       ?>
 <!--Sản phẩm tương tự-->

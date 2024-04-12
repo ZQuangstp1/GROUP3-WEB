@@ -1274,6 +1274,9 @@ a {
 .star-wrapper{
   margin-top: 20px;
 }
+#star-dropdown{
+  margin-bottom: 6px;
+}
 
 .star-cmt {
   background-size: cover;
