@@ -101,16 +101,17 @@ p {
     }
 }
 
-@media (max-width: 430px) { /* iPhone 14 Pro Max and smaller */
+@media (max-width: 430px) {
     .overlay-text {
-        background: #F6F5F2; /* Dark semi-transparent background for readability */
-        color: white; /* White text color for contrast */
+        background: #000000;
+        opacity: 50%;
+        color: white;
         position: absolute;
-        top: 50%; /* Vertically center */
-        left: 50%; /* Horizontally center */
-        transform: translate(-50%, -50%); /* Adjust positioning to be centered */
-        width: 100%; /* Use full width of the screen */
-        padding: 20px; /* Maintain padding around the text */
-        text-align: center; /* Align text to the center */
+        top: 50%;
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        width: 100%; 
+        padding: 20px; 
+        text-align: center; 
     }
 }

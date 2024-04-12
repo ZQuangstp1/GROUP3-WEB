@@ -86,7 +86,7 @@
               </div>
             </div>
           </li>
-          <li><a href="#">Quà tặng</a></li>
+          <li><a href="index.php#contact">Liên hệ</a></li>
           <li><a href="aboutUs.php">Thông tin chung</a></li>
         </ul>
         <label for="menu_btn" class="btn menu_btn">
