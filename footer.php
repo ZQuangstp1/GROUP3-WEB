@@ -286,7 +286,7 @@
       <div class="information-title">THÔNG TIN</div>
       <div class="information-details">
         <ul>
-          <li>Về Flamingo</li>
+          <a href="aboutUs.php"><li>Về Flamingo</li></a>
         </ul>
       <div class="contact-title">Liên hệ</div>
       <div class="contact-details">

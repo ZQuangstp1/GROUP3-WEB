@@ -85,7 +85,7 @@
             </div>
           </li>
           <li><a href="#">Quà tặng</a></li>
-          <li><a href="#">Thông tin chung</a></li>
+          <li><a href="aboutUs.php">Thông tin chung</a></li>
         </ul>
         <label for="menu_btn" class="btn menu_btn">
           <i class="fas fa-bars"></i>
