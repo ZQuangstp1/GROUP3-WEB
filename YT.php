@@ -320,6 +320,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
       flex-direction: column;
       color: #212121;
       padding: 10px 33px;
+      width : 90px;
     }
 
     .product-name {

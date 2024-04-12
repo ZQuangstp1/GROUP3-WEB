@@ -42,8 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             
                             $insertQuery = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$password', '$new_cus_id')";
                             if (chayTruyVanKhongTraVeDL($link, $insertQuery)) {
-                                $_SESSION['success'] = "Đăng ký tài khoản thành công!";
-                                header("Location: dangnhap.php");
+                                echo "<script>alert('Đăng nhập thành công');</script>";
+                                echo "<script>window.location.href='dangnhap.php';</script>";
+                               
                                 exit();
                             } else {
                                 $_SESSION['error'] = "Có lỗi xảy ra trong quá trình đăng ký tài khoản";
