@@ -18,7 +18,6 @@
 </script>
     </head>
 <div id="search">
-<h3>Tra cứu</h3>
     <input type="text" id="searchInput" placeholder="Nhập từ khóa...">
     <button onclick="Search()">Tìm khuyến mãi</button>
     <a href="?opt=add_KM"><button>Thêm khuyến mãi</button></a>    
