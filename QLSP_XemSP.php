@@ -13,7 +13,7 @@
             border: 1px solid black;
             text-align: center;
             padding: 5px 7px;
-            font-size: 12.3px; /* Giảm kích thước chữ */
+            font-size: 12.5px; /* Giảm kích thước chữ */
             font-family: 'Barlow', sans-serif;
         }
         input[type="text"] {
@@ -34,18 +34,15 @@
             background-color: #6a4141;
         }
         #search {
-            display: flex;
+            display: block;
             justify-content: center; 
             align-items: center; 
             padding: 20px;
             margin-top: 50px; 
             text-align: center;
-        }
-        #search h3 {
-            margin-right: 10px; 
+            margin-top: 60px;
         }
         input[type="text"] {
-            flex: 1; 
             margin-right: 10px; 
             margin-top: 8px; 
         }
@@ -102,8 +99,8 @@
         <ul>
         <li><a href="Overview.php">Overview</a></li>
             <li><a href="QLSP.php">Quản lý sản phẩm</a></li>
-            <li><a href="QLNV.php">Quản lý nhân viên</li>
-            <li><a href="QLDH.php">Quản lý đơn hàng</li>
+            <li><a href="QLNV.php">Quản lý nhân viên</a></li>
+            <li><a href="QLDH.php">Quản lý đơn hàng</a></li>
         </ul>
     </div>
 
