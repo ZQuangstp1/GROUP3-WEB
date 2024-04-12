@@ -1,10 +1,6 @@
 body{
   background: #f9f2e6;
-<<<<<<< HEAD
-    font-family: Barlow, sans-serif;
-=======
-  font-family: 'Barlow', sans-serif;
->>>>>>> a27f27f2549b2b56aceb9439532761dabe5d4e5e
+  font-family: Barlow, sans-serif;
   margin-left: 20px;
 }
 
@@ -284,6 +280,7 @@ body{
   justify-content: center;
   width: 150px;
   padding: 10px 24px;
+  cursor: pointer;
 }
 
 @media (max-width: 991px) {
@@ -328,6 +325,10 @@ body{
 
 .wishlist-text {
   font-family: Barlow, sans-serif;
+}
+
+.add-to-wishlist.active {
+  background-color: rgba(251, 111, 146, 1);
 }
 
 .product-details-section {
@@ -1049,19 +1050,27 @@ body{
   height: 57.4px;
   color: var(--black);
 }
+
 .image-container {
   position: relative;
   flex-wrap: wrap;
   display: flex;
 }
 
-.image-4-icon {
+.image-wrapper {
   position: relative;
-  left: 100px;
+  left: 100px; /* Set vị trí đúng với image-4-icon ban đầu*/
+  width: 605px; 
+  height: 690px; 
+  overflow: hidden; /* Đảm bảo image không lớn hơn the wrapper */
+  object-fit: cover; /* Đảm bảo the image nằm trong the container */
+}
+
+.image-4-icon {
   max-width: 605px;
   height: 690px;
   object-fit: cover;
-} 
+}
 
 .image-8-icon {
   position: absolute;
@@ -1070,12 +1079,11 @@ body{
   height: 80.4px;
   object-fit: cover;
   border: 1px solid black;
-
 }
 
 @media (max-width: 1024px) {
   .image-8-icon {
-    display: none; /* Ẩn image-8-icon cho iPad */
+    display: none; /* Ẩn image-8-icon cho size iPad */
   }
   .image-4-icon {
     max-width: 100%;
@@ -1084,11 +1092,64 @@ body{
 
 @media (max-width: 768px) {
   .image-8-icon {
-    display: none; 
+    display: none;
   }
   .image-4-icon {
     max-width: 100%;
   }
+}
+
+.zoom-image-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 33.5px;
+  height: 29.7px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1; /* Đảm bảo lấp trên zoom frame */
+}
+
+
+.image-wrapper:hover .zoom-image-icon {
+  opacity: 1;
+  cursor: zoom-in;
+  transition: opacity 0.3s ease;
+}
+
+.image-wrapper:hover .image-4-icon {
+  filter: blur(8px); /* Làm mờ ảnh gốc */
+  transition: filter 0.3s ease;
+}
+
+.zoom-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px; 
+  height: 300px; 
+  overflow: hidden;
+  border: 1px solid black; 
+  display: none;
+  pointer-events: none; /* Đảm bảo mouse events bên trong the frame */
+}
+
+.zoom-frame.active {
+  display: block;
+}
+
+.zoomed-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 605px; /* Đặt width bằng với image-4-icon */
+  height: 690px; 
+  transform-origin: 0 0; /* Zoom từ top left */
+  transition: transform 0.1s ease;
+}
+
+.image-wrapper:hover .zoom-frame {
+  display: block;
 }
 
 input-group {
@@ -1212,7 +1273,7 @@ a {
 .bestsellerproduct-name {
   text-transform: capitalize;
   align-self: stretch;
-  /* font-family: 'Barlow', sans-serif; */
+  font-family: 'Barlow', sans-serif;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /* Số dòng tối đa */
