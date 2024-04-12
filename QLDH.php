@@ -12,7 +12,7 @@
         }
     </script>
 
-    <link rel="stylesheet" type="text/css" href="webstyle.css" />
+<link rel="stylesheet" type="text/css" href="Khung.css">    
 
 
 </head>
@@ -26,11 +26,6 @@
             <li><a href="QLSP.php">Quản lý sản phẩm</a></li>
             <li><a href="QLNV.php">Quản lý nhân viên</li>
             <li><a href="QLDH.php">Quản lý đơn hàng</li>
-                </a>
-                <a href="QLDH.php">
-                    <li>Quản lý đơn hàng</li>
-                </a>
-            </ul>
         </div>
 
         <div id="header" >
