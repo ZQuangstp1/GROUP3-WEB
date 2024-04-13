@@ -150,7 +150,7 @@ function edit_KM()
                     <div class="form-buttons"> 
                         <input type="submit" value="Lưu">
                         <input type="reset" value="Nhập lại">
-                        <button type="button" onclick="window.location.href='QLSP_KhuyenMai.php.php?opt=view_KM';">Quay lại</button>
+                        <button type="button" onclick="window.location.href='QLSP_KhuyenMai.php?opt=view_KM';">Quay lại</button>
                     </div>
                 </form>
             </div>
