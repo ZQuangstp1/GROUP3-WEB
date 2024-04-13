@@ -24,13 +24,13 @@
                     exit();
                 } else {
                     
-                    echo "<script>alert('Thông tin đăng nhập không đúng'); window.location.href='login.php';</script>";
-                    exit(); 
+                    echo "<script>alert('Thông tin đăng nhập không đúng'); window.location.href='Index.php';</script>";
+                    exit();
                 }
             }
             mysqli_stmt_close($stmt);
         } else {
-            echo "<script>alert('SQL statement failed to prepare.'); window.location.href='login.php';</script>";
+            echo "<script>alert('SQL statement failed to prepare.'); window.location.href='Index.php';</script>";
             exit();
         }
     }
