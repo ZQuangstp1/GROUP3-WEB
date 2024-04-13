@@ -273,6 +273,7 @@
                     align-items: start;
                     color: #fff;
                     padding: 14px 60px 14px 13px;
+                    font-weight: 400;
                 }
 
                 @media (max-width: 991px) {
@@ -288,6 +289,7 @@
                     justify-content: center;
                     align-items: start;
                     padding: 14px 60px 14px 13px;
+                    font-weight: 400;
                 }
 
                 @media (max-width: 991px) {
@@ -303,6 +305,7 @@
                     justify-content: center;
                     align-items: start;
                     padding: 16px 60px 16px 13px;
+                    font-weight: 400;
                 }
 
                 @media (max-width: 991px) {

@@ -105,7 +105,8 @@
                     <input type="text" name="lastName" placeholder="Họ" class="input-field" value="<?php echo $row["lastName"]; ?>" required>
                     <input type="text" name="firstName" placeholder="Tên" class="input-field" value="<?php echo $row["firstName"]; ?>" required>
                     <input type="tel" name="phone" placeholder="Số điện thoại" class="input-field" value="<?php echo $row["phone"]; ?>" title="Số điện thoại phải có từ 10 đến 12 chữ số" required>
-                    <input type="email" name="email" placeholder="Địa chỉ Email" class="input-field" value="<?php echo $row["email"]; ?>" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Vui lòng nhập địa chỉ email hợp lệ" required>
+                    <input type="email" name="email" placeholder="Địa chỉ Email" class="input-field" value="<?php echo $row["email"]; ?>" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" 
+                    title="Vui lòng nhập địa chỉ email hợp lệ" required>
                     <select name="gender" class="input-field" value="<?php echo $row["gender"]; ?>" required>
                         
                         <option value="M" <?php echo ($row["gender"] == "M" ? "selected" : ""); ?>>Nam</option>
@@ -364,7 +365,7 @@
 
         .div-8 {
           font-family: Barlow, sans-serif;
-          
+          font-weight: 400;
           justify-content: center;
           align-items: start;
           padding: 14px 60px 14px 13px;
@@ -379,7 +380,7 @@
 
         .div-9 {
           font-family: Barlow, sans-serif;
-         
+          font-weight: 400;
           justify-content: center;
           align-items: start;
           padding: 15px 60px 15px 13px;
@@ -393,7 +394,7 @@
 
         .div-10 {
           font-family: Barlow, sans-serif;
-          
+          font-weight: 400;
           justify-content: center;
           align-items: start;
           padding: 16px 60px 16px 13px;

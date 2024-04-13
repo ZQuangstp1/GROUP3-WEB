@@ -192,7 +192,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                     flex-direction: column;
                     font-size: 16px;
                     color: #000;
-                    font-weight: 500;
+                    font-weight: 400;
                     line-height: 144%;
                 }
 
@@ -236,6 +236,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                     align-items: start;
                     font-weight: 400;
                     padding: 14px 60px 14px 13px;
+                    font-weight: 400;
                 }
 
                 @media (max-width: 991px) {

@@ -200,6 +200,7 @@ mysqli_close($link);
       justify-content: center;
       align-items: start;
       padding: 14px 60px 14px 13px;
+      font-weight: 400;
     }
     @media (max-width: 1105px) {
       .div-7 {
@@ -212,6 +213,7 @@ mysqli_close($link);
       justify-content: center;
       align-items: start;
       padding: 14px 60px 14px 13px;
+      font-weight: 400;
     }
     @media (max-width: 1105px) {
       .div-8 {
@@ -226,6 +228,7 @@ mysqli_close($link);
       color: #fff;
       font-weight: 400;
       padding: 15px 60px 15px 13px;
+      font-weight: 400;
     }
     @media (max-width: 1105px) {
       .div-9 {
@@ -238,6 +241,7 @@ mysqli_close($link);
       justify-content: center;
       align-items: start;
       padding: 16px 60px 16px 13px;
+      font-weight: 400;
     }
     @media (max-width: 1105px) {
       .div-10 {
