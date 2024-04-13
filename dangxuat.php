@@ -7,7 +7,9 @@ $link = NULL;
 taoKetNoi($link);
 
 if (dangxuat()) {
-    unset($_SESSION['username']); // Xóa thông tin về tên người dùng khỏi session
+    unset($_SESSION['username']);
+    unset($_SESSION['customerID']);
+    unset($_SESSION['accountID']); // Xóa thông tin về tên người dùng khỏi session
     giaiPhongBoNho($link, true);
     header("Location: index.php");
     exit();

@@ -160,7 +160,7 @@
             <div id="popup-container" class="popup-container">
                 <div class="popup">
                     <span class="close-btn" onclick="closePopup()">&times;</span>
-                    <img src="https://www.svgrepo.com/show/93424/exclamation-mark-inside-a-circle.svg" alt="Check icon" class="check-icon">
+                    <img src="https://www.svgrepo.com/show/93424/exclamation-mark-inside-a-circle.svg" alt="Check icon" class="check-icon" >
                     <p><br>Giỏ hàng rỗng. Bạn <a href="index.php">đặt hàng</a> không?</p>
                 </div>
             </div>
@@ -175,6 +175,7 @@
 
             function closePopup() {
             document.getElementById("popup-container").style.display = "none";
+            window.location.href='index.php'
             }
             window.onload = function() {
             showPopup();

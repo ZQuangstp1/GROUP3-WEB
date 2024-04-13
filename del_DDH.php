@@ -19,8 +19,8 @@ if (isset($_POST['orderID'])) {
         $result = chayTruyVanKhongTraVeDL($link, $sql);
 
         if ($result) {
-            // Redirect hoặc chuyển hướng tới trang khác sau khi xóa thành công
-            header("Location: DDH.php");
+            echo "<script>alert('Hủy đơn hàng thành công');</script>";
+            echo "<script>window.location.href='DDH.php';</script>";
             exit();
         } else {
             // Xử lý lỗi nếu cần

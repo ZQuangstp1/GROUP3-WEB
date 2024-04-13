@@ -346,15 +346,36 @@
 </ul>
               
             </div>
-            <a href="YT.php">
-            <img
-              loading="lazy"
-              src="img/love.png"
-              class="fav"
-            />
-            </a>
+            
+            <?php
 
-            <a href="viewcart.php">
+if(isset($_SESSION['customerID'])) {
+    // Nếu có session customer, chuyển hướng sang trang YT.php
+    $redirectUrl = "YT.php";
+} else {
+    // Nếu không có session customer, chuyển hướng sang trang dangnhap.php
+    $redirectUrl = "dangnhap.php";
+}
+?>
+
+<a href="<?php echo $redirectUrl; ?>">
+  <img
+    loading="lazy"
+    src="img/love.png"
+    class="fav"
+  />
+</a>
+<?php
+
+if(isset($_SESSION['customerID'])) {
+    // Nếu có session customer, chuyển hướng sang trang YT.php
+    $redirectUrl1 = "viewcart.php";
+} else {
+    // Nếu không có session customer, chuyển hướng sang trang dangnhap.php
+    $redirectUrl1 = "dangnhap.php";
+}
+?>
+<a href="<?php echo $redirectUrl1; ?>">
             <img
               loading="lazy"
               src="img/cart.png"
