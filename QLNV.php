@@ -89,10 +89,10 @@
             <div id="sidebar">
                 <h2><img src="Picture/Logo.png" alt="Logo"></h2>
                 <ul>
-                    <li><a href="Overview.php">Overview</a></li>
-                    <li><a href="QLSP.php">Quản lý sản phẩm</a></li>
-                    <li><a href="QLNV.php">Quản lý nhân viên</li></a>
-                    <li><a href="QLDH.php">Quản lý đơn hàng</li></a>
+                <li><a href="Overview.php">Overview</a></li>
+                <li><a href="QLSP.php">Quản lý sản phẩm</a></li>
+                <li><a href="QLNV.php">Quản lý nhân viên</a></li>
+                <li><a href="QLDH.php">Quản lý đơn hàng</a></li>
                 </ul>
             </div>
         
