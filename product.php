@@ -265,7 +265,7 @@
                   WHERE 
                       p.productID = '$productId'";
 
-          $result = mysqli_query($link, $sql);
+          $result = chayTruyVanTraVeDL($link, $sql);
 
           if ($result) {
               if (mysqli_num_rows($result) > 0) {
@@ -288,12 +288,6 @@
                           <p class="comment-text">
                               <?php echo $row['comment']; ?>
                           </p>
-                          <div class="comment-actions">
-                              <div class="like-action" id="likeButtonComment">
-                                  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1b240edefe1abacad66bef21721864d0794a3a7e02e78368e112eb9b8d5a1977?apiKey=bccb907b8ab04fd1b7a4acf52ff78b77&" alt="Like icon" class="like-icon" loading="lazy" />
-                                  <span class="like-text">Like</span>
-                              </div>
-                          </div>
                       </article>
                       <?php
                   }
@@ -343,7 +337,7 @@
         
                 // Truy vấn SQL trực tiếp
                 $query = "SELECT accountID FROM UserAccount WHERE username = '$username'";
-                $result = mysqli_query($link, $query);
+                $result = chayTruyVanTraVeDL($link, $query);
         
                 if ($result && mysqli_num_rows($result) > 0) {
                     // Lấy accountID từ kết quả
