@@ -218,7 +218,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                     background-color: #fff;
                     justify-content: center;
                     align-items: start;
-                    
+                    font-weight: 400;
                     padding: 14px 60px 14px 13px;
                 }
 
@@ -234,6 +234,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                     background-color: #fff;
                     justify-content: center;
                     align-items: start;
+                    font-weight: 400;
                     padding: 14px 60px 14px 13px;
                 }
 
@@ -250,6 +251,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
                     color: #fff;
                     justify-content: center;
                     align-items: start;
+                    font-weight: 400;
                     padding: 16px 60px 16px 13px;
                 }
 
@@ -320,7 +322,7 @@ if(isset($_SESSION['customerID']) && isset($_SESSION['accountID'])) {
       flex-direction: column;
       color: #212121;
       padding: 10px 33px;
-      width : 90px;
+      width : 120px;
     }
 
     .product-name {
