@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="Khung.css">    
@@ -6,6 +7,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: -10px;
+            margin-bottom: 40px;
         }
         th, td {
             border: 1px solid black;
@@ -52,25 +54,22 @@
             margin-top: 8px; 
         }
 
-        #pagination {
-            margin-top: 20px;
-            text-align: center;
-        }
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            position: relative;
-        }
-
         #footer {
             font-size: 11px;
             width: 100%;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             left: 0;
             background-color: #FFE5EC;
             padding-top: 5px; 
+        }
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px; 
+            height: 100%;
+            background-color: #F9F2E6; 
         }
     </style>
 </head>
@@ -79,7 +78,7 @@
     <div id="sidebar">
         <h2><img src="Picture/Logo.png" alt="Logo"></h2>
         <ul>
-        <li><a href="Overview.php">Overview</a></li>
+            <li><a href="Overview.php">Overview</a></li>
             <li><a href="QLSP.php">Quản lý sản phẩm</a></li>
             <li><a href="QLNV.php">Quản lý nhân viên</a></li>
             <li><a href="QLDH.php">Quản lý đơn hàng</a></li>
@@ -106,17 +105,16 @@
 <?php
 // Kết nối vào CSDL
 require_once("db_module.php");
-function show_delivery_book($page = 1, $rows_per_page = 7) {
+function show_delivery_book() {
     $link = null;
     taoKetNoi($link);
-    $offset = ($page - 1) * $rows_per_page;
     $keyword = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
     $search_condition = '';
     if (!empty($keyword)) {
         $search_condition = "WHERE DATE_FORMAT(O.DateID, '%d-%m-%Y') LIKE '%$keyword%' OR O.orderID LIKE '%$keyword%' OR O.status LIKE '%$keyword%' OR CONCAT(C.lastName, ' ', C.firstName) LIKE '%$keyword%'";
     }
-    // Truy vấn CSDL để lấy dữ liệu từ bảng Orders với LIMIT và OFFSET
-    $result = chayTruyVanTraVeDL($link, "SELECT DATE_FORMAT(O.DateID, '%d-%m-%Y') AS formattedDate, O.orderID, O.status, CONCAT(C.lastName, ' ', C.firstName) AS customerName FROM Orders O LEFT JOIN Customer C ON O.customerID = C.customerID $search_condition LIMIT $offset, $rows_per_page");
+    // Truy vấn CSDL để lấy dữ liệu từ bảng Orders với điều kiện tìm kiếm (nếu có)
+    $result = chayTruyVanTraVeDL($link, "SELECT DATE_FORMAT(O.DateID, '%d-%m-%Y') AS formattedDate, O.orderID, O.status, CONCAT(C.lastName, ' ', C.firstName) AS customerName FROM Orders O LEFT JOIN Customer C ON O.customerID = C.customerID $search_condition");
     // Bắt đầu hiển thị bảng
     echo "<table>";
     echo "<thead>";
@@ -142,24 +140,9 @@ function show_delivery_book($page = 1, $rows_per_page = 7) {
     // Giải phóng bộ nhớ và đóng kết nối
     giaiPhongBoNho($link, $result);
 }
-$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-show_delivery_book($current_page);
+
+show_delivery_book();
 ?>
-
-    <div id="pagination">
-        <?php
-        $total_rows = 100; 
-        $total_pages = ceil($total_rows / 6); // Số trang là tổng số hàng dữ liệu chia cho số hàng trên mỗi trang
-    if ($current_page > 1) {
-        echo "<a href='?page=".($current_page - 1)."'><button><</button></a>"; 
-    }
-
-    if ($current_page < $total_pages) {
-        echo "<a href='?page=".($current_page + 1)."'><button>></button></a>"; 
-    }
-    
-    ?>
-    </div>
 
     <div id="footer">
         <p>© 2024 Công Ty Cổ Phần Vàng Bạc Đá Quý Flamingo.</p>
