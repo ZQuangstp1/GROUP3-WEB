@@ -26,19 +26,6 @@ if (isset($_POST)) {
             $_SESSION['error_message'] = "Tên đăng nhập hoặc mật khẩu không chính xác";
         }
 
-        /* Này lấy cả 2 biến mà k đc 
-         list($customerID, $accountID = dangnhap($link, $_username, $_password);
-    
-        if ($customerID && $accountID) { // Nếu có cả customerID và accountID, tức là đăng nhập thành công
-            $_SESSION['customerID'] = $customerID;
-            $_SESSION['accountID'] = $accountID;
-            giaiPhongBoNho($link, true);
-            header("Location: TTKH.php");
-            exit(); // Thoát để ngăn code phía sau chạy khi đã chuyển hướng
-        } else {
-            giaiPhongBoNho($link, true);
-            $_SESSION['error_message'] = "Tên đăng nhập hoặc mật khẩu không chính xác";
-        }*/
     }
 }
 ?>
@@ -72,7 +59,6 @@ if (isset($_POST)) {
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng khung trắng */
             margin-left: 10%; 
-            margin-top: 40px
         }
 
         @media screen and (max-width: 768px) {
