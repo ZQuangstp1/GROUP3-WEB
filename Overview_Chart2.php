@@ -27,8 +27,8 @@
 
         .chart-container {
             width: 800px;
-            margin-right: 53px; /* Add space between charts */
-            margin-left: 43px; /* Add space between charts */
+            margin-right: 53px; 
+            margin-left: 43px; 
             margin-top: 5px;
 
         }
@@ -36,12 +36,12 @@
 
         .view-report-btn1 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: 8px 12px; /* Giảm kích thước button */
+    padding: 8px 12px; 
     background-color: #DF8A8A;
     border: none;
     cursor: pointer;
     border-radius: 7px;
-    margin-right: 5px; /* Giảm khoảng cách giữa các button */
+    margin-right: 5px; 
     position: absolute;
     top: 100px;
     margin-top: 3px;
