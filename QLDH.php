@@ -18,9 +18,9 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 250px; /* Điều chỉnh độ rộng của sidebar theo mong muốn */
+            width: 250px;
             height: 100%;
-            background-color: #F9F2E6; /* Màu nền của sidebar */
+            background-color: #F9F2E6; 
         }
 
     </style>
