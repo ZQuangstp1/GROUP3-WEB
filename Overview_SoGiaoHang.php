@@ -69,8 +69,8 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            background-color: #FFE5EC; /* Màu nền của footer */
-            padding-top: 5px; /* Khoảng cách từ chữ trong footer đến đỉnh của footer */
+            background-color: #FFE5EC;
+            padding-top: 5px; 
         }
     </style>
 </head>
@@ -148,19 +148,14 @@ show_delivery_book($current_page);
 
     <div id="pagination">
         <?php
-        // Số lượng hàng dữ liệu
-        $total_rows = 100; // Giả sử có 100 hàng dữ liệu
-
-        // Số trang
+        $total_rows = 100; 
         $total_pages = ceil($total_rows / 6); // Số trang là tổng số hàng dữ liệu chia cho số hàng trên mỗi trang
-
-        // Hiển thị nút chuyển trang
     if ($current_page > 1) {
-        echo "<a href='?page=".($current_page - 1)."'><button><</button></a>"; // Nút chuyển đến trang trước đó
+        echo "<a href='?page=".($current_page - 1)."'><button><</button></a>"; 
     }
 
     if ($current_page < $total_pages) {
-        echo "<a href='?page=".($current_page + 1)."'><button>></button></a>"; // Nút chuyển đến trang tiếp theo
+        echo "<a href='?page=".($current_page + 1)."'><button>></button></a>"; 
     }
     
     ?>
