@@ -23,8 +23,8 @@
 
         .chart-container {
             width: 105%;
-            margin-right: 53px; /* Add space between charts */
-            margin-left: 43px; /* Add space between charts */
+            margin-right: 53px;
+            margin-left: 43px;
 
         }
 
@@ -34,12 +34,12 @@
         }
 
         .view-report-btn {
-    padding: 8px 12px; /* Giảm kích thước button */
+    padding: 8px 12px;
     background-color: #DF8A8A;
     border-radius: 7px;
     border: none;
     cursor: pointer;
-    margin-right: 5px; /* Giảm khoảng cách giữa các button */
+    margin-right: 5px;
     position: absolute;
     top: 100px;
     right: 10px;
@@ -54,8 +54,8 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            background-color: #FFE5EC; /* Màu nền của footer */
-            padding-top: 5px; /* Khoảng cách từ chữ trong footer đến đỉnh của footer */
+            background-color: #FFE5EC; 
+            padding-top: 5px; 
         }
     </style>
 </head>
