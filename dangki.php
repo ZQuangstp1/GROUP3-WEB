@@ -38,11 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         $insertCustomerQuery = "INSERT INTO customer (customerID) VALUES ('$new_cus_id')";
                         if (chayTruyVanKhongTraVeDL($link, $insertCustomerQuery)) {
-                            
-                        // Do nhóm em muốn đăng nhập được nhiều tài khoản, check nhiều trường hợp nên nhóm không mã hóa mật khẩu
-                        //Nếu muốn mã hóa thì sẽ làm cách sau đây     
-                        //$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                            $insertQuery = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$password', '$new_cus_id')";
+                            // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
+                            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                            $insertQuery = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$hashed_password', '$new_cus_id')";
                             if (chayTruyVanKhongTraVeDL($link, $insertQuery)) {
                                 echo "<script>alert('Đăng kí thành công');</script>";
                                 echo "<script>window.location.href='dangnhap.php';</script>";
