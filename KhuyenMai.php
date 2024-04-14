@@ -109,6 +109,16 @@ function add_KM()
             return; 
         }
 
+        // Kiểm tra xem mã khuyến mãi đã tồn tại chưa
+        $check_sql = "SELECT COUNT(*) AS count FROM discount WHERE voucherCode = '$_voucherCode'";
+        $check_result = chayTruyVanTraVeDL($link, $check_sql);
+        $check_row = mysqli_fetch_assoc($check_result);
+        if ($check_row['count'] > 0) {
+            echo "<script>alert('Mã khuyến mãi đã tồn tại.');</script>";
+            return;
+        }
+
+        // Thêm chương trình khuyến mãi mới
         $sql = "INSERT INTO discount(discountID, voucherCode, discountAmount, status, startDate, endDate)
                 VALUES ('$_discountID', '$_voucherCode', '$_discountAmount', '$_status', '$_startDate', '$_endDate')";
 
