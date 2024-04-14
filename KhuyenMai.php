@@ -49,7 +49,7 @@ function view_KM()
         echo "<tr>";
         echo "<td>" . $row["discountID"] . "</td>";
         echo "<td>" . $row["voucherCode"] . "</td>";
-        $discountPercentage = $row["discountAmount"];
+        $discountPercentage = $row["discountAmount"] * 100;
         echo "<td>" . number_format($discountPercentage) . "%</td>";        
         echo "<td>" . $row["status"] . "</td>";
         echo "<td>" . date("d-m-Y", strtotime($row["startDate"])) . "</td>";
