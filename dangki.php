@@ -3,7 +3,6 @@
 require_once "db_module.php";
 require_once "users_module.php";
 require_once "validate_module.php";
-
 if (session_status() === PHP_SESSION_NONE) {
     // Phiên chưa được kích hoạt, bắt đầu một phiên mới
     session_start();
@@ -28,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $result = chayTruyVanTraVeDL($link, $query);
                     $row = mysqli_fetch_assoc($result);
                     if ($row['num_records'] == 0) {
-                        // Generate new IDs
+                      
                         $query = "SELECT COUNT(*) AS num_records FROM useraccount";
                         $result = chayTruyVanTraVeDL($link, $query);
                         $row = mysqli_fetch_assoc($result);
@@ -37,16 +36,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $new_account_id = 'A' . str_pad($num_records + 1, 6, '0', STR_PAD_LEFT);
                         $new_cus_id = 'CS0' . str_pad($num_records + 1, 5, '0', STR_PAD_LEFT);
 
-                        // Insert into customer table first
                         $insertCustomerQuery = "INSERT INTO customer (customerID) VALUES ('$new_cus_id')";
                         if (chayTruyVanKhongTraVeDL($link, $insertCustomerQuery)) {
-                            // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
-                            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                            $insertQuery = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$hashed_password', '$new_cus_id')";
+                            
+                        // Do nhóm em muốn đăng nhập được nhiều tài khoản, check nhiều trường hợp nên nhóm không mã hóa mật khẩu
+                        //Nếu muốn mã hóa thì sẽ làm cách sau đây     
+                        //$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                            $insertQuery = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$password', '$new_cus_id')";
                             if (chayTruyVanKhongTraVeDL($link, $insertQuery)) {
                                 echo "<script>alert('Đăng kí thành công');</script>";
                                 echo "<script>window.location.href='dangnhap.php';</script>";
+                               
                                 exit();
                             } else {
                                 $_SESSION['error'] = "Có lỗi xảy ra trong quá trình đăng ký tài khoản";
@@ -69,7 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
 
 
 <!DOCTYPE html>

@@ -15,7 +15,8 @@ function dangki($link, $_username, $_password)
     $new_cus_id = 'CS' . str_pad($num_records + 1, 5, '0', STR_PAD_LEFT);
 
     // Chèn dữ liệu vào bảng useraccount
-    $insert_query = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$_username', '$_password', '$new_cus_id')";
+    $insert_query = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$_username', 
+    '$_password', '$new_cus_id')";
     $rs = chayTruyVanKhongTraVeDL($link, $insert_query);
 
 }
@@ -28,13 +29,21 @@ function dangnhap($link, $username, $password)
     $escaped_password = mysqli_real_escape_string($link, $password);
 
     // Tạo câu truy vấn SQL để kiểm tra tên người dùng và mật khẩu
-    $query = "SELECT customerID, accountID, username, password FROM useraccount WHERE username = '$escaped_username' AND password = '$escaped_password'";
+    $query = "SELECT customerID, accountID, username, password FROM useraccount WHERE username = '$escaped_username' 
+    AND password = '$escaped_password'";
     
     // Thực thi truy vấn
     $result = chayTruyVanTraVeDL($link, $query);
 
     $row = mysqli_fetch_assoc($result);
     if ($result && mysqli_num_rows($result) > 0) {
+        
+        /*$row = mysqli_fetch_assoc($result);
+        // Lấy mật khẩu đã mã hóa từ cơ sở dữ liệu
+        $hashed_password = $row['password'];
+
+        // Sử dụng password_verify() để kiểm tra mật khẩu nhập vào
+        if (password_verify($password, $hashed_password)) {*/
 
         $_SESSION['customerID'] = $row['customerID'];
         $_SESSION['accountID'] = $row['accountID'];
