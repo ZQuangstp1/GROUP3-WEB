@@ -51,7 +51,9 @@ function view_KM()
         echo "<td>" . $row["voucherCode"] . "</td>";
         echo "<td>" . intval($row["discountAmount"] * 1) . "%</td>"; 
         echo "<td>" . $row["status"] . "</td>";
+        // Format start date as "dd-mm-yyyy"
         echo "<td>" . date("d-m-Y", strtotime($row["startDate"])) . "</td>";
+        // Format end date as "dd-mm-yyyy"
         echo "<td>" . date("d-m-Y", strtotime($row["endDate"])) . "</td>";
         echo "<td>
                 <a href='?opt=edit_KM&discountID=" . $row["discountID"] . "'><img src='Picture/Icon Sua.png' alt='Sửa' style='width: 20px; height: 20px;'></a> 
@@ -99,7 +101,13 @@ function add_KM()
         $_endDate = isset($_POST["endDate"]) ? trim($_POST["endDate"]) : '';
 
         // Kiểm tra xem tất cả các trường đã được nhập chưa
-        if (empty($_discountID) || empty($_voucherCode) || empty($_discountAmount) || empty($_status) || empty($_startDate) || empty($_endDate)) {
+        if (!preg_match('/^DC\d{3}$/i', $_discountID)) {
+            echo "<script>alert('ID phải có dạng DCxxx (xxx là 3 số).');</script>";
+            return;
+        }
+
+        // Check if other fields are not empty
+        if (empty($_voucherCode) || empty($_discountAmount) || empty($_status) || empty($_startDate) || empty($_endDate)) {
             echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
             return; 
         }
