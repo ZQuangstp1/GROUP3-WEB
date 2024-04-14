@@ -3,7 +3,6 @@
 <head>
     <link rel="stylesheet" type="text/css" href="Khung.css">    
     <style>
-        /* CSS hiện tại của bạn */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -13,7 +12,7 @@
             border: 1px solid black;
             text-align: center;
             padding: 5px 7px;
-            font-size: 12.5px; /* Giảm kích thước chữ */
+            font-size: 12.5px; 
             font-family: 'Barlow', sans-serif;
         }
         input[type="text"] {
@@ -23,12 +22,12 @@
         }
         button {
             font-family: 'Barlow', sans-serif;
-            padding: 6px 10px; /* Giảm kích thước button */
+            padding: 6px 10px; 
             background-color: #DF8A8A;
             border: none;
             cursor: pointer;
             border-radius: 7px;
-            margin-right: 5px; /* Giảm khoảng cách giữa các button */
+            margin-right: 5px; 
         }
         button:hover {
             background-color: #6a4141;
@@ -46,17 +45,14 @@
             margin-right: 10px; 
             margin-top: 8px; 
         }
-        /* CSS mới để cố định footer ở dưới trang */
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
             position: relative;
         }
-        
-        /* Thêm CSS cho dòng đầu tiên */
         .pink-row th {
-            background-color: #FFC0CB; /* Màu hồng */
+            background-color: #FFC0CB; 
         }
         .pagination {
             text-align: center;
@@ -68,7 +64,7 @@
             background-color: #DF8A8A;
             border: none;
             cursor: pointer;
-            margin: 0 5px; /* Khoảng cách giữa các button */
+            margin: 0 5px; 
         }
 
         .pagination-button:hover {
@@ -83,9 +79,9 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 250px; /* Điều chỉnh độ rộng của sidebar theo mong muốn */
+            width: 250px; 
             height: 100%;
-            background-color: #F9F2E6; /* Màu nền của sidebar */
+            background-color: #F9F2E6; 
         }
 </style>
 
