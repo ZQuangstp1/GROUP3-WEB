@@ -49,7 +49,7 @@ function view_KM()
         echo "<tr>";
         echo "<td>" . $row["discountID"] . "</td>";
         echo "<td>" . $row["voucherCode"] . "</td>";
-        $discountPercentage = $row["discountAmount"] * 100;
+        $discountPercentage = $row["discountAmount"];
         echo "<td>" . number_format($discountPercentage) . "%</td>";        
         echo "<td>" . $row["status"] . "</td>";
         echo "<td>" . date("d-m-Y", strtotime($row["startDate"])) . "</td>";
@@ -104,8 +104,6 @@ function add_KM()
             echo "<script>alert('ID phải có dạng DCxxx (xxx là 3 số).');</script>";
             return;
         }
-
-        // Check if other fields are not empty
         if (empty($_voucherCode) || empty($_discountAmount) || empty($_status) || empty($_startDate) || empty($_endDate)) {
             echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
             return; 
@@ -141,24 +139,42 @@ function edit_KM()
         if ($row = mysqli_fetch_assoc($result)) {
             ?>
                 <div class="form-container">
-                <form name="formKM" action="?opt=update_KM" method="post" enctype="multipart/form-data">
-                    ID: <input type="text" name="discountID" readonly value="<?php echo $row["discountID"]; ?>"><br>
-                    Chương trình khuyến mãi: <input type="text" name="voucherCode" value="<?php echo $row["voucherCode"]; ?>"><br>
-                    Giảm giá (%): <input type="number" name="discountAmount" min="0" value="<?php echo $row["discountAmount"]; ?>"><br>
-                    Trạng thái: 
-                    <select name="status">
-                        <option value="Active" <?php if($row["status"] == 'Active') echo 'selected="selected"'; ?>>Active</option>
-                        <option value="Inactive" <?php if($row["status"] == 'Inactive') echo 'selected="selected"'; ?>>Inactive</option>
-                    </select><br>
-                    Ngày bắt đầu: <input type="date" name="startDate" value="<?php echo $row["startDate"]; ?>"><br>
-                    Ngày kết thúc: <input type="date" name="endDate" value="<?php echo $row["endDate"]; ?>"><br>
-                    <div class="form-buttons"> 
-                        <input type="submit" value="Lưu">
-                        <input type="reset" value="Nhập lại">
-                        <button type="button" onclick="window.location.href='QLSP_KhuyenMai.php?opt=view_KM';">Quay lại</button>
-                    </div>
-                </form>
-            </div>
+    <form name="formKM" action="?opt=update_KM" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        ID: <input type="text" id="discountID" name="discountID" readonly value="<?php echo $row["discountID"]; ?>"><br>
+        Chương trình khuyến mãi: <input type="text" id="voucherCode" name="voucherCode" value="<?php echo $row["voucherCode"]; ?>"><br>
+        Giảm giá (%): <input type="number" id="discountAmount" name="discountAmount" min="0" value="<?php echo $row["discountAmount"]; ?>"><br>
+        Trạng thái: 
+        <select id="status" name="status">
+            <option value="Active" <?php if($row["status"] == 'Active') echo 'selected="selected"'; ?>>Active</option>
+            <option value="Inactive" <?php if($row["status"] == 'Inactive') echo 'selected="selected"'; ?>>Inactive</option>
+        </select><br>
+        Ngày bắt đầu: <input type="date" id="startDate" name="startDate" value="<?php echo $row["startDate"]; ?>"><br>
+        Ngày kết thúc: <input type="date" id="endDate" name="endDate" value="<?php echo $row["endDate"]; ?>"><br>
+        <div class="form-buttons"> 
+            <input type="submit" value="Lưu">
+            <input type="reset" value="Nhập lại">
+            <button type="button" onclick="window.location.href='QLSP_KhuyenMai.php?opt=view_KM';">Quay lại</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var discountID = document.getElementById("discountID").value;
+        var voucherCode = document.getElementById("voucherCode").value;
+        var discountAmount = document.getElementById("discountAmount").value;
+        var status = document.getElementById("status").value;
+        var startDate = document.getElementById("startDate").value;
+        var endDate = document.getElementById("endDate").value;
+
+        if (discountID == "" || voucherCode == "" || discountAmount == "" || status == "" || startDate == "" || endDate == "") {
+            alert("Vui lòng điền đầy đủ thông tin.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
                 <?php
         }
     }
