@@ -106,9 +106,7 @@ body {
 
 #hover_img:hover {
     transform: scale(1.1);
-    /* Phóng to ảnh 10% khi hover */
     transition: transform 0.3s ease-in-out;
-    /* Hiệu ứng chuyển đổi mượt mà trong 0.3 giây */
 }
 
 a {
@@ -125,18 +123,18 @@ a:hover {
         width: 100%;
         height: auto;
         position: relative;
-        float: none; /* Loại bỏ float để đảm bảo layout chính xác */
+        float: none; 
     }
 
     #header {
-        left: 0; /* Đảm bảo header chiếm toàn bộ chiều rộng */
-        margin-top: auto; /* Điều chỉnh vị trí của header */
+        left: 0; 
+        margin-top: auto; 
     }
 
     #content {
-        margin-top: 20px; /* Điều chỉnh vị trí của nội dung */
-        margin-left: 0; /* Loại bỏ margin trái để nội dung chiếm toàn bộ chiều rộng */
-        float: none; /* Loại bỏ float */
+        margin-top: 20px; 
+        margin-left: 0; 
+        float: none; 
     }
 }
 
@@ -161,15 +159,14 @@ a:hover {
 
 @media (max-width: 768px) {
     #header h2 {
-        text-align: left; /* Căn lề tiêu đề bên trái */
-        padding-left: 15px; /* Thêm một chút padding để không dính sát lề */
+        text-align: left; 
+        padding-left: 15px; 
     }
 }
 
 @media (max-width: 480px) {
     #header h2 {
-        text-align: left; /* Đảm bảo tiêu đề vẫn căn lề trái trên các màn hình rất nhỏ */
-        padding-left: 10px; /* Giảm padding trên màn hình nhỏ hơn */
+        text-align: left; 
+        padding-left: 10px; 
     }
-    /* Các quy tắc khác cho #Data_tb table và các thành phần con */
 }
