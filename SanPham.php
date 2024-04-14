@@ -145,15 +145,25 @@ function add_SP()
             $_giatien = isset($_POST["giatien"]) ? trim($_POST["giatien"]) : '';
             $_khuyenmai = isset($_POST["khuyenmai"]) ? trim($_POST["khuyenmai"]) : '';
             $_subct = isset($_POST["subct"]) ? trim($_POST["subct"]) : '';
-            // Kiểm tra xem tất cả các trường đã được nhập chưa
-            if (empty($_masp) || empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai)) {
+
+
+            if (!preg_match('/^PD\d{2}$/i', $_masp)) {
+                echo "<script>alert('Mã sản phẩm phải có dạng PDxx (xx là 2 số).');</script>";
+                return;
+            }
+            $checkDuplicateQuery = "SELECT COUNT(*) AS count FROM product WHERE productID='$_masp'";
+            $checkDuplicateResult = chayTruyVanTraVeDL($link, $checkDuplicateQuery);
+            $count = mysqli_fetch_assoc($checkDuplicateResult)['count'];
+            if ($count > 0) {
+                echo "<script>alert('Mã sản phẩm đã tồn tại.');</script>";
+                return;
+            }
+
+            // Check if other fields are not empty
+            if (empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai) || empty($_subct)) {
                 echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
                 return; 
             }
-            $_status = intval($_soluong) > 0 ? "Còn hàng" : "Hết hàng";
-            $sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID, subcategoryID)
-        VALUES ('$_tensp', '$_masp', '$_mota', '$_giatien', '$_soluong', '$_status', '$_khuyenmai', '$_subct')";
-
 
             $rs = chayTruyVanKhongTraVeDL($link, $sql);
 
