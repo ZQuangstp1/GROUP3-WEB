@@ -5,7 +5,6 @@
         <link rel="stylesheet" type="text/css" href="Khung.css">    
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-        /* CSS hiện tại của bạn */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -15,7 +14,7 @@
             border: 1px solid black;
             text-align: center;
             padding: 5px 7px;
-            font-size: 12.5px; /* Giảm kích thước chữ */
+            font-size: 12.5px;
             font-family: 'Barlow', sans-serif;
         }
         input[type="text"] {
@@ -25,12 +24,12 @@
         }
         button {
             font-family: 'Barlow', sans-serif;
-            padding: 6px 10px; /* Giảm kích thước button */
+            padding: 6px 10px; 
             background-color: #DF8A8A;
             border: none;
             cursor: pointer;
             border-radius: 7px;
-            margin-right: 5px; /* Giảm khoảng cách giữa các button */
+            margin-right: 5px; 
         }
         button:hover {
             background-color: #6a4141;
@@ -48,7 +47,6 @@
             margin-right: 10px; 
             margin-top: 8px; 
         }
-        /* CSS mới để cố định footer ở dưới trang */
         html, body {
             height: 100%;
             margin: 0;
@@ -59,13 +57,12 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 250px; /* Điều chỉnh độ rộng của sidebar theo mong muốn */
+            width: 250px; 
             height: 100%;
-            background-color: #F9F2E6; /* Màu nền của sidebar */
+            background-color: #F9F2E6; 
         }
-        /* Thêm CSS cho dòng đầu tiên */
         .pink-row th {
-            background-color: #FFC0CB; /* Màu hồng */
+            background-color: #FFC0CB; 
         }
         .pagination {
             text-align: center;
@@ -76,8 +73,6 @@
             function ConfirmDel() {
                 var confirmed = confirm("Bạn chắc chắn muốn xóa không?");
                 if (confirmed) {
-                    // Thực hiện hành động xóa nếu người dùng chọn OK
-                    // Ví dụ: gọi hàm xóa hoặc gửi yêu cầu xóa tới server
                     console.log("Đã xóa");
                 }
             }
