@@ -73,18 +73,18 @@
 
 @media screen and (max-width: 600px) {
     .form-container {
-        padding: 10px; /* Giảm padding */
+        padding: 10px; 
         margin: 10%; 
-        width: calc(100% - 20px); /* Điều chỉnh chiều rộng để không dính sát viền màn hình */
-        max-width: 100%; /* Đảm bảo không có giới hạn về chiều rộng tối đa */
-        box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước tổng thể */
+        width: calc(100% - 20px); 
+        max-width: 100%;
+        box-sizing: border-box; 
     }
     .form-container form {
-        grid-template-columns: 1fr; /* Chuyển sang layout một cột */
+        grid-template-columns: 1fr; 
     }
 
     .form-container label {
-        margin-bottom: 5px; /* Tăng khoảng cách dưới của label để dễ đọc */
+        margin-bottom: 5px; 
         
     }
 
@@ -96,12 +96,12 @@
     .form-container button,
     .form-container input[type="submit"],
     .form-container input[type="reset"] {
-        width: 100%; /* Đảm bảo các thành phần chiếm toàn bộ chiều rộng */
-        margin-top: 10px; /* Tăng khoảng cách trên */
+        width: 100%; 
+        margin-top: 10px; 
     }
 
     .form-container .form-buttons {
-        flex-direction: column; /* Chuyển các nút thành dạng cột */
-        gap: 10px; /* Giảm khoảng cách giữa các nút */
+        flex-direction: column;
+        gap: 10px; 
     }
 }
