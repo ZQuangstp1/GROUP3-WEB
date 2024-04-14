@@ -49,11 +49,10 @@ function view_KM()
         echo "<tr>";
         echo "<td>" . $row["discountID"] . "</td>";
         echo "<td>" . $row["voucherCode"] . "</td>";
-        echo "<td>" . intval($row["discountAmount"] * 1) . "%</td>"; 
+        $discountPercentage = $row["discountAmount"] * 100;
+        echo "<td>" . number_format($discountPercentage) . "%</td>";        
         echo "<td>" . $row["status"] . "</td>";
-        // Format start date as "dd-mm-yyyy"
         echo "<td>" . date("d-m-Y", strtotime($row["startDate"])) . "</td>";
-        // Format end date as "dd-mm-yyyy"
         echo "<td>" . date("d-m-Y", strtotime($row["endDate"])) . "</td>";
         echo "<td>
                 <a href='?opt=edit_KM&discountID=" . $row["discountID"] . "'><img src='Picture/Icon Sua.png' alt='Sửa' style='width: 20px; height: 20px;'></a> 
