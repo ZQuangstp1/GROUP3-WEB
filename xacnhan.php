@@ -121,7 +121,7 @@ if (isset($_SESSION['cart'])) {
                         <h2>Phương thức thanh toán</h2>
                     <div>
                             
-                        <input type="radio" id="tienmat" value="Tiền mặt" name="paymentMethod">
+                        <input type="radio" id="tienmat" value="Tiền mặt" name="Cash">
                         <label for="tienmat">Tiền mặt</label>
                     </div>   
                     <div>

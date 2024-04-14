@@ -6,8 +6,16 @@ session_start();
 ob_start();
 require_once "db_module.php";
 $link = null;
+
 taoKetNoi($link);
+if (isset($_POST['paymentMethod']) && !empty($_POST['paymentMethod'])) {
     $ptthanhtoan = $_POST['labelValue'];
+} elseif (isset($_POST['Cash']) && !empty($_POST['Cash'])) {
+    $ptthanhtoan = $_POST['Cash'];
+} else {
+    $ptthanhtoan = null;
+}
+
 
 // Lấy số lượng bản ghi hiện có trong bảng Order
 $query = "SELECT COUNT(*) AS num_records FROM orders";
