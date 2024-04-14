@@ -22,12 +22,12 @@
         }
         button {
             font-family: Barlow, sans-serif; 
-            padding: 8px 12px; /* Giảm kích thước button */
+            padding: 8px 12px; 
             background-color: #DF8A8A;
             border: none;
             border-radius: 7px;
             cursor: pointer;
-            margin-right: 5px; /* Giảm khoảng cách giữa các button */
+            margin-right: 5px;
         }
         button:hover {
             background-color: #6a4141;
@@ -53,9 +53,8 @@
             text-align: center;
         }
         #table-container {
-            margin-top: -50px; /* Đẩy bảng lên trên 20px */
+            margin-top: -50px; 
         }
-        /* CSS mới để cố định footer ở dưới trang */
         html, body {
             height: 100%;
             margin: 0;
@@ -68,13 +67,12 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            background-color: #FFE5EC; /* Màu nền của footer */
-            padding-top: 5px; /* Khoảng cách từ chữ trong footer đến đỉnh của footer */
+            background-color: #FFE5EC; 
+            padding-top: 5px;
         }
 
-        /* Thêm CSS cho dòng đầu tiên */
         th.pink-header {
-            background-color: #FFC0CB; /* Màu hồng */
+            background-color: #FFC0CB;
         }
     </style>
     <script>
