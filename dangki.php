@@ -3,6 +3,7 @@
 require_once "db_module.php";
 require_once "users_module.php";
 require_once "validate_module.php";
+
 if (session_status() === PHP_SESSION_NONE) {
     // Phiên chưa được kích hoạt, bắt đầu một phiên mới
     session_start();
@@ -39,12 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         // Insert into customer table first
                         $insertCustomerQuery = "INSERT INTO customer (customerID) VALUES ('$new_cus_id')";
                         if (chayTruyVanKhongTraVeDL($link, $insertCustomerQuery)) {
-                            
-                            $insertQuery = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$password', '$new_cus_id')";
+                            // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
+                            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                            $insertQuery = "INSERT INTO useraccount (accountID, username, password, customerID) VALUES ('$new_account_id', '$username', '$hashed_password', '$new_cus_id')";
                             if (chayTruyVanKhongTraVeDL($link, $insertQuery)) {
                                 echo "<script>alert('Đăng kí thành công');</script>";
                                 echo "<script>window.location.href='dangnhap.php';</script>";
-                               
                                 exit();
                             } else {
                                 $_SESSION['error'] = "Có lỗi xảy ra trong quá trình đăng ký tài khoản";
@@ -67,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>
