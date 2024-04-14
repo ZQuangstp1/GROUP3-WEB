@@ -145,25 +145,32 @@ function add_SP()
             $_giatien = isset($_POST["giatien"]) ? trim($_POST["giatien"]) : '';
             $_khuyenmai = isset($_POST["khuyenmai"]) ? trim($_POST["khuyenmai"]) : '';
             $_subct = isset($_POST["subct"]) ? trim($_POST["subct"]) : '';
-
-
-            if (!preg_match('/^PD\d{2}$/i', $_masp)) {
-                echo "<script>alert('Mã sản phẩm phải có dạng PDxx (xx là 2 số).');</script>";
-                return;
-            }
-            $checkDuplicateQuery = "SELECT COUNT(*) AS count FROM product WHERE productID='$_masp'";
-            $checkDuplicateResult = chayTruyVanTraVeDL($link, $checkDuplicateQuery);
-            $count = mysqli_fetch_assoc($checkDuplicateResult)['count'];
-            if ($count > 0) {
-                echo "<script>alert('Mã sản phẩm đã tồn tại.');</script>";
-                return;
-            }
-
-            // Check if other fields are not empty
-            if (empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai) || empty($_subct)) {
+            // Kiểm tra xem tất cả các trường đã được nhập chưa
+            if (empty($_masp) || empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai)) {
                 echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
                 return; 
             }
+            $_status = intval($_soluong) > 0 ? "Còn hàng" : "Hết hàng";
+            $sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID, subcategoryID)
+        VALUES ('$_tensp', '$_masp', '$_mota', '$_giatien', '$_soluong', '$_status', '$_khuyenmai', '$_subct')";
+
+if (!preg_match('/^PD\d{2}$/i', $_masp)) {
+    echo "<script>alert('Mã sản phẩm phải có dạng PDxx (xx là 2 số).');</script>";
+    return;
+}
+$checkDuplicateQuery = "SELECT COUNT(*) AS count FROM product WHERE productID='$_masp'";
+$checkDuplicateResult = chayTruyVanTraVeDL($link, $checkDuplicateQuery);
+$count = mysqli_fetch_assoc($checkDuplicateResult)['count'];
+if ($count > 0) {
+    echo "<script>alert('Mã sản phẩm đã tồn tại.');</script>";
+    return;
+}
+
+// Check if other fields are not empty
+if (empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai) || empty($_subct)) {
+    echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
+    return; 
+}
 
             $rs = chayTruyVanKhongTraVeDL($link, $sql);
 
@@ -200,41 +207,58 @@ function edit_SP()
         if ($row = mysqli_fetch_assoc($result)) {
             ?>
                 <div class="form-container">
-                    <form name="formSP" action="?opt=update_SP" method="post" enctype="multipart/form-data">
-                        Mã sản phẩm: <input type="text" name="masp" readonly value="<?php echo $row["productID"]; ?>"><br>
-                        Tên sản phẩm: <input type="text" name="tensp" value="<?php echo $row["productName"]; ?>"><br>
-                        Số lượng: <input type="number" name="soluong" min="1" value="<?php echo $row["quantityAvailable"]; ?>"><br>
-                        Mô tả: <input type="text" name="mota" value="<?php echo $row["description"]; ?>"><br>
-                        Giá sản phẩm: <input type="number" name="giatien" min="0" value="<?php echo $row["unitPrice"]; ?>"><br>
-                        Phân loại:
-                        <select name="subct">
-                            <?php
-                            if ($result_sct) {
-                                while ($row_sct = mysqli_fetch_assoc($result_sct)) {
-                                    $selected = $row_sct['subcategoryID'] == $row['subcategoryID'] ? 'selected' : '';
-                                    echo "<option value='{$row_sct['subcategoryID']}' $selected>{$row_sct['subcategoryName']}</option>";
-                                }
-                            }
-                            ?>
-                        </select>
-                        Khuyến mãi:
-                        <select name="khuyenmai">
-                            <?php
-                            if ($result_km) {
-                                while ($row_km = mysqli_fetch_assoc($result_km)) {
-                                    $selected = $row_km['discountID'] == $row['discountID'] ? 'selected' : '';
-                                    echo "<option value='{$row_km['discountID']}' $selected>{$row_km['discountAmount']}</option>";
-                                }
-                            }
-                            ?>
-                        </select>
-                        <div class="form-buttons"> 
-                            <input type="submit" value="Lưu">
-                            <input type="reset" value="Nhập lại">
-                            <button type="button" onclick="window.location.href='QLSP_XemSP.php?opt=view_SP';">Quay lại</button>
-                        </div>
-                    </form>
-                </div>
+    <form name="formSP" action="?opt=update_SP" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        Mã sản phẩm: <input type="text" id="masp" name="masp" readonly value="<?php echo $row["productID"]; ?>"><br>
+        Tên sản phẩm: <input type="text" id="tensp" name="tensp" value="<?php echo $row["productName"]; ?>"><br>
+        Số lượng: <input type="number" id="soluong" name="soluong" min="1" value="<?php echo $row["quantityAvailable"]; ?>"><br>
+        Mô tả: <input type="text" id="mota" name="mota" value="<?php echo $row["description"]; ?>"><br>
+        Giá sản phẩm: <input type="number" id="giatien" name="giatien" min="0" value="<?php echo $row["unitPrice"]; ?>"><br>
+        Phân loại:
+        <select id="subct" name="subct">
+            <?php
+            if ($result_sct) {
+                while ($row_sct = mysqli_fetch_assoc($result_sct)) {
+                    $selected = $row_sct['subcategoryID'] == $row['subcategoryID'] ? 'selected' : '';
+                    echo "<option value='{$row_sct['subcategoryID']}' $selected>{$row_sct['subcategoryName']}</option>";
+                }
+            }
+            ?>
+        </select>
+        Khuyến mãi:
+        <select id="khuyenmai" name="khuyenmai">
+            <?php
+            if ($result_km) {
+                while ($row_km = mysqli_fetch_assoc($result_km)) {
+                    $selected = $row_km['discountID'] == $row['discountID'] ? 'selected' : '';
+                    echo "<option value='{$row_km['discountID']}' $selected>{$row_km['discountAmount']}</option>";
+                }
+            }
+            ?>
+        </select>
+        <div class="form-buttons"> 
+            <input type="submit" value="Lưu">
+            <input type="reset" value="Nhập lại">
+            <button type="button" onclick="window.location.href='QLSP_XemSP.php?opt=view_SP';">Quay lại</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var masp = document.getElementById("masp").value;
+        var tensp = document.getElementById("tensp").value;
+        var soluong = document.getElementById("soluong").value;
+        var mota = document.getElementById("mota").value;
+        var giatien = document.getElementById("giatien").value;
+
+        if (masp == "" || tensp == "" || soluong == "" || mota == "" || giatien == "") {
+            alert("Vui lòng điền đầy đủ thông tin.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
                 <?php
         }
     }
