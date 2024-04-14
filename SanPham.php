@@ -148,7 +148,7 @@ function add_SP()
             // Kiểm tra xem tất cả các trường đã được nhập chưa
             if (empty($_masp) || empty($_tensp) || empty($_soluong) || empty($_mota) || empty($_giatien) || empty($_khuyenmai)) {
                 echo "<script>alert('Vui lòng nhập đầy đủ thông tin.');</script>";
-                return; // Dừng xử lý nếu có trường nào đó bỏ trống
+                return; 
             }
             $_status = intval($_soluong) > 0 ? "Còn hàng" : "Hết hàng";
             $sql = "INSERT INTO product(productName, productID, description, unitPrice, quantityAvailable, status, discountID, subcategoryID)
@@ -277,8 +277,6 @@ function del_SP()
 
         $sqlReviews = "DELETE FROM review WHERE productID = '$_productid'";
         $resultReviews = chayTruyVanKhongTraVeDL($link, $sqlReviews);
-
-        // Then, delete the product
         $sqlProduct = "DELETE FROM product WHERE productID = '$_productid'";
         $resultProduct = chayTruyVanKhongTraVeDL($link, $sqlProduct);
 
