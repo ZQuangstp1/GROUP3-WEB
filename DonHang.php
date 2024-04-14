@@ -4,14 +4,13 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            /* Loại bỏ khoảng cách giữa các border của cell */
         }
 
         th, td {
             border: 1px solid black;
             text-align: center;
             padding: 5px 7px;
-            font-size: 12.5px; /* Giảm kích thước chữ */
+            font-size: 12.5px; 
             font-family: 'Barlow', sans-serif;
         }
         input[type="text"] {
@@ -20,7 +19,7 @@
             width: 200px;
         }
         .pink-row th {
-            background-color: #FFC0CB; /* Màu hồng */
+            background-color: #FFC0CB; 
         }
         .form-container{
             margin-top: 10%;
@@ -46,7 +45,6 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
-            /* Đảm bảo padding không làm thay đổi kích thước tổng thể */
         }
         #toolbar {
             display: flex;
@@ -175,7 +173,7 @@
             <div class="form-group">
                 <label for="ptttSearch">PT thanh toán</label>
                 <select id="ptttSearch">
-                    <option value="">Chọn phương thức thanh toán</option> <!-- Tùy chọn mặc định -->
+                    <option value="">Chọn phương thức thanh toán</option> 
                     <option value="Tiền mặt">Tiền mặt</option>
                     <option value="Momo">Momo</option>
                     <option value="Mobile Banking">Mobile Banking</option>
