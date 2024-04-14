@@ -14,15 +14,14 @@
             flex-wrap: wrap;
             margin-top: 20px;
         }
-          /* Thêm CSS cho dòng đầu tiên */
           .pink-row th {
-            background-color: #FFC0CB; /* Màu hồng */
+            background-color: #FFC0CB; 
         }
         th, td {
             border: 1px solid black;
             text-align: center;
             padding: 5px 7px;
-            font-size: 12.5px; /* Giảm kích thước chữ */
+            font-size: 12.5px; 
             font-family: 'Barlow', sans-serif;
         }
         input[type="text"] {
@@ -48,17 +47,17 @@
     }
 
     .add-nv-container {
-        background-color: #DF8A8A; /* Màu nền cho container */
-        border-radius: 5px; /* Bo tròn góc */
-        text-decoration: none; /* Xóa gạch chân của liên kết */
+        background-color: #DF8A8A;
+        border-radius: 5px; 
+        text-decoration: none; 
     }
     .form-container{
         margin-top: 10%;
     }
 
     .add-nv-container img {
-        height: 20px; /* Điều chỉnh kích thước ảnh */
-        margin-right: 5px; /* Khoảng cách giữa ảnh và chữ */
+        height: 20px;
+        margin-right: 5px; 
     }
 
         #search {
